@@ -17,7 +17,7 @@ Much of the initial setup time is spend downloading support files for Star fusio
 		<node id="7" name="samtools_index" position="(-630.0, 295.0)" project_name="GDC-mRNA-d15" qualified_name="GDC_mRNA_d15.OWsamtools_index.OWsamtools_index" title="Index BAM" version=""/>
 		<node id="8" name="fpkm" position="(-330.0, 295.0)" project_name="GDC-mRNA-d15" qualified_name="GDC_mRNA_d15.OWfpkm.OWfpkm" title="Normalize counts" version=""/>
 		<node id="9" name="gnumeric" position="(-180.0, 294.0)" project_name="GDC-mRNA-d15" qualified_name="GDC_mRNA_d15.OWgnumeric.OWgnumeric" title="Display counts" version=""/>
-		<node id="10" name="Utilities_downloadURL" position="(-930.0, -5.0)" project_name="GDC-mRNA-d15" qualified_name="GDC_mRNA_d15.OWUtilities_downloadURL.OWUtilities_downloadURL" title="Download sample files" version=""/>
+		<node id="10" name="downloadURL" position="(-930.0, -5.0)" project_name="GDC-mRNA-d15" qualified_name="GDC_mRNA_d15.OWdownloadURL.OWdownloadURL" title="Download sample files" version=""/>
 		<node id="11" name="Start" position="(-932.0, -139.0)" project_name="GDC-mRNA-d15" qualified_name="GDC_mRNA_d15.OWStart.OWStart" title="Start" version=""/>
 	</nodes>
 	<links>
