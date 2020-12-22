@@ -17,8 +17,8 @@ class OWStart(OWBwBWidget):
     priority = 10
     icon = getIconName(__file__,"start.png")
     want_main_area = False
-    docker_image_name = "biodepot/alpine-bash"
-    docker_image_tag = "3.11.6__45283ff2"
+    docker_image_name = "biodepot/gdc-mrna-start"
+    docker_image_tag = "alpine_3.12__59b7cb77"
     outputs = [("work_dir",str),("genome_dir",str),("annotation_file",str),("geneinfo",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
