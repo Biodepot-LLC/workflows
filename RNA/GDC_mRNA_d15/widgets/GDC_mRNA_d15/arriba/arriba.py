@@ -19,7 +19,7 @@ class OWarriba(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/arriba"
     docker_image_tag = "v1.1.0__ubuntu_18.04"
-    inputs = [("File",str,"handleInputsFile")]
+    inputs = [("Trigger",str,"handleInputsTrigger")]
     outputs = [("File",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -71,9 +71,9 @@ class OWarriba(OWBwBWidget):
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsFile(self, value, *args):
+    def handleInputsTrigger(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("File", value, args[0][0], test=args[0][3])
+            self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

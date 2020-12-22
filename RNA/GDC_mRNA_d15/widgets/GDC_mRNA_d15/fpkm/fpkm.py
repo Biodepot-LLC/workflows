@@ -20,7 +20,7 @@ class OWfpkm(OWBwBWidget):
     docker_image_name = "biodepot/fpkm"
     docker_image_tag = "latest"
     inputs = [("geneinfofile",str,"handleInputsgeneinfofile"),("countsfile",str,"handleInputscountsfile")]
-    outputs = [("inputfile",str)]
+    outputs = [("countsfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -50,6 +50,6 @@ class OWfpkm(OWBwBWidget):
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"inputfile"):
-            outputValue=getattr(self,"inputfile")
-        self.send("inputfile", outputValue)
+        if hasattr(self,"countsfile"):
+            outputValue=getattr(self,"countsfile")
+        self.send("countsfile", outputValue)

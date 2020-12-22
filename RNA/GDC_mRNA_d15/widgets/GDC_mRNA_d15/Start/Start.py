@@ -19,7 +19,7 @@ class OWStart(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/alpine-bash"
     docker_image_tag = "3.11.6__45283ff2"
-    outputs = [("work_dir",str),("genome_dir",str),("fastq_files",str),("annotation_file",str),("geneinfo",str)]
+    outputs = [("work_dir",str),("genome_dir",str),("annotation_file",str),("geneinfo",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -29,7 +29,6 @@ class OWStart(OWBwBWidget):
     optionsChecked=pset({})
     work_dir=pset(None)
     genome_dir=pset(None)
-    fastq_files=pset([])
     annotation_file=pset(None)
     geneinfo=pset(None)
     def __init__(self):
@@ -49,10 +48,6 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"genome_dir"):
             outputValue=getattr(self,"genome_dir")
         self.send("genome_dir", outputValue)
-        outputValue=None
-        if hasattr(self,"fastq_files"):
-            outputValue=getattr(self,"fastq_files")
-        self.send("fastq_files", outputValue)
         outputValue=None
         if hasattr(self,"annotation_file"):
             outputValue=getattr(self,"annotation_file")
