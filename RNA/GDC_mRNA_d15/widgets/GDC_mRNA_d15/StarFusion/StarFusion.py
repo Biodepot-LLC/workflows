@@ -17,10 +17,10 @@ class OWStarFusion(OWBwBWidget):
     priority = 10
     icon = getIconName(__file__,"starfusion.png")
     want_main_area = False
-    docker_image_name = "kfdrc/star-fusion"
-    docker_image_tag = "1.5.0"
-    inputs = [("File",str,"handleInputsFile")]
-    outputs = [("File",str)]
+    docker_image_name = "biodepot/star-fusion"
+    docker_image_tag = "1.4.0"
+    inputs = [("genomelibdir",str,"handleInputsgenomelibdir"),("chimeric",str,"handleInputschimeric"),("Trigger",str,"handleInputsTrigger")]
+    outputs = [("outputdir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -28,7 +28,11 @@ class OWStarFusion(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    File=pset(None)
+    chimeric=pset(None)
+    genomelibdir=pset(None)
+    cpu=pset(None)
+    outputdir=pset("STAR-Fusion_outdir")
+    fullusage=pset(False)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"StarFusion")) as f:
@@ -37,13 +41,23 @@ class OWStarFusion(OWBwBWidget):
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsFile(self, value, *args):
+    def handleInputsgenomelibdir(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("File", value, args[0][0], test=args[0][3])
+            self.handleInputs("genomelibdir", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputschimeric(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("chimeric", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsTrigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"File"):
-            outputValue=getattr(self,"File")
-        self.send("File", outputValue)
+        if hasattr(self,"outputdir"):
+            outputValue=getattr(self,"outputdir")
+        self.send("outputdir", outputValue)

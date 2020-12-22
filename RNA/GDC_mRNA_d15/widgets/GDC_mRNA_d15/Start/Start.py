@@ -1,0 +1,63 @@
+import os
+import glob
+import sys
+import functools
+import jsonpickle
+from collections import OrderedDict
+from Orange.widgets import widget, gui, settings
+import Orange.data
+from Orange.data.io import FileFormat
+from DockerClient import DockerClient
+from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
+from PyQt5 import QtWidgets, QtGui
+
+class OWStart(OWBwBWidget):
+    name = "Start"
+    description = "Enter workflow parameters and start"
+    priority = 10
+    icon = getIconName(__file__,"start.png")
+    want_main_area = False
+    docker_image_name = "biodepot/alpine-bash"
+    docker_image_tag = "3.11.6__45283ff2"
+    outputs = [("work_dir",str),("genome_dir",str),("fastq_files",str),("annotation_file",str),("geneinfo",str)]
+    pset=functools.partial(settings.Setting,schema_only=True)
+    runMode=pset(0)
+    exportGraphics=pset(False)
+    runTriggers=pset([])
+    triggerReady=pset({})
+    inputConnectionsStore=pset({})
+    optionsChecked=pset({})
+    work_dir=pset(None)
+    genome_dir=pset(None)
+    fastq_files=pset([])
+    annotation_file=pset(None)
+    geneinfo=pset(None)
+    def __init__(self):
+        super().__init__(self.docker_image_name, self.docker_image_tag)
+        with open(getJsonName(__file__,"Start")) as f:
+            self.data=jsonpickle.decode(f.read())
+            f.close()
+        self.initVolumes()
+        self.inputConnections = ConnectionDict(self.inputConnectionsStore)
+        self.drawGUI()
+    def handleOutputs(self):
+        outputValue=None
+        if hasattr(self,"work_dir"):
+            outputValue=getattr(self,"work_dir")
+        self.send("work_dir", outputValue)
+        outputValue=None
+        if hasattr(self,"genome_dir"):
+            outputValue=getattr(self,"genome_dir")
+        self.send("genome_dir", outputValue)
+        outputValue=None
+        if hasattr(self,"fastq_files"):
+            outputValue=getattr(self,"fastq_files")
+        self.send("fastq_files", outputValue)
+        outputValue=None
+        if hasattr(self,"annotation_file"):
+            outputValue=getattr(self,"annotation_file")
+        self.send("annotation_file", outputValue)
+        outputValue=None
+        if hasattr(self,"geneinfo"):
+            outputValue=getattr(self,"geneinfo")
+        self.send("geneinfo", outputValue)

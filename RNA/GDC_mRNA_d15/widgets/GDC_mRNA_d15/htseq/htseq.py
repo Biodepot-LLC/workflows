@@ -34,7 +34,6 @@ class OWhtseq(OWBwBWidget):
     stranded=pset("yes")
     MNAQUAL=pset(10)
     featuretype=pset("exon")
-    helpflag=pset(False)
     maxreadsinbuffer=pset(None)
     outputfile=pset(None)
     idattr=pset("gene_id")
@@ -50,7 +49,6 @@ class OWhtseq(OWBwBWidget):
     nprocesses=pset(None)
     featurequery=pset(None)
     quietmode=pset(False)
-    myversion=pset(False)
     inputfile=pset(None)
     gtffile=pset(None)
     def __init__(self):

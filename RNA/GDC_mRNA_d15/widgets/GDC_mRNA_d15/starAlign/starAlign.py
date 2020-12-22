@@ -19,7 +19,7 @@ class OWstarAlign(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/star"
     docker_image_tag = "2.6.0c__debian-8.11-slim__072918"
-    inputs = [("trigger",str,"handleInputstrigger"),("outputDir",str,"handleInputsoutputDir"),("genomeDir",str,"handleInputsgenomeDir")]
+    inputs = [("trigger",str,"handleInputstrigger"),("outputDir",str,"handleInputsoutputDir"),("genomeDir",str,"handleInputsgenomeDir"),("readFilesIn",str,"handleInputsreadFilesIn")]
     outputs = [("outputDir",str),("genomeDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -167,6 +167,11 @@ class OWstarAlign(OWBwBWidget):
     def handleInputsgenomeDir(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("genomeDir", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsreadFilesIn(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("readFilesIn", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
