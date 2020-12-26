@@ -15,7 +15,7 @@ class OWMarkDuplicates(OWBwBWidget):
     name = "MarkDuplicates"
     description = "Mark duplicates"
     priority = 20
-    icon = getIconName(__file__,"markduplicates.png")
+    icon = getIconName(__file__,"gatk-mark-dupes.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk"
     docker_image_tag = "4.1.9.0__openjdk_8-jre-alpine__cb1b2f17"
@@ -28,9 +28,9 @@ class OWMarkDuplicates(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    inputFile=pset(None)
-    outputFile=pset(None)
-    metricsFile=pset("/data/marked_dup_metrics.txt")
+    inputFile=pset([])
+    outputFile=pset([])
+    metricsFile=pset(['/data/marked_dup_metrics.txt'])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"MarkDuplicates")) as f:

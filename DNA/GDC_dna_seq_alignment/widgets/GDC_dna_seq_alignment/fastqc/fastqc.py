@@ -19,7 +19,7 @@ class OWfastqc(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/fastqc"
     docker_image_tag = "latest"
-    inputs = [("inputDir",str,"handleInputsinputDir")]
+    inputs = [("inputDir",str,"handleInputsinputDir"),("inputFiles",str,"handleInputsinputFiles")]
     outputs = [("outputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -41,6 +41,11 @@ class OWfastqc(OWBwBWidget):
     def handleInputsinputDir(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("inputDir", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsinputFiles(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("inputFiles", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
