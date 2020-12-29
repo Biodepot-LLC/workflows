@@ -18,7 +18,7 @@ class OWrealigner_creator(OWBwBWidget):
     icon = getIconName(__file__,"gatk-co-clean.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk3-co-clean"
-    docker_image_tag = "3.7__4b439637"
+    docker_image_tag = "3.7__804cb988"
     inputs = [("bamfiles",str,"handleInputsbamfiles"),("reference",str,"handleInputsreference"),("bamtrigger",str,"handleInputsbamtrigger"),("indels_trigger",str,"handleInputsindels_trigger"),("reference_trigger",str,"handleInputsreference_trigger")]
     outputs = [("intervals",str),("bamfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

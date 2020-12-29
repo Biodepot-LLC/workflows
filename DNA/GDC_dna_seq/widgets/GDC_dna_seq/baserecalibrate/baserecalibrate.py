@@ -18,9 +18,9 @@ class OWbaserecalibrate(OWBwBWidget):
     icon = getIconName(__file__,"gatk-bsqr.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk3-co-clean"
-    docker_image_tag = "3.7__4b439637"
+    docker_image_tag = "3.7__804cb988"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("snps_trigger",str,"handleInputssnps_trigger")]
-    outputs = [("outputfiles",str)]
+    outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -63,6 +63,6 @@ class OWbaserecalibrate(OWBwBWidget):
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"outputfiles"):
-            outputValue=getattr(self,"outputfiles")
-        self.send("outputfiles", outputValue)
+        if hasattr(self,"output"):
+            outputValue=getattr(self,"output")
+        self.send("output", outputValue)

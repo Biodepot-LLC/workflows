@@ -11,16 +11,16 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWSortSam(OWBwBWidget):
-    name = "SortSam"
-    description = "Sort Sam"
-    priority = 20
-    icon = getIconName(__file__,"sortsam.png")
+class OWvs_mpileup(OWBwBWidget):
+    name = "vs_mpileup"
+    description = "Enter and output a file"
+    priority = 10
+    icon = getIconName(__file__,"varscan.png")
     want_main_area = False
-    docker_image_name = "biodepot/gatk"
-    docker_image_tag = "4.1.9.0__openjdk_8-jre-alpine__cb1b2f17"
-    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger")]
-    outputs = [("outputFile",str)]
+    docker_image_name = "biodepot/varscan_samtools"
+    docker_image_tag = "2.3.9__1.12"
+    inputs = [("inputfiles",str,"handleInputsinputfiles")]
+    outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -28,28 +28,27 @@ class OWSortSam(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    inputFile=pset(None)
-    outputFile=pset("/data/output-picard.bam")
+    reference=pset(None)
+    minmapq=pset(None)
+    nobaq=pset(False)
+    inputfiles=pset([])
+    output=pset(None)
+    reverse=pset(False)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"SortSam")) as f:
+        with open(getJsonName(__file__,"vs_mpileup")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsinputFile(self, value, *args):
+    def handleInputsinputfiles(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("inputFile", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
-    def handleInputstrigger(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("trigger", value, args[0][0], test=args[0][3])
+            self.handleInputs("inputfiles", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"outputFile"):
-            outputValue=getattr(self,"outputFile")
-        self.send("outputFile", outputValue)
+        if hasattr(self,"output"):
+            outputValue=getattr(self,"output")
+        self.send("output", outputValue)

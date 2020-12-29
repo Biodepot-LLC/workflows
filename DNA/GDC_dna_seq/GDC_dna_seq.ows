@@ -1,20 +1,25 @@
 <?xml version="1.0" ?><scheme description="" title="GDC-dna-seq" version="2.0">
 	<nodes>
-		<node id="0" name="biobambam2" position="(-149.0, 300.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWbiobambam2.OWbiobambam2" title="Convert bam to fastq" version=""/>
+		<node id="0" name="biobambam2" position="(-150, 300)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWbiobambam2.OWbiobambam2" title="Convert bam to fastq" version=""/>
 		<node id="1" name="bwa_mem" position="(-150, 450)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWbwa_mem.OWbwa_mem" title="Align sequences" version=""/>
 		<node id="2" name="MarkDuplicates" position="(0, 450)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWMarkDuplicates.OWMarkDuplicates" title="Mark duplicates" version=""/>
-		<node id="3" name="fastqc" position="(-2.0, 299.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWfastqc.OWfastqc" title="Check quality" version=""/>
-		<node id="4" name="downloadURL" position="(0, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWdownloadURL.OWdownloadURL" title="Download GDC reference files" version=""/>
-		<node id="5" name="Start" position="(-149.0, -1.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWStart.OWStart" title="Start" version=""/>
-		<node id="6" name="gcloud_download" position="(-150, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWgcloud_download.OWgcloud_download" title="Download  normal and tumor bam files" version=""/>
-		<node id="7" name="gcloud_download" position="(150.0, 152.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWgcloud_download.OWgcloud_download" title="Download GATK reference files" version=""/>
-		<node id="8" name="realigner_creator" position="(-150.0, 599.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWrealigner_creator.OWrealigner_creator" title="Create realigment target" version=""/>
+		<node id="3" name="fastqc" position="(0, 300)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWfastqc.OWfastqc" title="Check quality" version=""/>
+		<node id="4" name="downloadURL" position="(150, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWdownloadURL.OWdownloadURL" title="Download GDC  files" version=""/>
+		<node id="5" name="Start" position="(-150, 0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWStart.OWStart" title="Start" version=""/>
+		<node id="6" name="gcloud_download" position="(-150, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWgcloud_download.OWgcloud_download" title="Download sample" version=""/>
+		<node id="7" name="gcloud_download" position="(0, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWgcloud_download.OWgcloud_download" title="Download GATK files" version=""/>
+		<node id="8" name="realigner_creator" position="(-150, 600)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWrealigner_creator.OWrealigner_creator" title="Create realigment target" version=""/>
 		<node id="9" name="indelrealigner" position="(0, 600)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWindelrealigner.OWindelrealigner" title="Re-align indels" version=""/>
-		<node id="10" name="baserecalibrate" position="(150.0, 599.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWbaserecalibrate.OWbaserecalibrate" title="Recalibrate base quality" version=""/>
-		<node id="11" name="Muse" position="(-154.0, 753.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWMuse.OWMuse" title="Muse" version=""/>
-		<node id="12" name="Varscan" position="(-9.0, 751.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWVarscan.OWVarscan" title="Varscan" version=""/>
-		<node id="13" name="Pindel" position="(155.0, 756.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWPindel.OWPindel" title="Pindel" version=""/>
-		<node id="14" name="SomaticSniper" position="(298.0, 756.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWSomaticSniper.OWSomaticSniper" title="Somatic sniper" version=""/>
+		<node id="10" name="baserecalibrate" position="(150, 600)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWbaserecalibrate.OWbaserecalibrate" title="Recalibrate base quality" version=""/>
+		<node id="11" name="muse_call" position="(128.11111111111111, 732.8888888888887)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWmuse_call.OWmuse_call" title="Muse call" version=""/>
+		<node id="12" name="Pindel" position="(584.0, 714.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWPindel.OWPindel" title="Pindel" version=""/>
+		<node id="13" name="SomaticSniper" position="(-167.77777777777777, 738.3333333333335)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWSomaticSniper.OWSomaticSniper" title="Somatic sniper" version=""/>
+		<node id="14" name="muse_sump" position="(254.44444444444446, 727.4444444444448)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWmuse_sump.OWmuse_sump" title="Muse sump" version=""/>
+		<node id="15" name="downloadURL" position="(300, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWdownloadURL.OWdownloadURL" title="Download snps" version=""/>
+		<node id="16" name="vs_mpileup" position="(-66.0, 738.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWvs_mpileup.OWvs_mpileup" title="Pileup" version=""/>
+		<node id="17" name="varscan_somatic" position="(33.0, 724.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWvarscan_somatic.OWvarscan_somatic" title="Somatic" version=""/>
+		<node id="18" name="pindel_biosamba" position="(384.0, 718.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWpindel_biosamba.OWpindel_biosamba" title="Filter" version=""/>
+		<node id="19" name="pindel_config" position="(473.0, 714.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWpindel_config.OWpindel_config" title="Configure" version=""/>
 	</nodes>
 	<links>
 		<link enabled="true" id="0" sink_channel="downloadDir" sink_node_id="6" source_channel="work_dir" source_node_id="5"/>
@@ -23,22 +28,28 @@
 		<link enabled="true" id="3" sink_channel="reference" sink_node_id="1" source_channel="genomefile" source_node_id="5"/>
 		<link enabled="true" id="4" sink_channel="inputfiles" sink_node_id="10" source_channel="outputfiles" source_node_id="9"/>
 		<link enabled="true" id="5" sink_channel="reference" sink_node_id="10" source_channel="genomefile" source_node_id="5"/>
-		<link enabled="true" id="6" sink_channel="reference_trigger" sink_node_id="10" source_channel="directory" source_node_id="4"/>
-		<link enabled="true" id="7" sink_channel="snps_trigger" sink_node_id="10" source_channel="downloadDir" source_node_id="7"/>
-		<link enabled="true" id="8" sink_channel="bamtrigger" sink_node_id="8" source_channel="outputFile" source_node_id="2"/>
-		<link enabled="true" id="9" sink_channel="indels_trigger" sink_node_id="8" source_channel="downloadDir" source_node_id="7"/>
-		<link enabled="true" id="10" sink_channel="reference_trigger" sink_node_id="9" source_channel="directory" source_node_id="4"/>
-		<link enabled="true" id="11" sink_channel="indels_trigger" sink_node_id="9" source_channel="downloadDir" source_node_id="7"/>
-		<link enabled="true" id="12" sink_channel="intervals" sink_node_id="9" source_channel="intervals" source_node_id="8"/>
-		<link enabled="true" id="13" sink_channel="inputFile" sink_node_id="0" source_channel="inputFiles" source_node_id="5"/>
-		<link enabled="true" id="14" sink_channel="inputDir" sink_node_id="3" source_channel="outputDir" source_node_id="0"/>
-		<link enabled="true" id="15" sink_channel="reference_trigger" sink_node_id="1" source_channel="directory" source_node_id="4"/>
-		<link enabled="true" id="16" sink_channel="fastq_trigger" sink_node_id="1" source_channel="inputFile" source_node_id="0"/>
-		<link enabled="true" id="17" sink_channel="trigger" sink_node_id="0" source_channel="downloadDir" source_node_id="6"/>
-		<link enabled="true" id="18" sink_channel="inputFile" sink_node_id="2" source_channel="outputfiles" source_node_id="1"/>
-		<link enabled="true" id="19" sink_channel="bamfiles" sink_node_id="9" source_channel="bamfiles" source_node_id="8"/>
-		<link enabled="true" id="20" sink_channel="reference" sink_node_id="8" source_channel="genomefile" source_node_id="5"/>
-		<link enabled="true" id="21" sink_channel="reference_trigger" sink_node_id="8" source_channel="directory" source_node_id="4"/>
+		<link enabled="true" id="6" sink_channel="bamtrigger" sink_node_id="8" source_channel="outputFile" source_node_id="2"/>
+		<link enabled="true" id="7" sink_channel="indels_trigger" sink_node_id="8" source_channel="downloadDir" source_node_id="7"/>
+		<link enabled="true" id="8" sink_channel="reference_trigger" sink_node_id="9" source_channel="directory" source_node_id="4"/>
+		<link enabled="true" id="9" sink_channel="indels_trigger" sink_node_id="9" source_channel="downloadDir" source_node_id="7"/>
+		<link enabled="true" id="10" sink_channel="intervals" sink_node_id="9" source_channel="intervals" source_node_id="8"/>
+		<link enabled="true" id="11" sink_channel="inputFile" sink_node_id="0" source_channel="inputFiles" source_node_id="5"/>
+		<link enabled="true" id="12" sink_channel="inputDir" sink_node_id="3" source_channel="outputDir" source_node_id="0"/>
+		<link enabled="true" id="13" sink_channel="reference_trigger" sink_node_id="1" source_channel="directory" source_node_id="4"/>
+		<link enabled="true" id="14" sink_channel="fastq_trigger" sink_node_id="1" source_channel="inputFile" source_node_id="0"/>
+		<link enabled="true" id="15" sink_channel="trigger" sink_node_id="0" source_channel="downloadDir" source_node_id="6"/>
+		<link enabled="true" id="16" sink_channel="inputFile" sink_node_id="2" source_channel="outputfiles" source_node_id="1"/>
+		<link enabled="true" id="17" sink_channel="bamfiles" sink_node_id="9" source_channel="bamfiles" source_node_id="8"/>
+		<link enabled="true" id="18" sink_channel="reference" sink_node_id="8" source_channel="genomefile" source_node_id="5"/>
+		<link enabled="true" id="19" sink_channel="reference_trigger" sink_node_id="8" source_channel="directory" source_node_id="4"/>
+		<link enabled="true" id="20" sink_channel="directory" sink_node_id="15" source_channel="genome_dir" source_node_id="5"/>
+		<link enabled="true" id="21" sink_channel="snps_trigger" sink_node_id="10" source_channel="directory" source_node_id="15"/>
+		<link enabled="true" id="22" sink_channel="reference_trigger" sink_node_id="10" source_channel="directory" source_node_id="4"/>
+		<link enabled="true" id="23" sink_channel="inputfiles" sink_node_id="11" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="24" sink_channel="calloutput" sink_node_id="14" source_channel="outputfile" source_node_id="11"/>
+		<link enabled="true" id="25" sink_channel="inputfiles" sink_node_id="13" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="26" sink_channel="inputfiles" sink_node_id="17" source_channel="output" source_node_id="16"/>
+		<link enabled="true" id="27" sink_channel="inputfiles" sink_node_id="16" source_channel="output" source_node_id="10"/>
 	</links>
 	<annotations>
 		<text font-family="Helvetica" font-size="16" id="0" rect="(-447.0, -12.0, 205.0, 76.0)" type="text/plain">Start workflow</text>
@@ -46,7 +57,7 @@
 		<text font-family="Helvetica" font-size="16" id="2" rect="(-428.0, 293.0, 150.0, 31.0)" type="text/plain">Convert to fastq</text>
 		<text font-family="Helvetica" font-size="16" id="3" rect="(-424.0, 435.0, 150.0, 50.0)" type="text/plain">Align, sort and mark duplicates</text>
 		<text font-family="Helvetica" font-size="16" id="4" rect="(-417.0, 581.0, 150.0, 31.0)" type="text/plain">Co-clean</text>
-		<text font-family="Helvetica" font-size="16" id="5" rect="(-425.0, 743.0, 150.0, 31.0)" type="text/plain">Variant calling</text>
+		<text font-family="Helvetica" font-size="16" id="5" rect="(-416.0, 739.0, 150.0, 31.0)" type="text/plain">Variant calling</text>
 	</annotations>
 	<thumbnail/>
 	<node_properties>
@@ -173,38 +184,76 @@ emVxHFgBAAAAMXEdWAcAAAB0aHJlYWRzcR5oHVgDAAAAcmFtcR9YAQAAADBxIHVYCwAAAG91dHB1
 dGZpbGVzcSF9cSIoaBxoHWgeaB1oH2ggdXVYDQAAAGl0ZXJhdGVkQXR0cnNxI11xJChoGmghZVgI
 AAAAbldvcmtlcnNxJUsCdVgFAAAAa25vd25xJlg4AAAAL2RhdGEvZ2Vub21lL0hvbW9fc2FwaWVu
 c19hc3NlbWJseTM4Lmtub3duX2luZGVscy52Y2YuZ3pxJ1gIAAAAbldvcmtlcnNxKEsCWA4AAABu
-b29yaWdpbmFsdGFnc3EpiFgOAAAAb3B0aW9uc0NoZWNrZWRxKn1xKyhYBQAAAGtub3ducSyIWAsA
-AABkYXRhdGhyZWFkc3EtiVgOAAAAbm9vcmlnaW5hbHRhZ3NxLol1WAsAAABvdXRwdXRmaWxlc3Ev
-XXEwKFgkAAAAL2RhdGEvd29yay9ub3JtYWxfcmVhbGlnbl9pbmRlbHMuYmFtcTFYIwAAAC9kYXRh
-L3dvcmsvdHVtb3JfcmVhbGlnbl9pbmRlbHMuYmFtcTJlWAkAAAByZWZlcmVuY2VxM1gdAAAAL2Rh
-dGEvZ2Vub21lL0dSQ2gzOC5kMS52ZDEuZmFxNFgHAAAAcnVuTW9kZXE1SwJYCwAAAHJ1blRyaWdn
-ZXJzcTZdcTcoWBEAAAByZWZlcmVuY2VfdHJpZ2dlcnE4WA4AAABpbmRlbHNfdHJpZ2dlcnE5WAkA
-AABpbnRlcnZhbHNxOmVYEwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlxO0MyAdnQywACAAAAAANSAAAB
-awAABmMAAAN1AAADUgAAAWsAAAZjAAADdQAAAAAAAAAAB4BxPFgMAAAAdHJpZ2dlclJlYWR5cT19
-cT4oaDiJaDmJaDqJdVgMAAAAdXNlU2NoZWR1bGVycT+JWAsAAABfX3ZlcnNpb25fX3FASwF1Lg==
+b29yaWdpbmFsdGFnc3EpiFgOAAAAb3B0aW9uc0NoZWNrZWRxKn1xKyhYCwAAAGRhdGF0aHJlYWRz
+cSyJWA4AAABub29yaWdpbmFsdGFnc3EtiXVYCwAAAG91dHB1dGZpbGVzcS5dcS8oWCQAAAAvZGF0
+YS93b3JrL25vcm1hbF9yZWFsaWduX2luZGVscy5iYW1xMFgjAAAAL2RhdGEvd29yay90dW1vcl9y
+ZWFsaWduX2luZGVscy5iYW1xMWVYCQAAAHJlZmVyZW5jZXEyWB0AAAAvZGF0YS9nZW5vbWUvR1JD
+aDM4LmQxLnZkMS5mYXEzWAcAAABydW5Nb2RlcTRLAlgLAAAAcnVuVHJpZ2dlcnNxNV1xNihYEQAA
+AHJlZmVyZW5jZV90cmlnZ2VycTdYDgAAAGluZGVsc190cmlnZ2VycThYCQAAAGludGVydmFsc3E5
+ZVgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXE6QzIB2dDLAAIAAAAAA1IAAAFrAAAGYwAAA3UAAANS
+AAABawAABmMAAAN1AAAAAAAAAAAHgHE7WAwAAAB0cmlnZ2VyUmVhZHlxPH1xPShoN4loOIloOYl1
+WAwAAAB1c2VTY2hlZHVsZXJxPolYCwAAAF9fdmVyc2lvbl9fcT9LAXUu
 </properties>
 		<properties format="pickle" node_id="10">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWBUA
 AABpbnB1dENvbm5lY3Rpb25zU3RvcmVxA31xBChYCgAAAGlucHV0ZmlsZXNxBV1xBksGYVgJAAAA
-cmVmZXJlbmNlcQddcQhLAWFYEQAAAHJlZmVyZW5jZV90cmlnZ2VycQldcQpLA2FYDAAAAHNucHNf
-dHJpZ2dlcnELXXEMSwRhdVgKAAAAaW5wdXRmaWxlc3ENTlgHAAAAaXRlcmF0ZXEOiFgPAAAAaXRl
+cmVmZXJlbmNlcQddcQhLAWFYDAAAAHNucHNfdHJpZ2dlcnEJXXEKSwxhWBEAAAByZWZlcmVuY2Vf
+dHJpZ2dlcnELXXEMSwNhdVgKAAAAaW5wdXRmaWxlc3ENTlgHAAAAaXRlcmF0ZXEOiFgPAAAAaXRl
 cmF0ZVNldHRpbmdzcQ99cRAoWA0AAABpdGVyYWJsZUF0dHJzcRFdcRIoWAoAAABpbnB1dGZpbGVz
 cRNYBgAAAG91dHB1dHEUZVgEAAAAZGF0YXEVY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0CnEWKVJx
 FyhYCgAAAGlucHV0ZmlsZXNxGH1xGShYCQAAAGdyb3VwU2l6ZXEaWAEAAAAxcRtYBwAAAHRocmVh
 ZHNxHGgbWAMAAAByYW1xHVgBAAAAMHEedVgGAAAAb3V0cHV0cR99cSAoaBpoG2gcaBtoHWgedXVY
 DQAAAGl0ZXJhdGVkQXR0cnNxIV1xIihoGGgfZVgIAAAAbldvcmtlcnNxI0sCdVgFAAAAa25vd25x
-JFgxAAAAL2RhdGEvZ2Vub21lL0hvbW9fc2FwaWVuc19hc3NlbWJseTM4LmRic25wMTM4LnZjZnEl
-WAgAAABuV29ya2Vyc3EmSwJYAwAAAG5jdHEnSwhYDgAAAG9wdGlvbnNDaGVja2VkcSh9cSkoWAsA
-AABkYXRhdGhyZWFkc3EqiVgDAAAAbmN0cSuIdVgGAAAAb3V0cHV0cSxdcS0oWB0AAAAvZGF0YS93
-b3JrL25vcm1hbDFNX2NsZWFuLmJhbXEuWBwAAAAvZGF0YS93b3JrL3R1bW9yMU1fY2xlYW4uYmFt
-cS9lWAkAAAByZWZlcmVuY2VxMFgAAAAAcTFYBwAAAHJ1bk1vZGVxMksCWAsAAABydW5UcmlnZ2Vy
-c3EzXXE0KFgKAAAAaW5wdXRmaWxlc3E1WBEAAAByZWZlcmVuY2VfdHJpZ2dlcnE2WAwAAABzbnBz
-X3RyaWdnZXJxN2VYEwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlxOEMyAdnQywACAAAAAANSAAABUwAA
-BrkAAAMbAAADUgAAAVMAAAa5AAADGwAAAAAAAAAAB4BxOVgMAAAAdHJpZ2dlclJlYWR5cTp9cTso
-aDWJaDaJaDeJdVgMAAAAdXNlU2NoZWR1bGVycTyJWAsAAABfX3ZlcnNpb25fX3E9SwF1Lg==
+JFggAAAAL2RhdGEvZ2Vub21lL0FsbF8yMDE1MDYwMy52Y2YuZ3pxJVgIAAAAbldvcmtlcnNxJksC
+WAMAAABuY3RxJ0sIWA4AAABvcHRpb25zQ2hlY2tlZHEofXEpKFgLAAAAZGF0YXRocmVhZHNxKolY
+AwAAAG5jdHEriHVYBgAAAG91dHB1dHEsXXEtKFgbAAAAL2RhdGEvd29yay9ub3JtYWxfY2xlYW4u
+YmFtcS5YGgAAAC9kYXRhL3dvcmsvdHVtb3JfY2xlYW4uYmFtcS9lWAkAAAByZWZlcmVuY2VxMFgA
+AAAAcTFYBwAAAHJ1bk1vZGVxMksCWAsAAABydW5UcmlnZ2Vyc3EzXXE0KFgKAAAAaW5wdXRmaWxl
+c3E1WBEAAAByZWZlcmVuY2VfdHJpZ2dlcnE2WAwAAABzbnBzX3RyaWdnZXJxN2VYEwAAAHNhdmVk
+V2lkZ2V0R2VvbWV0cnlxOEMyAdnQywACAAAAAANSAAABUwAABrkAAAMbAAADUgAAAVMAAAa5AAAD
+GwAAAAAAAAAAB4BxOVgMAAAAdHJpZ2dlclJlYWR5cTp9cTsoaDWJaDaJaDeJdVgMAAAAdXNlU2No
+ZWR1bGVycTyJWAsAAABfX3ZlcnNpb25fX3E9SwF1Lg==
 </properties>
-		<properties format="literal" node_id="11">{'File': '', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="11">{'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'inputfiles': [7]}, 'inputfiles': None, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'region': True, 'regionlist': False, 'reverse': False}, 'outputfile': '/data/work/muse_calls', 'reference': '/data/genome/GRCh38.d1.vd1.fa', 'region': 'chr1:1-100000', 'regionlist': '', 'reverse': True, 'runMode': 2, 'runTriggers': ['inputfiles'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x07\r\x00\x00\x03\x82\x00\x00\x03R\x00\x00\x01k\x00\x00\x07\r\x00\x00\x03\x82\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'inputfiles': False}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="literal" node_id="12">{'InputFile': '', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
-		<properties format="literal" node_id="13">{'InputFile': '', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
-		<properties format="literal" node_id="14">{'InputFile': '', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="13">{'controlAreaVisible': True, 'exportGraphics': False, 'format': 'classic', 'gorreport': True, 'haplotypes': 2, 'inputConnectionsStore': {'inputfiles': [7]}, 'inputfiles': None, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles'], 'nWorkers': 1}, 'lohreport': True, 'minmapq': 1, 'minsnvq': 15, 'nWorkers': 1, 'nopriors': False, 'normalid': 'NORMAL', 'optionsChecked': {'minmapq': True, 'lohreport': False, 'gorreport': False, 'nopriors': False, 'usepriors': False, 'priorprob': True, 'theta': True, 'haplotypes': True, 'priordiff': True, 'normalid': True, 'tumorid': True, 'reverse_order': False, 'format': False, 'minsnvq': True}, 'output': '/data/work/somatic_sniper_snps.txt', 'priordiff': '0.001', 'priorprob': '0.01', 'reference': '/data/genome/GRCh38.d1.vd1.fa', 'reverse_order': True, 'runMode': 2, 'runTriggers': ['inputfiles'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x067\x00\x00\x03w\x00\x00\x03R\x00\x00\x01\x83\x00\x00\x067\x00\x00\x03t\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'theta': '0.85', 'triggerReady': {'inputfiles': False}, 'tumorid': 'TUMOR', 'useScheduler': False, 'usepriors': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="14">{'calloutput': '', 'controlAreaVisible': True, 'dbsnp': '/data/genome/All_20150603.vcf.gz', 'exome': True, 'exportGraphics': False, 'genome': False, 'inputConnectionsStore': {'calloutput': [13]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'region': False, 'regionlist': False, 'reverse': False, 'exome': False, 'genome': False}, 'outputfile': '/data/work/muse_calls.MuSE.txt', 'runMode': 2, 'runTriggers': ['calloutput'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x06_\x00\x00\x02\xf5\x00\x00\x03R\x00\x00\x01k\x00\x00\x06_\x00\x00\x02\xf5\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'calloutput': False}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="15">{'URL': ['https://ftp.ncbi.nih.gov/snp/pre_build152/organisms/archive/human_9606_b144_GRCh38p2/VCF/All_20150603.vcf.gz', 'https://ftp.ncbi.nih.gov/snp/pre_build152/organisms/archive/human_9606_b144_GRCh38p2/VCF/All_20150603.vcf.gz.tbi'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': False, 'directory': '', 'exportGraphics': False, 'inputConnectionsStore': {'directory': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'decompress': False, 'concatenateFile': False}, 'runMode': 2, 'runTriggers': ['directory'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa9\x00\x00\x02\xca\x00\x00\x03\xad\x00\x00\x00\x00\x00\x00\x00\xc1\x00\x00\x02\xca\x00\x00\x03\xaa\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'directory': False}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="pickle" node_id="16">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWBUA
+AABpbnB1dENvbm5lY3Rpb25zU3RvcmVxA31xBFgKAAAAaW5wdXRmaWxlc3EFXXEGSwdhc1gKAAAA
+aW5wdXRmaWxlc3EHTlgHAAAAaXRlcmF0ZXEIiVgPAAAAaXRlcmF0ZVNldHRpbmdzcQl9cQooWA0A
+AABpdGVyYWJsZUF0dHJzcQtdcQxYCgAAAGlucHV0ZmlsZXNxDWFYCAAAAG5Xb3JrZXJzcQ5LAlgE
+AAAAZGF0YXEPY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0CnEQKVJxEShYCgAAAGlucHV0ZmlsZXNx
+En1xEyhYCQAAAGdyb3VwU2l6ZXEUWAEAAAAxcRVYBwAAAHRocmVhZHNxFmgVWAMAAAByYW1xF1gB
+AAAAMHEYdVgGAAAAb3V0cHV0cRl9cRooaBRoFWgWaBVoF2gYdXVYDQAAAGl0ZXJhdGVkQXR0cnNx
+G11xHChoEmgZZXVYBwAAAG1pbm1hcHFxHUsBWAgAAABuV29ya2Vyc3EeSwJYBQAAAG5vYmFxcR+I
+WA4AAABvcHRpb25zQ2hlY2tlZHEgfXEhKFgHAAAAbWlubWFwcXEiiFgFAAAAbm9iYXFxI4lYBwAA
+AHJldmVyc2VxJIl1WAYAAABvdXRwdXRxJVgZAAAAL2RhdGEvd29yay92YXJzY2FuLnBpbGV1cHEm
+WAkAAAByZWZlcmVuY2VxJ1gdAAAAL2RhdGEvZ2Vub21lL0dSQ2gzOC5kMS52ZDEuZmFxKFgHAAAA
+cmV2ZXJzZXEpiVgHAAAAcnVuTW9kZXEqSwJYCwAAAHJ1blRyaWdnZXJzcStdcSxYCgAAAGlucHV0
+ZmlsZXNxLWFYEwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlxLkMyAdnQywACAAAAAANSAAABawAABggA
+AALdAAADUgAAAWsAAAYIAAAC3QAAAAAAAAAAB4BxL1gMAAAAdHJpZ2dlclJlYWR5cTB9cTFoLYlz
+WAwAAAB1c2VTY2hlZHVsZXJxMolYCwAAAF9fdmVyc2lvbl9fcTNLAXUu
+</properties>
+		<properties format="literal" node_id="17">{'controlAreaVisible': True, 'exportGraphics': False, 'hvpvalue': '.07', 'inputConnectionsStore': {'inputfiles': [16]}, 'inputfiles': '', 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'mincoverage': 0, 'mincoveragenorm': 0, 'mincoveragetum': 0, 'minhomfreq': '0.75', 'minnormal': '', 'mintumor': '', 'minvarfreq': '0.1', 'nWorkers': 1, 'normalpurity': '1.0', 'optionsChecked': {'minmapq': False, 'nobaq': False, 'reverse': False, 'outputsnp': True, 'outputindel': True, 'mincoverage': False, 'mincoveragenorm': False, 'mincoveragetum': False, 'minvarfreq': True, 'minhomfreq': True, 'tumorpurity': True, 'normalpurity': True, 'pvalue': True, 'somaticpvalue': True, 'strandfilter': False, 'validation': False, 'outputvcf': False, 'outputdir': True, 'outputbase': False, 'mintumor': False, 'minnormal': False, 'hvpvalue': True}, 'outputbase': '', 'outputindel': '/data/work/varscan_indel.vcf', 'outputsnp': '/data/work/varscan_snp.vcf', 'outputvcf': True, 'pvalue': '0.99', 'runMode': 2, 'runTriggers': ['inputfiles'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x07\x7f\x00\x00\x03\xaa\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x07\x7f\x00\x00\x03\xaa\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'somaticpvalue': '0.05', 'strandfilter': False, 'triggerReady': {'inputfiles': False}, 'tumorpurity': '1.0', 'useScheduler': False, 'validation': False, '__version__': 1}</properties>
+		<properties format="pickle" node_id="18">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWAoA
+AABmaWxlZm9ybWF0cQNYAwAAAGJhbXEEWAYAAABmaWx0ZXJxBVhfAAAAIm5vdCAodW5tYXBwZWQg
+b3IgZHVwbGljYXRlIG9yIHNlY29uZGFyeV9hbGlnbm1lbnQgb3IgZmFpbGVkX3F1YWxpdHlfY29u
+dHJvbCBvciBzdXBwbGVtZW50YXJ5KSJxBlgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcQd9cQhY
+CgAAAGlucHV0ZmlsZXNxCV1xCihYGwAAAC9kYXRhL3dvcmsvbm9ybWFsX2NsZWFuLmJhbXELWBoA
+AAAvZGF0YS93b3JrL3R1bW9yX2NsZWFuLmJhbXEMZVgHAAAAaXRlcmF0ZXENiFgPAAAAaXRlcmF0
+ZVNldHRpbmdzcQ59cQ8oWAgAAABuV29ya2Vyc3EQSwJYDQAAAGl0ZXJhYmxlQXR0cnNxEV1xEihY
+CgAAAGlucHV0ZmlsZXNxE1gLAAAAb3V0cHV0ZmlsZXNxFGVYBAAAAGRhdGFxFWNjb2xsZWN0aW9u
+cwpPcmRlcmVkRGljdApxFilScRcoWAoAAABJbnB1dEZpbGVzcRh9cRkoWAkAAABncm91cFNpemVx
+GlgBAAAAMXEbWAcAAAB0aHJlYWRzcRxoG1gDAAAAcmFtcR1YAQAAADBxHnVYCwAAAG91dHB1dGZp
+bGVzcR99cSAoaBpoG2gcaBtoHWgedXVYDQAAAGl0ZXJhdGVkQXR0cnNxIV1xIihoGGgfZXVYCAAA
+AG5Xb3JrZXJzcSNLAlgIAAAAbnRocmVhZHNxJEsEWA4AAABvcHRpb25zQ2hlY2tlZHElfXEmWAgA
+AABudGhyZWFkc3EniHNYCwAAAG91dHB1dGZpbGVzcShdcSkoWB4AAAAvZGF0YS93b3JrL25vcm1h
+bF9maWx0ZXJlZC5iYW1xKlgbAAAAL2RhdGEvd29yay90dW1vcl9maWx0ZXIuYmFtcStlWAcAAABy
+dW5Nb2RlcSxLAFgLAAAAcnVuVHJpZ2dlcnNxLV1xLlgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXEv
+QzIB2dDLAAIAAAAAA1IAAAFrAAAGUgAAAzcAAANSAAABawAABlIAAAM3AAAAAAAAAAAHgHEwWAwA
+AAB0cmlnZ2VyUmVhZHlxMX1xMlgMAAAAdXNlU2NoZWR1bGVycTOJWAsAAABfX3ZlcnNpb25fX3E0
+SwF1Lg==
+</properties>
+		<properties format="literal" node_id="19">{'configuration': '/data/work/pindel_config', 'controlAreaVisible': True, 'exportGraphics': False, 'filetags': ['normal', 'tumor'], 'inputConnectionsStore': {}, 'inputfiles': ['/data/work/normal_filtered.bam', '/data/work/tumor_filter.bam'], 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles', 'outputfiles'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'nthreads': False}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x06p\x00\x00\x03Z\x00\x00\x03R\x00\x00\x01k\x00\x00\x06p\x00\x00\x03Z\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
 	</node_properties>
 </scheme>

@@ -11,16 +11,16 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWSomaticSniper(OWBwBWidget):
-    name = "SomaticSniper"
-    description = "alpine bash with wget curl gzip bzip2"
-    priority = 1
-    icon = getIconName(__file__,"somatic_sniper.png")
+class OWpindel_config(OWBwBWidget):
+    name = "pindel_config"
+    description = "Minimum Python3 container with pip"
+    priority = 10
+    icon = getIconName(__file__,"pindel.png")
     want_main_area = False
-    docker_image_name = "biodepot/somatic-sniper"
-    docker_image_tag = "1.0.5"
+    docker_image_name = "biodepot/pindel"
+    docker_image_tag = "test"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
-    outputs = [("OutputDir",str)]
+    outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -28,26 +28,12 @@ class OWSomaticSniper(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    reference=pset(None)
-    minmapq=pset(None)
-    minsnvq=pset(None)
-    lohreport=pset(False)
-    gorreport=pset(False)
-    nopriors=pset(False)
-    usepriors=pset(False)
-    priorprob=pset(None)
-    theta=pset(None)
-    haplotypes=pset(None)
-    priordiff=pset(None)
-    normalid=pset(None)
-    tumorid=pset(None)
-    format=pset(None)
     inputfiles=pset([])
-    output=pset(None)
-    reverse_order=pset(False)
+    configuration=pset(None)
+    filetags=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"SomaticSniper")) as f:
+        with open(getJsonName(__file__,"pindel_config")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
@@ -65,6 +51,6 @@ class OWSomaticSniper(OWBwBWidget):
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"OutputDir"):
-            outputValue=getattr(self,"OutputDir")
-        self.send("OutputDir", outputValue)
+        if hasattr(self,"outputfiles"):
+            outputValue=getattr(self,"outputfiles")
+        self.send("outputfiles", outputValue)

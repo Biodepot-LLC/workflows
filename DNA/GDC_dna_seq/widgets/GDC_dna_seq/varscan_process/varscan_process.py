@@ -11,16 +11,16 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWSomaticSniper(OWBwBWidget):
-    name = "SomaticSniper"
-    description = "alpine bash with wget curl gzip bzip2"
-    priority = 1
-    icon = getIconName(__file__,"somatic_sniper.png")
+class OWvarscan_process(OWBwBWidget):
+    name = "varscan_process"
+    description = "Enter and output a file"
+    priority = 10
+    icon = getIconName(__file__,"varscan.png")
     want_main_area = False
-    docker_image_name = "biodepot/somatic-sniper"
-    docker_image_tag = "1.0.5"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
-    outputs = [("OutputDir",str)]
+    docker_image_name = "biodepot/varscan_samtools"
+    docker_image_tag = "2.3.9__1.12"
+    inputs = [("inputfiles",str,"handleInputsinputfiles")]
+    outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -28,26 +28,13 @@ class OWSomaticSniper(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    reference=pset(None)
-    minmapq=pset(None)
-    minsnvq=pset(None)
-    lohreport=pset(False)
-    gorreport=pset(False)
-    nopriors=pset(False)
-    usepriors=pset(False)
-    priorprob=pset(None)
-    theta=pset(None)
-    haplotypes=pset(None)
-    priordiff=pset(None)
-    normalid=pset(None)
-    tumorid=pset(None)
-    format=pset(None)
     inputfiles=pset([])
-    output=pset(None)
-    reverse_order=pset(False)
+    pvalue=pset(None)
+    mintumor=pset(None)
+    minnormal=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"SomaticSniper")) as f:
+        with open(getJsonName(__file__,"varscan_process")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
@@ -58,13 +45,8 @@ class OWSomaticSniper(OWBwBWidget):
             self.handleInputs("inputfiles", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputsTrigger(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"OutputDir"):
-            outputValue=getattr(self,"OutputDir")
-        self.send("OutputDir", outputValue)
+        if hasattr(self,"output"):
+            outputValue=getattr(self,"output")
+        self.send("output", outputValue)
