@@ -13,12 +13,12 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWbwa_mem(OWBwBWidget):
     name = "bwa_mem"
-    description = "Aligns paired-end sequences"
-    priority = 20
+    description = "Aligns paired-end sequences, sort and return bam files"
+    priority = 30
     icon = getIconName(__file__,"bwasamsort.png")
     want_main_area = False
-    docker_image_name = "biodepot/bwa-samtools"
-    docker_image_tag = "test"
+    docker_image_name = "biodepot/bwa-samtools-gdc"
+    docker_image_tag = "0.7.15__1.9.52__alpine_3.12"
     inputs = [("fastq_files",str,"handleInputsfastq_files"),("readgroup",str,"handleInputsreadgroup"),("reference",str,"handleInputsreference"),("fastq_trigger",str,"handleInputsfastq_trigger"),("reference_trigger",str,"handleInputsreference_trigger")]
     outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

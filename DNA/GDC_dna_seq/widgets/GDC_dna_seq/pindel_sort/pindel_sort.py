@@ -11,16 +11,16 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWbaserecalibrate(OWBwBWidget):
-    name = "baserecalibrate"
-    description = "Base quality recalibration using GATK"
-    priority = 40
-    icon = getIconName(__file__,"gatk-bsqr.png")
+class OWpindel_sort(OWBwBWidget):
+    name = "pindel_sort"
+    description = "Sorts and filters vcf using picard and GATK"
+    priority = 76
+    icon = getIconName(__file__,"pindel.png")
     want_main_area = False
-    docker_image_name = "biodepot/gatk3-co-clean"
-    docker_image_tag = "3.6__804cb988"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("snps_trigger",str,"handleInputssnps_trigger")]
-    outputs = [("output",str)]
+    docker_image_name = "biodepot/pindel-filter"
+    docker_image_tag = "3.6__dbc607bd"
+    inputs = [("inputfile",str,"handleInputsinputfile"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("inputfileTrigger",str,"handleInputsinputfileTrigger")]
+    outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -28,22 +28,22 @@ class OWbaserecalibrate(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    reference=pset(None)
-    known=pset(None)
-    inputfiles=pset([])
-    output=pset([])
-    nct=pset(None)
+    referencedict=pset(None)
+    referencefa=pset(None)
+    inputfile=pset(None)
+    outputfile=pset(None)
+    outputfilterfile=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"baserecalibrate")) as f:
+        with open(getJsonName(__file__,"pindel_sort")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsinputfiles(self, value, *args):
+    def handleInputsinputfile(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("inputfiles", value, args[0][0], test=args[0][3])
+            self.handleInputs("inputfile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleInputsreference(self, value, *args):
@@ -56,13 +56,13 @@ class OWbaserecalibrate(OWBwBWidget):
             self.handleInputs("reference_trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputssnps_trigger(self, value, *args):
+    def handleInputsinputfileTrigger(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("snps_trigger", value, args[0][0], test=args[0][3])
+            self.handleInputs("inputfileTrigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"output"):
-            outputValue=getattr(self,"output")
-        self.send("output", outputValue)
+        if hasattr(self,"outputfile"):
+            outputValue=getattr(self,"outputfile")
+        self.send("outputfile", outputValue)

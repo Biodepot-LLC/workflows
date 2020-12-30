@@ -14,7 +14,7 @@ from PyQt5 import QtWidgets, QtGui
 class OWfastqc(OWBwBWidget):
     name = "fastqc"
     description = "fastqc"
-    priority = 5
+    priority = 25
     icon = getIconName(__file__,"fastqc_icon_100.png")
     want_main_area = False
     docker_image_name = "biodepot/fastqc"

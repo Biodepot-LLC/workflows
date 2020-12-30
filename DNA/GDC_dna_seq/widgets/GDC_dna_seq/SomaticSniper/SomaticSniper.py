@@ -13,12 +13,12 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWSomaticSniper(OWBwBWidget):
     name = "SomaticSniper"
-    description = "alpine bash with wget curl gzip bzip2"
-    priority = 1
+    description = "Somatic sniper variant caller"
+    priority = 50
     icon = getIconName(__file__,"somatic_sniper.png")
     want_main_area = False
     docker_image_name = "biodepot/somatic-sniper"
-    docker_image_tag = "1.0.5"
+    docker_image_tag = "1.0.5__buster-slim__78d35828"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
     outputs = [("OutputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

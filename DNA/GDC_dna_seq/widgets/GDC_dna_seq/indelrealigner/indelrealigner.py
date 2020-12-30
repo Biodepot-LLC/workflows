@@ -13,12 +13,12 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWindelrealigner(OWBwBWidget):
     name = "indelrealigner"
-    description = "Enter and output a file"
-    priority = 10
+    description = "Indel realignment using GATK"
+    priority = 40
     icon = getIconName(__file__,"gatk-realign.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk3-co-clean"
-    docker_image_tag = "3.7__804cb988"
+    docker_image_tag = "3.6__804cb988"
     inputs = [("bamfiles",str,"handleInputsbamfiles"),("intervals",str,"handleInputsintervals"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("indels_trigger",str,"handleInputsindels_trigger")]
     outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

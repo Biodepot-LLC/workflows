@@ -13,14 +13,14 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWpindel_config(OWBwBWidget):
     name = "pindel_config"
-    description = "Minimum Python3 container with pip"
-    priority = 10
+    description = "Generates pindel bam config file"
+    priority = 72
     icon = getIconName(__file__,"pindel.png")
     want_main_area = False
-    docker_image_name = "biodepot/pindel"
-    docker_image_tag = "test"
+    docker_image_name = "biodepot/pindel-gdc"
+    docker_image_tag = "0.2.5b8__10f065ec"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
-    outputs = [("outputfiles",str)]
+    outputs = [("configuration",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -51,6 +51,6 @@ class OWpindel_config(OWBwBWidget):
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"outputfiles"):
-            outputValue=getattr(self,"outputfiles")
-        self.send("outputfiles", outputValue)
+        if hasattr(self,"configuration"):
+            outputValue=getattr(self,"configuration")
+        self.send("configuration", outputValue)

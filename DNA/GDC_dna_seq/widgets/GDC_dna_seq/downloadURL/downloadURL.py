@@ -14,7 +14,7 @@ from PyQt5 import QtWidgets, QtGui
 class OWdownloadURL(OWBwBWidget):
     name = "downloadURL"
     description = "Downloads files from URL"
-    priority = 1
+    priority = 10
     icon = getIconName(__file__,"download.png")
     want_main_area = False
     docker_image_name = "biodepot/downloadurl"

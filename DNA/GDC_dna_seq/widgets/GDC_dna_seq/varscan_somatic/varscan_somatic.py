@@ -13,12 +13,12 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWvarscan_somatic(OWBwBWidget):
     name = "varscan_somatic"
-    description = "Enter and output a file"
-    priority = 10
+    description = "Varscan2 somatic cell variant caller using mpileup"
+    priority = 56
     icon = getIconName(__file__,"varscan.png")
     want_main_area = False
-    docker_image_name = "biodepot/varscan_samtools"
-    docker_image_tag = "2.3.9__1.12"
+    docker_image_name = "biodepot/varscan-samtools"
+    docker_image_tag = "2.3.9__1.12__jdk-15.0.1_9-alpine"
     inputs = [("inputfiles",str,"handleInputsinputfiles")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

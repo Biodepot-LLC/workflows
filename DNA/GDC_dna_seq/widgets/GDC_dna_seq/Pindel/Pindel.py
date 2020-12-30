@@ -13,14 +13,14 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWPindel(OWBwBWidget):
     name = "Pindel"
-    description = "Minimum Python3 container with pip"
-    priority = 10
+    description = "Pindel somatic variant caller with merge function as per GDC"
+    priority = 74
     icon = getIconName(__file__,"pindel.png")
     want_main_area = False
-    docker_image_name = "biodepot/pindel"
-    docker_image_tag = "test"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
-    outputs = [("outputfiles",str)]
+    docker_image_name = "biodepot/pindel-gdc"
+    docker_image_tag = "0.2.5b8__10f065ec"
+    inputs = [("bamconfigfile",str,"handleInputsbamconfigfile"),("Trigger",str,"handleInputsTrigger")]
+    outputs = [("prefix",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -28,9 +28,19 @@ class OWPindel(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    inputfiles=pset([])
-    configuration=pset(None)
-    filetags=pset([])
+    reference=pset(None)
+    prefix=pset(None)
+    bamconfigfile=pset(None)
+    pindelinputlfile=pset(None)
+    pindelconfiglfile=pset(None)
+    chromosome=pset(None)
+    readpair=pset(True)
+    mindist=pset(None)
+    nthreads=pset(None)
+    maxrange=pset(None)
+    windowsize=pset(None)
+    errorrate=pset(None)
+    sensitivity=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Pindel")) as f:
@@ -39,9 +49,9 @@ class OWPindel(OWBwBWidget):
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsinputfiles(self, value, *args):
+    def handleInputsbamconfigfile(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("inputfiles", value, args[0][0], test=args[0][3])
+            self.handleInputs("bamconfigfile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleInputsTrigger(self, value, *args):
@@ -51,6 +61,6 @@ class OWPindel(OWBwBWidget):
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"outputfiles"):
-            outputValue=getattr(self,"outputfiles")
-        self.send("outputfiles", outputValue)
+        if hasattr(self,"prefix"):
+            outputValue=getattr(self,"prefix")
+        self.send("prefix", outputValue)

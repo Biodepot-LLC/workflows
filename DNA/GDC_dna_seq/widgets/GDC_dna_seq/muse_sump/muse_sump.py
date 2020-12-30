@@ -13,12 +13,12 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWmuse_sump(OWBwBWidget):
     name = "muse_sump"
-    description = "Enter and output a file"
-    priority = 10
+    description = "MuSE variant caller"
+    priority = 60
     icon = getIconName(__file__,"muse.png")
     want_main_area = False
     docker_image_name = "biodepot/muse"
-    docker_image_tag = "test"
+    docker_image_tag = "1.0rc__c039ffa__buster-slim__5fbc0ddd"
     inputs = [("calloutput",str,"handleInputscalloutput")]
     outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

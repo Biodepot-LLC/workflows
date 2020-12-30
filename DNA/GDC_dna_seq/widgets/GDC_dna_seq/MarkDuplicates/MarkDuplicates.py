@@ -14,11 +14,11 @@ from PyQt5 import QtWidgets, QtGui
 class OWMarkDuplicates(OWBwBWidget):
     name = "MarkDuplicates"
     description = "Mark duplicates"
-    priority = 20
+    priority = 35
     icon = getIconName(__file__,"gatk-mark-dupes.png")
     want_main_area = False
     docker_image_name = "biodepot/markdupes"
-    docker_image_tag = "test"
+    docker_image_tag = "4.1.9.0__alpine__57dee2daf"
     inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger")]
     outputs = [("outputFile",str),("metricsFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

@@ -14,11 +14,11 @@ from PyQt5 import QtWidgets, QtGui
 class OWpindel_biosamba(OWBwBWidget):
     name = "pindel_biosamba"
     description = "Minimum Python3 container with pip"
-    priority = 10
+    priority = 70
     icon = getIconName(__file__,"pindel.png")
     want_main_area = False
-    docker_image_name = "biodepot/pindel"
-    docker_image_tag = "test"
+    docker_image_name = "biodepot/pindel-gdc"
+    docker_image_tag = "0.2.5b8__10f065ec"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
     outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

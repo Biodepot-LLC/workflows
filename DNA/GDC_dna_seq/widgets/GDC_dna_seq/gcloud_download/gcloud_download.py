@@ -14,11 +14,11 @@ from PyQt5 import QtWidgets, QtGui
 class OWgcloud_download(OWBwBWidget):
     name = "gcloud_download"
     description = "Download google bucket files to a local directory"
-    priority = 10
+    priority = 5
     icon = getIconName(__file__,"gcloud_download.png")
     want_main_area = False
-    docker_image_name = "biodepot/gcpdownload"
-    docker_image_tag = "test"
+    docker_image_name = "biodepot/gcp-public-download"
+    docker_image_tag = "latest"
     inputs = [("Trigger",str,"handleInputsTrigger"),("credentials_file",str,"handleInputscredentials_file"),("bucket",str,"handleInputsbucket"),("downloadDir",str,"handleInputsdownloadDir")]
     outputs = [("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

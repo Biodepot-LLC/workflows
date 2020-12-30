@@ -14,7 +14,7 @@ from PyQt5 import QtWidgets, QtGui
 class OWStart(OWBwBWidget):
     name = "Start"
     description = "Enter workflow parameters and start"
-    priority = 10
+    priority = 1
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-mrna-start"
