@@ -1,3 +1,5 @@
-FROM alpine:3.7
-RUN apk update upgrade --no-cache && apk add bash curl wget unzip tar bzip2\
- && rm -rf /var/cache/apk*
+FROM debian:buster-slim
+COPY bam-somaticsniper /usr/local/bin/bam-somaticsniper
+RUN mkdir -p /usr/local/share/doc/somatic-sniper1.0.5/
+COPY copyright  /usr/local/share/doc/somatic-sniper1.0.5/copyright
+COPY run_sniper.sh /usr/local/bin/run_sniper.sh
