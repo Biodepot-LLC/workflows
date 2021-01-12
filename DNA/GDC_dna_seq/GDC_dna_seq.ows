@@ -39,22 +39,22 @@
 		<link enabled="true" id="13" sink_channel="reference_trigger" sink_node_id="1" source_channel="directory" source_node_id="4"/>
 		<link enabled="true" id="14" sink_channel="fastq_trigger" sink_node_id="1" source_channel="inputFile" source_node_id="0"/>
 		<link enabled="true" id="15" sink_channel="trigger" sink_node_id="0" source_channel="downloadDir" source_node_id="6"/>
-		<link enabled="true" id="16" sink_channel="inputFile" sink_node_id="2" source_channel="outputfiles" source_node_id="1"/>
-		<link enabled="true" id="17" sink_channel="bamfiles" sink_node_id="9" source_channel="bamfiles" source_node_id="8"/>
-		<link enabled="true" id="18" sink_channel="reference" sink_node_id="8" source_channel="genomefile" source_node_id="5"/>
-		<link enabled="true" id="19" sink_channel="reference_trigger" sink_node_id="8" source_channel="directory" source_node_id="4"/>
-		<link enabled="true" id="20" sink_channel="directory" sink_node_id="15" source_channel="genome_dir" source_node_id="5"/>
-		<link enabled="true" id="21" sink_channel="snps_trigger" sink_node_id="10" source_channel="directory" source_node_id="15"/>
-		<link enabled="true" id="22" sink_channel="reference_trigger" sink_node_id="10" source_channel="directory" source_node_id="4"/>
-		<link enabled="true" id="23" sink_channel="inputfiles" sink_node_id="11" source_channel="output" source_node_id="10"/>
-		<link enabled="true" id="24" sink_channel="calloutput" sink_node_id="14" source_channel="outputfile" source_node_id="11"/>
-		<link enabled="true" id="25" sink_channel="inputfiles" sink_node_id="13" source_channel="output" source_node_id="10"/>
-		<link enabled="true" id="26" sink_channel="inputfileTrigger" sink_node_id="20" source_channel="prefix" source_node_id="12"/>
-		<link enabled="true" id="27" sink_channel="bamconfigfile" sink_node_id="12" source_channel="configuration" source_node_id="19"/>
-		<link enabled="true" id="28" sink_channel="inputfiles" sink_node_id="19" source_channel="outputfiles" source_node_id="18"/>
-		<link enabled="true" id="29" sink_channel="inputfiles" sink_node_id="18" source_channel="output" source_node_id="10"/>
-		<link enabled="true" id="30" sink_channel="inputfiles" sink_node_id="17" source_channel="output" source_node_id="16"/>
-		<link enabled="true" id="31" sink_channel="inputfiles" sink_node_id="16" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="16" sink_channel="bamfiles" sink_node_id="9" source_channel="bamfiles" source_node_id="8"/>
+		<link enabled="true" id="17" sink_channel="reference" sink_node_id="8" source_channel="genomefile" source_node_id="5"/>
+		<link enabled="true" id="18" sink_channel="reference_trigger" sink_node_id="8" source_channel="directory" source_node_id="4"/>
+		<link enabled="true" id="19" sink_channel="directory" sink_node_id="15" source_channel="genome_dir" source_node_id="5"/>
+		<link enabled="true" id="20" sink_channel="snps_trigger" sink_node_id="10" source_channel="directory" source_node_id="15"/>
+		<link enabled="true" id="21" sink_channel="reference_trigger" sink_node_id="10" source_channel="directory" source_node_id="4"/>
+		<link enabled="true" id="22" sink_channel="inputfiles" sink_node_id="11" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="23" sink_channel="calloutput" sink_node_id="14" source_channel="outputfile" source_node_id="11"/>
+		<link enabled="true" id="24" sink_channel="inputfiles" sink_node_id="13" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="25" sink_channel="inputfileTrigger" sink_node_id="20" source_channel="prefix" source_node_id="12"/>
+		<link enabled="true" id="26" sink_channel="bamconfigfile" sink_node_id="12" source_channel="configuration" source_node_id="19"/>
+		<link enabled="true" id="27" sink_channel="inputfiles" sink_node_id="19" source_channel="outputfiles" source_node_id="18"/>
+		<link enabled="true" id="28" sink_channel="inputfiles" sink_node_id="18" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="29" sink_channel="inputfiles" sink_node_id="17" source_channel="output" source_node_id="16"/>
+		<link enabled="true" id="30" sink_channel="inputfiles" sink_node_id="16" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="31" sink_channel="inputFile" sink_node_id="2" source_channel="outputfiles" source_node_id="1"/>
 	</links>
 	<annotations>
 		<text font-family="Helvetica" font-size="16" id="0" rect="(-447.0, -12.0, 205.0, 76.0)" type="text/plain">Start workflow</text>
@@ -107,7 +107,7 @@ enF1WBoAAABvdXRwdXRwZXJyZWFkZ3JvdXBzdWZmaXhPMnF2WAkAAABfbzIuZnEuZ3pxd1gZAAAA
 b3V0cHV0cGVycmVhZGdyb3Vwc3VmZml4U3F4WAgAAABfcy5mcS5nenF5WAYAAAByYW5nZXNxemgC
 WAkAAAByZWZlcmVuY2Vxe2gCWAcAAABydW5Nb2RlcXxLAlgLAAAAcnVuVHJpZ2dlcnNxfV1xfihY
 BwAAAHRyaWdnZXJxf1gJAAAAaW5wdXRGaWxlcYBlWBMAAABzYXZlZFdpZGdldEdlb21ldHJ5cYFD
-MgHZ0MsAAgAAAAAEQgAAAToAAAbaAAADnQAABEIAAAE6AAAG2gAAA50AAAAAAAAAAAeAcYJYCwAA
+MgHZ0MsAAgAAAAAAAAAAAAAAAAKYAAACJwAAAAAAAAAYAAACmAAAAiQAAAAAAAAAAAUAcYJYCwAA
 AHNlY29uZG1hdGVzcYNdcYQoWBYAAAAvZGF0YS93b3JrL25vcm1hbF8yLmZxcYVYFQAAAC9kYXRh
 L3dvcmsvdHVtb3JfMi5mcXGGZVgJAAAAc2luZ2xlZW5kcYddcYgoWBYAAAAvZGF0YS93b3JrL25v
 cm1hbF9zLmZxcYlYFQAAAC9kYXRhL3dvcmsvdHVtb3Jfcy5mcXGKZVgFAAAAc3BsaXRxi4lYCwAA
@@ -138,25 +138,59 @@ YXRhL3dvcmsvbm9ybWFsX3JlYWxpZ24uYmFtcTlYHAAAAC9kYXRhL3dvcmsvdHVtb3JfcmVhbGln
 bi5iYW1xOmVYCQAAAHJlYWRncm91cHE7XXE8WAQAAABOb25lcT1hWAkAAAByZWZlcmVuY2VxPlgA
 AAAAcT9YBwAAAHJ1bk1vZGVxQEsCWAsAAABydW5UcmlnZ2Vyc3FBXXFCKFgRAAAAcmVmZXJlbmNl
 X3RyaWdnZXJxQ1gNAAAAZmFzdHFfdHJpZ2dlcnFEZVgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXFF
-QzIB2dDLAAIAAAAAAAAAAAAYAAAHfwAAA6oAAAAAAAAAGAAAB38AAAOqAAAAAAAAAAAHgHFGWAcA
+QzIB2dDLAAIAAAAAAAAAAAAAAAACmAAAAicAAAAAAAAAGAAAApgAAAIkAAAAAAAAAAAHgHFGWAcA
 AAB0aHJlYWRzcUdLCFgMAAAAdHJpZ2dlclJlYWR5cUh9cUkoWAcAAABUcmlnZ2VycUqJWAcAAAB0
 cmlnZ2VycUuJaEOJaESJdVgMAAAAdXNlU2NoZWR1bGVycUyJWAsAAABfX3ZlcnNpb25fX3FNSwF1
 Lg==
 </properties>
-		<properties format="pickle" node_id="2">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWBUA
-AABpbnB1dENvbm5lY3Rpb25zU3RvcmVxA31xBFgJAAAAaW5wdXRGaWxlcQVdcQZLBWFzWAkAAABp
-bnB1dEZpbGVxB05YBwAAAGl0ZXJhdGVxCIhYDwAAAGl0ZXJhdGVTZXR0aW5nc3EJfXEKKFgIAAAA
-bldvcmtlcnNxC0sCWA0AAABpdGVyYWJsZUF0dHJzcQxdcQ1YCQAAAGlucHV0RmlsZXEOYVgEAAAA
-ZGF0YXEPY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0CnEQKVJxEVgJAAAAaW5wdXRGaWxlcRJ9cRMo
-WAkAAABncm91cFNpemVxFFgBAAAAMXEVWAcAAAB0aHJlYWRzcRZoFVgDAAAAcmFtcRdYAQAAADBx
-GHVzWA0AAABpdGVyYXRlZEF0dHJzcRldcRpoEmF1WBEAAABtZXRyaWNzRmlsZVN1ZmZpeHEbWBQA
-AABfbWFya2R1cC5tZXRyaWNzLnR4dHEcWAgAAABuV29ya2Vyc3EdSwJYDgAAAG9wdGlvbnNDaGVj
-a2VkcR59cR9YEQAAAG1ldHJpY3NGaWxlU3VmZml4cSCIc1gMAAAAb3V0cHV0U3VmZml4cSFYDwAA
-AF9tYXJrX2R1cGVzLmJhbXEiWAcAAABydW5Nb2RlcSNLAlgLAAAAcnVuVHJpZ2dlcnNxJF1xJVgJ
-AAAAaW5wdXRGaWxlcSZhWBMAAABzYXZlZFdpZGdldEdlb21ldHJ5cSdDMgHZ0MsAAgAAAAAByAAA
-ARwAAAUgAAADZQAAAcgAAAEcAAAFIAAAA2UAAAAAAAAAAAeAcShYDAAAAHRyaWdnZXJSZWFkeXEp
-fXEqWAkAAABpbnB1dEZpbGVxK4lzWAwAAAB1c2VTY2hlZHVsZXJxLIlYCwAAAF9fdmVyc2lvbl9f
-cS1LAXUu
+		<properties format="pickle" node_id="2">gAN9cQAoWA8AAABhZGRQZ1RhZ1RvUmVhZHNxAVgAAAAAcQJYDQAAAGFyZ3VtZW50c0ZpbGVxA11x
+BFgPAAAAYXNzdW1lU29ydE9yZGVycQVoAlgKAAAAYmFyY29kZVRhZ3EGaAJYBwAAAGNsZWFyRHRx
+B2gCWBAAAABjb21wcmVzc2lvbkxldmVscQhLAFgSAAAAY29udHJvbEFyZWFWaXNpYmxlcQmIWAsA
+AABjcmVhdGVJbmRleHEKWAQAAAB0cnVlcQtYDQAAAGNyZWF0ZU1kNUZpbGVxDGgCWAkAAABkdXBs
+ZXhVbWlxDWgCWBgAAABkdXBsaWNhdGVTY29yaW5nU3RyYWdldHlxDmgCWA4AAABleHBvcnRHcmFw
+aGljc3EPiVgSAAAAZ2E0Z2hDbGllbnRTZWNyZXRzcRBoAlgVAAAAaW5wdXRDb25uZWN0aW9uc1N0
+b3JlcRF9cRJYCQAAAGlucHV0RmlsZXETXXEUSwVhc1gJAAAAaW5wdXRGaWxlcRVOWAcAAABpdGVy
+YXRlcRaIWA8AAABpdGVyYXRlU2V0dGluZ3NxF31xGChYCAAAAG5Xb3JrZXJzcRlLAlgNAAAAaXRl
+cmFibGVBdHRyc3EaXXEbKFgJAAAAaW5wdXRGaWxlcRxYDQAAAGFyZ3VtZW50c0ZpbGVxHVgRAAAA
+bWFya0R1cGVzQ29tbWVudHNxHlgGAAAAdG1wRGlycR9lWAQAAABkYXRhcSBjY29sbGVjdGlvbnMK
+T3JkZXJlZERpY3QKcSEpUnEiWAkAAABpbnB1dEZpbGVxI31xJChYCQAAAGdyb3VwU2l6ZXElWAEA
+AAAxcSZYBwAAAHRocmVhZHNxJ2gmWAMAAAByYW1xKFgBAAAAMHEpdXNYDQAAAGl0ZXJhdGVkQXR0
+cnNxKl1xK2gjYXVYEQAAAG1hcmtEdXBlc0NvbW1lbnRzcSxdcS1YDgAAAG1hcmtEdXBlc1F1aWV0
+cS5oAlgcAAAAbWF4RmlsZUhhbmRsZXNGb3JSZWFkRW5kc01hcHEvSwBYGgAAAG1heE9wdGljYWxE
+dXBsaWNhdGVTZXRTaXplcTBLAFgPAAAAbWF4UmVjb3Jkc0luUmFtcTFLAFgRAAAAbWV0cmljc0Zp
+bGVTdWZmaXhxMlgUAAAAX21hcmtkdXAubWV0cmljcy50eHRxM1gWAAAAbW9sZWN1bGFySWRlbnRp
+ZmllclRhZ3E0aAJYCAAAAG5Xb3JrZXJzcTVLAlgdAAAAb3B0aWNhbER1cGxpY2F0ZVBpeGVsRGlz
+dGFuY2VxNksAWA4AAABvcHRpb25zQ2hlY2tlZHE3fXE4KFgLAAAAY3JlYXRlSW5kZXhxOYhYDwAA
+AGFkZFBnVGFnVG9SZWFkc3E6iVgQAAAAY29tcHJlc3Npb25MZXZlbHE7iVgNAAAAY3JlYXRlTWQ1
+RmlsZXE8iVgNAAAAYXJndW1lbnRzRmlsZXE9iVgPAAAAYXNzdW1lU29ydE9yZGVycT6JWAoAAABi
+YXJjb2RlVGFncT+JWAcAAABjbGVhckR0cUCJWAcAAABjb21tZW50cUGJWAkAAABkdXBsZXhVbWlx
+QolYGAAAAGR1cGxpY2F0ZVNjb3JpbmdTdHJhZ2V0eXFDiVgEAAAAaGVscHFEiVgcAAAAbWF4Rmls
+ZUhhbmRsZXNGb3JSZWFkRW5kc01hcHFFiVgaAAAAbWF4T3B0aWNhbER1cGxpY2F0ZVNldFNpemVx
+RolYFgAAAG1vbGVjdWxhcklkZW50aWZpZXJUYWdxR4lYHQAAAG9wdGljYWxEdXBsaWNhdGVQaXhl
+bERpc3RhbmNlcUiJWBcAAABwcm9ncmFtR3JvdXBDb21tYW5kTGluZXFJiVgQAAAAcHJvZ3JhbUdy
+b3VwTmFtZXFKiVgTAAAAcHJvZ3JhbUdyb3VwVmVyc2lvbnFLiVgPAAAAcHJvZ3JhbVJlY29yZElk
+cUyJWA0AAAByZWFkTmFtZVJlZ2V4cU2JWBEAAAByZWFkT25lQmFyY29kZVRhZ3FOiVgRAAAAcmVh
+ZFR3b0JhcmNvZGVUYWdxT4lYEAAAAHJlbW92ZUR1cGxpY2F0ZXNxUIlYGgAAAHJlbW92ZVNlcXVl
+bmNpbmdEdXBsaWNhdGVzcVGJWBoAAABzb3J0aW5nQ29sbGVjdGlvblNpemVSYXRpb3FSiVgWAAAA
+dGFnRHVwbGljYXRlU2V0TWVtYmVyc3FTiVgNAAAAdGFnZ2luZ1BvbGljeXFUiVgSAAAAZ2E0Z2hD
+bGllbnRTZWNyZXRzcVWJWA8AAABtYXhSZWNvcmRzSW5SYW1xVolYEQAAAHJlZmVyZW5jZVNlcXVl
+bmNlcVeJWA4AAAB1c2VKZGtEZWZsYXRlcnFYiVgOAAAAdXNlSmRrSW5mbGF0ZXJxWYlYFAAAAHZh
+bGlkYXRpb25TdHJpbmdlbmN5cVqJWAYAAAB0bXBEaXJxW4lYCQAAAHZlcmJvc2l0eXFciVgKAAAA
+c2hvd0hpZGRlbnFdiVgRAAAAbWFya0R1cGVzQ29tbWVudHNxXolYDgAAAG1hcmtEdXBlc1F1aWV0
+cV+JdVgMAAAAb3V0cHV0U3VmZml4cWBYDwAAAF9tYXJrX2R1cGVzLmJhbXFhWBcAAABwcm9ncmFt
+R3JvdXBDb21tYW5kTGluZXFiaAJYEAAAAHByb2dyYW1Hcm91cE5hbWVxY2gCWBMAAABwcm9ncmFt
+R3JvdXBWZXJzaW9ucWRoAlgPAAAAcHJvZ3JhbVJlY29yZElkcWVoAlgNAAAAcmVhZE5hbWVSZWdl
+eHFmaAJYEQAAAHJlYWRPbmVCYXJjb2RlVGFncWdoAlgRAAAAcmVhZFR3b0JhcmNvZGVUYWdxaGgC
+WBEAAAByZWZlcmVuY2VTZXF1ZW5jZXFpaAJYEAAAAHJlbW92ZUR1cGxpY2F0ZXNxamgCWBoAAABy
+ZW1vdmVTZXF1ZW5jaW5nRHVwbGljYXRlc3FraAJYBwAAAHJ1bk1vZGVxbEsCWAsAAABydW5Ucmln
+Z2Vyc3FtXXFuWAkAAABpbnB1dEZpbGVxb2FYEwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlxcEMyAdnQ
+ywACAAAAAAAAAAAAGAAAB38AAAOSAAAAAAAAABgAAAd/AAADkgAAAAAAAAAAB4BxcVgKAAAAc2hv
+d0hpZGRlbnFyaAJYGgAAAHNvcnRpbmdDb2xsZWN0aW9uU2l6ZVJhdGlvcXNoAlgWAAAAdGFnRHVw
+bGljYXRlU2V0TWVtYmVyc3F0aAJYDQAAAHRhZ2dpbmdQb2xpY3lxdWgCWAYAAAB0bXBEaXJxdl1x
+d1gMAAAAdHJpZ2dlclJlYWR5cXh9cXlYCQAAAGlucHV0RmlsZXF6iXNYDgAAAHVzZUpka0RlZmxh
+dGVycXtoAlgOAAAAdXNlSmRrSW5mbGF0ZXJxfGgCWAwAAAB1c2VTY2hlZHVsZXJxfYlYFAAAAHZh
+bGlkYXRpb25TdHJpbmdlbmN5cX5oAlgJAAAAdmVyYm9zaXR5cX9oAlgLAAAAX192ZXJzaW9uX19x
+gEsBdS4=
 </properties>
 		<properties format="pickle" node_id="3">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWBUA
 AABpbnB1dENvbm5lY3Rpb25zU3RvcmVxA31xBFgIAAAAaW5wdXREaXJxBV1xBksKYXNYCgAAAGlu
@@ -174,10 +208,10 @@ AAAAaW5wdXREaXJxLYlYCgAAAGlucHV0RmlsZXNxLol1WAwAAAB1c2VTY2hlZHVsZXJxL4lYCwAA
 AF9fdmVyc2lvbl9fcTBLAXUu
 </properties>
 		<properties format="literal" node_id="4">{'URL': ['https://api.gdc.cancer.gov/data/25217ec9-af07-4a17-8db9-101271ee7225', 'https://api.gdc.cancer.gov/data/2c5730fb-0909-4e2a-8a7a-c9a7f8b2dad5', 'https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': True, 'directory': '', 'exportGraphics': False, 'inputConnectionsStore': {'directory': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'decompress': False, 'concatenateFile': False}, 'runMode': 2, 'runTriggers': ['directory'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\xca\x00\x00\x03\x04\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\xca\x00\x00\x03\x01\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'directory': False}, 'useScheduler': False, '__version__': 1}</properties>
-		<properties format="literal" node_id="5">{'cleanfiles': ['/data/work/normal_clean.bam', '/data/work/tumor_clean.bam'], 'controlAreaVisible': True, 'exportGraphics': False, 'genome_dir': 'data/genome', 'genomefile': '/data/genome/GRCh38.d1.vd1.fa', 'inputConnectionsStore': {}, 'inputFiles': ['/data/work/normal.bam', '/data/work/tumor.bam'], 'iterate': False, 'iterateSettings': {'nWorkers': 1, 'iterableAttrs': ['inputFiles', 'cleanfiles']}, 'nWorkers': 1, 'optionsChecked': {'readgroups': False, 'firstmates': True, 'secondmates': True, 'singleend': False}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x04\xbe\x00\x00\x00f\x00\x00\x06\xdf\x00\x00\x01h\x00\x00\x04\xbe\x00\x00\x00f\x00\x00\x06\xdf\x00\x00\x01h\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {}, 'useScheduler': False, 'work_dir': '/data/work', '__version__': 1}</properties>
+		<properties format="literal" node_id="5">{'cleanfiles': ['/data/work/normal_clean.bam', '/data/work/tumor_clean.bam'], 'controlAreaVisible': True, 'exportGraphics': False, 'genome_dir': 'data/genome', 'genomefile': '/data/genome/GRCh38.d1.vd1.fa', 'inputConnectionsStore': {}, 'inputFiles': ['/data/work/normal.bam', '/data/work/tumor.bam'], 'iterate': False, 'iterateSettings': {'nWorkers': 1, 'iterableAttrs': ['inputFiles', 'cleanfiles']}, 'nWorkers': 1, 'optionsChecked': {'readgroups': False, 'firstmates': True, 'secondmates': True, 'singleend': False}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b&quot;\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02!\x00\x00\x02'\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02!\x00\x00\x02$\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80&quot;, 'triggerReady': {}, 'useScheduler': False, 'work_dir': '/data/work', '__version__': 1}</properties>
 		<properties format="literal" node_id="6">{'bucket': 'gatk-tutorials', 'controlAreaVisible': True, 'dirs': [], 'downloadDir': '', 'exportGraphics': False, 'files': ['workshop_1903/3-somatic/bams/tumor.bam', 'workshop_1903/3-somatic/bams/normal.bam'], 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['dirs', 'files'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'dirs': False, 'files': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x064\x00\x00\x02\xf4\x00\x00\x03R\x00\x00\x01k\x00\x00\x064\x00\x00\x02\xf4\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'downloadDir': False}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="literal" node_id="7">{'bucket': 'gcp-public-data--broad-references', 'controlAreaVisible': True, 'dirs': [], 'downloadDir': '', 'exportGraphics': False, 'files': ['hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi', 'hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz', 'hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf', 'hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf.idx'], 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['dirs', 'files'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'dirs': False, 'files': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x07X\x00\x00\x03\x0b\x00\x00\x03R\x00\x00\x01k\x00\x00\x07X\x00\x00\x03\x0b\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'downloadDir': False}, 'useScheduler': False, '__version__': 1}</properties>
-		<properties format="literal" node_id="8">{'bamfiles': ['/data/work/normal_realign_mark_dupes.bam', '/data/tumor_realign_mark_dupes.bam'], 'controlAreaVisible': True, 'datathreads': 8, 'exportGraphics': False, 'inputConnectionsStore': {'File': [3], 'bamtrigger': [8], 'indels_trigger': [4], 'reference': [1], 'reference_trigger': [3]}, 'intervals': '/data/work/intervals.list', 'iterate': False, 'iterateSettings': {'iterableAttrs': ['bamfiles'], 'nWorkers': 1}, 'known': '/data/genome/Homo_sapiens_assembly38.known_indels.vcf.gz', 'nWorkers': 1, 'optionsChecked': {'known': True, 'datathreads': True}, 'reference': '', 'runMode': 2, 'runTriggers': ['bamtrigger', 'indels_trigger', 'reference_trigger'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xe9\x00\x00\x03\x90\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xe9\x00\x00\x03\x90\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'bamtrigger': False, 'indels_trigger': False, 'reference_trigger': False}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="8">{'bamfiles': ['/data/work/normal_realign_mark_dupes.bam', '/data/tumor_realign_mark_dupes.bam'], 'controlAreaVisible': True, 'datathreads': 8, 'exportGraphics': False, 'inputConnectionsStore': {'File': [3], 'bamtrigger': [8], 'indels_trigger': [4], 'reference': [1], 'reference_trigger': [3]}, 'intervals': '/data/work/intervals.list', 'iterate': False, 'iterateSettings': {'iterableAttrs': ['bamfiles'], 'nWorkers': 1}, 'known': '/data/genome/Homo_sapiens_assembly38.known_indels.vcf.gz', 'nWorkers': 1, 'optionsChecked': {'known': True, 'datathreads': True}, 'reference': '', 'runMode': 2, 'runTriggers': ['bamtrigger', 'indels_trigger', 'reference_trigger'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x98\x00\x00\x01\xaa\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\x98\x00\x00\x01\xa7\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'bamtrigger': False, 'indels_trigger': False, 'reference_trigger': False}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="9">gAN9cQAoWAgAAABiYW1maWxlc3EBTlgSAAAAY29udHJvbEFyZWFWaXNpYmxlcQKIWA4AAABleHBv
 cnRHcmFwaGljc3EDiVgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcQR9cQUoWBEAAAByZWZlcmVu
 Y2VfdHJpZ2dlcnEGXXEHSwNhWA4AAABpbmRlbHNfdHJpZ2dlcnEIXXEJSwRhWAkAAABpbnRlcnZh
@@ -195,8 +229,8 @@ YS93b3JrL25vcm1hbF9yZWFsaWduX2luZGVscy5iYW1xMFgjAAAAL2RhdGEvd29yay90dW1vcl9y
 ZWFsaWduX2luZGVscy5iYW1xMWVYCQAAAHJlZmVyZW5jZXEyWB0AAAAvZGF0YS9nZW5vbWUvR1JD
 aDM4LmQxLnZkMS5mYXEzWAcAAABydW5Nb2RlcTRLAlgLAAAAcnVuVHJpZ2dlcnNxNV1xNihYEQAA
 AHJlZmVyZW5jZV90cmlnZ2VycTdYDgAAAGluZGVsc190cmlnZ2VycThYCQAAAGludGVydmFsc3E5
-ZVgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXE6QzIB2dDLAAIAAAAAAz4AAAFuAAAGTwAAA5MAAAM+
-AAABhgAABk8AAAOQAAAAAAAAAAAHgHE7WAwAAAB0cmlnZ2VyUmVhZHlxPH1xPShoN4loOIloOYl1
+ZVgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXE6QzIB2dDLAAIAAAAAAAAAAAAAAAACmAAAAicAAAAA
+AAAAGAAAApgAAAIkAAAAAAAAAAAHgHE7WAwAAAB0cmlnZ2VyUmVhZHlxPH1xPShoN4loOIloOYl1
 WAwAAAB1c2VTY2hlZHVsZXJxPolYCwAAAF9fdmVyc2lvbl9fcT9LAXUu
 </properties>
 		<properties format="pickle" node_id="10">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWBUA
@@ -214,8 +248,8 @@ AwAAAG5jdHEriHVYBgAAAG91dHB1dHEsXXEtKFgbAAAAL2RhdGEvd29yay9ub3JtYWxfY2xlYW4u
 YmFtcS5YGgAAAC9kYXRhL3dvcmsvdHVtb3JfY2xlYW4uYmFtcS9lWAkAAAByZWZlcmVuY2VxMFgA
 AAAAcTFYBwAAAHJ1bk1vZGVxMksCWAsAAABydW5UcmlnZ2Vyc3EzXXE0KFgKAAAAaW5wdXRmaWxl
 c3E1WBEAAAByZWZlcmVuY2VfdHJpZ2dlcnE2WAwAAABzbnBzX3RyaWdnZXJxN2VYEwAAAHNhdmVk
-V2lkZ2V0R2VvbWV0cnlxOEMyAdnQywACAAAAAANSAAABUwAABrkAAAMbAAADUgAAAVMAAAa5AAAD
-GwAAAAAAAAAAB4BxOVgMAAAAdHJpZ2dlclJlYWR5cTp9cTsoaDWJaDaJaDeJdVgMAAAAdXNlU2No
+V2lkZ2V0R2VvbWV0cnlxOEMyAdnQywACAAAAAAAAAAAAAAAAApgAAAInAAAAAAAAABgAAAKYAAAC
+JAAAAAAAAAAAB4BxOVgMAAAAdHJpZ2dlclJlYWR5cTp9cTsoaDWJaDaJaDeJdVgMAAAAdXNlU2No
 ZWR1bGVycTyJWAsAAABfX3ZlcnNpb25fX3E9SwF1Lg==
 </properties>
 		<properties format="literal" node_id="11">{'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'inputfiles': [7]}, 'inputfiles': None, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'region': True, 'regionlist': False, 'reverse': False}, 'outputfile': '/data/work/muse_calls', 'reference': '/data/genome/GRCh38.d1.vd1.fa', 'region': 'chr1:1-100000', 'regionlist': '', 'reverse': True, 'runMode': 2, 'runTriggers': ['inputfiles'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x07\r\x00\x00\x03\x82\x00\x00\x03R\x00\x00\x01k\x00\x00\x07\r\x00\x00\x03\x82\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'inputfiles': False}, 'useScheduler': False, '__version__': 1}</properties>

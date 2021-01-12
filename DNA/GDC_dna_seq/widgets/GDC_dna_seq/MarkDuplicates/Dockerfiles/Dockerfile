@@ -3,4 +3,3 @@ MAINTAINER Hong Hung
 RUN apk add --no-cache bash
 ENV PATH=$PATH:/usr/local/bin/
 COPY mark_dupes.sh /usr/local/bin/mark_dupes.sh
-
