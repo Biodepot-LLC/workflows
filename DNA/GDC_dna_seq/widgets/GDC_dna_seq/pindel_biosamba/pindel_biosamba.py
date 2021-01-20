@@ -13,7 +13,7 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWpindel_biosamba(OWBwBWidget):
     name = "pindel_biosamba"
-    description = "Minimum Python3 container with pip"
+    description = "Filters unmapped, duplicate, secondary_alignment, failed_quality_control and supplementary alignments"
     priority = 70
     icon = getIconName(__file__,"pindel.png")
     want_main_area = False
