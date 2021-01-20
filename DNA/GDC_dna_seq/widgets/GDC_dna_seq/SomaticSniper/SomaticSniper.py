@@ -18,7 +18,7 @@ class OWSomaticSniper(OWBwBWidget):
     icon = getIconName(__file__,"somatic_sniper.png")
     want_main_area = False
     docker_image_name = "biodepot/somatic-sniper"
-    docker_image_tag = "1.0.5__buster-slim__78d35828"
+    docker_image_tag = "1.0.5.0__buster-slim__0d291126"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
     outputs = [("OutputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
