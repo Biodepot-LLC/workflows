@@ -19,7 +19,7 @@ class OWStart(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gdc-mrna-start"
     docker_image_tag = "alpine_3.12__59b7cb77"
-    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanfiles",str)]
+    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanfiles",str),("gdccredentials",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -32,6 +32,7 @@ class OWStart(OWBwBWidget):
     inputFiles=pset([])
     cleanfiles=pset([])
     genomefile=pset(None)
+    gdccredentials=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -61,3 +62,7 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"cleanfiles"):
             outputValue=getattr(self,"cleanfiles")
         self.send("cleanfiles", outputValue)
+        outputValue=None
+        if hasattr(self,"gdccredentials"):
+            outputValue=getattr(self,"gdccredentials")
+        self.send("gdccredentials", outputValue)

@@ -19,7 +19,7 @@ class OWgen3_download(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gen3-client"
     docker_image_tag = "2020.09-10-g0e21292__alpine_3.12__b0d3587c"
-    inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger")]
+    inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials")]
     outputs = [("manifest",str),("guids",str),("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -64,6 +64,11 @@ class OWgen3_download(OWBwBWidget):
     def handleInputsTrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputscredentials(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("credentials", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
