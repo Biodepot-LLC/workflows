@@ -22,7 +22,7 @@
 		<node id="19" name="pindel_config" position="(750, 750)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWpindel_config.OWpindel_config" title="Pindel config" version=""/>
 		<node id="20" name="pindel_sort" position="(1050, 750)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWpindel_sort.OWpindel_sort" title="Filter vcf" version=""/>
 		<node id="21" name="MuTect2" position="(1200, 750)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWMuTect2.OWMuTect2" title="MuTect2" version=""/>
-		<node id="22" name="gen3_download" position="(454.0, 151.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWgen3_download.OWgen3_download" title="Download controlled acess files" version=""/>
+		<node id="22" name="gen3_download" position="(454.0, 151.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWgen3_download.OWgen3_download" title="Download controlled access files" version=""/>
 	</nodes>
 	<links>
 		<link enabled="true" id="0" sink_channel="downloadDir" sink_node_id="6" source_channel="work_dir" source_node_id="5"/>
