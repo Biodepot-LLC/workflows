@@ -17,9 +17,9 @@ class OWgen3_download(OWBwBWidget):
     priority = 10
     icon = getIconName(__file__,"gen3-download.png")
     want_main_area = False
-    docker_image_name = "biodepot/gen3-client"
-    docker_image_tag = "2020.09-10-g0e21292__alpine_3.12__b0d3587c"
-    inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials")]
+    docker_image_name = "biodepot/gen3-download"
+    docker_image_tag = "2020.09-10-g0e21292__alpine_3.12__12360f2"
+    inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials"),("gdctoken",str,"handleInputsgdctoken")]
     outputs = [("manifest",str),("guids",str),("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -71,6 +71,11 @@ class OWgen3_download(OWBwBWidget):
     def handleInputscredentials(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("credentials", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsgdctoken(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("gdctoken", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

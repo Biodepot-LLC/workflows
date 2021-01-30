@@ -57,7 +57,7 @@ function convertManifest(){
 }
 
 function downloadWithToken(){
-  if [ -n $manifest ]; then
+  if [ -n "$manifest" ]; then
     convertManifest
   else
     guidsArray=($(convertJsonToArrayNoQuotes $guids))
@@ -87,18 +87,31 @@ function convertJsonToArrayNoQuotes(){
 }
 
 function singleDownload(){
+ exitCode=0
  if [ -z $guidsArray ]; then
    guidsArray=($(convertJsonToArrayNoQuotes $guids))
  fi
  for guid in "${guidsArray[@]}"; do
    echo "gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]}"
-   gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]} 
+   gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]} 2> >(tee -a /tmp/log$guid >&2)
+   errors=$(fgrep 'Details of error:' /tmp/log$guid)
+   if [ -n "$errors" ]; then
+     echo "Exiting with error $errors"
+     exitCode=1
+     return 
+   fi
  done
 }
 function multiDownload(){
+  exitCode=0
   echo "Downloading using manifest"	
   echo "gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]}"
-  gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]} 
+  gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]} 2> >(tee -a /tmp/logManifest >&2)
+  errors=$(fgrep 'Details of error:' /tmp/logManifest)
+  if [ -n "$errors" ]; then
+    echo "Exiting with error $errors"
+    exit 1
+  fi 
 }
 
 #check if both guid and manifest given
@@ -112,20 +125,17 @@ if [[ -n $guids && -n $manifest ]]; then
   exit 1
 fi
 
+
 #First try with the old api
-if [ -n $gdctoken ]; then
+if [ -z $gdctoken ]; then
+   echo "no gdc token given - use gen3 fence to download"
+else
   if [ -f $gdctoken ]; then
     token=$(cat $gdctoken)
     downloadWithToken
-    exit
-    if [ $? == 0 ]; then
-      exit 0
-    else
-      echo "Unable to download using gdc token"
-    fi
   fi
   #if there are no files left in guidsArray then all files have been successfully downloaded - exit
-  (( ${#guidsArray[@]} )) || exit 0 
+  (( ${#guidsArray[@]} )) || exit $exitCode
 fi
 
 echo "Attempting to authenticate using gen3 fence service"
@@ -155,14 +165,15 @@ if [ -f "/root/.gen3/config" ]; then
  #now we can begin download
  flags=( "$@" ) 
  gen3-client auth --profile=$profile
- if [ -n $manifest ]; then 
-	multiDownload
+ if [ -z $manifest ]; then 
+	singleDownload
  else
-    singleDownload
+    multiDownload
  fi
 else
   echo "must provide a valid config or credentials file" 
   exit 1 
 fi
+exit $exitCode
 
 
