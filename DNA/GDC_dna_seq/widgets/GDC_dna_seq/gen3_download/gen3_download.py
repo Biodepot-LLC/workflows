@@ -38,6 +38,8 @@ class OWgen3_download(OWBwBWidget):
     skipcompleted=pset(True)
     numparallel=pset(1)
     protocol=pset(None)
+    untarfiles=pset(True)
+    gdctoken=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"gen3_download")) as f:

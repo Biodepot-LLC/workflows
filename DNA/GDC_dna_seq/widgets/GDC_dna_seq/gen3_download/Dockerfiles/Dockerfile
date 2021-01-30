@@ -22,7 +22,7 @@ RUN go build -ldflags "-linkmode external -extldflags -static" -o bin/gen3-clien
 # Store only the resulting binary in the final image
 # Resulting in significantly smaller docker image size
 FROM alpine:3.12
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash curl
 COPY --from=build-deps /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=build-deps /go/src/github.com/uc-cdis/gen3-client/bin/gen3-client /usr/local/bin/gen3-client
 COPY runG3Download.sh /usr/local/bin/runG3Download.sh
