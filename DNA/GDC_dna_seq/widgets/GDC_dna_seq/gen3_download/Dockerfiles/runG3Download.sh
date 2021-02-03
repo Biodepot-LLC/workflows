@@ -25,7 +25,10 @@ function singleDownloadGET(){
 	local myid=$1
 	local downloaded=0
 	tempDir=$(mktemp -d -p $downloadDir -t tempXXXXXX)
-	[ -z "$tempDir" ] && return 1
+	if [ -z "$tempDir" ]; then
+		echo "ERROR: failed to create temp directory to store download"
+		return $downloaded
+	fi
 	pushd $tempDir > /dev/null
 	if ! curl -OJ --header "X-Auth-Token: $token" $gdcapiurl/data/$myid; then
 		echo "curl error $?"
@@ -81,9 +84,11 @@ function convertJsonToArrayNoQuotes(){
 function singleDownload(){
 	[ -z $guidsArray ] && guidsArray=($(convertJsonToArrayNoQuotes $guids))
 	for guid in "${guidsArray[@]}"; do
-		echo "gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]}"
-		gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]} 2> >(tee -a /tmp/log$guid >&2)
-		errors=$(fgrep 'Details of error:' /tmp/log$guid)
+		local cmd="gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]}"
+		local log="/tmp/log$guid"
+		echo $cmd
+		$cmd 2> >(tee -a $log >&2)
+		errors=$(fgrep 'Details of error:' $log)
 		if [ -n "$errors" ]; then
 			echo "Exiting with error $errors"
 			exitCode=1
@@ -94,9 +99,11 @@ function singleDownload(){
 
 function multiDownload(){
 	echo "Downloading using manifest"
-	echo "gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]}"
-	gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]} 2> >(tee -a /tmp/logManifest >&2)
-	errors=$(fgrep 'Details of error:' /tmp/logManifest)
+	local cmd="gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]}"
+	local log="/tmp/logManifest"
+	echo $cmd
+	$cmd 2> >(tee -a $log >&2)
+	errors=$(fgrep 'Details of error:' $log)
 	if [ -n "$errors" ]; then
 		echo "Exiting with error $errors"
 		exitCode=1
@@ -128,7 +135,6 @@ echo "Attempting to authenticate using gen3 fence service"
 
 #assume config file basename is config when given by user
 #otherwise assume that the file given by user is a credentials file
-
 credBasename=$(basename $cred)
 if [ $credBasename == "config" ]; then
 	mkdir -p /root/.gen3
