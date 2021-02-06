@@ -1,6 +1,11 @@
 FROM golang:1.14-alpine as build-deps
 
-RUN apk update && apk add --no-cache git ca-certificates gcc musl-dev
+RUN apk add --update --no-cache \
+        binutils \
+        ca-certificates \
+        gcc \
+        git \
+        musl-dev
 
 WORKDIR /go/src/github.com/uc-cdis/gen3-client
 
@@ -17,7 +22,8 @@ COPY . .
 
 # git version info has been already added manually
 
-RUN go build -ldflags "-linkmode external -extldflags -static" -o bin/gen3-client
+RUN go build -ldflags "-linkmode external -extldflags -static" -o bin/gen3-client \
+    && strip -s bin/gen3-client
 
 # Store only the resulting binary in the final image
 # Resulting in significantly smaller docker image size
