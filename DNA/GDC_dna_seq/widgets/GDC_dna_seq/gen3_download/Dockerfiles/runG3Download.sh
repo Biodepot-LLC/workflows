@@ -38,7 +38,7 @@ function singleDownloadGET(){
 		cat $tempDir/data
 	elif [ -n "$(ls -A $tempDir/*tar)" ]; then
 		# download successful
-		if [[ -n "$untarfiles" && "$untarfiles" = "True" ]]; then
+		if [[ -n "$untarfiles" && echo $untarfiles | grep -iq 'true' ]]; then
 			tar -xf $tempDir/* -C $downloadDir
 		else
 			mv $tempDir/* $downloadDir
@@ -81,19 +81,31 @@ function convertJsonToArrayNoQuotes(){
 	echo "$string"
 }
 
+function downloadErrorCheck(){
+	local cmd="$1"
+	local log="$2"
+	echo $cmd
+	$cmd 2> >(tee -a $log >&2)
+	local rtn=$?
+	local errors=$(grep -i 'error' $log)
+	if [ $rtn != 0 ]; then
+		echo "Exiting with error code: $rtn"
+		exitCode=$rtn
+		return $rtn
+	elif [ -n "$errors" ]; then
+		echo "Exiting with error message:"
+		echo "$errors"
+		exitCode=1
+		return $exitCode
+	fi
+}
+
 function singleDownload(){
 	[ -z $guidsArray ] && guidsArray=($(convertJsonToArrayNoQuotes $guids))
 	for guid in "${guidsArray[@]}"; do
 		local cmd="gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]}"
 		local log="/tmp/log$guid"
-		echo $cmd
-		$cmd 2> >(tee -a $log >&2)
-		errors=$(fgrep 'Details of error:' $log)
-		if [ -n "$errors" ]; then
-			echo "Exiting with error $errors"
-			exitCode=1
-			return
-		fi
+		downloadErrorCheck "$cmd" "$log" || return
 	done
 }
 
@@ -101,13 +113,7 @@ function multiDownload(){
 	echo "Downloading using manifest"
 	local cmd="gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]}"
 	local log="/tmp/logManifest"
-	echo $cmd
-	$cmd 2> >(tee -a $log >&2)
-	errors=$(fgrep 'Details of error:' $log)
-	if [ -n "$errors" ]; then
-		echo "Exiting with error $errors"
-		exitCode=1
-	fi
+	downloadErrorCheck "$cmd" "$log"
 }
 
 #check if both guid and manifest given

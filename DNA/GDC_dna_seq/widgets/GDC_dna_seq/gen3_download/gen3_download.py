@@ -18,7 +18,7 @@ class OWgen3_download(OWBwBWidget):
     icon = getIconName(__file__,"gen3-download.png")
     want_main_area = False
     docker_image_name = "biodepot/gen3-download"
-    docker_image_tag = "latest"
+    docker_image_tag = "2020.09-10-g0e21292__alpine_3.12__545c696d"
     inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials"),("gdctoken",str,"handleInputsgdctoken")]
     outputs = [("manifest",str),("guids",str),("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

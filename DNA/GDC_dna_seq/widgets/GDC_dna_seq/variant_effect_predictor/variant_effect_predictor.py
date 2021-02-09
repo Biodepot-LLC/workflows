@@ -19,7 +19,7 @@ class OWvariant_effect_predictor(OWBwBWidget):
     want_main_area = False
     docker_image_name = "ensemblorg/ensembl-vep"
     docker_image_tag = "release_102.0"
-    inputs = [("inputFile",str,"handleInputsinputFile")]
+    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -105,6 +105,11 @@ class OWvariant_effect_predictor(OWBwBWidget):
     def handleInputsinputFile(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("inputFile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputstrigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
