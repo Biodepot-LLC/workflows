@@ -18,7 +18,7 @@ class OWgcloud_download(OWBwBWidget):
     icon = getIconName(__file__,"gcloud_download.png")
     want_main_area = False
     docker_image_name = "biodepot/gcp-public-download"
-    docker_image_tag = "277.0.0__alpine__a9bda931"
+    docker_image_tag = "277.0.0__alpine__69e41a0f"
     inputs = [("Trigger",str,"handleInputsTrigger"),("credentials_file",str,"handleInputscredentials_file"),("bucket",str,"handleInputsbucket"),("downloadDir",str,"handleInputsdownloadDir")]
     outputs = [("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
