@@ -28,7 +28,7 @@ class OWvcf_to_maf(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    inputFile=pset(None)
+    inputFile=pset([])
     outputFile=pset(None)
     inhibitVep=pset(False)
     refFasta=pset(None)
