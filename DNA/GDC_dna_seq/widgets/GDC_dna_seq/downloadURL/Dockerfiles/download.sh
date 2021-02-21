@@ -1,34 +1,53 @@
 #!/bin/bash
-decompress=1
+
 function checkFilename(){
-  echo "check zero length"
-  [[ -n "$filename" ]] || return
-  echo "check too long"
-  [[ $(echo "${#filename}") -lt 255 ]] || return
-  echo "check character"
-  [[ $filename =~ ^[0-9a-zA-Z._-]+$ ]] || return
-  echo "check first char"
-  [[ $(echo $filename | cut -c1-1) =~ ^[0-9a-zA-Z]+$ ]]
+    echo "check zero length"
+    [[ -n "$filename" ]] || return
+    echo "check too long"
+    [[ $(echo "${#filename}") -lt 255 ]] || return
+    echo "check character"
+    [[ $filename =~ ^[0-9a-zA-Z._-]+$ ]] || return
+    echo "check first char"
+    [[ $(echo $filename | cut -c1-1) =~ ^[0-9a-zA-Z]+$ ]]
 }
 
 function getFilename(){
-	filename=""
-	echo "finding filename for url $url"
-	tempDir="$(mktemp -d /tmp/XXXXXXXXX)"
-	#make a temporary directory without write permissions to force curl to quit after obtaining filename
-	chmod -w $tempDir
-	filename=$(cd $tempDir; su user -c "wget --content-disposition $url  |& grep denied | sed 's/.*denied //' | sed 's/:.*//'")
-	checkFilename && return
-	filename=$(su user -c "curl -JLO $url |& grep denied | sed 's/.* file //g' | sed 's/:.*//g'")
+    filename=""
+    echo "finding filename for url $url"
+    tempDir="$(mktemp -d /tmp/XXXXXXXXX)"
+    #make a temporary directory without write permissions to force curl to quit after obtaining filename
+    chmod -w $tempDir
+    filename=$(cd $tempDir; su user -c "wget --content-disposition $url  |& grep denied | sed 's/.*denied //' | sed 's/:.*//'")
+    checkFilename && return
+    filename=$(su user -c "curl -JLO $url |& grep denied | sed 's/.* file //g' | sed 's/:.*//g'")
     checkFilename && return
     filename="${url##*/}"
+}
+
+function findGoogleFilename(){
+    if [[  $1 == *drive.google.com/file/d/* ]]; then
+        fileID=$(echo "$1" | sed -n -e  's/.*drive\.google\.com\/file\/d\///p' | sed  's:/.*::')
+    else
+        fileID=$(echo "$1" | sed -n -e 's/.*\?id\=//p')
+        fileID=${fileID%%/*}
+    fi
+    echo fileID is ${fileID}
+    filename=$(curl -s -L "$1" | sed -n -e 's/.*<meta property\="og\:title" content\="//p' | sed -n -e 's/">.*//p')
+    echo filename is "$filename"
+    bash -c "curl -c ./cookie 'https://drive.google.com/uc?export=download&id=${fileID}' &> /dev/null"
+    code=$(cat ./cookie | grep -o 'download_warning.*' | cut -f2)
+    if [[ -n "$code" ]]; then
+        echo code is "$code"
+    else
+        echo "no code found"
+    fi
+
 }
 
 function decompString(){
     dcmd=""
     zipFlag=""
-    if [ -n "$decompress" ]
-    then
+    if [ -n "$decompress" ]; then
         case $1 in
         *.tar.bz2 | *.tbz2 )
             if [ -n "$concatenateFile" ]; then
@@ -38,14 +57,14 @@ function decompString(){
             fi
             return
             ;;
-        *.tar.gz | *.tgz) 
+        *.tar.gz | *.tgz)
             if [ -n "$concatenateFile" ]; then
                 dcmd="| tar xzO >> $concatenateFile"
             else
                 dcmd='| tar xz'
             fi
             return
-            ;;  
+            ;;
         *.tar)
             if [ -n "$concatenateFile" ]; then
                 dcmd="| tar xO >> $concatenateFile"
@@ -73,7 +92,7 @@ function decompString(){
             return
             ;;
         *.zip)
-			zipFlag=1
+            zipFlag=1
             if [ -n "$concatenateFile" ]; then
                 dcmd="&& unzip -p >> $concatenateFile"
             else
@@ -90,51 +109,31 @@ function decompString(){
     fi
     return
 }
+
 while [[ $# -gt 0 ]] ; do
     case $1 in
     --decompress)
         decompress=1
-        shift 
+        shift
         ;;
     --directory)
         mkdir -p $2
         cd $2
         shift
-        shift 
+        shift
         ;;
     --concatenateFile)
         concatenateFile=$2
         shift
-        shift 
+        shift
         ;;
-    *)   
+    *)
     urls+=("$1")
     shift # past argument
     ;;
     esac
 done
 
-
-function findGoogleFilename(){
- #check if it fits the
-    if [[  $1 == *drive.google.com/file/d/* ]]; then
-        fileID=$(echo "$1" | sed -n -e  's/.*drive\.google\.com\/file\/d\///p' | sed  's:/.*::')
-    else  
-        fileID=$(echo "$1" | sed -n -e 's/.*\?id\=//p')
-        fileID=${fileID%%/*}
-    fi
-    echo fileID is ${fileID}
-    filename=$(curl -s -L "$1" | sed -n -e 's/.*<meta property\="og\:title" content\="//p' | sed -n -e 's/">.*//p')
-    echo filename is "$filename"
-    bash -c "curl -c ./cookie 'https://drive.google.com/uc?export=download&id=${fileID}' &> /dev/null" 
-    code=$(cat ./cookie | grep -o 'download_warning.*' | cut -f2)
-    if [[ -n "$code" ]]; then
-        echo code is "$code"
-    else
-		echo "no code found"
-    fi
-
-}
 #empty the concatenateFile if it exists
 #do it here instead of in parse loop because in case the directory change comes after the concatenate
 if [ -n "$concatenateFile" ]; then
@@ -143,39 +142,43 @@ fi
 
 #loop through the urls
 status=0
-for url in  "${urls[@]}" ; do
+for url in "${urls[@]}" ; do
     #if it falls through all code - then there is an error.
-	curlret=1
-	zipFlag=""
-    if [[ $url == *drive.google.com* ]]  
-    then
+    curlret=1
+    zipFlag=""
+    if [[ $url == *drive.google.com* ]]; then
         #find filename and fileID and keep cookie
         findGoogleFilename $url
         decompString "$filename"
         echo "google drive url is $url filename is $filename fileID is $fileID code is $code dcmd is $dcmd"
-        if [[ -n "$filename" ]]; then    
+        if [[ -n "$filename" ]]; then
+            if [ -n "$noClobber" ] && [ -f "$filename" ]; then
+                echo "File $filename is already present, skipping download"
+                shift
+                continue
+            fi
             if [ -z $code ]; then
                 rm ./cookie
                 echo No problem with virus check no verification needed
                 decompString "$filename"
                 if [[ -n $zipFlag ]]; then
-					echo "curl  -L 'https://docs.google.com/uc?export=download&id=${fileID}' -o '$filename' $dcmd"
-					bash -c "curl -L 'https://docs.google.com/uc?export=download&id=$fileID' -o '$filename' $dcmd"                
+                    echo "curl -L 'https://docs.google.com/uc?export=download&id=${fileID}' -o '$filename' $dcmd"
+                    bash -c "curl -L 'https://docs.google.com/uc?export=download&id=$fileID' -o '$filename' $dcmd"
                 else
-					echo "curl  -L 'https://docs.google.com/uc?export=download&id=${fileID}' $dcmd"
-					bash -c "curl -L 'https://docs.google.com/uc?export=download&id=$fileID' $dcmd"
-				fi
+                    echo "curl -L 'https://docs.google.com/uc?export=download&id=${fileID}' $dcmd"
+                    bash -c "curl -L 'https://docs.google.com/uc?export=download&id=$fileID' $dcmd"
+                fi
                 curlret=$?
             else
                 echo "Verification code to bypass virus scan is $code "
                 decompString "$filename"
                 if [[ -n $zipFlag ]]; then
-					echo "curl  -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' -o '$filename' $dcmd"
-					bash -c "curl  -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' -o '$filename' $dcmd"                
+                    echo "curl -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' -o '$filename' $dcmd"
+                    bash -c "curl -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' -o '$filename' $dcmd"
                 else
-					echo "curl  -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' $dcmd"
-					bash -c "curl -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' $dcmd"
-				fi
+                    echo "curl -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' $dcmd"
+                    bash -c "curl -Lb ./cookie 'https://drive.google.com/uc?export=download&confirm=${code}&id=$fileID' $dcmd"
+                fi
                 curlret=$?
                 rm ./cookie
             fi
@@ -186,22 +189,25 @@ for url in  "${urls[@]}" ; do
     else
         echo "url $url is not from google drive"
         getFilename
+        if [ -n "$noClobber" ] && [ -f "$filename" ]; then
+            echo "File $filename is already present, skipping download"
+            shift
+            continue
+        fi
         echo "$filename"
-        if [ -n "$decompress" ] 
-        then            
+        if [ -n "$decompress" ]; then
             decompString "$filename"
-            
             if [[ -n $zipFlag ]]; then
-				echo "curl -JLO $url $dcmd" 
-				bash -c "curl -JLO $url $dcmd"
-			else
-				echo "curl $url $dcmd" 
-				bash -c "curl -L $url $dcmd"
-			fi
-            curlret=$?     
+                echo "curl -JLO $url $dcmd"
+                bash -c "curl -JLO $url $dcmd"
+            else
+                echo "curl -L $url $dcmd"
+                bash -c "curl -L $url $dcmd"
+            fi
+            curlret=$?
         else
             if [ -n "$concatenateFile" ]; then
-                echo  'curl -L $url >>' "$concatenateFile"
+                echo 'curl -L $url >>' "$concatenateFile"
                 curl url >> $concatenateFile
                 curlret=$?
             else
@@ -212,8 +218,9 @@ for url in  "${urls[@]}" ; do
         fi
     fi
     if [ $curlret -ne 0 ]; then
-		status=1
-	fi
+        status=1
+    fi
     shift
 done
+
 exit $status

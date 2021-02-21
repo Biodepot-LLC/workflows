@@ -11,15 +11,15 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWMuTect2(OWBwBWidget):
-    name = "MuTect2"
-    description = "MuTect2 variant caller"
-    priority = 80
-    icon = getIconName(__file__,"mutect2.png")
+class OWvcf_to_maf(OWBwBWidget):
+    name = "vcf_to_maf"
+    description = "Convert a VCF into a MAF"
+    priority = 100
+    icon = getIconName(__file__,"vcf_to_maf.png")
     want_main_area = False
-    docker_image_name = "broadinstitute/gatk3"
-    docker_image_tag = "3.6-0"
-    inputs = [("bamtrigger",str,"handleInputsbamtrigger"),("ponstrigger",str,"handleInputsponstrigger")]
+    docker_image_name = "biodepot/vcf_to_maf"
+    docker_image_tag = "1.6.19__fbd89e9f"
+    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -28,34 +28,48 @@ class OWMuTect2(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    inputNormalFile=pset(None)
-    inputTumorFile=pset(None)
-    referenceFile=pset(None)
+    inputFile=pset([])
     outputFile=pset(None)
-    intervals=pset(None)
-    normalPanel=pset([])
-    cosmic=pset([])
-    dbsnp=pset(None)
-    contamination=pset(None)
-    outputMode=pset(None)
-    disableAutoIndexGenLock=pset(False)
-    nct=pset(1)
+    inhibitVep=pset(False)
+    refFasta=pset(None)
+    tmpDir=pset(None)
+    tumorId=pset(None)
+    normalId=pset(None)
+    vcfTumorId=pset(None)
+    vcfNormalId=pset(None)
+    customEnst=pset([])
+    vepPath=pset("/usr/local/bin")
+    vepData=pset("/data/vep")
+    vepForks=pset(None)
+    bufferSize=pset(None)
+    anyAllele=pset(False)
+    online=pset(False)
+    filterVcf=pset(None)
+    maxFilterAc=pset(None)
+    species=pset(None)
+    ncbiBuild=pset(None)
+    cacheVersion=pset(None)
+    mafCenter=pset(None)
+    retainInfo=pset(None)
+    retainFmt=pset(None)
+    minHomVaf=pset(None)
+    remapChain=pset(False)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"MuTect2")) as f:
+        with open(getJsonName(__file__,"vcf_to_maf")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsbamtrigger(self, value, *args):
+    def handleInputsinputFile(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("bamtrigger", value, args[0][0], test=args[0][3])
+            self.handleInputs("inputFile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputsponstrigger(self, value, *args):
+    def handleInputstrigger(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("ponstrigger", value, args[0][0], test=args[0][3])
+            self.handleInputs("trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
