@@ -39,6 +39,7 @@ class OWMuTect2(OWBwBWidget):
     contamination=pset(None)
     outputMode=pset(None)
     disableAutoIndexGenLock=pset(False)
+    nct=pset(1)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"MuTect2")) as f:
