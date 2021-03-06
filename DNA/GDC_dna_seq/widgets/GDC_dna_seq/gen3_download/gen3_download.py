@@ -18,7 +18,7 @@ class OWgen3_download(OWBwBWidget):
     icon = getIconName(__file__,"gen3-download.png")
     want_main_area = False
     docker_image_name = "biodepot/gen3-download"
-    docker_image_tag = "2020.09-10-g0e21292__alpine_3.12__545c696d"
+    docker_image_tag = "2021.03__alpine_3.12__2a822715"
     inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials"),("gdctoken",str,"handleInputsgdctoken")]
     outputs = [("manifest",str),("guids",str),("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
@@ -38,7 +38,7 @@ class OWgen3_download(OWBwBWidget):
     skipcompleted=pset(True)
     numparallel=pset(1)
     protocol=pset(None)
-    untarfiles=pset(True)
+    decompress=pset(True)
     gdctoken=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
