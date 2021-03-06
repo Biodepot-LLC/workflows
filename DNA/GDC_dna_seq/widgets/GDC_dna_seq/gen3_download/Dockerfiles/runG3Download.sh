@@ -20,44 +20,134 @@ function cleanup(){
 #call cleanup if we exit not so nicely
 trap "cleanup  -1 " SIGINT INT TERM
 
+function getFilename(){
+	local tempDir="$(mktemp -d)"
+	#make a temporary directory without write permissions to force curl to quit after obtaining filename
+	chmod -w $tempDir
+	pushd $tempDir > /dev/null
+	local filename=$(su user -c "curl -OJ --header \"X-Auth-Token: $token\" $gdcapiurl/data/$1 \
+		|& grep -m 1 Warning | sed 's/.* file //; s/:.*//'")
+	popd > /dev/null
+	echo "$filename"
+}
+
+function decompressFile(){
+	local filename="$1"
+	case $filename in
+	*.tar.xz | *.txz)
+		tar -xJf "$filename"
+		;;
+	*.tar.bz2 | *.tbz2)
+		tar -xjf "$filename"
+		;;
+	*.tar.gz | *.tgz)
+		tar -xzf "$filename"
+		;;
+	*.tar)
+		tar -xf "$filename"
+		;;
+	*.gz)
+		gunzip "$filename"
+		;;
+	*.bz2)
+		bunzip2 "$filename"
+		;;
+	*.zip)
+		unzip "$filename"
+		rm "$filename"
+		;;
+	*)
+		echo "Decompress not supported for $filename"
+		return 1
+		;;
+	esac
+	return $?
+}
+
 #there is a bug with the multi-download api in that the files are not properly tarballed - so use only singleDownload endpoint
+# returns 1 if successful otherwise 0
 function singleDownloadGET(){
 	local myid=$1
 	local downloaded=0
+	local filename=$(getFilename $myid)
+	# check if we can skip download for decompressed files
+	if [[ -n "$decompress" && -n "$noClobber" && -s "$downloadDir/$myid.log" ]]; then
+		local skipDownload=true
+		while read f; do
+			if [ ! -e "$downloadDir/$f" ]; then
+				# if we are here then one of the extracted objects does not exist
+				skipDownload=false
+				break
+			fi
+		done < $downloadDir/$myid.log
+		if $skipDownload; then
+			echo "Skipping download for $myid"
+			return 1
+		fi
+	elif [[ -z "$decompress" && -n "$noClobber" && -f "$downloadDir/$filename" ]]; then
+		echo "Skipping download for $myid"
+		return 1
+    fi
 	tempDir=$(mktemp -d -p $downloadDir -t tempXXXXXX)
 	if [ -z "$tempDir" ]; then
 		echo "ERROR: failed to create temp directory to store download"
 		return $downloaded
 	fi
 	pushd $tempDir > /dev/null
-	if ! curl -OJ --header "X-Auth-Token: $token" $gdcapiurl/data/$myid; then
-		echo "curl error $?"
-	elif [ -f "$tempDir/$myid" ]; then
-		cat $tempDir/$myid
-	elif [ -f "$tempDir/data" ]; then
-		cat $tempDir/data
-	elif [ -n "$(ls -A $tempDir/*tar)" ]; then
-		# download successful
-		if [[ -n "$untarfiles" && echo $untarfiles | grep -iq 'true' ]]; then
-			tar -xf $tempDir/* -C $downloadDir
-		else
-			mv $tempDir/* $downloadDir
-		fi
+	# if file already exists just decompress
+	if [[ -n "$decompress" && -n "$noClobber" && -f "$downloadDir/$filename" ]]; then
 		downloaded=1
+		decompressFile "$downloadDir/$filename"
+		# store a log file to prevent script from downloading again
+		find -not -name . > $downloadDir/$myid.log
+		# set dot glob to move hidden files and directories
+		shopt -s dotglob
+		# move everything from the temp folder to intended download directory
+		mv * $downloadDir
+		# unset dot glob to avoid trouble
+		shopt -u dotglob
+	elif ! curl -OJ --header "X-Auth-Token: $token" $gdcapiurl/data/$myid; then
+		echo "curl error $?"
+	elif [ -f "$myid" ]; then
+		cat $myid
+	elif [ -f "data" ]; then
+		cat data
+	elif [ -n "$(ls -A)" ]; then
+		# download successful
+		downloaded=1
+		if [ -n "$decompress" ]; then
+			decompressFile "$(ls -A)"
+			# store a log file to prevent script from downloading again
+			find -not -name . > $downloadDir/$myid.log
+		fi
+		# set dot glob to move hidden files and directories
+		shopt -s dotglob
+		# move everything from the temp folder to intended download directory
+		mv * $downloadDir
+		# unset dot glob to avoid trouble
+		shopt -u dotglob
 	fi
 	popd > /dev/null
 	cleanup
 	return $downloaded
 }
 
+# manifest should be either .txt or .json format
 function convertManifest(){
-	echo "tail -n +2 $manifest | awk '{printf "%s ",$1}'"
-	guidsArray=($(tail -n +2 $manifest | awk '{printf "%s ",$1}'))
+	if basename "$manifest" | grep -q '\.json$'; then
+		cmd="grep 'object_id' $manifest | grep -Eo '[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}'"
+	elif basename "$manifest" | grep -q '\.txt$'; then
+		cmd="tail -n +2 $manifest | cut -f 1"
+	else
+		echo "Manifest must be either .json or .txt"
+		return 1
+	fi
+	guidsArray=($(bash -c "$cmd"))
 }
 
 function downloadWithToken(){
 	if [ -n "$manifest" ]; then
-		convertManifest
+		convertManifest || return 1
 	else
 		guidsArray=($(convertJsonToArrayNoQuotes $guids))
 	fi

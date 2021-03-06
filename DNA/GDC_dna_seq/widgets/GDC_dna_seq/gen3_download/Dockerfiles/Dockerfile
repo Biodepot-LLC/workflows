@@ -1,35 +1,20 @@
-FROM golang:1.14-alpine as build-deps
+FROM alpine:3.12 as builder
+ARG GEN3_CLIENT_VERSION=2021.03
 
-RUN apk add --update --no-cache \
-        binutils \
-        ca-certificates \
-        gcc \
-        git \
-        musl-dev
-
-WORKDIR /go/src/github.com/uc-cdis/gen3-client
-
-RUN go get github.com/mitchellh/go-homedir \
-    github.com/spf13/cobra \
-    github.com/spf13/viper \
-    github.com/cavaliercoder/grab \
-    github.com/golang/mock/gomock \
-    github.com/tcnksm/go-latest \
-    gopkg.in/cheggaaa/pb.v1 \
-    github.com/hashicorp/go-version
-
-COPY . .
-
-# git version info has been already added manually
-
-RUN go build -ldflags "-linkmode external -extldflags -static" -o bin/gen3-client \
-    && strip -s bin/gen3-client
+RUN apk add --update --no-cache binutils \
+    && wget https://github.com/uc-cdis/cdis-data-client/releases/download/${GEN3_CLIENT_VERSION}/dataclient_linux.zip \
+    && unzip *zip \
+    && strip gen3-client
 
 # Store only the resulting binary in the final image
 # Resulting in significantly smaller docker image size
 FROM alpine:3.12
-RUN apk add --no-cache bash curl
-COPY --from=build-deps /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=build-deps /go/src/github.com/uc-cdis/gen3-client/bin/gen3-client /usr/local/bin/gen3-client
+MAINTAINER Hong Hung
+RUN adduser --disabled-password -s /bin/bash user
+RUN apk add --update --no-cache bash ca-certificates curl
+# Create a symlink to make the precompiled utility work with Alpine
+RUN ln -s lib lib64 \
+    && cd lib \
+    && ln -s ld-musl-x86_64.so.1 ld-linux-x86-64.so.2
+COPY --from=builder /gen3-client /usr/local/bin/
 COPY runG3Download.sh /usr/local/bin/runG3Download.sh
-RUN chmod +x /usr/local/bin/runG3Download.sh
