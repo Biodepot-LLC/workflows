@@ -19,7 +19,7 @@ class OWfastqc(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/fastqc"
     docker_image_tag = "0.11.5__ubuntu_18.04__53283d08"
-    inputs = [("inputDir",str,"handleInputsinputDir"),("inputFiles",str,"handleInputsinputFiles")]
+    inputs = [("outputDir",str,"handleInputsoutputDir"),("inputFiles",str,"handleInputsinputFiles")]
     outputs = [("outputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -38,9 +38,9 @@ class OWfastqc(OWBwBWidget):
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsinputDir(self, value, *args):
+    def handleInputsoutputDir(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("inputDir", value, args[0][0], test=args[0][3])
+            self.handleInputs("outputDir", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleInputsinputFiles(self, value, *args):

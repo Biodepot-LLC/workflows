@@ -19,7 +19,7 @@ class OWSomaticSniper(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/somatic-sniper"
     docker_image_tag = "1.0.5.0__buster-slim__0d291126"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger"),("reference",str,"handleInputsreference")]
     outputs = [("OutputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -61,6 +61,11 @@ class OWSomaticSniper(OWBwBWidget):
     def handleInputsTrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsreference(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("reference", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
