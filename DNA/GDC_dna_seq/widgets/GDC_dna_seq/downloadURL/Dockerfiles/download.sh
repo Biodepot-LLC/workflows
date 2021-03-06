@@ -2,13 +2,14 @@
 
 function checkFilename(){
     echo "check zero length"
-    [[ -n "$filename" ]] || return
+    [[ -n "$filename" ]] || return 1
     echo "check too long"
-    [[ $(echo "${#filename}") -lt 255 ]] || return
+    [[ $(echo "${#filename}") -lt 255 ]] || return 1
     echo "check character"
-    [[ $filename =~ ^[0-9a-zA-Z._-]+$ ]] || return
+    [[ $filename =~ ^[0-9a-zA-Z._-]+$ ]] || return 1
     echo "check first char"
-    [[ $(echo $filename | cut -c1-1) =~ ^[0-9a-zA-Z]+$ ]]
+    [[ $(echo $filename | cut -c1-1) =~ ^[0-9a-zA-Z]+$ ]] || return 1
+    return 0
 }
 
 function getFilename(){
@@ -17,9 +18,9 @@ function getFilename(){
     tempDir="$(mktemp -d /tmp/XXXXXXXXX)"
     #make a temporary directory without write permissions to force curl to quit after obtaining filename
     chmod -w $tempDir
-    filename=$(cd $tempDir; su user -c "wget --content-disposition $url  |& grep denied | sed 's/.*denied //' | sed 's/:.*//'")
+    filename=$(cd $tempDir; su user -c "wget --content-disposition $url |& grep denied | sed 's/.*denied //; s/:.*//'")
     checkFilename && return
-    filename=$(su user -c "curl -JLO $url |& grep denied | sed 's/.* file //g' | sed 's/:.*//g'")
+    filename=$(su user -c "curl -JLO $url |& grep -m 1 Warning | sed 's/.* file //; s/:.*//'")
     checkFilename && return
     filename="${url##*/}"
 }
@@ -183,7 +184,7 @@ for url in "${urls[@]}" ; do
         echo "$filename"
         if [ -n "$decompress" ]; then
             # check for a log that should contain all extracted objects
-            if [ -f "$filename.log" ] && [ -n "$noClobber" ]; then
+            if [ -s "$filename.log" ] && [ -n "$noClobber" ]; then
                 skipDownload=true
                 while read f; do
                     if [ ! -e "$f" ]; then

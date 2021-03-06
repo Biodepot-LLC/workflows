@@ -19,7 +19,7 @@ class OWMuTect2(OWBwBWidget):
     want_main_area = False
     docker_image_name = "broadinstitute/gatk3"
     docker_image_tag = "3.6-0"
-    inputs = [("bamtrigger",str,"handleInputsbamtrigger"),("ponstrigger",str,"handleInputsponstrigger")]
+    inputs = [("bamtrigger",str,"handleInputsbamtrigger"),("ponstrigger",str,"handleInputsponstrigger"),("referenceFile",str,"handleInputsreferenceFile")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -56,6 +56,11 @@ class OWMuTect2(OWBwBWidget):
     def handleInputsponstrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("ponstrigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsreferenceFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("referenceFile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
