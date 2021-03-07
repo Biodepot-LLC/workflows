@@ -19,7 +19,7 @@ class OWmuse_sump(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/muse"
     docker_image_tag = "1.0rc__c039ffa__buster-slim__5fbc0ddd"
-    inputs = [("calloutput",str,"handleInputscalloutput")]
+    inputs = [("calloutput",str,"handleInputscalloutput"),("trigger",str,"handleInputstrigger")]
     outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -44,6 +44,11 @@ class OWmuse_sump(OWBwBWidget):
     def handleInputscalloutput(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("calloutput", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputstrigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

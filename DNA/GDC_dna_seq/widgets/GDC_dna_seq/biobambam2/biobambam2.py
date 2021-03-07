@@ -20,7 +20,7 @@ class OWbiobambam2(OWBwBWidget):
     docker_image_name = "biodepot/biobambam2"
     docker_image_tag = "2.0.89__ubuntu_18.04__1cfbff2c"
     inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("outputDir",str,"handleInputsoutputDir"),("firstmates",str,"handleInputsfirstmates"),("secondmates",str,"handleInputssecondmates")]
-    outputs = [("outputDir",str),("inputFile",str),("outputfiles",str)]
+    outputs = [("outputDir",str),("inputFile",str),("outputfiles",str),("triggerOut",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -108,3 +108,7 @@ class OWbiobambam2(OWBwBWidget):
         if hasattr(self,"outputfiles"):
             outputValue=getattr(self,"outputfiles")
         self.send("outputfiles", outputValue)
+        outputValue=None
+        if hasattr(self,"triggerOut"):
+            outputValue=getattr(self,"triggerOut")
+        self.send("triggerOut", outputValue)
