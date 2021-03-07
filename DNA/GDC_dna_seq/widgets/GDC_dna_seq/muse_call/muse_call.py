@@ -18,7 +18,7 @@ class OWmuse_call(OWBwBWidget):
     icon = getIconName(__file__,"muse.png")
     want_main_area = False
     docker_image_name = "biodepot/muse"
-    docker_image_tag = "1.0rc__c039ffa__buster-slim__5fbc0ddd"
+    docker_image_tag = "1.0rc__alpine_3.13.2__104430b8"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference")]
     outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
