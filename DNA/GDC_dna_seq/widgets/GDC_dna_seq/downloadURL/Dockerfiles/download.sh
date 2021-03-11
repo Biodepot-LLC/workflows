@@ -51,25 +51,25 @@ function decompString(){
         case $1 in
         *.tar.bz2 | *.tbz2 )
             if [ -n "$concatenateFile" ]; then
-                dcmd="| tar xjO >> $concatenateFile"
+                dcmd="| tar -xjOf - >> $concatenateFile"
             else
-                dcmd='| tar xj'
+                dcmd='| tar -xjf -'
             fi
             return
             ;;
         *.tar.gz | *.tgz)
             if [ -n "$concatenateFile" ]; then
-                dcmd="| tar xzO >> $concatenateFile"
+                dcmd="| tar -xzOf - >> $concatenateFile"
             else
-                dcmd='| tar xz'
+                dcmd='| tar -xzf -'
             fi
             return
             ;;
         *.tar)
             if [ -n "$concatenateFile" ]; then
-                dcmd="| tar xO >> $concatenateFile"
+                dcmd="| tar -xOf - >> $concatenateFile"
             else
-                dcmd='| tar x'
+                dcmd='| tar -xf -'
             fi
             return
             ;;
