@@ -18,7 +18,7 @@ class OWigv(OWBwBWidget):
     icon = getIconName(__file__,"igv.png")
     want_main_area = False
     docker_image_name = "biodepot/igv"
-    docker_image_tag = "2.9.2__ubuntu_20.04__2172bf11"
+    docker_image_tag = "2.9.2__ubuntu_20.04__1881fa2d"
     inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger")]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -29,6 +29,8 @@ class OWigv(OWBwBWidget):
     optionsChecked=pset({})
     inputFile=pset([])
     genome=pset("hg38")
+    batch=pset(None)
+    autoDetermineRegions=pset(True)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"igv")) as f:
