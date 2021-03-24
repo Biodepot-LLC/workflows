@@ -11,11 +11,11 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWgatk_hc(OWBwBWidget):
-    name = "gatk_hc"
+class OWgatk_db_import(OWBwBWidget):
+    name = "gatk_db_import"
     description = "Base quality recalibration using GATK"
     priority = 40
-    icon = getIconName(__file__,"gatk-hc.png")
+    icon = getIconName(__file__,"gatk-db-import.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk"
     docker_image_tag = "test"
@@ -29,12 +29,18 @@ class OWgatk_hc(OWBwBWidget):
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
     reference=pset(None)
-    known=pset(None)
     inputfiles=pset([])
     output=pset([])
+    alleles=pset([])
+    annotateNum=pset(False)
+    annotation=pset([])
+    annotationgroup=pset(None)
+    emitrefconf=pset(None)
+    bamout=pset([])
+    regions=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"gatk_hc")) as f:
+        with open(getJsonName(__file__,"gatk_db_import")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
