@@ -19,7 +19,7 @@ class OWStart(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gdc-gatk-germline-variant_start"
     docker_image_tag = "test"
-    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanfiles",str),("gdccredentials",str),("gdctoken",str),("vepDirectory",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("createindex",str),("overwriteindex",str),("bypasBiobambam",str)]
+    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("gdccredentials",str),("gdctoken",str),("vepDirectory",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("createindex",str),("overwriteindex",str),("bypasBiobambam",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -30,7 +30,7 @@ class OWStart(OWBwBWidget):
     work_dir=pset(None)
     genome_dir=pset(None)
     inputFiles=pset([])
-    cleanfiles=pset([])
+    cleanbamfiles=pset([])
     genomefile=pset(None)
     gdccredentials=pset(None)
     gdctoken=pset(None)
@@ -72,9 +72,9 @@ class OWStart(OWBwBWidget):
             outputValue=getattr(self,"genomefile")
         self.send("genomefile", outputValue)
         outputValue=None
-        if hasattr(self,"cleanfiles"):
-            outputValue=getattr(self,"cleanfiles")
-        self.send("cleanfiles", outputValue)
+        if hasattr(self,"cleanbamfiles"):
+            outputValue=getattr(self,"cleanbamfiles")
+        self.send("cleanbamfiles", outputValue)
         outputValue=None
         if hasattr(self,"gdccredentials"):
             outputValue=getattr(self,"gdccredentials")

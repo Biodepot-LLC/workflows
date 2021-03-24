@@ -11,11 +11,11 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWbaserecalibrate(OWBwBWidget):
-    name = "baserecalibrate"
-    description = "Base quality recalibration using GATK"
+class OWHaplotypeCaller(OWBwBWidget):
+    name = "HaplotypeCaller"
+    description = "Haplotyoe calling using GATK"
     priority = 40
-    icon = getIconName(__file__,"gatk-bsqr.png")
+    icon = getIconName(__file__,"gatk-hc.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk"
     docker_image_tag = "test"
@@ -32,9 +32,12 @@ class OWbaserecalibrate(OWBwBWidget):
     known=pset(None)
     inputfiles=pset([])
     output=pset([])
+    bamout=pset("bamout.bam")
+    alleles=pset(None)
+    annotate-alt=pset(False)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"baserecalibrate")) as f:
+        with open(getJsonName(__file__,"HaplotypeCaller")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()

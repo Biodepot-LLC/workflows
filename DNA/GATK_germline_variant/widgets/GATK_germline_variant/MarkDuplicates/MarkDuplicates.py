@@ -68,6 +68,7 @@ class OWMarkDuplicates(OWBwBWidget):
     validationStringency=pset(None)
     verbosity=pset(None)
     showHidden=pset(None)
+    outputFile=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"MarkDuplicates")) as f:

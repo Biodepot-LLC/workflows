@@ -30,15 +30,6 @@ function findrg(){
    rgstr="@RG${tab}ID:$idstr${tab}SM:$smstr${tab}LB:$libstr${tab}PL:$plstr"
  fi
 }
-function createIndex(){
-  [ -f "${reference}"*.bwt ] && [ -z ${overwrite+x} ] && echo "reference exists and will not overwrite" && return
-  echo "bwa index ${reference}"
-  bwa index ${reference} && exit 1
-}
-
-#check if index has to be made
-$makeIndex && createIndex
-
 echo " bwa mem $@ "
 #last argument has outputfile
 outputfile="${@: -1}"
