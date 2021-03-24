@@ -1,0 +1,9 @@
+volume_home: /home/toil:/data
+volume_docker: /var/run/docker.sock:/var/run/docker.sock
+docker_image_star: quay.io/ucsc_cgl/star
+star_index_dir: /data/starIndex
+threads: 8
+output_prefix: star_
+read_files: --readFilesIn
+trimmed_fastq_file_1: /data/R1_cutadapt.fastq
+trimmed_fastq_file_2: /data/R2_cutadapt.fastq
