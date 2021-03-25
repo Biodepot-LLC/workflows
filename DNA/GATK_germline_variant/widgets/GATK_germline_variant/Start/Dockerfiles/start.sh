@@ -22,8 +22,8 @@ for file in "${files[@]}"; do
   unquotedFile=$(echo $file | sed 's/\"//g')
   extension="${unquotedFile#*.}" 
   echo "extension is $extension"
-  case extension in
-	fastq|fastq.gz|fq.gz) 
+  case "$extension" in
+	"fastq"|"fastq.gz"|"fq.gz") 
 		fq=$extension;;
 	*) 
 		fq="fq";;
