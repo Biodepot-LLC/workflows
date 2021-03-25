@@ -19,7 +19,7 @@ class OWgatk_genotype_posteriors(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gatk"
     docker_image_tag = "test"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("output",str,"handleInputsoutput")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("output",str,"handleInputsoutput"),("supportTrigger",str,"handleInputssupportTrigger")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -52,6 +52,11 @@ class OWgatk_genotype_posteriors(OWBwBWidget):
     def handleInputsoutput(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("output", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputssupportTrigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("supportTrigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
