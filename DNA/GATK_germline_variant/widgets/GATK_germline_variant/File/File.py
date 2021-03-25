@@ -19,7 +19,7 @@ class OWFile(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gatk"
     docker_image_tag = "test"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("snps_trigger",str,"handleInputssnps_trigger"),("output",str,"handleInputsoutput")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("dbsnp",str,"handleInputsdbsnp"),("output",str,"handleInputsoutput")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -28,16 +28,9 @@ class OWFile(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    reference=pset(None)
-    inputfiles=pset([])
-    output=pset([])
-    alleles=pset([])
-    annotateNum=pset(False)
-    annotation=pset([])
-    annotationgroup=pset(None)
-    emitrefconf=pset(None)
-    bamout=pset([])
-    regions=pset(None)
+    inputfile=pset(None)
+    output=pset(None)
+    dbsnp=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"File")) as f:
@@ -51,19 +44,9 @@ class OWFile(OWBwBWidget):
             self.handleInputs("inputfiles", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputsreference(self, value, *args):
+    def handleInputsdbsnp(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("reference", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
-    def handleInputsreference_trigger(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("reference_trigger", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
-    def handleInputssnps_trigger(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("snps_trigger", value, args[0][0], test=args[0][3])
+            self.handleInputs("dbsnp", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleInputsoutput(self, value, *args):
