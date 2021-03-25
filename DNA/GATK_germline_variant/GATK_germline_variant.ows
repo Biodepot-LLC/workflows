@@ -1,17 +1,17 @@
 <?xml version="1.0" ?><scheme description="" title="GATK-germline-variant" version="2.0">
 	<nodes>
 		<node id="0" name="biobambam2" position="(-160.0, 302.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWbiobambam2.OWbiobambam2" title="Convert bam to fastq" version=""/>
-		<node id="1" name="bwa_mem" position="(0.0, 439.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWbwa_mem.OWbwa_mem" title="Align sequences" version=""/>
-		<node id="2" name="MarkDuplicates" position="(112.0, 440.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWMarkDuplicates.OWMarkDuplicates" title="Mark duplicates" version=""/>
+		<node id="1" name="bwa_mem" position="(-2.0, 444.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWbwa_mem.OWbwa_mem" title="Align sequences" version=""/>
+		<node id="2" name="MarkDuplicates" position="(128.0, 440.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWMarkDuplicates.OWMarkDuplicates" title="Mark duplicates" version=""/>
 		<node id="3" name="fastqc" position="(0.0, 299.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWfastqc.OWfastqc" title="Check quality" version=""/>
 		<node id="4" name="Start" position="(-173.0, 1.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWStart.OWStart" title="Start" version=""/>
 		<node id="5" name="gcloud_download" position="(-150, 150)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgcloud_download.OWgcloud_download" title="Download sample" version=""/>
 		<node id="6" name="gcloud_download" position="(0.0, 149.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgcloud_download.OWgcloud_download" title="Download GATK files" version=""/>
 		<node id="7" name="baserecalibrate" position="(271.0, 435.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWbaserecalibrate.OWbaserecalibrate" title="Recalibrate base quality" version=""/>
 		<node id="8" name="bwa_index" position="(-169.0, 447.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWbwa_index.OWbwa_index" title="bwa_index" version=""/>
-		<node id="9" name="gatk_HC" position="(-170.0, 582.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_HC.OWgatk_HC" title="Haplotype caller" version=""/>
+		<node id="9" name="gatk_HC" position="(-170.0, 581.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_HC.OWgatk_HC" title="Haplotype caller" version=""/>
 		<node id="10" name="gatk_genotype_posteriors" position="(269.0, 581.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_genotype_posteriors.OWgatk_genotype_posteriors" title="Joint calling" version=""/>
-		<node id="11" name="gatk_db_import" position="(-11.0, 580.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_db_import.OWgatk_db_import" title="Combine calls" version=""/>
+		<node id="11" name="gatk_db_import" position="(-10.0, 579.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_db_import.OWgatk_db_import" title="Combine calls" version=""/>
 		<node id="12" name="File" position="(417.0, 584.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWFile.OWFile" title="Evaluate calls" version=""/>
 		<node id="13" name="gatk_vqsr" position="(127.0, 581.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_vqsr.OWgatk_vqsr" title="Filter calls" version=""/>
 		<node id="14" name="igv" position="(583.0, 580.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWigv.OWigv" title="Visualize calls" version=""/>
@@ -51,7 +51,7 @@
 		<text font-family="Helvetica" font-size="16" id="0" rect="(-422.0, -13.0, 129.28571428571422, 31.0)" type="text/plain">Start workflow</text>
 		<text font-family="Helvetica" font-size="16" id="1" rect="(-424.0, 121.0, 150.0, 69.0)" type="text/plain">Download reference and sample data</text>
 		<text font-family="Helvetica" font-size="16" id="2" rect="(-428.0, 293.0, 150.0, 31.0)" type="text/plain">Convert to fastq</text>
-		<text font-family="Helvetica" font-size="16" id="3" rect="(-424.0, 435.0, 150.0, 50.0)" type="text/plain">Align, sort and mark duplicates</text>
+		<text font-family="Helvetica" font-size="16" id="3" rect="(-424.0, 435.0, 150.0, 50.0)" type="text/plain">Re-align and clean</text>
 		<text font-family="Helvetica" font-size="16" id="4" rect="(-416.0, 581.0, 150.0, 31.0)" type="text/plain">Call variants</text>
 	</annotations>
 	<thumbnail/>
@@ -215,35 +215,34 @@ NIloNYl1WAwAAAB1c2VTY2hlZHVsZXJxOolYCwAAAF9fdmVyc2lvbl9fcTtLAXUu
 </properties>
 		<properties format="literal" node_id="8">{'algorithm': 'rb2', 'blocksize': 10000000, 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'reference_trigger': [3], 'reference': [1], 'overwrite': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': []}, 'nWorkers': 1, 'optionsChecked': {'threads': False, 'prefix': False, 'blocksize': False, 'algorithm': False, 'overwrite': False}, 'overwrite': True, 'prefix': '', 'reference': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xbd\x00\x00\x03J\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xbd\x00\x00\x03J\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'threads': 0, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="9">gAN9cQAoWAcAAABhbGxlbGVzcQFdcQJYCwAAAGFubm90YXRlTnVtcQOJWAoAAABhbm5vdGF0aW9u
-cQRdcQUoWBQAAABTdGFuZGFyZEhDQW5ub3RhdGlvbnEGWBIAAABTdGFuZGFyZEFubm90YXRpb25x
-B1gVAAAAQVNfU3RhbmRhcmRBbm5vdGF0aW9ucQhlWA8AAABhbm5vdGF0aW9uZ3JvdXBxCVgAAAAA
-cQpYBgAAAGJhbW91dHELXXEMWBYAAAAvZGF0YS93b3JrL3NhbS5vdXQuYmFtcQ1hWBIAAABjb250
-cm9sQXJlYVZpc2libGVxDohYCwAAAGVtaXRyZWZjb25mcQ9YBAAAAEdWQ0ZxEFgOAAAAZXhwb3J0
-R3JhcGhpY3NxEYlYFQAAAGlucHV0Q29ubmVjdGlvbnNTdG9yZXESfXETWAoAAABpbnB1dGZpbGVz
-cRRdcRUoWBsAAAAvZGF0YS93b3JrL2ZhdGhlcl9jbGVhbi5iYW1xFlgbAAAAL2RhdGEvd29yay9t
-b3RoZXJfY2xlYW4uYmFtcRdYGAAAAC9kYXRhL3dvcmsvc29uX2NsZWFuLmJhbXEYZVgHAAAAaXRl
-cmF0ZXEZiFgPAAAAaXRlcmF0ZVNldHRpbmdzcRp9cRsoWA0AAABpdGVyYWJsZUF0dHJzcRxdcR0o
-WAoAAABpbnB1dGZpbGVzcR5YBgAAAG91dHB1dHEfWAcAAABhbGxlbGVzcSBYCgAAAGFubm90YXRp
-b25xIVgGAAAAYmFtb3V0cSJlWAgAAABuV29ya2Vyc3EjSwFYBAAAAGRhdGFxJGNjb2xsZWN0aW9u
-cwpPcmRlcmVkRGljdApxJSlScSYoWAoAAABpbnB1dGZpbGVzcSd9cSgoWAkAAABncm91cFNpemVx
-KVgBAAAAMXEqWAcAAAB0aHJlYWRzcStYAQAAADFxLFgDAAAAcmFtcS1YAQAAADBxLnVYBgAAAG91
-dHB1dHEvfXEwKGgpWAEAAAAxcTFoK1gBAAAAMXEyaC1YAQAAADBxM3VYBwAAAGFsbGVsZXNxNH1x
-NShoKVgBAAAAMXE2aCtYAQAAADFxN2gtWAEAAAAwcTh1WAoAAABhbm5vdGF0aW9ucTl9cTooaClY
-AQAAADFxO2grWAEAAAAxcTxoLVgBAAAAMHE9dVgGAAAAYmFtb3V0cT59cT8oaClYAQAAADFxQGgr
-WAEAAAAxcUFoLVgBAAAAMHFCdXVYDQAAAGl0ZXJhdGVkQXR0cnNxQ11xRChoJ2gvZXVYCAAAAG5X
-b3JrZXJzcUVLAVgOAAAAb3B0aW9uc0NoZWNrZWRxRn1xRyhYBAAAAEZpbGVxSIlYBwAAAGFsbGVs
-ZXNxSYlYCwAAAGFubm90YXRlTnVtcUqJWAoAAABhbm5vdGF0aW9ucUuIWA8AAABhbm5vdGF0aW9u
-Z3JvdXBxTIlYCwAAAGVtaXRyZWZjb25mcU2IWAYAAABiYW1vdXRxTohYBwAAAHJlZ2lvbnNxT4h1
-WAYAAABvdXRwdXRxUF1xUShYFwAAAC9kYXRhL3dvcmsvZmF0aGVyLmcudmNmcVJYFwAAAC9kYXRh
-L3dvcmsvbW90aGVyLmcudmNmcVNYFAAAAC9kYXRhL3dvcmsvc29uLmcudmNmcVRlWAkAAAByZWZl
-cmVuY2VxVVgqAAAAL2RhdGEvZ2Vub21lL0hvbW9fc2FwaWVuc19hc3NlbWJseTM4LmZhc3RhcVZY
-BwAAAHJlZ2lvbnNxV1gbAAAAY2hyMjA6MTAsMDAwLDAwMC0xMCwyMDAsMDAwcVhYBwAAAHJ1bk1v
-ZGVxWUsAWAsAAABydW5UcmlnZ2Vyc3FaXXFbWBMAAABzYXZlZFdpZGdldEdlb21ldHJ5cVxDMgHZ
-0MsAAgAAAAADUgAAAVMAAAYVAAADiwAAA1IAAAFTAAAGFQAAA4sAAAAAAAAAAAeAcV1YDAAAAHRy
-aWdnZXJSZWFkeXFefXFfWAwAAAB1c2VTY2hlZHVsZXJxYIlYCwAAAF9fdmVyc2lvbl9fcWFLAXUu
+cQRdcQVYDwAAAGFubm90YXRpb25ncm91cHEGXXEHKFgUAAAAU3RhbmRhcmRIQ0Fubm90YXRpb25x
+CFgSAAAAU3RhbmRhcmRBbm5vdGF0aW9ucQlYFQAAAEFTX1N0YW5kYXJkQW5ub3RhdGlvbnEKZVgG
+AAAAYmFtb3V0cQtdcQxYFgAAAC9kYXRhL3dvcmsvc2FtLm91dC5iYW1xDWFYEgAAAGNvbnRyb2xB
+cmVhVmlzaWJsZXEOiFgLAAAAZW1pdHJlZmNvbmZxD1gEAAAAR1ZDRnEQWA4AAABleHBvcnRHcmFw
+aGljc3ERiVgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcRJ9cRNYCgAAAGlucHV0ZmlsZXNxFF1x
+FShYGwAAAC9kYXRhL3dvcmsvZmF0aGVyX2NsZWFuLmJhbXEWWBsAAAAvZGF0YS93b3JrL21vdGhl
+cl9jbGVhbi5iYW1xF1gYAAAAL2RhdGEvd29yay9zb25fY2xlYW4uYmFtcRhlWAcAAABpdGVyYXRl
+cRmIWA8AAABpdGVyYXRlU2V0dGluZ3NxGn1xGyhYDQAAAGl0ZXJhYmxlQXR0cnNxHF1xHShYCgAA
+AGlucHV0ZmlsZXNxHlgGAAAAb3V0cHV0cR9YBwAAAGFsbGVsZXNxIFgKAAAAYW5ub3RhdGlvbnEh
+WA8AAABhbm5vdGF0aW9uZ3JvdXBxIlgGAAAAYmFtb3V0cSNlWAgAAABuV29ya2Vyc3EkSwFYBAAA
+AGRhdGFxJWNjb2xsZWN0aW9ucwpPcmRlcmVkRGljdApxJilScScoWAoAAABpbnB1dGZpbGVzcSh9
+cSkoWAkAAABncm91cFNpemVxKlgBAAAAMXErWAcAAAB0aHJlYWRzcSxoK1gDAAAAcmFtcS1YAQAA
+ADBxLnVYBgAAAG91dHB1dHEvfXEwKGgqaCtoLGgraC1oLnVYBwAAAGFsbGVsZXNxMX1xMihoKmgr
+aCxoK2gtaC51WAoAAABhbm5vdGF0aW9ucTN9cTQoaCpoK2gsaCtoLWgudVgGAAAAYmFtb3V0cTV9
+cTYoaCpoK2gsaCtoLWgudXVYDQAAAGl0ZXJhdGVkQXR0cnNxN11xOChoKGgvZXVYCAAAAG5Xb3Jr
+ZXJzcTlLAVgOAAAAb3B0aW9uc0NoZWNrZWRxOn1xOyhYBAAAAEZpbGVxPIlYBwAAAGFsbGVsZXNx
+PYlYCwAAAGFubm90YXRlTnVtcT6JWAoAAABhbm5vdGF0aW9ucT+JWA8AAABhbm5vdGF0aW9uZ3Jv
+dXBxQIhYCwAAAGVtaXRyZWZjb25mcUGIWAYAAABiYW1vdXRxQohYBwAAAHJlZ2lvbnNxQ4h1WAYA
+AABvdXRwdXRxRF1xRShYFwAAAC9kYXRhL3dvcmsvZmF0aGVyLmcudmNmcUZYFwAAAC9kYXRhL3dv
+cmsvbW90aGVyLmcudmNmcUdYFAAAAC9kYXRhL3dvcmsvc29uLmcudmNmcUhlWAkAAAByZWZlcmVu
+Y2VxSVgqAAAAL2RhdGEvZ2Vub21lL0hvbW9fc2FwaWVuc19hc3NlbWJseTM4LmZhc3RhcUpYBwAA
+AHJlZ2lvbnNxS1gbAAAAY2hyMjA6MTAsMDAwLDAwMC0xMCwyMDAsMDAwcUxYBwAAAHJ1bk1vZGVx
+TUsAWAsAAABydW5UcmlnZ2Vyc3FOXXFPWBMAAABzYXZlZFdpZGdldEdlb21ldHJ5cVBDMgHZ0MsA
+AgAAAAADUgAAAVMAAAYVAAADiwAAA1IAAAFTAAAGFQAAA4sAAAAAAAAAAAeAcVFYDAAAAHRyaWdn
+ZXJSZWFkeXFSfXFTWAwAAAB1c2VTY2hlZHVsZXJxVIlYCwAAAF9fdmVyc2lvbl9fcVVLAXUu
 </properties>
 		<properties format="literal" node_id="10">{'alleles': [], 'annotateNum': False, 'annotation': [], 'annotationgroup': '', 'bamout': [], 'controlAreaVisible': True, 'emitrefconf': '', 'exportGraphics': False, 'inputConnectionsStore': {}, 'inputfiles': [], 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles', 'output', 'alleles', 'annotation', 'bamout']}, 'nWorkers': 1, 'optionsChecked': {'File': False, 'alleles': False, 'annotateNum': False, 'annotation': False, 'annotationgroup': False, 'emitrefconf': False, 'bamout': False, 'regions': False}, 'output': [], 'reference': '', 'regions': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
-		<properties format="literal" node_id="11">{'alleles': [], 'annotateNum': False, 'annotation': [], 'annotationgroup': '', 'bamout': [], 'controlAreaVisible': True, 'emitrefconf': '', 'exportGraphics': False, 'inputConnectionsStore': {}, 'inputfiles': [], 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles', 'output', 'alleles', 'annotation', 'bamout']}, 'nWorkers': 1, 'optionsChecked': {'File': False, 'alleles': False, 'annotateNum': False, 'annotation': False, 'annotationgroup': False, 'emitrefconf': False, 'bamout': False, 'regions': False}, 'output': [], 'reference': '', 'regions': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="11">{'alleles': [], 'annotateNum': False, 'annotation': [], 'annotationgroup': '', 'bamout': [], 'controlAreaVisible': True, 'emitrefconf': '', 'exportGraphics': False, 'inputConnectionsStore': {}, 'inputfiles': [], 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles', 'output', 'alleles', 'annotation', 'bamout']}, 'nWorkers': 1, 'optionsChecked': {'File': False, 'alleles': False, 'annotateNum': False, 'annotation': False, 'annotationgroup': False, 'emitrefconf': False, 'bamout': False, 'regions': False}, 'output': [], 'reference': '', 'regions': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01\x83\x00\x00\x06\x11\x00\x00\x02\xcc\x00\x00\x03R\x00\x00\x01\x9b\x00\x00\x06\x11\x00\x00\x02\xc9\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="literal" node_id="12">{'alleles': [], 'annotateNum': False, 'annotation': [], 'annotationgroup': '', 'bamout': [], 'controlAreaVisible': True, 'emitrefconf': '', 'exportGraphics': False, 'inputConnectionsStore': {}, 'inputfiles': [], 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles', 'output', 'alleles', 'annotation', 'bamout']}, 'nWorkers': 1, 'optionsChecked': {'File': False, 'alleles': False, 'annotateNum': False, 'annotation': False, 'annotationgroup': False, 'emitrefconf': False, 'bamout': False, 'regions': False}, 'output': [], 'reference': '', 'regions': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="literal" node_id="13">{'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'inputfiles': [], 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles', 'output']}, 'known': '', 'nWorkers': 1, 'optionsChecked': {}, 'output': [], 'reference': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': None, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="literal" node_id="14">{'autoDetermineRegions': True, 'batch': '', 'controlAreaVisible': True, 'exportGraphics': False, 'genome': 'hg38', 'inputConnectionsStore': {}, 'inputFile': [], 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputFile']}, 'nWorkers': 1, 'optionsChecked': {'genome': False, 'batch': False, 'autoDetermineRegions': False}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\xff\xff\xff\xe5\x00\x00\x04\xff\x00\x00\x02y\x00\x00\x00\x00\xff\xff\xff\xfd\x00\x00\x04\xff\x00\x00\x02v\x00\x00\x00\x00\x00\x00\x00\x00\x05V', 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>

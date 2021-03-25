@@ -34,7 +34,7 @@ class OWgatk_HC(OWBwBWidget):
     alleles=pset([])
     annotateNum=pset(False)
     annotation=pset([])
-    annotationgroup=pset(None)
+    annotationgroup=pset([])
     emitrefconf=pset(None)
     bamout=pset([])
     regions=pset(None)
