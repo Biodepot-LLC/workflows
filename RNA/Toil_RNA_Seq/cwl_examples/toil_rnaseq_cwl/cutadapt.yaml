@@ -1,0 +1,10 @@
+volume_home: /home/toil:/data
+volume_docker: /var/run/docker.sock:/var/run/docker.sock
+docker_image_cutadapt: varikmp/cutadapt
+p_a: agatcggaagag
+p_m: 35
+p_A: agatcggaagag
+trimmed_fastq_file_1: /data/R1_cutadapt.fastq
+trimmed_fastq_file_2: /data/R2_cutadapt.fastq
+fastq_file_1: /data/R1.chr6.fq
+fastq_file_2: /data/R2.chr6.fq

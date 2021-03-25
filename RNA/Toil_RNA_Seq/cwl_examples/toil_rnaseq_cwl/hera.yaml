@@ -1,0 +1,7 @@
+volume_home: /home/toil:/data
+volume_docker: /var/run/docker.sock:/var/run/docker.sock
+docker_image_hera: quay.io/ucsc_cgl/hera
+hera_method: quant
+hera_index_dir: /data/hera-index
+trimmed_fastq_file_1: /data/R1.chr6.fq 
+trimmed_fastq_file_2: /data/R2.chr6.fq
