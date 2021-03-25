@@ -18,7 +18,7 @@ class OWgatk_genotype_posteriors(OWBwBWidget):
     icon = getIconName(__file__,"gatk-genotypePosteriors.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk"
-    docker_image_tag = "test"
+    docker_image_tag = "4.1.9.0__f5684bf4"
     inputs = [("inputfiles",str,"handleInputsinputfiles"),("output",str,"handleInputsoutput"),("supportTrigger",str,"handleInputssupportTrigger")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

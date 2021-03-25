@@ -18,7 +18,7 @@ class OWgatk_genotypeGVCFs(OWBwBWidget):
     icon = getIconName(__file__,"gatk-genotype-gvcf.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk"
-    docker_image_tag = "test"
+    docker_image_tag = "4.1.9.0__f5684bf4"
     inputs = [("inputfile",str,"handleInputsinputfile"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("output",str,"handleInputsoutput")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

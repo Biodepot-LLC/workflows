@@ -11,7 +11,7 @@
 		<node id="8" name="bwa_index" position="(-150, 450)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWbwa_index.OWbwa_index" title="bwa_index" version=""/>
 		<node id="9" name="gatk_HC" position="(-150, 600)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_HC.OWgatk_HC" title="Haplotype caller" version=""/>
 		<node id="10" name="gatk_genotype_posteriors" position="(300, 600)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_genotype_posteriors.OWgatk_genotype_posteriors" title="Refine variant calls" version=""/>
-		<node id="11" name="gatk_db_import" position="(0, 600)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_db_import.OWgatk_db_import" title="Combine calls" version=""/>
+		<node id="11" name="gatk_db_import" position="(1.0, 600.0)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_db_import.OWgatk_db_import" title="Combine calls" version=""/>
 		<node id="12" name="igv" position="(450, 600)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWigv.OWigv" title="Visualize calls" version=""/>
 		<node id="13" name="gatk_genotypeGVCFs" position="(150, 600)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgatk_genotypeGVCFs.OWgatk_genotypeGVCFs" title="Join GVCFs" version=""/>
 		<node id="14" name="gcloud_download" position="(150, 150)" project_name="GATK-germline-variant" qualified_name="GATK_germline_variant.OWgcloud_download.OWgcloud_download" title="Download supporting callset" version=""/>
@@ -223,32 +223,32 @@ Z2dlcnE1ZVgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXE2QzIB2dDLAAIAAAAAAAAAAAAYAAAHfwAA
 A6oAAAAAAAAAGAAAB38AAAOqAAAAAAAAAAAHgHE3WAwAAAB0cmlnZ2VyUmVhZHlxOH1xOShoM4lo
 NIloNYl1WAwAAAB1c2VTY2hlZHVsZXJxOolYCwAAAF9fdmVyc2lvbl9fcTtLAXUu
 </properties>
-		<properties format="literal" node_id="8">{'algorithm': 'rb2', 'blocksize': 10000000, 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'reference_trigger': [3], 'reference': [1], 'overwrite': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': []}, 'nWorkers': 1, 'optionsChecked': {'threads': True, 'prefix': False, 'blocksize': False, 'algorithm': False, 'overwrite': False}, 'overwrite': None, 'prefix': '', 'reference': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xbd\x00\x00\x03J\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xbd\x00\x00\x03J\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'threads': 8, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="8">{'algorithm': 'rb2', 'blocksize': 10000000, 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'reference_trigger': [3], 'reference': [1], 'overwrite': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': []}, 'nWorkers': 1, 'optionsChecked': {'threads': True, 'prefix': False, 'blocksize': False, 'algorithm': False, 'overwrite': False}, 'overwrite': True, 'prefix': '', 'reference': '', 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xbd\x00\x00\x03J\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xbd\x00\x00\x03J\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'threads': 8, 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="9">gAN9cQAoWAcAAABhbGxlbGVzcQFdcQJYCwAAAGFubm90YXRlTnVtcQOJWAoAAABhbm5vdGF0aW9u
 cQRdcQVYDwAAAGFubm90YXRpb25ncm91cHEGXXEHKFgUAAAAU3RhbmRhcmRIQ0Fubm90YXRpb25x
 CFgSAAAAU3RhbmRhcmRBbm5vdGF0aW9ucQlYFQAAAEFTX1N0YW5kYXJkQW5ub3RhdGlvbnEKZVgG
 AAAAYmFtb3V0cQtdcQxYFgAAAC9kYXRhL3dvcmsvc2FtLm91dC5iYW1xDWFYEgAAAGNvbnRyb2xB
 cmVhVmlzaWJsZXEOiFgLAAAAZW1pdHJlZmNvbmZxD1gEAAAAR1ZDRnEQWA4AAABleHBvcnRHcmFw
 aGljc3ERiVgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcRJ9cRNYCgAAAGlucHV0ZmlsZXNxFF1x
-FUsGYXNoFE5YBwAAAGl0ZXJhdGVxFohYDwAAAGl0ZXJhdGVTZXR0aW5nc3EXfXEYKFgNAAAAaXRl
-cmFibGVBdHRyc3EZXXEaKFgKAAAAaW5wdXRmaWxlc3EbWAYAAABvdXRwdXRxHFgHAAAAYWxsZWxl
-c3EdWAoAAABhbm5vdGF0aW9ucR5YDwAAAGFubm90YXRpb25ncm91cHEfWAYAAABiYW1vdXRxIGVY
-CAAAAG5Xb3JrZXJzcSFLAVgEAAAAZGF0YXEiY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0CnEjKVJx
-JChYCgAAAGlucHV0ZmlsZXNxJX1xJihYCQAAAGdyb3VwU2l6ZXEnWAEAAAAxcShYBwAAAHRocmVh
-ZHNxKWgoWAMAAAByYW1xKlgBAAAAMHErdVgGAAAAb3V0cHV0cSx9cS0oaCdoKGgpaChoKmgrdVgH
-AAAAYWxsZWxlc3EufXEvKGgnaChoKWgoaCpoK3VYCgAAAGFubm90YXRpb25xMH1xMShoJ2goaClo
-KGgqaCt1WAYAAABiYW1vdXRxMn1xMyhoJ2goaCloKGgqaCt1dVgNAAAAaXRlcmF0ZWRBdHRyc3E0
-XXE1KGglaCxldVgIAAAAbldvcmtlcnNxNksBWA4AAABvcHRpb25zQ2hlY2tlZHE3fXE4KFgEAAAA
-RmlsZXE5iVgHAAAAYWxsZWxlc3E6iVgLAAAAYW5ub3RhdGVOdW1xO4lYCgAAAGFubm90YXRpb25x
-PIlYDwAAAGFubm90YXRpb25ncm91cHE9iFgLAAAAZW1pdHJlZmNvbmZxPohYBgAAAGJhbW91dHE/
-iFgHAAAAcmVnaW9uc3FAiHVYBgAAAG91dHB1dHFBXXFCKFgXAAAAL2RhdGEvd29yay9mYXRoZXIu
-Zy52Y2ZxQ1gXAAAAL2RhdGEvd29yay9tb3RoZXIuZy52Y2ZxRFgUAAAAL2RhdGEvd29yay9zb24u
-Zy52Y2ZxRWVYCQAAAHJlZmVyZW5jZXFGWCoAAAAvZGF0YS9nZW5vbWUvSG9tb19zYXBpZW5zX2Fz
-c2VtYmx5MzguZmFzdGFxR1gHAAAAcmVnaW9uc3FIWBsAAABjaHIyMDoxMCwwMDAsMDAwLTEwLDIw
-MCwwMDBxSVgHAAAAcnVuTW9kZXFKSwBYCwAAAHJ1blRyaWdnZXJzcUtdcUxYEwAAAHNhdmVkV2lk
-Z2V0R2VvbWV0cnlxTUMyAdnQywACAAAAAANSAAABUwAABhUAAAOLAAADUgAAAVMAAAYVAAADiwAA
-AAAAAAAAB4BxTlgMAAAAdHJpZ2dlclJlYWR5cU99cVBYDAAAAHVzZVNjaGVkdWxlcnFRiVgLAAAA
-X192ZXJzaW9uX19xUksBdS4=
+FUsGYXNYCgAAAGlucHV0ZmlsZXNxFk5YBwAAAGl0ZXJhdGVxF4hYDwAAAGl0ZXJhdGVTZXR0aW5n
+c3EYfXEZKFgNAAAAaXRlcmFibGVBdHRyc3EaXXEbKFgKAAAAaW5wdXRmaWxlc3EcWAYAAABvdXRw
+dXRxHVgHAAAAYWxsZWxlc3EeWAoAAABhbm5vdGF0aW9ucR9YDwAAAGFubm90YXRpb25ncm91cHEg
+WAYAAABiYW1vdXRxIWVYCAAAAG5Xb3JrZXJzcSJLAVgEAAAAZGF0YXEjY2NvbGxlY3Rpb25zCk9y
+ZGVyZWREaWN0CnEkKVJxJShYCgAAAGlucHV0ZmlsZXNxJn1xJyhYCQAAAGdyb3VwU2l6ZXEoWAEA
+AAAxcSlYBwAAAHRocmVhZHNxKmgpWAMAAAByYW1xK1gBAAAAMHEsdVgGAAAAb3V0cHV0cS19cS4o
+aChoKWgqaCloK2gsdVgHAAAAYWxsZWxlc3EvfXEwKGgoaCloKmgpaCtoLHVYCgAAAGFubm90YXRp
+b25xMX1xMihoKGgpaCpoKWgraCx1WAYAAABiYW1vdXRxM31xNChoKGgpaCpoKWgraCx1dVgNAAAA
+aXRlcmF0ZWRBdHRyc3E1XXE2KGgmaC1ldVgIAAAAbldvcmtlcnNxN0sBWA4AAABvcHRpb25zQ2hl
+Y2tlZHE4fXE5KFgEAAAARmlsZXE6iVgHAAAAYWxsZWxlc3E7iVgLAAAAYW5ub3RhdGVOdW1xPIlY
+CgAAAGFubm90YXRpb25xPYlYDwAAAGFubm90YXRpb25ncm91cHE+iFgLAAAAZW1pdHJlZmNvbmZx
+P4hYBgAAAGJhbW91dHFAiFgHAAAAcmVnaW9uc3FBiHVYBgAAAG91dHB1dHFCXXFDKFgXAAAAL2Rh
+dGEvd29yay9mYXRoZXIuZy52Y2ZxRFgXAAAAL2RhdGEvd29yay9tb3RoZXIuZy52Y2ZxRVgUAAAA
+L2RhdGEvd29yay9zb24uZy52Y2ZxRmVYCQAAAHJlZmVyZW5jZXFHWCoAAAAvZGF0YS9nZW5vbWUv
+SG9tb19zYXBpZW5zX2Fzc2VtYmx5MzguZmFzdGFxSFgHAAAAcmVnaW9uc3FJWBsAAABjaHIyMDox
+MCwwMDAsMDAwLTEwLDIwMCwwMDBxSlgHAAAAcnVuTW9kZXFLSwBYCwAAAHJ1blRyaWdnZXJzcUxd
+cU1YEwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlxTkMyAdnQywACAAAAAANSAAABUwAABhUAAAOLAAAD
+UgAAAVMAAAYVAAADiwAAAAAAAAAAB4BxT1gMAAAAdHJpZ2dlclJlYWR5cVB9cVFYDAAAAHVzZVNj
+aGVkdWxlcnFSiVgLAAAAX192ZXJzaW9uX19xU0sBdS4=
 </properties>
 		<properties format="literal" node_id="10">{'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'inputfiles': [13], 'supportTrigger': [10]}, 'inputfile': '/data/work/combined.vcf', 'iterate': False, 'iterateSettings': {'iterableAttrs': ['supportfiles'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'File': False, 'alleles': False, 'annotateNum': False, 'annotation': False, 'annotationgroup': False, 'emitrefconf': False, 'bamout': False, 'regions': True, 'supportfiles': True, 'pedfile': True, 'skipfamily': False, 'skippopulation': False, 'skipindels': False}, 'output': '/data/work/trio.vcf', 'pedfile': '/data/work/trio.ped', 'regions': 'chr20', 'runMode': 2, 'runTriggers': ['inputfiles', 'supportTrigger'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01S\x00\x00\x079\x00\x00\x03\xa5\x00\x00\x03R\x00\x00\x01S\x00\x00\x079\x00\x00\x03\xa5\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'skipfamily': False, 'skipindels': False, 'skippopulation': False, 'supportfiles': ['/data/genome/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf'], 'triggerReady': {'inputfiles': False, 'supportTrigger': False}, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="literal" node_id="11">{'annotationgroup': ['StandardAnnotation', 'StandardHCAnnotation', 'AS_StandardAnnotation'], 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'inputfiles': [15]}, 'inputfiles': None, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['inputfiles', 'annotationgroup'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'File': False, 'alleles': False, 'annotateNum': False, 'annotation': False, 'annotationgroup': True, 'emitrefconf': False, 'bamout': False, 'readerthreads': False, 'overwrite': False}, 'output': '/data/work/trio', 'overwrite': True, 'readerthreads': 1, 'regions': 'chr20', 'runMode': 2, 'runTriggers': ['inputfiles'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03\x96\x00\x00\x00\xcb\x00\x00\x06\x8e\x00\x00\x02\xcb\x00\x00\x03\x96\x00\x00\x00\xcb\x00\x00\x06\x8e\x00\x00\x02\xcb\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'inputfiles': False}, 'useScheduler': False, '__version__': 1}</properties>
