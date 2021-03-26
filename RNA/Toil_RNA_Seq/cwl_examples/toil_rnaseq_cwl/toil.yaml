@@ -1,4 +1,4 @@
-volume_home: /home/toil:/data
+volume_home: /home/ubuntu:/data
 volume_docker: /var/run/docker.sock:/var/run/docker.sock
 docker_image_cutadapt: varikmp/cutadapt
 docker_image_fastqc: quay.io/ucsc_cgl/fastqc
@@ -29,6 +29,6 @@ has_qualities: --no-qualities
 probability: 0.5
 seed_len: 25
 frag_len_mean: -1.0
-rsem_bam: /data/rnaAligned.toTranscriptome.out.bam
+rsem_bam: /data/Aligned.toTranscriptome.out.bam
 rsem_header_path: /data/rsem_ref_hg38/hg38
 rsem_method: rsem

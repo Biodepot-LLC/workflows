@@ -1,4 +1,4 @@
-volume_home: /home/toil:/data
+volume_home: /home/ubuntu:/data
 volume_docker: /var/run/docker.sock:/var/run/docker.sock
 docker_image_cutadapt: varikmp/cutadapt
 p_a: agatcggaagag
