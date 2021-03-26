@@ -1,0 +1,13 @@
+<?xml version="1.0" ?><scheme description="" title="Toil" version="2.0">
+	<nodes>
+		<node id="0" name="Toil_CWL" position="(214.0, 70.0)" project_name="Toil" qualified_name="Toil.OWToil_CWL.OWToil_CWL" title="Toil_RNASeq" version=""/>
+		<node id="1" name="Toil_WDL" position="(91.0, 67.0)" project_name="Toil" qualified_name="Toil.OWToil_WDL.OWToil_WDL" title="Toil_RNASeq" version=""/>
+	</nodes>
+	<links/>
+	<annotations/>
+	<thumbnail/>
+	<node_properties>
+		<properties format="literal" node_id="0">{'CWL_FILE': '/data/toil.cwl', 'YAML_FILE': '/data/toil.yaml', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03\x02\x00\x00\x00N\x00\x00\x06\xcc\x00\x00\x03\x07\x00\x00\x03\x02\x00\x00\x00N\x00\x00\x06\xcc\x00\x00\x03\x07\x00\x00\x00\x00\x00\x00\x00\x00\x078', 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="1">{'JSON_FILE': '/data/toil.json', 'WDL_FILE': '/data/toil.wdl', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03J\x00\x00\x007\x00\x00\x06\xf2\x00\x00\x02\xdd\x00\x00\x03J\x00\x00\x00O\x00\x00\x06\xf2\x00\x00\x02\xda\x00\x00\x00\x00\x00\x00\x00\x00\x078', 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+	</node_properties>
+</scheme>
