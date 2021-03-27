@@ -1,0 +1,15 @@
+<?xml version="1.0" ?><scheme description="" title="toil-wgs-sanger" version="2.0">
+	<nodes>
+		<node id="0" name="Toil_CWL" position="(247.0, 122.0)" project_name="toil-wgs-sanger" qualified_name="toil_wgs_sanger.OWToil_CWL.OWToil_CWL" title="Execute WGS workflow" version=""/>
+		<node id="1" name="downloadURL" position="(97.0, 122.0)" project_name="toil-wgs-sanger" qualified_name="toil_wgs_sanger.OWdownloadURL.OWdownloadURL" title="Download CWL files" version=""/>
+	</nodes>
+	<links>
+		<link enabled="true" id="0" sink_channel="Trigger" sink_node_id="0" source_channel="directory" source_node_id="1"/>
+	</links>
+	<annotations/>
+	<thumbnail/>
+	<node_properties>
+		<properties format="literal" node_id="0">{'CWL_FILE': '/data/cgpwgs.cwl', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'Trigger': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'objectsfile': '/data/cgpwgs.json', 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01k\x00\x00\x06\xd4\x00\x00\x039\x00\x00\x03R\x00\x00\x01\x83\x00\x00\x06\xd4\x00\x00\x036\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="1">{'URL': ['https://drive.google.com/file/d/1D9JpRWNjbxpRBQlpYyWE5FdwQK203Izx/view?usp=sharing', 'https://drive.google.com/file/d/1yruhyKldCjpkzEbkYYZKeorCKn1w1uT4/view?usp=sharing'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': False, 'directory': '/data', 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'decompress': False, 'concatenateFile': False}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x03R\x00\x00\x01\x83\x00\x00\x06o\x00\x00\x03\x13\x00\x00\x03R\x00\x00\x01\x9b\x00\x00\x06o\x00\x00\x03\x10\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {}, 'useScheduler': False, '__version__': 1}</properties>
+	</node_properties>
+</scheme>
