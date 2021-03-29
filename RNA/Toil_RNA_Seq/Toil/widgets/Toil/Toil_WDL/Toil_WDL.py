@@ -29,7 +29,7 @@ class OWToil_WDL(OWBwBWidget):
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
     WDL_FILE=pset(None)
-    JSON_FILE=pset(None)
+    OBJECTS_FILE=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Toil_WDL")) as f:
