@@ -1,13 +1,27 @@
-#!/bin/bash 
- if [ -z ${prefix+x} ]; then
+#!/bin/bash
+if [ -z ${prefix+x} ]; then
 	baseFile=$reference
- else
-    baseFile=$prefix
- fi  
+else
+	baseFile=$prefix
+fi
 
- { [ -f ${baseFile}.64.bwt ] || [ -f ${baseFile}.bwt ]; } && [ -z ${overwrite+x} ] && echo "reference exists and will not overwrite" && exit 0 
-  echo "bwa index $@"
-  bwa index $@ 
-  #cannot trust return code on this from github issue - if the SA file is constructed then it probably is OK
-  { [ -f ${baseFile}.64.sa ] || [ -f ${baseFile}.sa ]; }  && exit 0
-  
+indexExists() {
+	for ex in `echo amb ann bwt pac sa`; do
+		echo "Checking for ${baseFile}.$ex"
+		[[ ! -f ${baseFile}.64.$ex && ! -f ${baseFile}.$ex ]] && return 1
+	done
+	return 0
+}
+
+if indexExists && [[ -z "${overwrite}" ]]; then
+	echo "reference exists and will not overwrite"
+	exit 0
+fi
+
+cmd="bwa index $@"
+echo $cmd
+$cmd
+
+# cannot trust return code on this from github issue - if the SA file is constructed then it probably is OK
+indexExists
+exit $?
