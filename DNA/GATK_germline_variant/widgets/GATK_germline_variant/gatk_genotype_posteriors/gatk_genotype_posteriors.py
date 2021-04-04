@@ -29,13 +29,13 @@ class OWgatk_genotype_posteriors(OWBwBWidget):
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
     supportfiles=pset([])
-    inputfile=pset(None)
     output=pset(None)
     regions=pset(None)
     pedfile=pset(None)
     skipfamily=pset(False)
     skippopulation=pset(False)
     skipindels=pset(False)
+    inputfiles=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"gatk_genotype_posteriors")) as f:

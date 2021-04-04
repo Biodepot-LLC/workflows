@@ -18,7 +18,7 @@ class OWbwa_mem(OWBwBWidget):
     icon = getIconName(__file__,"bwasamsort.png")
     want_main_area = False
     docker_image_name = "biodepot/bwa-samtools-gdc"
-    docker_image_tag = "0.7.15__1.9.52__alpine_3.12__083058b9"
+    docker_image_tag = "0.7.15__1.9.52__alpine_3.12__21101704"
     inputs = [("fastq_files",str,"handleInputsfastq_files"),("readgroup",str,"handleInputsreadgroup"),("reference",str,"handleInputsreference"),("fastq_trigger",str,"handleInputsfastq_trigger"),("reference_trigger",str,"handleInputsreference_trigger"),("outputfiles",str,"handleInputsoutputfiles")]
     outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

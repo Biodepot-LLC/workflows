@@ -18,8 +18,8 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-gatk-germline-variant_start"
-    docker_image_tag = "test"
-    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("gdccredentials",str),("gdctoken",str),("vepDirectory",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("createindex",str),("overwriteindex",str),("bypasBiobambam",str)]
+    docker_image_tag = "latest"
+    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("gdccredentials",str),("gdctoken",str),("vepDirectory",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("fastqcfiles",str),("createindex",str),("overwriteindex",str),("bypasBiobambam",str),("recalibratebamfiles",str),("hcvcffiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -44,8 +44,11 @@ class OWStart(OWBwBWidget):
     fastqo1files=pset([])
     fastqo2files=pset([])
     fastqsfiles=pset([])
+    fastqcfiles=pset([])
     overwriteindex=pset(False)
     bypassBiobambam=pset(False)
+    recalibratebamfiles=pset([])
+    hcvcffiles=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -120,6 +123,10 @@ class OWStart(OWBwBWidget):
             outputValue=getattr(self,"fastqfiles")
         self.send("fastqfiles", outputValue)
         outputValue=None
+        if hasattr(self,"fastqcfiles"):
+            outputValue=getattr(self,"fastqcfiles")
+        self.send("fastqcfiles", outputValue)
+        outputValue=None
         if hasattr(self,"createindex"):
             outputValue=getattr(self,"createindex")
         self.send("createindex", outputValue)
@@ -131,3 +138,11 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"bypasBiobambam"):
             outputValue=getattr(self,"bypasBiobambam")
         self.send("bypasBiobambam", outputValue)
+        outputValue=None
+        if hasattr(self,"recalibratebamfiles"):
+            outputValue=getattr(self,"recalibratebamfiles")
+        self.send("recalibratebamfiles", outputValue)
+        outputValue=None
+        if hasattr(self,"hcvcffiles"):
+            outputValue=getattr(self,"hcvcffiles")
+        self.send("hcvcffiles", outputValue)
