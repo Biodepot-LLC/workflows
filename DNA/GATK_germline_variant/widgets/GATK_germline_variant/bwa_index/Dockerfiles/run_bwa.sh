@@ -41,5 +41,7 @@ else
 	cmd="bwa mem $@ | samtools sort -o $outputfile"
 fi
 echo $cmd
-bash -c "$cmd"
+# if either bwa or samtools fails return an error status
+set -o pipefail
+eval $cmd
 exit $?
