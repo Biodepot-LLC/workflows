@@ -18,7 +18,7 @@ class OWbwa_index(OWBwBWidget):
     icon = getIconName(__file__,"bwasamsort.png")
     want_main_area = False
     docker_image_name = "biodepot/bwa-samtools-gdc"
-    docker_image_tag = "0.7.15__1.9.52__alpine_3.12__21101704"
+    docker_image_tag = "0.7.15__1.9.52__alpine_3.12__da70fa5a"
     inputs = [("reference",str,"handleInputsreference"),("overwrite",str,"handleInputsoverwrite"),("reference_trigger",str,"handleInputsreference_trigger")]
     outputs = [("reference",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
