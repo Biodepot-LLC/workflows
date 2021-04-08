@@ -18,8 +18,8 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-gatk-germline-variant_start"
-    docker_image_tag = "alpine_3.12.1__7d3d39b4"
-    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("gdccredentials",str),("gdctoken",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("fastqcfiles",str),("createindex",str),("overwriteindex",str),("bypasBiobambam",str),("recalibratebamfiles",str),("hcvcffiles",str)]
+    docker_image_tag = "alpine_3.12.1__15dec25a"
+    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("gdccredentials",str),("gdctoken",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("fastqcfiles",str),("createindex",str),("overwriteindex",str),("bypassBiobambam",str),("recalibratebamfiles",str),("hcvcffiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -130,9 +130,9 @@ class OWStart(OWBwBWidget):
             outputValue=getattr(self,"overwriteindex")
         self.send("overwriteindex", outputValue)
         outputValue=None
-        if hasattr(self,"bypasBiobambam"):
-            outputValue=getattr(self,"bypasBiobambam")
-        self.send("bypasBiobambam", outputValue)
+        if hasattr(self,"bypassBiobambam"):
+            outputValue=getattr(self,"bypassBiobambam")
+        self.send("bypassBiobambam", outputValue)
         outputValue=None
         if hasattr(self,"recalibratebamfiles"):
             outputValue=getattr(self,"recalibratebamfiles")

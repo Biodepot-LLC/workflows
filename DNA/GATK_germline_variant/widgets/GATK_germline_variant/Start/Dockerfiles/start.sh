@@ -53,7 +53,7 @@ for file in "${files[@]}"; do
 		#filenames for bwa
 		fastq+=(${fileBase}.$fq)
 	fi
-	fastqc+=(${fileBase}\*.$fq)
+	fastqc+=(${fileBase}'*.'$fq)
 	bams+=(${fileBase}.bam)
 	realignBams+=(${fileBase}_realign.bam)
 	cleanBams+=(${fileBase}_clean.bam)
