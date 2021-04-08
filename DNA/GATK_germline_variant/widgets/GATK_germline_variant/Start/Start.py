@@ -19,7 +19,7 @@ class OWStart(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gdc-gatk-germline-variant_start"
     docker_image_tag = "alpine_3.12.1__15dec25a"
-    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("gdccredentials",str),("gdctoken",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("fastqcfiles",str),("createindex",str),("overwriteindex",str),("bypassBiobambam",str),("recalibratebamfiles",str),("hcvcffiles",str)]
+    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("fastqcfiles",str),("createindex",str),("overwriteindex",str),("bypassBiobambam",str),("recalibratebamfiles",str),("hcvcffiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -32,8 +32,6 @@ class OWStart(OWBwBWidget):
     inputFiles=pset([])
     cleanbamfiles=pset([])
     genomefile=pset(None)
-    gdccredentials=pset(None)
-    gdctoken=pset(None)
     fastqfiles=pset([])
     realignedfiles=pset([])
     pairedend=pset(False)
@@ -77,14 +75,6 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"cleanbamfiles"):
             outputValue=getattr(self,"cleanbamfiles")
         self.send("cleanbamfiles", outputValue)
-        outputValue=None
-        if hasattr(self,"gdccredentials"):
-            outputValue=getattr(self,"gdccredentials")
-        self.send("gdccredentials", outputValue)
-        outputValue=None
-        if hasattr(self,"gdctoken"):
-            outputValue=getattr(self,"gdctoken")
-        self.send("gdctoken", outputValue)
         outputValue=None
         if hasattr(self,"bamfiles"):
             outputValue=getattr(self,"bamfiles")
