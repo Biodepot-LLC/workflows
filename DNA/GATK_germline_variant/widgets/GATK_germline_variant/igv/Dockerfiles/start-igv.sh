@@ -38,16 +38,20 @@ elif [ -n "$autoDetermineRegions" ]; then
 	[ -n "$genome_id" ] && echo "genome $genome_id" >> $temp_batch
 	for f in "${input_file[@]}"; do
 		# verify that file is .maf type
-		if ! echo $f | grep -q "maf$"; then
+		if ! echo $f | grep -q "maf$\|vcf$"; then
 			echo "ERROR: $f is not .maf file type, cannot auto-determine regions of interest"
 			exit 1
 		fi
-		# load .maf file
+		# load .maf or .vcf file
 		echo "load $f" >> $temp_batch
 	done
 	# Load regions of interest, these are parsed directly from the .maf file
 	for f in "${input_file[@]}"; do
-		tail -n +3 $f | awk '{print "region " $5,$6,$7}' >> $temp_batch
+		if echo $f | grep -q "maf$"; then
+			tail -n +3 $f | awk '{print "region",$5,$6,$7}' >> $temp_batch
+		elif echo $f | grep -q "vcf$"; then
+			awk '!/^#/ {print "region",$1,$2,$2}' $f >> $temp_batch
+		fi
 	done
 	igv.sh -b $temp_batch
 else
