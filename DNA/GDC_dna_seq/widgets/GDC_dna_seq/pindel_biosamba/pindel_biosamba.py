@@ -19,7 +19,7 @@ class OWpindel_biosamba(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/pindel-gdc"
     docker_image_tag = "0.2.5b8__10f065ec"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("Trigger",str,"handleInputsTrigger"),("outputfiles",str,"handleInputsoutputfiles")]
     outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -49,6 +49,11 @@ class OWpindel_biosamba(OWBwBWidget):
     def handleInputsTrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputfiles(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputfiles", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

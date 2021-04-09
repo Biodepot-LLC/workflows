@@ -32,7 +32,7 @@ class OWgcloud_download(OWBwBWidget):
     downloadDir=pset("/data")
     dirs=pset([])
     files=pset([])
-    noClobber=pset(None)
+    noClobber=pset(True)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"gcloud_download")) as f:

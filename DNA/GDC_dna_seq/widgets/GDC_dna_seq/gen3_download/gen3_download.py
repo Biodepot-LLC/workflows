@@ -29,7 +29,7 @@ class OWgen3_download(OWBwBWidget):
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
     profile=pset(None)
-    credentials=pset(None)
+    credentials=pset("/data/credentials.json")
     downloadDir=pset("/data")
     guids=pset([])
     manifest=pset(None)
