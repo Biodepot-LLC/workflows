@@ -19,7 +19,7 @@ class OWpindel_sort(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/pindel-filter"
     docker_image_tag = "3.6__dbc607bd"
-    inputs = [("inputfile",str,"handleInputsinputfile"),("reference_trigger",str,"handleInputsreference_trigger"),("inputfileTrigger",str,"handleInputsinputfileTrigger"),("referencefa",str,"handleInputsreferencefa")]
+    inputs = [("inputfile",str,"handleInputsinputfile"),("reference_trigger",str,"handleInputsreference_trigger"),("inputfileTrigger",str,"handleInputsinputfileTrigger"),("referencefa",str,"handleInputsreferencefa"),("referencedict",str,"handleInputsreferencedict")]
     outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -59,6 +59,11 @@ class OWpindel_sort(OWBwBWidget):
     def handleInputsreferencefa(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("referencefa", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsreferencedict(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("referencedict", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

@@ -18,8 +18,8 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-mrna-start"
-    docker_image_tag = "alpine_3.12__fce2cb91"
-    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanfiles",str),("gdccredentials",str),("gdctoken",str),("vepDirectory",str)]
+    docker_image_tag = "alpine_3.12__601e20f9"
+    outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("input_files",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("recalibrate_files",str),("realigned_indels_files",str),("pindel_files",str),("genome_dict_file",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -29,12 +29,25 @@ class OWStart(OWBwBWidget):
     optionsChecked=pset({})
     work_dir=pset(None)
     genome_dir=pset(None)
-    inputFiles=pset([])
-    cleanfiles=pset([])
-    genomefile=pset(None)
-    gdccredentials=pset(None)
-    gdctoken=pset(None)
-    vepDirectory=pset(None)
+    vep_dir=pset(None)
+    input_files=pset([])
+    genome_file=pset(None)
+    gdc_credentials=pset(None)
+    gdc_token=pset(None)
+    clean_files=pset([])
+    fastq_files=pset([])
+    fastq1_files=pset([])
+    fastq2_files=pset([])
+    fastqo1_files=pset([])
+    fastqo2_files=pset([])
+    fastqs_files=pset([])
+    fastqc_files=pset([])
+    paired_end=pset(True)
+    realigned_files=pset([])
+    recalibrate_files=pset([])
+    realigned_indels_files=pset([])
+    pindel_files=pset([])
+    genome_dict_file=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -53,26 +66,74 @@ class OWStart(OWBwBWidget):
             outputValue=getattr(self,"genome_dir")
         self.send("genome_dir", outputValue)
         outputValue=None
-        if hasattr(self,"inputFiles"):
-            outputValue=getattr(self,"inputFiles")
-        self.send("inputFiles", outputValue)
+        if hasattr(self,"vep_dir"):
+            outputValue=getattr(self,"vep_dir")
+        self.send("vep_dir", outputValue)
         outputValue=None
-        if hasattr(self,"genomefile"):
-            outputValue=getattr(self,"genomefile")
-        self.send("genomefile", outputValue)
+        if hasattr(self,"input_files"):
+            outputValue=getattr(self,"input_files")
+        self.send("input_files", outputValue)
         outputValue=None
-        if hasattr(self,"cleanfiles"):
-            outputValue=getattr(self,"cleanfiles")
-        self.send("cleanfiles", outputValue)
+        if hasattr(self,"genome_file"):
+            outputValue=getattr(self,"genome_file")
+        self.send("genome_file", outputValue)
         outputValue=None
-        if hasattr(self,"gdccredentials"):
-            outputValue=getattr(self,"gdccredentials")
-        self.send("gdccredentials", outputValue)
+        if hasattr(self,"gdc_credentials"):
+            outputValue=getattr(self,"gdc_credentials")
+        self.send("gdc_credentials", outputValue)
         outputValue=None
-        if hasattr(self,"gdctoken"):
-            outputValue=getattr(self,"gdctoken")
-        self.send("gdctoken", outputValue)
+        if hasattr(self,"gdc_token"):
+            outputValue=getattr(self,"gdc_token")
+        self.send("gdc_token", outputValue)
         outputValue=None
-        if hasattr(self,"vepDirectory"):
-            outputValue=getattr(self,"vepDirectory")
-        self.send("vepDirectory", outputValue)
+        if hasattr(self,"clean_files"):
+            outputValue=getattr(self,"clean_files")
+        self.send("clean_files", outputValue)
+        outputValue=None
+        if hasattr(self,"fastq_files"):
+            outputValue=getattr(self,"fastq_files")
+        self.send("fastq_files", outputValue)
+        outputValue=None
+        if hasattr(self,"fastq1_files"):
+            outputValue=getattr(self,"fastq1_files")
+        self.send("fastq1_files", outputValue)
+        outputValue=None
+        if hasattr(self,"fastq2_files"):
+            outputValue=getattr(self,"fastq2_files")
+        self.send("fastq2_files", outputValue)
+        outputValue=None
+        if hasattr(self,"fastqo1_files"):
+            outputValue=getattr(self,"fastqo1_files")
+        self.send("fastqo1_files", outputValue)
+        outputValue=None
+        if hasattr(self,"fastqo2_files"):
+            outputValue=getattr(self,"fastqo2_files")
+        self.send("fastqo2_files", outputValue)
+        outputValue=None
+        if hasattr(self,"fastqs_files"):
+            outputValue=getattr(self,"fastqs_files")
+        self.send("fastqs_files", outputValue)
+        outputValue=None
+        if hasattr(self,"fastqc_files"):
+            outputValue=getattr(self,"fastqc_files")
+        self.send("fastqc_files", outputValue)
+        outputValue=None
+        if hasattr(self,"realigned_files"):
+            outputValue=getattr(self,"realigned_files")
+        self.send("realigned_files", outputValue)
+        outputValue=None
+        if hasattr(self,"recalibrate_files"):
+            outputValue=getattr(self,"recalibrate_files")
+        self.send("recalibrate_files", outputValue)
+        outputValue=None
+        if hasattr(self,"realigned_indels_files"):
+            outputValue=getattr(self,"realigned_indels_files")
+        self.send("realigned_indels_files", outputValue)
+        outputValue=None
+        if hasattr(self,"pindel_files"):
+            outputValue=getattr(self,"pindel_files")
+        self.send("pindel_files", outputValue)
+        outputValue=None
+        if hasattr(self,"genome_dict_file"):
+            outputValue=getattr(self,"genome_dict_file")
+        self.send("genome_dict_file", outputValue)
