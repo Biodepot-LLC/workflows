@@ -17,9 +17,9 @@ class OWvariant_effect_predictor(OWBwBWidget):
     priority = 90
     icon = getIconName(__file__,"VEP.jpg")
     want_main_area = False
-    docker_image_name = "ensemblorg/ensembl-vep"
-    docker_image_tag = "release_102.0"
-    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("fasta",str,"handleInputsfasta"),("vepBaseCacheDir",str,"handleInputsvepBaseCacheDir")]
+    docker_image_name = "biodepot/vep"
+    docker_image_tag = "102.0__ubuntu_18.04__12512944"
+    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("fasta",str,"handleInputsfasta"),("vepBaseCacheDir",str,"handleInputsvepBaseCacheDir"),("outputFile",str,"handleInputsoutputFile")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -140,6 +140,11 @@ class OWvariant_effect_predictor(OWBwBWidget):
     def handleInputsvepBaseCacheDir(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("vepBaseCacheDir", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputFile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
