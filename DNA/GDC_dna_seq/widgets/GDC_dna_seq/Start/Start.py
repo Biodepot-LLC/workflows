@@ -18,8 +18,8 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-mrna-start"
-    docker_image_tag = "alpine_3.12__601e20f9"
-    outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("input_files",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("recalibrate_files",str),("realigned_indels_files",str),("pindel_files",str),("genome_dict_file",str)]
+    docker_image_tag = "alpine_3.12__c94d1a81"
+    outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("recalibrate_files",str),("realigned_indels_files",str),("pindel_files",str),("genome_dict_file",str),("biobambam_files",str),("mutect2_normal_files",str),("mutect2_tumor_files",str),("mutect2_variants_files",str),("variant_annotation_files",str),("maf_files",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -30,7 +30,6 @@ class OWStart(OWBwBWidget):
     work_dir=pset(None)
     genome_dir=pset(None)
     vep_dir=pset(None)
-    input_files=pset([])
     genome_file=pset(None)
     gdc_credentials=pset(None)
     gdc_token=pset(None)
@@ -48,6 +47,14 @@ class OWStart(OWBwBWidget):
     realigned_indels_files=pset([])
     pindel_files=pset([])
     genome_dict_file=pset(None)
+    input_normal_files=pset([])
+    input_tumor_files=pset([])
+    biobambam_files=pset([])
+    mutect2_normal_files=pset([])
+    mutect2_tumor_files=pset([])
+    mutect2_variants_files=pset([])
+    variant_annotation_files=pset([])
+    maf_files=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -69,10 +76,6 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"vep_dir"):
             outputValue=getattr(self,"vep_dir")
         self.send("vep_dir", outputValue)
-        outputValue=None
-        if hasattr(self,"input_files"):
-            outputValue=getattr(self,"input_files")
-        self.send("input_files", outputValue)
         outputValue=None
         if hasattr(self,"genome_file"):
             outputValue=getattr(self,"genome_file")
@@ -137,3 +140,27 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"genome_dict_file"):
             outputValue=getattr(self,"genome_dict_file")
         self.send("genome_dict_file", outputValue)
+        outputValue=None
+        if hasattr(self,"biobambam_files"):
+            outputValue=getattr(self,"biobambam_files")
+        self.send("biobambam_files", outputValue)
+        outputValue=None
+        if hasattr(self,"mutect2_normal_files"):
+            outputValue=getattr(self,"mutect2_normal_files")
+        self.send("mutect2_normal_files", outputValue)
+        outputValue=None
+        if hasattr(self,"mutect2_tumor_files"):
+            outputValue=getattr(self,"mutect2_tumor_files")
+        self.send("mutect2_tumor_files", outputValue)
+        outputValue=None
+        if hasattr(self,"mutect2_variants_files"):
+            outputValue=getattr(self,"mutect2_variants_files")
+        self.send("mutect2_variants_files", outputValue)
+        outputValue=None
+        if hasattr(self,"variant_annotation_files"):
+            outputValue=getattr(self,"variant_annotation_files")
+        self.send("variant_annotation_files", outputValue)
+        outputValue=None
+        if hasattr(self,"maf_files"):
+            outputValue=getattr(self,"maf_files")
+        self.send("maf_files", outputValue)
