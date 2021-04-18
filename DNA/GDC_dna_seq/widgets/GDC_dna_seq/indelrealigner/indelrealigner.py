@@ -31,7 +31,7 @@ class OWindelrealigner(OWBwBWidget):
     reference=pset(None)
     known=pset(None)
     bamfiles=pset([])
-    intervals=pset(None)
+    intervals=pset([])
     outputfiles=pset([])
     nooriginaltags=pset(False)
     def __init__(self):

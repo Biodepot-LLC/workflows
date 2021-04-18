@@ -19,7 +19,7 @@ class OWvarscan_somatic(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/varscan-samtools"
     docker_image_tag = "2.3.9__1.12__jdk-15.0.1_9-alpine"
-    inputs = [("inputfiles",str,"handleInputsinputfiles")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("outputsnp",str,"handleInputsoutputsnp"),("outputindel",str,"handleInputsoutputindel")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -28,10 +28,10 @@ class OWvarscan_somatic(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    inputfiles=pset(None)
+    inputfiles=pset([])
     outputbase=pset(None)
-    outputsnp=pset(None)
-    outputindel=pset(None)
+    outputsnp=pset([])
+    outputindel=pset([])
     mincoverage=pset(None)
     mincoveragenorm=pset(None)
     mincoveragetum=pset(None)
@@ -58,6 +58,16 @@ class OWvarscan_somatic(OWBwBWidget):
     def handleInputsinputfiles(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("inputfiles", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputsnp(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputsnp", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputindel(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputindel", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

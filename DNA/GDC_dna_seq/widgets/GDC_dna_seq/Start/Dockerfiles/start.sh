@@ -18,6 +18,9 @@ mkdir -p $genome_dir || exit 1
 # Variant Effect Predictor
 mkdir -p $vep_dir || exit 1
 
+# Prepend output files with date and time
+[ -n "$prepend_date" ] && current_date=$(date +"%Y%m%d_%H%M%S_")
+
 files=($(makeArrayString $input_normal_files))
 files+=($(makeArrayString $input_tumor_files))
 bamSeen=false
@@ -39,7 +42,7 @@ for file in "${files[@]}"; do
 	cmd="rsync -aq $file $work_dir/$filename"
 	echo $cmd
 	eval $cmd
-	fileBase="$work_dir/${filename%.*}"
+	fileBase="$work_dir/$current_date${filename%.*}"
 	if [[ $extension == "bam" ]]; then
 		# filenames for biobambam
 		bamSeen=true
@@ -57,30 +60,47 @@ for file in "${files[@]}"; do
 		fi
 	else
 		# filenames for bwa
-		fastq_files+=(${fileBase}.$fq)
+		fastq_files+=($work_dir/${filename%.*}.$fq)
 	fi
-	biobambam_files+=(${fileBase}.bam)
+	biobambam_files+=($work_dir/${filename%.*}.bam)
 	clean_files+=(${fileBase}_clean.bam)
 	fastqc_files+=(${fileBase}'*.'$fq)
+	mark_dupes_metrics+=(${fileBase}_mark_dupes.metrics.txt)
+	mark_dupes_outputs+=(${fileBase}_mark_dupes.bam)
+	pindel_filter_files+=(${fileBase}_filter.bam)
 	realigned_files+=(${fileBase}_realign.bam)
 	realigned_indels_files+=(${fileBase}_realign_indels.bam)
 	recalibrate_files+=(${fileBase}_realign_mark_dupes.bam)
-	pindel_files+=(${fileBase}_filter.bam)
 done
 
 # output normal mutect2 files
 for file in "$(makeArrayString $input_normal_files)"; do
-	unquoted=$(unquotedFile $file)
-	mutect2_normal_files+=(${unquoted%.*}_clean.bam)
+	unquoted=$(basename -- $(unquotedFile $file))
+	fileBase="$work_dir/$current_date${unquoted%.*}"
+	mutect2_normal_files+=(${fileBase}_clean.bam)
 done
 
 # output tumor mutect2/variant annotation/maf files
 for file in "$(makeArrayString $input_tumor_files)"; do
-	unquoted=$(unquotedFile $file)
-	mutect2_tumor_files+=(${unquoted%.*}_clean.bam)
-	mutect2_variants_files+=(${unquoted%.*}_mutect_variants.vcf)
-	variant_annotation_files+=(${unquoted%.*}_mutect_variants.vep.vcf)
-	maf_files+=(${unquoted%.*}_mutect_variants.vep.vcf.maf)
+	unquoted=$(basename -- $(unquotedFile $file))
+	fileBase="$work_dir/$current_date${unquoted%.*}"
+	coclean_intervals+=(${fileBase}_intervals.list)
+	maf_files+=(${fileBase}_mutect_variants.vep.vcf.maf)
+	muse_call_files+=(${fileBase}_muse_calls)
+	muse_sump_input_files+=(${fileBase}_muse_calls.MuSE.txt)
+	muse_sump_output_files+=(${fileBase}_muse_calls.MuSE.txt.vcf)
+	mutect2_tumor_files+=(${fileBase}_clean.bam)
+	mutect2_variants_files+=(${fileBase}_mutect_variants.vcf)
+	pindel_config_files+=(${fileBase}_pindel_config)
+	pindel_prefix_files+=(${fileBase}_pindel_variants)
+	pindel_variants_files+=(${fileBase}_pindel_variants.vcf)
+	pindel_variants_sorted_files+=(${fileBase}_pindel_variants_sorted.vcf)
+	pindel_variants_filtered_files+=(${fileBase}_pindel_variants_filtered.vcf)
+	somatic_sniper_files+=(${fileBase}_somatic_sniper_snps.txt)
+	variant_annotation_files+=(${fileBase}_mutect_variants.vep.vcf)
+	varscan_pileup_files+=(${fileBase}_varscan_pileup.bam)
+	varscan_snp_files+=(${fileBase}_varscan_snp.vcf)
+	varscan_indel_files+=(${fileBase}_varscan_indel.vcf)
 done
 
 # output genome dictionary file
@@ -88,17 +108,32 @@ echo $genome_file | sed 's/fa$/dict/' > /tmp/output/genome_dict_file
 
 outputArrayVar biobambam_files
 outputArrayVar clean_files
+outputArrayVar coclean_intervals
 outputArrayVar fastq_files
 outputArrayVar fastqc_files
-outputArrayVar realigned_files
-outputArrayVar realigned_indels_files
-outputArrayVar recalibrate_files
-outputArrayVar pindel_files
+outputArrayVar maf_files
+outputArrayVar mark_dupes_metrics
+outputArrayVar mark_dupes_outputs
+outputArrayVar muse_call_files
+outputArrayVar muse_sump_input_files
+outputArrayVar muse_sump_output_files
 outputArrayVar mutect2_normal_files
 outputArrayVar mutect2_tumor_files
 outputArrayVar mutect2_variants_files
+outputArrayVar pindel_config_files
+outputArrayVar pindel_filter_files
+outputArrayVar pindel_prefix_files
+outputArrayVar pindel_variants_files
+outputArrayVar pindel_variants_sorted_files
+outputArrayVar pindel_variants_filtered_files
+outputArrayVar realigned_files
+outputArrayVar realigned_indels_files
+outputArrayVar recalibrate_files
+outputArrayVar somatic_sniper_files
 outputArrayVar variant_annotation_files
-outputArrayVar maf_files
+outputArrayVar varscan_pileup_files
+outputArrayVar varscan_snp_files
+outputArrayVar varscan_indel_files
 
 if $bamSeen; then
 	outputArrayVar fastq1_files
