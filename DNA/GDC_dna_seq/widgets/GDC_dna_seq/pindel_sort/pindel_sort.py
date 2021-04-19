@@ -19,7 +19,7 @@ class OWpindel_sort(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/pindel-filter"
     docker_image_tag = "3.6__dbc607bd"
-    inputs = [("inputfile",str,"handleInputsinputfile"),("reference_trigger",str,"handleInputsreference_trigger"),("inputfileTrigger",str,"handleInputsinputfileTrigger"),("referencefa",str,"handleInputsreferencefa"),("referencedict",str,"handleInputsreferencedict")]
+    inputs = [("inputfile",str,"handleInputsinputfile"),("reference_trigger",str,"handleInputsreference_trigger"),("inputfileTrigger",str,"handleInputsinputfileTrigger"),("referencefa",str,"handleInputsreferencefa"),("referencedict",str,"handleInputsreferencedict"),("outputfile",str,"handleInputsoutputfile"),("outputfilterfile",str,"handleInputsoutputfilterfile")]
     outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -30,9 +30,9 @@ class OWpindel_sort(OWBwBWidget):
     optionsChecked=pset({})
     referencedict=pset(None)
     referencefa=pset(None)
-    inputfile=pset(None)
-    outputfile=pset(None)
-    outputfilterfile=pset(None)
+    inputfile=pset([])
+    outputfile=pset([])
+    outputfilterfile=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"pindel_sort")) as f:
@@ -64,6 +64,16 @@ class OWpindel_sort(OWBwBWidget):
     def handleInputsreferencedict(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("referencedict", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputfile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputfile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputfilterfile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputfilterfile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

@@ -19,7 +19,7 @@ class OWrealigner_creator(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gatk3-co-clean"
     docker_image_tag = "3.6__804cb988"
-    inputs = [("bamfiles",str,"handleInputsbamfiles"),("reference",str,"handleInputsreference"),("bamtrigger",str,"handleInputsbamtrigger"),("indels_trigger",str,"handleInputsindels_trigger"),("reference_trigger",str,"handleInputsreference_trigger")]
+    inputs = [("bamfiles",str,"handleInputsbamfiles"),("reference",str,"handleInputsreference"),("bamtrigger",str,"handleInputsbamtrigger"),("indels_trigger",str,"handleInputsindels_trigger"),("reference_trigger",str,"handleInputsreference_trigger"),("intervals",str,"handleInputsintervals")]
     outputs = [("intervals",str),("bamfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -31,7 +31,7 @@ class OWrealigner_creator(OWBwBWidget):
     reference=pset(None)
     known=pset(None)
     datathreads=pset(None)
-    intervals=pset(None)
+    intervals=pset([])
     bamfiles=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
@@ -64,6 +64,11 @@ class OWrealigner_creator(OWBwBWidget):
     def handleInputsreference_trigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("reference_trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsintervals(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("intervals", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

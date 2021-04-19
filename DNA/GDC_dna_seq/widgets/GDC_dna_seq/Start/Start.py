@@ -18,8 +18,8 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-mrna-start"
-    docker_image_tag = "alpine_3.12__c94d1a81"
-    outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("recalibrate_files",str),("realigned_indels_files",str),("pindel_files",str),("genome_dict_file",str),("biobambam_files",str),("mutect2_normal_files",str),("mutect2_tumor_files",str),("mutect2_variants_files",str),("variant_annotation_files",str),("maf_files",str)]
+    docker_image_tag = "alpine_3.12__c8006a1e"
+    outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("recalibrate_files",str),("realigned_indels_files",str),("pindel_filter_files",str),("genome_dict_file",str),("biobambam_files",str),("mutect2_normal_files",str),("mutect2_tumor_files",str),("mutect2_variants_files",str),("variant_annotation_files",str),("maf_files",str),("mark_dupes_outputs",str),("mark_dupes_metrics",str),("coclean_intervals",str),("somatic_sniper_files",str),("varscan_pileup_files",str),("varscan_snp_files",str),("varscan_indel_files",str),("muse_call_files",str),("muse_sump_input_files",str),("muse_sump_output_files",str),("pindel_config_files",str),("pindel_variants_files",str),("pindel_variants_sorted_files",str),("pindel_variants_filtered_files",str),("pindel_prefix_files",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -45,7 +45,7 @@ class OWStart(OWBwBWidget):
     realigned_files=pset([])
     recalibrate_files=pset([])
     realigned_indels_files=pset([])
-    pindel_files=pset([])
+    pindel_filter_files=pset([])
     genome_dict_file=pset(None)
     input_normal_files=pset([])
     input_tumor_files=pset([])
@@ -55,6 +55,22 @@ class OWStart(OWBwBWidget):
     mutect2_variants_files=pset([])
     variant_annotation_files=pset([])
     maf_files=pset([])
+    mark_dupes_outputs=pset([])
+    mark_dupes_metrics=pset([])
+    coclean_intervals=pset(None)
+    somatic_sniper_files=pset(None)
+    prepend_date=pset(True)
+    varscan_pileup_files=pset([])
+    varscan_snp_files=pset([])
+    varscan_indel_files=pset([])
+    muse_call_files=pset([])
+    muse_sump_input_files=pset([])
+    muse_sump_output_files=pset([])
+    pindel_config_files=pset([])
+    pindel_variants_files=pset([])
+    pindel_variants_sorted_files=pset([])
+    pindel_variants_filtered_files=pset([])
+    pindel_prefix_files=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -133,9 +149,9 @@ class OWStart(OWBwBWidget):
             outputValue=getattr(self,"realigned_indels_files")
         self.send("realigned_indels_files", outputValue)
         outputValue=None
-        if hasattr(self,"pindel_files"):
-            outputValue=getattr(self,"pindel_files")
-        self.send("pindel_files", outputValue)
+        if hasattr(self,"pindel_filter_files"):
+            outputValue=getattr(self,"pindel_filter_files")
+        self.send("pindel_filter_files", outputValue)
         outputValue=None
         if hasattr(self,"genome_dict_file"):
             outputValue=getattr(self,"genome_dict_file")
@@ -164,3 +180,63 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"maf_files"):
             outputValue=getattr(self,"maf_files")
         self.send("maf_files", outputValue)
+        outputValue=None
+        if hasattr(self,"mark_dupes_outputs"):
+            outputValue=getattr(self,"mark_dupes_outputs")
+        self.send("mark_dupes_outputs", outputValue)
+        outputValue=None
+        if hasattr(self,"mark_dupes_metrics"):
+            outputValue=getattr(self,"mark_dupes_metrics")
+        self.send("mark_dupes_metrics", outputValue)
+        outputValue=None
+        if hasattr(self,"coclean_intervals"):
+            outputValue=getattr(self,"coclean_intervals")
+        self.send("coclean_intervals", outputValue)
+        outputValue=None
+        if hasattr(self,"somatic_sniper_files"):
+            outputValue=getattr(self,"somatic_sniper_files")
+        self.send("somatic_sniper_files", outputValue)
+        outputValue=None
+        if hasattr(self,"varscan_pileup_files"):
+            outputValue=getattr(self,"varscan_pileup_files")
+        self.send("varscan_pileup_files", outputValue)
+        outputValue=None
+        if hasattr(self,"varscan_snp_files"):
+            outputValue=getattr(self,"varscan_snp_files")
+        self.send("varscan_snp_files", outputValue)
+        outputValue=None
+        if hasattr(self,"varscan_indel_files"):
+            outputValue=getattr(self,"varscan_indel_files")
+        self.send("varscan_indel_files", outputValue)
+        outputValue=None
+        if hasattr(self,"muse_call_files"):
+            outputValue=getattr(self,"muse_call_files")
+        self.send("muse_call_files", outputValue)
+        outputValue=None
+        if hasattr(self,"muse_sump_input_files"):
+            outputValue=getattr(self,"muse_sump_input_files")
+        self.send("muse_sump_input_files", outputValue)
+        outputValue=None
+        if hasattr(self,"muse_sump_output_files"):
+            outputValue=getattr(self,"muse_sump_output_files")
+        self.send("muse_sump_output_files", outputValue)
+        outputValue=None
+        if hasattr(self,"pindel_config_files"):
+            outputValue=getattr(self,"pindel_config_files")
+        self.send("pindel_config_files", outputValue)
+        outputValue=None
+        if hasattr(self,"pindel_variants_files"):
+            outputValue=getattr(self,"pindel_variants_files")
+        self.send("pindel_variants_files", outputValue)
+        outputValue=None
+        if hasattr(self,"pindel_variants_sorted_files"):
+            outputValue=getattr(self,"pindel_variants_sorted_files")
+        self.send("pindel_variants_sorted_files", outputValue)
+        outputValue=None
+        if hasattr(self,"pindel_variants_filtered_files"):
+            outputValue=getattr(self,"pindel_variants_filtered_files")
+        self.send("pindel_variants_filtered_files", outputValue)
+        outputValue=None
+        if hasattr(self,"pindel_prefix_files"):
+            outputValue=getattr(self,"pindel_prefix_files")
+        self.send("pindel_prefix_files", outputValue)

@@ -19,7 +19,7 @@ class OWmuse_sump(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/muse"
     docker_image_tag = "1.0rc__alpine_3.13.2__104430b8"
-    inputs = [("calloutput",str,"handleInputscalloutput"),("trigger",str,"handleInputstrigger")]
+    inputs = [("calloutput",str,"handleInputscalloutput"),("trigger",str,"handleInputstrigger"),("outputfile",str,"handleInputsoutputfile")]
     outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -31,8 +31,8 @@ class OWmuse_sump(OWBwBWidget):
     dbsnp=pset(None)
     exome=pset(False)
     genome=pset(False)
-    outputfile=pset(None)
-    calloutput=pset(None)
+    outputfile=pset([])
+    calloutput=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"muse_sump")) as f:
@@ -49,6 +49,11 @@ class OWmuse_sump(OWBwBWidget):
     def handleInputstrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputfile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputfile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
