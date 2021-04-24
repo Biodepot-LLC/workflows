@@ -51,6 +51,7 @@ for file in "${files[@]}"; do
 		fastqo1_files+=(${fileBase}_o1.$fq)
 		fastqo2_files+=(${fileBase}_o2.$fq)
 		fastqs_files+=(${fileBase}_s.$fq)
+		archive_files+=($work_dir/${filename%.*}.bam)
 		if [ -n "${paired_end}" ]; then
 			# filenames for bwa
 			fastq_files+=(${fileBase}_1.$fq)
@@ -61,6 +62,7 @@ for file in "${files[@]}"; do
 	else
 		# filenames for bwa
 		fastq_files+=($work_dir/${filename%.*}.$fq)
+		archive_files+=($work_dir/${filename%.*}.$fq)
 	fi
 	biobambam_files+=($work_dir/${filename%.*}.bam)
 	clean_files+=(${fileBase}_clean.bam)
@@ -70,7 +72,6 @@ for file in "${files[@]}"; do
 	pindel_filter_files+=(${fileBase}_filter.bam)
 	realigned_files+=(${fileBase}_realign.bam)
 	realigned_indels_files+=(${fileBase}_realign_indels.bam)
-	recalibrate_files+=(${fileBase}_realign_mark_dupes.bam)
 done
 
 # output normal mutect2 files
@@ -103,9 +104,33 @@ for file in "$(makeArrayString $input_tumor_files)"; do
 	varscan_indel_files+=(${fileBase}_varscan_indel.vcf)
 done
 
+# output delete files to cleanup
+if [ -n "$prepend_date" ]; then
+	delete_files=($work_dir/${current_date}'*')
+else
+	# this isn't a comprehensive list but the best we can do without the date/time stamp
+	delete_files=($fastq1_files $fastq2_files $fastqo1_files $fastqo2_files $fastqs_files \
+		$clean_files $coclean_intervals $mark_dupes_metrics $mark_dupes_outputs \
+		$pindel_filter_files $realigned_files $realigned_indels_files $maf_files \
+		$muse_sump_input_files $muse_sump_output_files $mutect2_variants_files \
+		$pindel_config_files $pindel_variants_files $pindel_variants_sorted_files \
+		$pindel_variants_filtered_files $somatic_sniper_files $variant_annotation_files \
+		$varscan_pileup_files $varscan_snp_files $varscan_indel_files)
+fi
+archive_files+=(${delete_files[@]})
+
+# output prefix to cleanup
+if [ -n "$prepend_date" ]; then
+	echo ${current_date}gdc_dna_seq > /tmp/output/archive_prefix
+else
+	echo $(date +"%Y%m%d_%H%M%S_")gdc_dna_seq > /tmp/output/archive_prefix
+fi
+
 # output genome dictionary file
 echo $genome_file | sed 's/fa$/dict/' > /tmp/output/genome_dict_file
 
+outputArrayVar archive_files
+outputArrayVar delete_files
 outputArrayVar biobambam_files
 outputArrayVar clean_files
 outputArrayVar coclean_intervals
@@ -128,7 +153,6 @@ outputArrayVar pindel_variants_sorted_files
 outputArrayVar pindel_variants_filtered_files
 outputArrayVar realigned_files
 outputArrayVar realigned_indels_files
-outputArrayVar recalibrate_files
 outputArrayVar somatic_sniper_files
 outputArrayVar variant_annotation_files
 outputArrayVar varscan_pileup_files
