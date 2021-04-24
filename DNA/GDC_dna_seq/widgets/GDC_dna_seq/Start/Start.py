@@ -18,8 +18,8 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-mrna-start"
-    docker_image_tag = "alpine_3.12__c8006a1e"
-    outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("recalibrate_files",str),("realigned_indels_files",str),("pindel_filter_files",str),("genome_dict_file",str),("biobambam_files",str),("mutect2_normal_files",str),("mutect2_tumor_files",str),("mutect2_variants_files",str),("variant_annotation_files",str),("maf_files",str),("mark_dupes_outputs",str),("mark_dupes_metrics",str),("coclean_intervals",str),("somatic_sniper_files",str),("varscan_pileup_files",str),("varscan_snp_files",str),("varscan_indel_files",str),("muse_call_files",str),("muse_sump_input_files",str),("muse_sump_output_files",str),("pindel_config_files",str),("pindel_variants_files",str),("pindel_variants_sorted_files",str),("pindel_variants_filtered_files",str),("pindel_prefix_files",str)]
+    docker_image_tag = "alpine_3.12.1__d5171483"
+    outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("realigned_indels_files",str),("pindel_filter_files",str),("genome_dict_file",str),("biobambam_files",str),("mutect2_normal_files",str),("mutect2_tumor_files",str),("mutect2_variants_files",str),("variant_annotation_files",str),("maf_files",str),("mark_dupes_outputs",str),("mark_dupes_metrics",str),("coclean_intervals",str),("somatic_sniper_files",str),("varscan_pileup_files",str),("varscan_snp_files",str),("varscan_indel_files",str),("muse_call_files",str),("muse_sump_input_files",str),("muse_sump_output_files",str),("pindel_config_files",str),("pindel_variants_files",str),("pindel_variants_sorted_files",str),("pindel_variants_filtered_files",str),("pindel_prefix_files",str),("archive_prefix",str),("archive_files",str),("delete_files",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -43,7 +43,6 @@ class OWStart(OWBwBWidget):
     fastqc_files=pset([])
     paired_end=pset(True)
     realigned_files=pset([])
-    recalibrate_files=pset([])
     realigned_indels_files=pset([])
     pindel_filter_files=pset([])
     genome_dict_file=pset(None)
@@ -71,6 +70,9 @@ class OWStart(OWBwBWidget):
     pindel_variants_sorted_files=pset([])
     pindel_variants_filtered_files=pset([])
     pindel_prefix_files=pset([])
+    archive_prefix=pset(None)
+    archive_files=pset([])
+    delete_files=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -140,10 +142,6 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"realigned_files"):
             outputValue=getattr(self,"realigned_files")
         self.send("realigned_files", outputValue)
-        outputValue=None
-        if hasattr(self,"recalibrate_files"):
-            outputValue=getattr(self,"recalibrate_files")
-        self.send("recalibrate_files", outputValue)
         outputValue=None
         if hasattr(self,"realigned_indels_files"):
             outputValue=getattr(self,"realigned_indels_files")
@@ -240,3 +238,15 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"pindel_prefix_files"):
             outputValue=getattr(self,"pindel_prefix_files")
         self.send("pindel_prefix_files", outputValue)
+        outputValue=None
+        if hasattr(self,"archive_prefix"):
+            outputValue=getattr(self,"archive_prefix")
+        self.send("archive_prefix", outputValue)
+        outputValue=None
+        if hasattr(self,"archive_files"):
+            outputValue=getattr(self,"archive_files")
+        self.send("archive_files", outputValue)
+        outputValue=None
+        if hasattr(self,"delete_files"):
+            outputValue=getattr(self,"delete_files")
+        self.send("delete_files", outputValue)
