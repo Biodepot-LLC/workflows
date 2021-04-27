@@ -19,7 +19,7 @@ class OWgcloud_download(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gcp-public-download"
     docker_image_tag = "277.0.0__alpine__b2a30b94"
-    inputs = [("Trigger",str,"handleInputsTrigger"),("credentials_file",str,"handleInputscredentials_file"),("bucket",str,"handleInputsbucket"),("downloadDir",str,"handleInputsdownloadDir")]
+    inputs = [("Trigger",str,"handleInputsTrigger"),("bucket",str,"handleInputsbucket"),("downloadDir",str,"handleInputsdownloadDir")]
     outputs = [("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -44,11 +44,6 @@ class OWgcloud_download(OWBwBWidget):
     def handleInputsTrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
-    def handleInputscredentials_file(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("credentials_file", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleInputsbucket(self, value, *args):
