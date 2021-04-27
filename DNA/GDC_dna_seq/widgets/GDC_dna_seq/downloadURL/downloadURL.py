@@ -19,8 +19,8 @@ class OWdownloadURL(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/downloadurl"
     docker_image_tag = "alpine_3.13.2__b2680386"
-    inputs = [("directory",str,"handleInputsdirectory"),("trigger",str,"handleInputstrigger")]
-    outputs = [("directory",str)]
+    inputs = [("downloadDir",str,"handleInputsdownloadDir"),("trigger",str,"handleInputstrigger")]
+    outputs = [("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -30,7 +30,7 @@ class OWdownloadURL(OWBwBWidget):
     optionsChecked=pset({})
     URL=pset([])
     decompress=pset(True)
-    directory=pset(None)
+    downloadDir=pset(None)
     concatenateFile=pset(None)
     noClobber=pset(False)
     def __init__(self):
@@ -41,9 +41,9 @@ class OWdownloadURL(OWBwBWidget):
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsdirectory(self, value, *args):
+    def handleInputsdownloadDir(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("directory", value, args[0][0], test=args[0][3])
+            self.handleInputs("downloadDir", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleInputstrigger(self, value, *args):
@@ -53,6 +53,6 @@ class OWdownloadURL(OWBwBWidget):
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue="/data"
-        if hasattr(self,"directory"):
-            outputValue=getattr(self,"directory")
-        self.send("directory", outputValue)
+        if hasattr(self,"downloadDir"):
+            outputValue=getattr(self,"downloadDir")
+        self.send("downloadDir", outputValue)
