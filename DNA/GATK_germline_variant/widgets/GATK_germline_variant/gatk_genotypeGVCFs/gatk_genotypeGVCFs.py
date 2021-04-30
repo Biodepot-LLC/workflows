@@ -13,7 +13,7 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWgatk_genotypeGVCFs(OWBwBWidget):
     name = "gatk_genotypeGVCFs"
-    description = "Base quality recalibration using GATK"
+    description = "Perform joint genotyping on one or more samples pre-called with HaplotypeCaller"
     priority = 40
     icon = getIconName(__file__,"gatk-genotype-gvcf.png")
     want_main_area = False

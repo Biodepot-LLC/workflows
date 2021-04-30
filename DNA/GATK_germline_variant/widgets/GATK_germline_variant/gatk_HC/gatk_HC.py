@@ -13,13 +13,13 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWgatk_HC(OWBwBWidget):
     name = "gatk_HC"
-    description = "Base quality recalibration using GATK"
+    description = "Call germline SNPs and indels via local re-assembly of haplotypes"
     priority = 40
     icon = getIconName(__file__,"gatk-hc.png")
     want_main_area = False
     docker_image_name = "biodepot/gatk"
     docker_image_tag = "4.1.9.0__f5684bf4"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("output",str,"handleInputsoutput")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("output",str,"handleInputsoutput"),("bamout",str,"handleInputsbamout")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -64,6 +64,11 @@ class OWgatk_HC(OWBwBWidget):
     def handleInputsoutput(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("output", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsbamout(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("bamout", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
