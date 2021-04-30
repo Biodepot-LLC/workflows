@@ -109,13 +109,13 @@ if [ -n "$prepend_date" ]; then
 	delete_files=($work_dir/${current_date}'*')
 else
 	# this isn't a comprehensive list but the best we can do without the date/time stamp
-	delete_files=($fastq1_files $fastq2_files $fastqo1_files $fastqo2_files $fastqs_files \
-		$clean_files $coclean_intervals $mark_dupes_metrics $mark_dupes_outputs \
-		$pindel_filter_files $realigned_files $realigned_indels_files $maf_files \
-		$muse_sump_input_files $muse_sump_output_files $mutect2_variants_files \
-		$pindel_config_files $pindel_variants_files $pindel_variants_sorted_files \
-		$pindel_variants_filtered_files $somatic_sniper_files $variant_annotation_files \
-		$varscan_pileup_files $varscan_snp_files $varscan_indel_files)
+	delete_files=(${fastq1_files[@]} ${fastq2_files[@]} ${fastqo1_files[@]} ${fastqo2_files[@]} ${fastqs_files[@]} \
+		${clean_files[@]} ${coclean_intervals[@]} ${mark_dupes_metrics[@]} ${mark_dupes_outputs[@]} \
+		${pindel_filter_files[@]} ${realigned_files[@]} ${realigned_indels_files[@]} ${maf_files[@]} \
+		${muse_sump_input_files[@]} ${muse_sump_output_files[@]} ${mutect2_variants_files[@]} \
+		${pindel_config_files[@]} ${pindel_variants_files[@]} ${pindel_variants_sorted_files[@]} \
+		${pindel_variants_filtered_files[@]} ${somatic_sniper_files[@]} ${variant_annotation_files[@]} \
+		${varscan_pileup_files[@]} ${varscan_snp_files[@]} ${varscan_indel_files[@]})
 fi
 archive_files+=(${delete_files[@]})
 
