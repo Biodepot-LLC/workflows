@@ -13,7 +13,7 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWgatk_genotype_posteriors(OWBwBWidget):
     name = "gatk_genotype_posteriors"
-    description = "Base quality recalibration using GATK"
+    description = "Calculate genotype posterior probabilities given family and/or known population genotypes"
     priority = 40
     icon = getIconName(__file__,"gatk-genotypePosteriors.png")
     want_main_area = False

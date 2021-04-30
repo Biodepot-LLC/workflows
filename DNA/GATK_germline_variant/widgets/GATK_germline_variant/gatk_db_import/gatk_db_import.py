@@ -13,7 +13,7 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWgatk_db_import(OWBwBWidget):
     name = "gatk_db_import"
-    description = "Base quality recalibration using GATK"
+    description = "Import single-sample GVCFs into GenomicsDB before joint genotyping."
     priority = 40
     icon = getIconName(__file__,"gatk-db-import.png")
     want_main_area = False
