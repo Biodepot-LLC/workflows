@@ -64,6 +64,12 @@ for file in "${files[@]}"; do
 	recalibrateBams+=(${fileBase}_realign_mark_dupes.bam)
 done
 
+# Pedigree file
+if [ -n "$pedigree_files" ]; then
+	echo $pedigree_files > /tmp/output/pedigree_files
+	archive_files+=($pedigree_files)
+fi
+
 # GATK Haplotype caller
 haplotype_caller=($work_dir/${current_date}sam.out.bam)
 outputArrayVar haplotype_caller gatk_haplotype_out_bam
