@@ -26,8 +26,9 @@ function getFilename(){
 	chmod -w $tempDir
 	pushd $tempDir > /dev/null
 	local filename=$(su user -c "curl -OJ --header \"X-Auth-Token: $token\" $gdcapiurl/data/$1 \
-		|& grep -m 1 Warning | sed 's/.* file //; s/:.*//'")
+		|& grep -v 'Failed to create' | awk '/Warning/ {print substr(\$2, 1, length(\$2)-1); exit}'")
 	popd > /dev/null
+	rmdir $tempDir
 	echo "$filename"
 }
 
@@ -70,6 +71,7 @@ function singleDownloadGET(){
 	local myid=$1
 	local downloaded=0
 	local filename=$(getFilename $myid)
+	echo "Filename is $filename"
 	# check if we can skip download for decompressed files
 	if [[ -n "$decompress" && -n "$noClobber" && -s "$downloadDir/$myid.log" ]]; then
 		local skipDownload=true
@@ -84,10 +86,10 @@ function singleDownloadGET(){
 			echo "Skipping download for $myid"
 			return 1
 		fi
-	elif [[ -z "$decompress" && -n "$noClobber" && -f "$downloadDir/$filename" ]]; then
+	elif [[ -z "$decompress" && -n "$noClobber" && -s "$downloadDir/$filename" ]]; then
 		echo "Skipping download for $myid"
 		return 1
-    fi
+	fi
 	tempDir=$(mktemp -d -p $downloadDir -t tempXXXXXX)
 	if [ -z "$tempDir" ]; then
 		echo "ERROR: failed to create temp directory to store download"
@@ -95,7 +97,7 @@ function singleDownloadGET(){
 	fi
 	pushd $tempDir > /dev/null
 	# if file already exists just decompress
-	if [[ -n "$decompress" && -n "$noClobber" && -f "$downloadDir/$filename" ]]; then
+	if [[ -n "$decompress" && -n "$noClobber" && -s "$downloadDir/$filename" ]]; then
 		downloaded=1
 		decompressFile "$downloadDir/$filename"
 		# store a log file to prevent script from downloading again
