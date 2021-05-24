@@ -19,7 +19,7 @@ class OWbwa_mem(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/bwa-samtools-gdc"
     docker_image_tag = "0.7.15__1.9.52__alpine_3.12__da70fa5a"
-    inputs = [("fastq_files",str,"handleInputsfastq_files"),("readgroup",str,"handleInputsreadgroup"),("reference",str,"handleInputsreference"),("fastq_trigger",str,"handleInputsfastq_trigger"),("reference_trigger",str,"handleInputsreference_trigger"),("outputfiles",str,"handleInputsoutputfiles")]
+    inputs = [("fastq_files",str,"handleInputsfastq_files"),("readgroup",str,"handleInputsreadgroup"),("reference",str,"handleInputsreference"),("fastq_trigger",str,"handleInputsfastq_trigger"),("reference_trigger",str,"handleInputsreference_trigger"),("outputfiles",str,"handleInputsoutputfiles"),("threads",str,"handleInputsthreads")]
     outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -71,6 +71,11 @@ class OWbwa_mem(OWBwBWidget):
     def handleInputsoutputfiles(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("outputfiles", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsthreads(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("threads", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

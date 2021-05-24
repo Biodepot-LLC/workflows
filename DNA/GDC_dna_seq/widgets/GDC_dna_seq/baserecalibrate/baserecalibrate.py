@@ -19,7 +19,7 @@ class OWbaserecalibrate(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gatk3-co-clean"
     docker_image_tag = "3.6__804cb988"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("snps_trigger",str,"handleInputssnps_trigger"),("output",str,"handleInputsoutput")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("snps_trigger",str,"handleInputssnps_trigger"),("output",str,"handleInputsoutput"),("nct",str,"handleInputsnct")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -64,6 +64,11 @@ class OWbaserecalibrate(OWBwBWidget):
     def handleInputsoutput(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("output", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsnct(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("nct", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
