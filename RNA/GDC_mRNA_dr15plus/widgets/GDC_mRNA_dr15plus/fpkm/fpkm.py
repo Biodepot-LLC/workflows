@@ -18,7 +18,7 @@ class OWfpkm(OWBwBWidget):
     icon = getIconName(__file__,"normalize_pl.png")
     want_main_area = False
     docker_image_name = "biodepot/fpkm"
-    docker_image_tag = "latest"
+    docker_image_tag = "alpine_3.12.1__775c521b"
     inputs = [("geneinfofile",str,"handleInputsgeneinfofile"),("countsfile",str,"handleInputscountsfile")]
     outputs = [("countsfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
