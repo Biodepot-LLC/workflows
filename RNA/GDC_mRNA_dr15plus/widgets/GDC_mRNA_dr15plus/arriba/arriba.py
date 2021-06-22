@@ -19,7 +19,7 @@ class OWarriba(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/arriba"
     docker_image_tag = "v1.1.0__ubuntu_18.04"
-    inputs = [("Trigger",str,"handleInputsTrigger")]
+    inputs = [("Trigger",str,"handleInputsTrigger"),("annotationfile",str,"handleInputsannotationfile"),("assembly",str,"handleInputsassembly")]
     outputs = [("File",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -74,6 +74,16 @@ class OWarriba(OWBwBWidget):
     def handleInputsTrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsannotationfile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("annotationfile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsassembly(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("assembly", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

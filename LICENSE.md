@@ -1,5 +1,5 @@
-# BioDepot/serverless-UMI Non-commercial License 
-© 2018-2020
+# BioDepot Workflows Non-commercial License 
+© 2018-2021
 
 Redistribution and use for noncommercial purposes in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

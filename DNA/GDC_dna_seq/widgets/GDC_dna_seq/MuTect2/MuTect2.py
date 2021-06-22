@@ -19,7 +19,7 @@ class OWMuTect2(OWBwBWidget):
     want_main_area = False
     docker_image_name = "broadinstitute/gatk3"
     docker_image_tag = "3.6-0"
-    inputs = [("bamtrigger",str,"handleInputsbamtrigger"),("ponstrigger",str,"handleInputsponstrigger"),("referenceFile",str,"handleInputsreferenceFile")]
+    inputs = [("bamtrigger",str,"handleInputsbamtrigger"),("ponstrigger",str,"handleInputsponstrigger"),("referenceFile",str,"handleInputsreferenceFile"),("inputNormalFile",str,"handleInputsinputNormalFile"),("inputTumorFile",str,"handleInputsinputTumorFile"),("outputFile",str,"handleInputsoutputFile"),("nct",str,"handleInputsnct")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -28,10 +28,10 @@ class OWMuTect2(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    inputNormalFile=pset(None)
-    inputTumorFile=pset(None)
+    inputNormalFile=pset([])
+    inputTumorFile=pset([])
     referenceFile=pset(None)
-    outputFile=pset(None)
+    outputFile=pset([])
     intervals=pset(None)
     normalPanel=pset([])
     cosmic=pset([])
@@ -61,6 +61,26 @@ class OWMuTect2(OWBwBWidget):
     def handleInputsreferenceFile(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("referenceFile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsinputNormalFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("inputNormalFile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsinputTumorFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("inputTumorFile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputFile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsnct(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("nct", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

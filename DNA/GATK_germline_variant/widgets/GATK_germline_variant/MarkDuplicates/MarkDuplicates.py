@@ -20,7 +20,7 @@ class OWMarkDuplicates(OWBwBWidget):
     docker_image_name = "biodepot/markdupes"
     docker_image_tag = "4.1.9.0__openjdk_8-jre-alpine__e918ac05"
     inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger")]
-    outputs = [("outputFile",str),("metricsFile",str)]
+    outputs = [("metricsFile",str),("triggerOut",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -68,7 +68,6 @@ class OWMarkDuplicates(OWBwBWidget):
     validationStringency=pset(None)
     verbosity=pset(None)
     showHidden=pset(None)
-    outputFile=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"MarkDuplicates")) as f:
@@ -89,10 +88,10 @@ class OWMarkDuplicates(OWBwBWidget):
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
         outputValue=None
-        if hasattr(self,"outputFile"):
-            outputValue=getattr(self,"outputFile")
-        self.send("outputFile", outputValue)
-        outputValue=None
         if hasattr(self,"metricsFile"):
             outputValue=getattr(self,"metricsFile")
         self.send("metricsFile", outputValue)
+        outputValue=None
+        if hasattr(self,"triggerOut"):
+            outputValue=getattr(self,"triggerOut")
+        self.send("triggerOut", outputValue)

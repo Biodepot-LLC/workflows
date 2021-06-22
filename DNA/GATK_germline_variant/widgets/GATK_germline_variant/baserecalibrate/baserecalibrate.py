@@ -19,7 +19,7 @@ class OWbaserecalibrate(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gatk"
     docker_image_tag = "4.1.9.0__f5684bf4"
-    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("snps_trigger",str,"handleInputssnps_trigger"),("output",str,"handleInputsoutput")]
+    inputs = [("inputfiles",str,"handleInputsinputfiles"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("output",str,"handleInputsoutput"),("bam_trigger",str,"handleInputsbam_trigger")]
     outputs = [("output",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -55,14 +55,14 @@ class OWbaserecalibrate(OWBwBWidget):
             self.handleInputs("reference_trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputssnps_trigger(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("snps_trigger", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
     def handleInputsoutput(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("output", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsbam_trigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("bam_trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

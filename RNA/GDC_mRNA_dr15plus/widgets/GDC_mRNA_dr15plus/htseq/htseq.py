@@ -18,7 +18,7 @@ class OWhtseq(OWBwBWidget):
     icon = getIconName(__file__,"htseq.png")
     want_main_area = False
     docker_image_name = "biodepot/htseq"
-    docker_image_tag = "0.6.1p1__ubuntu_14.04"
+    docker_image_tag = "0.12.4__python3.8-slim-buster__2f8c4603"
     inputs = [("gtffile",str,"handleInputsgtffile"),("inputfile",str,"handleInputsinputfile")]
     outputs = [("outputfile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

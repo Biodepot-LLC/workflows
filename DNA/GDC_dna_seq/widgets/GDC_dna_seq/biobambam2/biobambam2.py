@@ -19,7 +19,7 @@ class OWbiobambam2(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/biobambam2"
     docker_image_tag = "2.0.179__debian_bullseye-slim__342cb9bb"
-    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("outputDir",str,"handleInputsoutputDir"),("firstmates",str,"handleInputsfirstmates"),("secondmates",str,"handleInputssecondmates")]
+    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("outputDir",str,"handleInputsoutputDir"),("firstmates",str,"handleInputsfirstmates"),("secondmates",str,"handleInputssecondmates"),("ufirstmates",str,"handleInputsufirstmates"),("usecondmates",str,"handleInputsusecondmates"),("singleend",str,"handleInputssingleend")]
     outputs = [("outputDir",str),("inputFile",str),("outputfiles",str),("triggerOut",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -93,6 +93,21 @@ class OWbiobambam2(OWBwBWidget):
     def handleInputssecondmates(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("secondmates", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsufirstmates(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("ufirstmates", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsusecondmates(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("usecondmates", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputssingleend(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("singleend", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

@@ -13,12 +13,12 @@ from PyQt5 import QtWidgets, QtGui
 
 class OWgen3_download(OWBwBWidget):
     name = "gen3_download"
-    description = "Enter and output a file"
+    description = "Download using GEN3 Client or GDC API"
     priority = 10
     icon = getIconName(__file__,"gen3-download.png")
     want_main_area = False
     docker_image_name = "biodepot/gen3-download"
-    docker_image_tag = "2021.03__alpine_3.12__2a822715"
+    docker_image_tag = "2021.03__alpine_3.12__833f38e5"
     inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials"),("gdctoken",str,"handleInputsgdctoken")]
     outputs = [("manifest",str),("guids",str),("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
@@ -28,8 +28,8 @@ class OWgen3_download(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    profile=pset(None)
-    credentials=pset(None)
+    profile=pset("user")
+    credentials=pset("/data/credentials.json")
     downloadDir=pset("/data")
     guids=pset([])
     manifest=pset(None)

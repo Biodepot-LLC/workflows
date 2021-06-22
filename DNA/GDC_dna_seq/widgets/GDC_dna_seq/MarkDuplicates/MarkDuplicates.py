@@ -17,9 +17,9 @@ class OWMarkDuplicates(OWBwBWidget):
     priority = 35
     icon = getIconName(__file__,"gatk-mark-dupes.png")
     want_main_area = False
-    docker_image_name = "biodepot/markdupes"
-    docker_image_tag = "4.1.9.0__openjdk_8-jre-alpine__e918ac05"
-    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger")]
+    docker_image_name = "biodepot/gatk"
+    docker_image_tag = "4.1.9.0__openjdk_8-jre-alpine__cb1b2f17"
+    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("outputFile",str,"handleInputsoutputFile"),("metricsFile",str,"handleInputsmetricsFile")]
     outputs = [("outputFile",str),("metricsFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -29,8 +29,6 @@ class OWMarkDuplicates(OWBwBWidget):
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
     inputFile=pset([])
-    outputSuffix=pset(None)
-    metricsFileSuffix=pset(None)
     argumentsFile=pset([])
     assumeSortOrder=pset(None)
     barcodeTag=pset(None)
@@ -68,6 +66,8 @@ class OWMarkDuplicates(OWBwBWidget):
     validationStringency=pset(None)
     verbosity=pset(None)
     showHidden=pset(None)
+    outputFile=pset([])
+    metricsFile=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"MarkDuplicates")) as f:
@@ -84,6 +84,16 @@ class OWMarkDuplicates(OWBwBWidget):
     def handleInputstrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputFile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsmetricsFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("metricsFile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

@@ -19,7 +19,7 @@ class OWindelrealigner(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/gatk3-co-clean"
     docker_image_tag = "3.6__804cb988"
-    inputs = [("bamfiles",str,"handleInputsbamfiles"),("intervals",str,"handleInputsintervals"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("indels_trigger",str,"handleInputsindels_trigger")]
+    inputs = [("bamfiles",str,"handleInputsbamfiles"),("intervals",str,"handleInputsintervals"),("reference",str,"handleInputsreference"),("reference_trigger",str,"handleInputsreference_trigger"),("indels_trigger",str,"handleInputsindels_trigger"),("outputfiles",str,"handleInputsoutputfiles")]
     outputs = [("outputfiles",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -31,7 +31,7 @@ class OWindelrealigner(OWBwBWidget):
     reference=pset(None)
     known=pset(None)
     bamfiles=pset([])
-    intervals=pset(None)
+    intervals=pset([])
     outputfiles=pset([])
     nooriginaltags=pset(False)
     def __init__(self):
@@ -65,6 +65,11 @@ class OWindelrealigner(OWBwBWidget):
     def handleInputsindels_trigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("indels_trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputfiles(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputfiles", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

@@ -19,7 +19,7 @@ class OWvcf_to_maf(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/vcf_to_maf"
     docker_image_tag = "1.6.19__fbd89e9f"
-    inputs = [("inputFile",str,"handleInputsinputFile"),("refFasta",str,"handleInputsrefFasta"),("trigger",str,"handleInputstrigger")]
+    inputs = [("inputFile",str,"handleInputsinputFile"),("refFasta",str,"handleInputsrefFasta"),("trigger",str,"handleInputstrigger"),("outputFile",str,"handleInputsoutputFile")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -29,7 +29,7 @@ class OWvcf_to_maf(OWBwBWidget):
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
     inputFile=pset([])
-    outputFile=pset(None)
+    outputFile=pset([])
     inhibitVep=pset(False)
     refFasta=pset(None)
     tmpDir=pset(None)
@@ -75,6 +75,11 @@ class OWvcf_to_maf(OWBwBWidget):
     def handleInputstrigger(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsoutputFile(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("outputFile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

@@ -18,8 +18,8 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-gatk-germline-variant_start"
-    docker_image_tag = "test"
-    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("gdccredentials",str),("gdctoken",str),("vepDirectory",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("createindex",str),("overwriteindex",str),("bypasBiobambam",str)]
+    docker_image_tag = "alpine_3.12.1__2d9947ef"
+    outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("fastqcfiles",str),("createindex",str),("overwriteindex",str),("bypassBiobambam",str),("recalibratebamfiles",str),("hcvcffiles",str),("archive_files",str),("delete_files",str),("archive_prefix",str),("gatk_haplotype_out_bam",str),("gatk_db_out",str),("gatk_gvcf_out_vcf",str),("gatk_refined_out_vcf",str),("pedigree_files",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -32,9 +32,6 @@ class OWStart(OWBwBWidget):
     inputFiles=pset([])
     cleanbamfiles=pset([])
     genomefile=pset(None)
-    gdccredentials=pset(None)
-    gdctoken=pset(None)
-    vepDirectory=pset(None)
     fastqfiles=pset([])
     realignedfiles=pset([])
     pairedend=pset(False)
@@ -44,8 +41,20 @@ class OWStart(OWBwBWidget):
     fastqo1files=pset([])
     fastqo2files=pset([])
     fastqsfiles=pset([])
+    fastqcfiles=pset([])
     overwriteindex=pset(False)
     bypassBiobambam=pset(False)
+    recalibratebamfiles=pset([])
+    hcvcffiles=pset([])
+    archive_files=pset([])
+    delete_files=pset([])
+    archive_prefix=pset(None)
+    prepend_date=pset(True)
+    gatk_haplotype_out_bam=pset([])
+    gatk_db_out=pset(None)
+    gatk_gvcf_out_vcf=pset([])
+    gatk_refined_out_vcf=pset(None)
+    pedigree_files=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -75,18 +84,6 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"cleanbamfiles"):
             outputValue=getattr(self,"cleanbamfiles")
         self.send("cleanbamfiles", outputValue)
-        outputValue=None
-        if hasattr(self,"gdccredentials"):
-            outputValue=getattr(self,"gdccredentials")
-        self.send("gdccredentials", outputValue)
-        outputValue=None
-        if hasattr(self,"gdctoken"):
-            outputValue=getattr(self,"gdctoken")
-        self.send("gdctoken", outputValue)
-        outputValue=None
-        if hasattr(self,"vepDirectory"):
-            outputValue=getattr(self,"vepDirectory")
-        self.send("vepDirectory", outputValue)
         outputValue=None
         if hasattr(self,"bamfiles"):
             outputValue=getattr(self,"bamfiles")
@@ -120,6 +117,10 @@ class OWStart(OWBwBWidget):
             outputValue=getattr(self,"fastqfiles")
         self.send("fastqfiles", outputValue)
         outputValue=None
+        if hasattr(self,"fastqcfiles"):
+            outputValue=getattr(self,"fastqcfiles")
+        self.send("fastqcfiles", outputValue)
+        outputValue=None
         if hasattr(self,"createindex"):
             outputValue=getattr(self,"createindex")
         self.send("createindex", outputValue)
@@ -128,6 +129,46 @@ class OWStart(OWBwBWidget):
             outputValue=getattr(self,"overwriteindex")
         self.send("overwriteindex", outputValue)
         outputValue=None
-        if hasattr(self,"bypasBiobambam"):
-            outputValue=getattr(self,"bypasBiobambam")
-        self.send("bypasBiobambam", outputValue)
+        if hasattr(self,"bypassBiobambam"):
+            outputValue=getattr(self,"bypassBiobambam")
+        self.send("bypassBiobambam", outputValue)
+        outputValue=None
+        if hasattr(self,"recalibratebamfiles"):
+            outputValue=getattr(self,"recalibratebamfiles")
+        self.send("recalibratebamfiles", outputValue)
+        outputValue=None
+        if hasattr(self,"hcvcffiles"):
+            outputValue=getattr(self,"hcvcffiles")
+        self.send("hcvcffiles", outputValue)
+        outputValue=None
+        if hasattr(self,"archive_files"):
+            outputValue=getattr(self,"archive_files")
+        self.send("archive_files", outputValue)
+        outputValue=None
+        if hasattr(self,"delete_files"):
+            outputValue=getattr(self,"delete_files")
+        self.send("delete_files", outputValue)
+        outputValue=None
+        if hasattr(self,"archive_prefix"):
+            outputValue=getattr(self,"archive_prefix")
+        self.send("archive_prefix", outputValue)
+        outputValue=None
+        if hasattr(self,"gatk_haplotype_out_bam"):
+            outputValue=getattr(self,"gatk_haplotype_out_bam")
+        self.send("gatk_haplotype_out_bam", outputValue)
+        outputValue=None
+        if hasattr(self,"gatk_db_out"):
+            outputValue=getattr(self,"gatk_db_out")
+        self.send("gatk_db_out", outputValue)
+        outputValue=None
+        if hasattr(self,"gatk_gvcf_out_vcf"):
+            outputValue=getattr(self,"gatk_gvcf_out_vcf")
+        self.send("gatk_gvcf_out_vcf", outputValue)
+        outputValue=None
+        if hasattr(self,"gatk_refined_out_vcf"):
+            outputValue=getattr(self,"gatk_refined_out_vcf")
+        self.send("gatk_refined_out_vcf", outputValue)
+        outputValue=None
+        if hasattr(self,"pedigree_files"):
+            outputValue=getattr(self,"pedigree_files")
+        self.send("pedigree_files", outputValue)
