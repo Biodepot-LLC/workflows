@@ -1,0 +1,42 @@
+{
+	"toil_rnaseq.volume_home": "/home/toil:/data",
+	"toil_rnaseq.volume_docker": "/var/run/docker.sock:/var/run/docker.sock",
+	
+	"toil_rnaseq.docker_image_cutadapt": "varikmp/cutadapt",
+	"toil_rnaseq.docker_image_fastqc": "quay.io/ucsc_cgl/fastqc",
+	"toil_rnaseq.docker_image_hera": "quay.io/ucsc_cgl/hera",
+	"toil_rnaseq.docker_image_kallisto": "varikmp/kallisto",
+	"toil_rnaseq.docker_image_star": "quay.io/ucsc_cgl/star",
+	"toil_rnaseq.docker_image_rsem": "quay.io/ucsc_cgl/rsem",
+	
+	"toil_rnaseq.a": "agatcggaagag",
+	"toil_rnaseq.m": 35,
+	"toil_rnaseq.fastq_file_1": "/data/R1.chr6.fq",
+	"toil_rnaseq.fastq_file_2": "/data/R2.chr6.fq",
+	"toil_rnaseq.trimmed_fastq_file_1": "/data/R1_cutadapt.fastq",
+	"toil_rnaseq.trimmed_fastq_file_2": "/data/R2_cutadapt.fastq",
+	
+	"toil_rnaseq.hera_method": "quant",
+	"toil_rnaseq.hera_index_dir": "/data/hera-index",
+	
+	"toil_rnaseq.kallisto_method": "quant",
+	"toil_rnaseq.kallisto_index_file": "/data/kallisto_hg38.idx",
+	"toil_rnaseq.kallisto_output": "/data",
+	"toil_rnaseq.bootstrap_samples": 100,
+	"toil_rnaseq.fusion": "--fusion",
+	
+	"toil_rnaseq.star_index_dir": "/data/starIndex",
+	"toil_rnaseq.output_prefix": "star_",
+	"toil_rnaseq.read_files": "--readFilesIn",
+	
+	"toil_rnaseq.is_paired": "--paired-end",
+	"toil_rnaseq.has_qualities": "--no-qualities",
+	"toil_rnaseq.probability": 0.5,
+	"toil_rnaseq.seed_len": 25,
+	"toil_rnaseq.frag_len_mean": -1.0,
+	"toil_rnaseq.rsem_bam": "/data/Aligned.toTranscriptome.out.bam",
+	"toil_rnaseq.rsem_header_path": "/data/rsem_ref_hg38/hg38",
+	"toil_rnaseq.rsem_method": "rsem",
+	
+	"toil_rnaseq.threads": 8
+}

@@ -1,6 +1,0 @@
-volume_home: /home/toil:/data
-volume_docker: /var/run/docker.sock:/var/run/docker.sock
-docker_image_fastqc: quay.io/ucsc_cgl/fastqc
-threads: 2
-trimmed_fastq_file_1: /data/R1.chr6.fq 
-trimmed_fastq_file_2: /data/R2.chr6.fq

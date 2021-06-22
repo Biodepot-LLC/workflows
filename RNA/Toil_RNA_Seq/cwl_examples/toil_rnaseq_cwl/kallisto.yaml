@@ -1,0 +1,11 @@
+volume_home: /home/ubuntu:/data
+volume_docker: /var/run/docker.sock:/var/run/docker.sock
+docker_image_kallisto: varikmp/kallisto
+kallisto_method: quant
+kallisto_index_file: /data/kallisto_hg38.idx
+threads: 1
+kallisto_output: /data
+bootstrap_samples: 100
+fusion: --fusion
+trimmed_fastq_file_1: /data/R1.chr6.fq
+trimmed_fastq_file_2: /data/R2.chr6.fq
