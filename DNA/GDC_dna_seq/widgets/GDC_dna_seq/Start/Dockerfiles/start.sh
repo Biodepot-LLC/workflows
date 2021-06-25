@@ -1,7 +1,8 @@
 #!/bin/bash
+set -o pipefail
 
 makeArrayString() {
-	echo $1 | sed 's/[][]//g' | sed 's/\,/ /g'
+	echo $1 | sed 's/[][]//g; s/\,/ /g'
 }
 
 outputArrayVar() {
@@ -27,14 +28,20 @@ bamSeen=false
 for file in "${files[@]}"; do
 	echo "working on $file"
 	unquoted=$(unquotedFile $file)
-	extension="${unquoted#*.}"
+	if [ -n "$custom_extension" ]; then
+		extension=$custom_extension
+	elif ! extension=$(echo ${unquoted} | grep -Eo '\.bam$|\.fastq\.gz$|\.fastq$|\.fq\.gz$|\.fq$'); then
+		echo "ERROR: File type not supported by this Start widget, Supported file types are .bam, fastq.gz, .fastq, .fq.gz, and .fq"
+		echo "You may bypass the Start widget check by entering a custom file extension"
+		exit 1
+	fi
 	echo "extension is $extension"
-	case "$extension" in
-		"fastq"|"fastq.gz"|"fq.gz")
-			fq=$extension
+	case $extension in
+		.fastq.gz|.fastq|.fq.gz|.fq)
+			fq=$(echo $extension | cut -c 2-)
 			;;
 		*)
-			fq="fq"
+			fq='fq'
 			;;
 	esac
 	filename=$(basename -- "$unquoted")
@@ -43,7 +50,7 @@ for file in "${files[@]}"; do
 	echo $cmd
 	eval $cmd
 	fileBase="$work_dir/$current_date${filename%.*}"
-	if [[ $extension == "bam" ]]; then
+	if [[ $extension == '.bam' ]]; then
 		# filenames for biobambam
 		bamSeen=true
 		fastq1_files+=(${fileBase}_1.$fq)
