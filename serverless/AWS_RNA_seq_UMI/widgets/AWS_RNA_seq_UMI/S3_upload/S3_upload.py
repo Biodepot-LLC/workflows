@@ -18,7 +18,7 @@ class OWS3_upload(OWBwBWidget):
     icon = getIconName(__file__,"cloud_upload.png")
     want_main_area = False
     docker_image_name = "biodepot/s3upload"
-    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__2d8a85d5"
+    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__381c2b66"
     inputs = [("Trigger",str,"handleInputsTrigger"),("credentials_dir",str,"handleInputscredentials_dir"),("uploadDir",str,"handleInputsuploadDir"),("bucket",str,"handleInputsbucket"),("s3Dir",str,"handleInputss3Dir")]
     outputs = [("credentials_dir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)

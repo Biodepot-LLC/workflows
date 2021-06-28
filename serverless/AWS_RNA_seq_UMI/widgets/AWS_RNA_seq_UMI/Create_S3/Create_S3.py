@@ -18,7 +18,7 @@ class OWCreate_S3(OWBwBWidget):
     icon = getIconName(__file__,"addS3.png")
     want_main_area = False
     docker_image_name = "biodepot/awss3create"
-    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__d4f38112"
+    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__1550684c"
     inputs = [("Trigger",str,"handleInputsTrigger"),("credentials_dir",str,"handleInputscredentials_dir"),("bucket",str,"handleInputsbucket"),("region",str,"handleInputsregion")]
     outputs = [("credentials_dir",str),("bucket",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
