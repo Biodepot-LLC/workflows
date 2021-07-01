@@ -18,7 +18,7 @@ class OWSplitUpload(OWBwBWidget):
     icon = getIconName(__file__,"umisplit.png")
     want_main_area = False
     docker_image_name = "biodepot/umisplit_awsupload"
-    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__7130cd7b"
+    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__b6391a2b"
     inputs = [("Trigger",str,"handleInputsTrigger"),("credentials_dir",str,"handleInputscredentials_dir"),("seqs_dir",str,"handleInputsseqs_dir"),("bucket",str,"handleInputsbucket"),("cloud_dir",str,"handleInputscloud_dir"),("outputdir",str,"handleInputsoutputdir"),("barcode",str,"handleInputsbarcode")]
     outputs = [("outputdir",str),("cloud_dir",str),("bucket",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
@@ -31,7 +31,6 @@ class OWSplitUpload(OWBwBWidget):
     credentials_dir=pset("/data/.aws")
     cloud_dir=pset(None)
     bucket=pset(None)
-    split_threads=pset(1)
     seqs_dir=pset(None)
     barcode=pset(None)
     outputdir=pset("/data")
@@ -46,11 +45,12 @@ class OWSplitUpload(OWBwBWidget):
     upload_threads_after=pset(4)
     done_file=pset(False)
     nfiles=pset(12)
-    npairs=pset(6)
+    npairs=pset(None)
     fastq_suffix=pset("fastq.gz")
     R1fastq_suffix=pset("R1.fastq.gz")
     R2fastq_suffix=pset("R2.fastq.gz")
     maxambig=pset(0)
+    nobarcode=pset(False)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"SplitUpload")) as f:

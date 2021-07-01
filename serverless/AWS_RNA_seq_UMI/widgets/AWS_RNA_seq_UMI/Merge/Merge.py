@@ -18,7 +18,7 @@ class OWMerge(OWBwBWidget):
     icon = getIconName(__file__,"umimerge.png")
     want_main_area = False
     docker_image_name = "biodepot/umimerge"
-    docker_image_tag = "ubuntu_18.04__3654016e"
+    docker_image_tag = "ubuntu_20.04__4d4b6b3f"
     inputs = [("Trigger",str,"handleInputsTrigger"),("inputDir",str,"handleInputsinputDir"),("baseDir",str,"handleInputsbaseDir")]
     outputs = [("outputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
