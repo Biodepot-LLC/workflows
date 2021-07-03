@@ -34,6 +34,26 @@ def get_bwa_string():
     if bwa_string != "":
         return "bwa aln " + bwa_string
     return None
+
+def convertToTmpFile(filename):
+    basefile=os.path.basename(filename)
+    return "/tmp/{}".format(basefile)
+    
+def get_filter_string(markmultihits,properPairs,markNonRefSeq,samegenenotmulti,nbins,binsize,symfile,barcode,ercc):
+    filterString="-n {} -p {} -s {} ".format(nbins,binsize,convertToTmpFile(symfile))
+    if (barcode):
+         filterString+="-b {} ".format(convertToTmpFile(barcode))
+    if (ercc): 
+        filterString+="-e {} ".format(convertToTmpFile(ercc))
+    if (markmultihits):
+        filterString+="-M "
+    if (properPairs): 
+        filterString+="-P "
+    if (markNonRefSeq):
+        filterString+="-u "
+    if (samegenenotmulti): 
+        filterString+="-S "
+    return filterString
     
 def create_topic(topic_name):
     print ("creating topic {}".format(topic_name))
@@ -74,6 +94,24 @@ def main():
                     help="fastq_suffix, suffix of fastq files")                 
     parser.add_argument("-w", action='store',dest="work_dir",default="dtoxsdir",
                     help="work_dir, directory in bucket where project is created")
+    parser.add_argument("-M", action='store_true',dest="markmultihits",
+                    help="markmultihits, umifilter parameter")                   
+    parser.add_argument("-P", action='store_true',dest="properPairs",
+                    help="properPairs, umifilter parameter")  
+    parser.add_argument("-u", action='store_true',dest="markNonRefSeq",
+                    help="markNonRefSeq, umifilter parameter")                   
+    parser.add_argument("-S", action='store_true',dest="samegenenotmulti",
+                    help="samegenenotmulti, umifilter parameter") 
+    parser.add_argument("-n", action='store',dest="nbins",default=16,
+                    help="nbins umifilter parameter")
+    parser.add_argument("-p", action='store',dest="binsize",default=0,
+                    help="binsize umifilter parameter")
+    parser.add_argument("--symfile", action='store',dest="symfile",
+                    help="symfile, umifilter parameter")                            
+    parser.add_argument("--barcode", action='store',dest="barcode",
+                    help="barcode, umifilter parameter")
+    parser.add_argument("--ercc", action='store',dest="ercc",
+                    help="ercc, umifilter parameter")
     parser.add_argument("--aligns_dir", action='store',dest="cloud_aligns_dir",
                     help="cloud_aligns_dir, directory in bucket where split files are kept")
     parser.add_argument("--uploadDir", action='store',dest="upload_dir",default="saf",
@@ -104,7 +142,17 @@ def main():
     align_timeout=args.align_timeout
     start_timeout=args.start_timeout
     finish_timeout=args.finish_timeout
-    
+    #filter options
+    markmultihits=args.markmultihits
+    properPairs=args.properPairs
+    markNonRefSeq=args.markNonRefSeq
+    samegenenotmulti=args.samegenenotmulti
+    nbins=args.nbins
+    binsize=args.binsize
+    symfile=args.symfile
+    ercc=args.ercc
+    barcode=args.barcode
+    filter_string=get_filter_string(markmultihits,properPairs,markNonRefSeq,samegenenotmulti,nbins,binsize,symfile,barcode,ercc)
     bwa_string=get_bwa_string()
     sys.stderr.write("credentials directory={}\n".format(credentials_dir))
     sys.stderr.write("bucket_name={}\n".format(bucket_name))
@@ -135,6 +183,6 @@ def main():
     topic_id=create_topic(topic_name)
     recv_topic_id=create_recv(recv_topic,recv_subscription)
     sqs_arn=recv_topic_id.replace("sns","sqs").replace(recv_topic,recv_subscription)
-    invokeFunctions(bucket_name,topic_id,work_dir,cloud_aligns_dir,recv_topic_id,fastq_suffix,upload_dir,sqs_arn,region,align_timeout,start_timeout,finish_timeout,max_workers=max_workers,bwa_string=bwa_string)
+    invokeFunctions(bucket_name,topic_id,work_dir,cloud_aligns_dir,recv_topic_id,fastq_suffix,upload_dir,sqs_arn,region,align_timeout,start_timeout,finish_timeout,max_workers=max_workers,bwa_string=bwa_string,filter_string=filter_string)
 
 main()

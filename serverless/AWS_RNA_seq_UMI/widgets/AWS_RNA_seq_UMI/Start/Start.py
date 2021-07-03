@@ -19,7 +19,7 @@ class OWStart(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/alpine-bash"
     docker_image_tag = "3.11.6__45283ff2"
-    outputs = [("credentials_dir",str),("bucket",str),("region",str),("cloud_dir",str),("parent_dir",str),("local_dir",str),("seqs_dir",str),("executables_dir",str),("cloud_executables_dir",str),("references_dir",str),("cloud_references_dir",str),("aligns_dir",str),("cloud_aligns_dir",str),("DEG_configuration_file",str),("topGenesFile",str),("barcodeFile",str),("safDir",str),("function_zip",str),("function_name",str)]
+    outputs = [("credentials_dir",str),("bucket",str),("region",str),("cloud_dir",str),("parent_dir",str),("local_dir",str),("seqs_dir",str),("executables_dir",str),("cloud_executables_dir",str),("references_dir",str),("cloud_references_dir",str),("aligns_dir",str),("cloud_aligns_dir",str),("DEG_configuration_file",str),("topGenesFile",str),("barcodeFile",str),("safDir",str),("function_zip",str),("function_name",str),("symfile",str),("ercc",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -46,6 +46,8 @@ class OWStart(OWBwBWidget):
     function_zip=pset(None)
     parent_dir=pset(None)
     function_name=pset("dtoxsfunction")
+    symfile=pset(None)
+    ercc=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
@@ -131,3 +133,11 @@ class OWStart(OWBwBWidget):
         if hasattr(self,"function_name"):
             outputValue=getattr(self,"function_name")
         self.send("function_name", outputValue)
+        outputValue=None
+        if hasattr(self,"symfile"):
+            outputValue=getattr(self,"symfile")
+        self.send("symfile", outputValue)
+        outputValue=None
+        if hasattr(self,"ercc"):
+            outputValue=getattr(self,"ercc")
+        self.send("ercc", outputValue)

@@ -230,12 +230,12 @@ def waitOnFunctionsFinish(splitFiles,bucket,startDir,finishDir,sqsclient,subscri
 def getSplitFilenames(bucket,baseDir,suffix):
     return getDirectoryFiles(bucket,baseDir,suffix)
 
-def startInvoke(baseDir,splitFiles,bucket,topicId,recv_topic,uploadDir,startTimes,region,max_workers,bwa_string):
+def startInvoke(baseDir,splitFiles,bucket,topicId,recv_topic,uploadDir,startTimes,region,max_workers,bwa_string,filter_string):
     attrList=[]
     fullUploadDir=baseDir+'/'+uploadDir
     snsClient = boto3.client('sns',region_name=str(region))
     for splitFile in splitFiles:
-        attrList.append({'uploadDir':{'DataType':'String','StringValue':fullUploadDir},'bwa_string':{'DataType':'String','StringValue':bwa_string},'splitFile':{'DataType':'String','StringValue':splitFile},'bucketName':{'DataType':'String','StringValue':bucket},'baseDirectory':{'DataType':'String','StringValue':baseDir},'topicArn':{'DataType':'String','StringValue':recv_topic}})
+        attrList.append({'uploadDir':{'DataType':'String','StringValue':fullUploadDir},'bwa_string':{'DataType':'String','StringValue':bwa_string},'filter_string':{'DataType':'String','StringValue':filter_string},'splitFile':{'DataType':'String','StringValue':splitFile},'bucketName':{'DataType':'String','StringValue':bucket},'baseDirectory':{'DataType':'String','StringValue':baseDir},'topicArn':{'DataType':'String','StringValue':recv_topic}})
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_submissions={executor.submit(lambda attr: publish(snsClient, topicId, attr), attr): attr for attr in attrList}
 
@@ -247,7 +247,7 @@ def cleanStart(bucket, startDir, finishDir, errorDir):
     for path in [startDir, finishDir, errorDir]:
         clearDirectoryFiles(bucket,path)        
 
-def invokeFunctions (bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,uploadDir,subscription_name,region,align_timeout,start_timeout,finish_timeout,max_workers=16,bwa_string=None,startSubDir="start"):
+def invokeFunctions (bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,uploadDir,subscription_name,region,align_timeout,start_timeout,finish_timeout,max_workers=16,bwa_string=None,startSubDir="start", filter_string=None):
     sys.stderr.write("bucket is {}\n".format(bucket))
     sys.stderr.write("topicId is {}\n".format(topicId))
     sys.stderr.write("work_dir is {}\n".format(work_dir))
@@ -261,8 +261,10 @@ def invokeFunctions (bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,
     sys.stderr.write("start_timeout is {}\n".format(start_timeout))
     sys.stderr.write("finish_timeout is {}\n".format(finish_timeout))
     sys.stderr.write("bwa_string is {}\n".format(bwa_string))
+    sys.stderr.write("filter_string is {}\n".format(filter_string))
     finishTimes={}
     startTimes={}
+    exit(0)
     sqsclient=boto3.client('sqs',region_name=str(region))
     splitFiles=getSplitFilenames(bucket,cloud_aligns_dir,suffix)
     start = timer()
@@ -281,7 +283,7 @@ def invokeFunctions (bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,
     
     cleanStart(bucket,startDir,finishDir,errorDir)
     while remainingStartFiles and startAttempts < maxStartAttempts:
-        startInvoke(work_dir,splitFiles,bucket,topicId,recv_topic,uploadDir,startTimes,region,max_workers,bwa_string)    
+        startInvoke(work_dir,splitFiles,bucket,topicId,recv_topic,uploadDir,startTimes,region,max_workers,bwa_string, filter_string)    
         sys.stderr.write('Time elapsed for launch is {}\n'.format(timer()-start))
         fullSubscriptionName=getFullSubscriptionName(subscription_name)
         remainingStartFiles=waitOnFunctionsStart(remainingSplitFiles,bucket,startDir,finishDir,sqsclient,fullSubscriptionName,startTimeout=start_timeout,finishTimeout=finish_timeout)
@@ -293,7 +295,7 @@ def invokeFunctions (bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,
             sys.stderr.write('Time elapsed to start all Files is {}\n'.format(timer()-start))
     remainingSplitFiles=listFunctionsNotFinished(splitFiles,bucket,startDir,finishDir,verbose=False)
     while remainingSplitFiles and alignAttempts < maxAlignAttempts:
-        startInvoke(work_dir,splitFiles,bucket,topicId,recv_topic,uploadDir,startTimes,region,max_workers,bwa_string)    
+        startInvoke(work_dir,splitFiles,bucket,topicId,recv_topic,uploadDir,startTimes,region,max_workers,bwa_string, filter_string)    
         sys.stderr.write('Time elapsed for launch is {}\n'.format(timer()-start))
         fullSubscriptionName=getFullSubscriptionName(subscription_name)
         remainingSplitFiles=waitOnFunctionsFinish(remainingSplitFiles,bucket,startDir,finishDir,sqsclient,fullSubscriptionName,startTimeout=start_timeout,finishTimeout=finish_timeout)
@@ -325,7 +327,7 @@ def invokeFunctions (bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,
         raise Exception ("Errors detected during the alignment phase")
     
 if __name__ == "__main__":
-    if len(sys.argv) != 14 :
+    if len(sys.argv) != 15 :
         exit(0)
     bucket=sys.argv[1]
     topicId=sys.argv[2]
@@ -341,5 +343,6 @@ if __name__ == "__main__":
     start_timeout=argv[12]
     finish_timeout=argv[13]
     bwa_string=argv[14]
+    filter_string=argv[15]
     
-    invokeFunctions(bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,uploadDir,subscription_name,region,align_timeout,start_timeout,finish_timeout,max_workers=max_workers,bwa_string=bwa_string,startSubDir="start")
+    invokeFunctions(bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,uploadDir,subscription_name,region,align_timeout,start_timeout,finish_timeout,max_workers=max_workers,bwa_string=bwa_string,startSubDir="start",filter_string=filter_string)
