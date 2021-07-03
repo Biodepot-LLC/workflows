@@ -20,7 +20,7 @@ class OWAlign(OWBwBWidget):
     docker_image_name = "biodepot/lambda_umi_align"
     docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__ad114c71"
     inputs = [("ExecTrigger",str,"handleInputsExecTrigger"),("DataTrigger",str,"handleInputsDataTrigger"),("RefTrigger",str,"handleInputsRefTrigger"),("DeployTrigger",str,"handleInputsDeployTrigger"),("credentials_dir",str,"handleInputscredentials_dir"),("bucket_name",str,"handleInputsbucket_name"),("region",str,"handleInputsregion"),("work_dir",str,"handleInputswork_dir"),("cloud_aligns_dir",str,"handleInputscloud_aligns_dir"),("function_name",str,"handleInputsfunction_name"),("topic_name",str,"handleInputstopic_name")]
-    outputs = [("bucket_name",str),("credentials_dir",str),("topic_name",str),("recv_topic",str),("recv_subscription",str),("function_name",str),("work_dir",str)]
+    outputs = [("bucket_name",str),("credentials_dir",str),("topic_name",str),("recv_topic",str),("recv_subscription",str),("function_name",str),("work_dir",str),("markmultihits",str),("properPairs",str),("marknonrefseq",str),("samegenenotmulti",str),("nbins",str),("binsize",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
     exportGraphics=pset(False)
@@ -59,6 +59,12 @@ class OWAlign(OWBwBWidget):
     bwa_q=pset(0)
     bwa_L=pset(False)
     bwa_N=pset(False)
+    markmultihits=pset(False)
+    properPairs=pset(False)
+    marknonrefseq=pset(False)
+    samegenenotmulti=pset(False)
+    nbins=pset(16)
+    binsize=pset(0)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Align")) as f:
@@ -151,3 +157,27 @@ class OWAlign(OWBwBWidget):
         if hasattr(self,"work_dir"):
             outputValue=getattr(self,"work_dir")
         self.send("work_dir", outputValue)
+        outputValue=None
+        if hasattr(self,"markmultihits"):
+            outputValue=getattr(self,"markmultihits")
+        self.send("markmultihits", outputValue)
+        outputValue=None
+        if hasattr(self,"properPairs"):
+            outputValue=getattr(self,"properPairs")
+        self.send("properPairs", outputValue)
+        outputValue=None
+        if hasattr(self,"marknonrefseq"):
+            outputValue=getattr(self,"marknonrefseq")
+        self.send("marknonrefseq", outputValue)
+        outputValue=None
+        if hasattr(self,"samegenenotmulti"):
+            outputValue=getattr(self,"samegenenotmulti")
+        self.send("samegenenotmulti", outputValue)
+        outputValue=None
+        if hasattr(self,"nbins"):
+            outputValue=getattr(self,"nbins")
+        self.send("nbins", outputValue)
+        outputValue=None
+        if hasattr(self,"binsize"):
+            outputValue=getattr(self,"binsize")
+        self.send("binsize", outputValue)

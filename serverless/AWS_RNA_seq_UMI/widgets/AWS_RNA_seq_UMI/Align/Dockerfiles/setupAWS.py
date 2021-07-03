@@ -1,6 +1,7 @@
 #!/usr/local/bin/python
 #lhhung 121119 - converted XingZhi's cli setup code to boto3 and added some error check
 #add bwa flag generation
+#add filter flag generation
 
 import boto3
 import os,yaml,re,time,json, argparse,sys
@@ -17,23 +18,23 @@ def execute(cmd):
     return ret
     
 def get_bwa_string():
-	bwa_string=""
-	#flags with string or int values
-	numerical_flags=['n']
-	valued_flags=['o','e','i','d','l','k','m','t','M','O','E','R','q']
-	boolean_flags=['L','N']
-	for flag in numerical_flags+valued_flags:
-		env_var='bwa_'+flag
-		if env_var in os.environ:
-			bwa_string = bwa_string + "-{} {} ".format(flag,os.environ.get(env_var))
-	for flag in boolean_flags:
-		env_var='bwa_'+flag
-		if env_var in os.environ:
-			bwa_string = bwa_string + "-{} ".format(flag)
-	if bwa_string != "":
-		return "bwa aln " + bwa_string
-	return None
-	
+    bwa_string=""
+    #flags with string or int values
+    numerical_flags=['n']
+    valued_flags=['o','e','i','d','l','k','m','t','M','O','E','R','q']
+    boolean_flags=['L','N']
+    for flag in numerical_flags+valued_flags:
+        env_var='bwa_'+flag
+        if env_var in os.environ:
+            bwa_string = bwa_string + "-{} {} ".format(flag,os.environ.get(env_var))
+    for flag in boolean_flags:
+        env_var='bwa_'+flag
+        if env_var in os.environ:
+            bwa_string = bwa_string + "-{} ".format(flag)
+    if bwa_string != "":
+        return "bwa aln " + bwa_string
+    return None
+    
 def create_topic(topic_name):
     print ("creating topic {}".format(topic_name))
     return sns_client.create_topic(Name=topic_name)['TopicArn']

@@ -19,7 +19,7 @@ class OWMerge(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/umimerge"
     docker_image_tag = "ubuntu_20.04__4d4b6b3f"
-    inputs = [("Trigger",str,"handleInputsTrigger"),("inputDir",str,"handleInputsinputDir"),("baseDir",str,"handleInputsbaseDir")]
+    inputs = [("Trigger",str,"handleInputsTrigger"),("inputDir",str,"handleInputsinputDir"),("baseDir",str,"handleInputsbaseDir"),("markmultihits",str,"handleInputsmarkmultihits"),("properPairs",str,"handleInputsproperPairs"),("marknonrefseq",str,"handleInputsmarknonrefseq"),("samegenenotmulti",str,"handleInputssamegenenotmulti"),("nbins",str,"handleInputsnbins"),("binsize",str,"handleInputsbinsize")]
     outputs = [("outputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -36,11 +36,17 @@ class OWMerge(OWBwBWidget):
     inputDir=pset(None)
     umicounts=pset(None)
     threads=pset(1)
-    binsize=pset(0)
     sampleID=pset("")
     multiwells=pset(False)
     nwells=pset(96)
     baseDir=pset("/")
+    markmultihits=pset(False)
+    properPairs=pset(False)
+    marknonrefseq=pset(False)
+    samegenenotmulti=pset(False)
+    nfastqs=pset(None)
+    nbins=pset(16)
+    binsize=pset(0)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Merge")) as f:
@@ -62,6 +68,36 @@ class OWMerge(OWBwBWidget):
     def handleInputsbaseDir(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("baseDir", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsmarkmultihits(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("markmultihits", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsproperPairs(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("properPairs", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsmarknonrefseq(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("marknonrefseq", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputssamegenenotmulti(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("samegenenotmulti", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsnbins(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("nbins", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsbinsize(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("binsize", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
