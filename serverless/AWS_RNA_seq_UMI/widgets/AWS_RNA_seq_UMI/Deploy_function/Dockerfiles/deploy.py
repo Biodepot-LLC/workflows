@@ -57,7 +57,7 @@ def deploy_function(topic_id,topic_name,function_name,function_zipfile,handler,m
     ret=None
     while retries < 20:
         try:
-            ret=lambda_client.create_function(FunctionName=function_name,Runtime='python3.7',Role=role_arn,Handler=handler,
+            ret=lambda_client.create_function(FunctionName=function_name,Runtime='python3.8',Role=role_arn,Handler=handler,
             Timeout=timeout,MemorySize=memory,Code={'ZipFile':code})
             sys.stderr.write("successfully created function\n")
             sys.stderr.write("return value is {}\n".format(ret))

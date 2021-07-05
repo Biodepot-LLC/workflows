@@ -39,10 +39,12 @@ def convertToTmpFile(filename):
     basefile=os.path.basename(filename)
     return "/tmp/{}".format(basefile)
     
-def get_filter_string(markmultihits,properPairs,markNonRefSeq,samegenenotmulti,nbins,binsize,symfile,barcode,ercc):
+def get_filter_string(markmultihits,properPairs,markNonRefSeq,samegenenotmulti,nbins,binsize,symfile,barcodesize,umisize,ercc):
     filterString="-n {} -p {} -s {} ".format(nbins,binsize,convertToTmpFile(symfile))
-    if (barcode):
-         filterString+="-b {} ".format(convertToTmpFile(barcode))
+    if (barcodesize is not None):
+         filterString+="-B {} ".format(barcodesize)
+    if (umisize is not None):
+         filterString+="-U {} ".format(umisize)
     if (ercc): 
         filterString+="-e {} ".format(convertToTmpFile(ercc))
     if (markmultihits):
@@ -108,8 +110,10 @@ def main():
                     help="binsize umifilter parameter")
     parser.add_argument("--symfile", action='store',dest="symfile",
                     help="symfile, umifilter parameter")                            
-    parser.add_argument("--barcode", action='store',dest="barcode",
-                    help="barcode, umifilter parameter")
+    parser.add_argument("--barcodesize", action='store',dest="barcodesize",
+                    help="barcodesize, umifilter parameter")
+    parser.add_argument("--umisize", action='store',dest="umisize",
+                    help="umisize, umifilter parameter")
     parser.add_argument("--ercc", action='store',dest="ercc",
                     help="ercc, umifilter parameter")
     parser.add_argument("--aligns_dir", action='store',dest="cloud_aligns_dir",
@@ -151,8 +155,9 @@ def main():
     binsize=args.binsize
     symfile=args.symfile
     ercc=args.ercc
-    barcode=args.barcode
-    filter_string=get_filter_string(markmultihits,properPairs,markNonRefSeq,samegenenotmulti,nbins,binsize,symfile,barcode,ercc)
+    barcodesize=args.barcodesize
+    umisize=args.umisize
+    filter_string=get_filter_string(markmultihits,properPairs,markNonRefSeq,samegenenotmulti,nbins,binsize,symfile,barcodesize,umisize,ercc)
     bwa_string=get_bwa_string()
     sys.stderr.write("credentials directory={}\n".format(credentials_dir))
     sys.stderr.write("bucket_name={}\n".format(bucket_name))

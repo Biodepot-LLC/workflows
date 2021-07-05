@@ -47,6 +47,8 @@ class OWMerge(OWBwBWidget):
     nfastqs=pset(None)
     nbins=pset(16)
     binsize=pset(0)
+    barcodesize=pset(6)
+    umisize=pset(10)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Merge")) as f:

@@ -18,8 +18,8 @@ class OWAlign(OWBwBWidget):
     icon = getIconName(__file__,"lambda_function.png")
     want_main_area = False
     docker_image_name = "biodepot/lambda_umi_align"
-    docker_image_tag = "test"
-    inputs = [("ExecTrigger",str,"handleInputsExecTrigger"),("DataTrigger",str,"handleInputsDataTrigger"),("RefTrigger",str,"handleInputsRefTrigger"),("DeployTrigger",str,"handleInputsDeployTrigger"),("credentials_dir",str,"handleInputscredentials_dir"),("bucket_name",str,"handleInputsbucket_name"),("region",str,"handleInputsregion"),("work_dir",str,"handleInputswork_dir"),("cloud_aligns_dir",str,"handleInputscloud_aligns_dir"),("function_name",str,"handleInputsfunction_name"),("topic_name",str,"handleInputstopic_name"),("barcode",str,"handleInputsbarcode"),("symfile",str,"handleInputssymfile"),("ercc",str,"handleInputsercc")]
+    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__eb9900cb"
+    inputs = [("ExecTrigger",str,"handleInputsExecTrigger"),("DataTrigger",str,"handleInputsDataTrigger"),("RefTrigger",str,"handleInputsRefTrigger"),("DeployTrigger",str,"handleInputsDeployTrigger"),("credentials_dir",str,"handleInputscredentials_dir"),("bucket_name",str,"handleInputsbucket_name"),("region",str,"handleInputsregion"),("work_dir",str,"handleInputswork_dir"),("cloud_aligns_dir",str,"handleInputscloud_aligns_dir"),("function_name",str,"handleInputsfunction_name"),("topic_name",str,"handleInputstopic_name"),("symfile",str,"handleInputssymfile"),("ercc",str,"handleInputsercc")]
     outputs = [("bucket_name",str),("credentials_dir",str),("topic_name",str),("recv_topic",str),("recv_subscription",str),("function_name",str),("work_dir",str),("markmultihits",str),("properPairs",str),("marknonrefseq",str),("samegenenotmulti",str),("nbins",str),("binsize",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -67,7 +67,8 @@ class OWAlign(OWBwBWidget):
     binsize=pset(0)
     symfile=pset(None)
     ercc=pset(None)
-    barcode=pset(None)
+    barcodesize=pset(6)
+    umisize=pset(10)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Align")) as f:
@@ -129,11 +130,6 @@ class OWAlign(OWBwBWidget):
     def handleInputstopic_name(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("topic_name", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
-    def handleInputsbarcode(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("barcode", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleInputssymfile(self, value, *args):

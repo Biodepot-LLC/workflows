@@ -264,7 +264,6 @@ def invokeFunctions (bucket,topicId,work_dir,cloud_aligns_dir,recv_topic,suffix,
     sys.stderr.write("filter_string is {}\n".format(filter_string))
     finishTimes={}
     startTimes={}
-    exit(0)
     sqsclient=boto3.client('sqs',region_name=str(region))
     splitFiles=getSplitFilenames(bucket,cloud_aligns_dir,suffix)
     start = timer()

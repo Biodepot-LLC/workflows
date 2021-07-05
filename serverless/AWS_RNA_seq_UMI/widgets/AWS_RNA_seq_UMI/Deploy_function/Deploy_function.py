@@ -18,7 +18,7 @@ class OWDeploy_function(OWBwBWidget):
     icon = getIconName(__file__,"file.png")
     want_main_area = False
     docker_image_name = "biodepot/deploy_lambda"
-    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__3da3a94c"
+    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10_cc5e0297"
     inputs = [("credentials_dir",str,"handleInputscredentials_dir"),("function_zip",str,"handleInputsfunction_zip"),("function_name",str,"handleInputsfunction_name"),("function_region",str,"handleInputsfunction_region"),("Trigger",str,"handleInputsTrigger")]
     outputs = [("bucket_name",str),("credentials_dir",str),("topic_name",str),("function_name",str),("policy_name",str),("role_name",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
