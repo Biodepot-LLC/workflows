@@ -18,7 +18,7 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-gatk-germline-variant_start"
-    docker_image_tag = "alpine_3.12.1__2d9947ef"
+    docker_image_tag = "alpine_3.12.1__f75b724d"
     outputs = [("work_dir",str),("genome_dir",str),("inputFiles",str),("genomefile",str),("cleanbamfiles",str),("bamfiles",str),("fastqsfiles",str),("realignedfiles",str),("fastq1files",str),("fastq2files",str),("fastqo1files",str),("fastqo2files",str),("fastqfiles",str),("fastqcfiles",str),("createindex",str),("overwriteindex",str),("bypassBiobambam",str),("recalibratebamfiles",str),("hcvcffiles",str),("archive_files",str),("delete_files",str),("archive_prefix",str),("gatk_haplotype_out_bam",str),("gatk_db_out",str),("gatk_gvcf_out_vcf",str),("gatk_refined_out_vcf",str),("pedigree_files",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -55,6 +55,7 @@ class OWStart(OWBwBWidget):
     gatk_gvcf_out_vcf=pset([])
     gatk_refined_out_vcf=pset(None)
     pedigree_files=pset(None)
+    custom_extension=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"Start")) as f:
