@@ -20,11 +20,17 @@ bamSeen=false
 for file in "${files[@]}"; do
 	echo "working on $file"
 	unquotedFile=$(echo $file | sed 's/\"//g')
-	extension="${unquotedFile#*.}"
+	if [ -n "$custom_extension" ]; then
+		extension=$custom_extension
+	elif ! extension=$(echo ${unquotedFile} | grep -Eo '\.bam$|\.fastq\.gz$|\.fastq$|\.fq\.gz$|\.fq$'); then
+		echo "ERROR: File type not supported by this Start widget, Supported file types are .bam, fastq.gz, .fastq, .fq.gz, and .fq"
+		echo "You may bypass the Start widget check by entering a custom file extension"
+		exit 1
+	fi
 	echo "extension is $extension"
 	case "$extension" in
-		"fastq"|"fastq.gz"|"fq.gz")
-			fq=$extension
+		.fastq.gz|.fastq|.fq.gz|.fq)
+			fq=$(echo $extension | cut -c 2-)
 			;;
 		*)
 			fq="fq"
@@ -35,7 +41,7 @@ for file in "${files[@]}"; do
 	printf "rsync -aq $file $work_dir/$filename"
 	eval "rsync -aq $file $work_dir/$filename"
 	fileBase="$work_dir/$current_date${filename%.*}"
-	if [[ $extension == "bam" ]]; then
+	if [[ $extension == ".bam" ]]; then
 		#filenames for biobambam
 		archive_files+=($work_dir/${filename%.*}.bam)
 		bamSeen=true
