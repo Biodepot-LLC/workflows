@@ -62,7 +62,7 @@ class OWbiobambam2(OWBwBWidget):
     outputperreadgrouprgsm=pset(False)
     outputperreadgroupprefix=pset(None)
     alignmentFlags=pset(None)
-    bypass=pset(True)
+    bypass=pset(False)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"biobambam2")) as f:
