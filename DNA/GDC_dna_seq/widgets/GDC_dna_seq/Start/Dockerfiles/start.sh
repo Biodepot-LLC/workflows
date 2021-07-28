@@ -104,8 +104,19 @@ for file in "$(makeArrayString $input_tumor_files)"; do
 	pindel_variants_files+=(${fileBase}_pindel_variants.vcf)
 	pindel_variants_sorted_files+=(${fileBase}_pindel_variants_sorted.vcf)
 	pindel_variants_filtered_files+=(${fileBase}_pindel_variants_filtered.vcf)
-	somatic_sniper_files+=(${fileBase}_somatic_sniper_snps.txt)
+	somatic_sniper_files+=(${fileBase}_somatic_sniper_snps.vcf)
+    variant_input_files+=(${fileBase}_mutect_variants.vcf)
+	variant_input_files+=(${fileBase}_pindel_variants_filtered.vcf)
+	variant_input_files+=(${fileBase}_varscan_indel.Somatic.hc.vcf)
+	variant_input_files+=(${fileBase}_varscan_snp.Somatic.hc.vcf)
+	variant_input_files+=(${fileBase}_muse_calls.MuSE.txt.vcf)
+	variant_input_files+=(${fileBase}_somatic_sniper_snps.vcf)
 	variant_annotation_files+=(${fileBase}_mutect_variants.vep.vcf)
+	variant_annotation_files+=(${fileBase}_pindel_variants_filtered.vep.vcf)
+	variant_annotation_files+=(${fileBase}_varscan_indel.Somatic.hc.vep.vcf)
+	variant_annotation_files+=(${fileBase}_varscan_snp.Somatic.hc.vep.vcf)
+	variant_annotation_files+=(${fileBase}_muse_calls.MuSE.txt.vep.vcf)
+	variant_annotation_files+=(${fileBase}_somatic_sniper_snps.vep.vcf)
 	varscan_pileup_files+=(${fileBase}_varscan_pileup.bam)
 	varscan_snp_files+=(${fileBase}_varscan_snp.vcf)
 	varscan_indel_files+=(${fileBase}_varscan_indel.vcf)
@@ -121,7 +132,7 @@ else
 		${pindel_filter_files[@]} ${realigned_files[@]} ${realigned_indels_files[@]} ${maf_files[@]} \
 		${muse_sump_input_files[@]} ${muse_sump_output_files[@]} ${mutect2_variants_files[@]} \
 		${pindel_config_files[@]} ${pindel_variants_files[@]} ${pindel_variants_sorted_files[@]} \
-		${pindel_variants_filtered_files[@]} ${somatic_sniper_files[@]} ${variant_annotation_files[@]} \
+		${pindel_variants_filtered_files[@]} ${somatic_sniper_files[@]} ${variant_annotation_files[@]} ${variant_input_files[@]}\
 		${varscan_pileup_files[@]} ${varscan_snp_files[@]} ${varscan_indel_files[@]})
 fi
 archive_files+=(${delete_files[@]})

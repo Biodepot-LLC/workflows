@@ -25,7 +25,7 @@
 		<node id="22" name="gen3_download" position="(450, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWgen3_download.OWgen3_download" title="Download controlled access files" version=""/>
 		<node id="23" name="variant_effect_predictor" position="(-150, 900)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWvariant_effect_predictor.OWvariant_effect_predictor" title="Variant Annotation" version=""/>
 		<node id="24" name="downloadURL" position="(600, 150)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWdownloadURL.OWdownloadURL" title="Download VEP files" version=""/>
-		<node id="25" name="vcf_to_maf" position="(-150, 1050)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWvcf_to_maf.OWvcf_to_maf" title="VCF to MAF" version=""/>
+		<node id="25" name="vcf_to_maf" position="(-147.0, 1045.0)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWvcf_to_maf.OWvcf_to_maf" title="VCF to MAF" version=""/>
 		<node id="26" name="igv" position="(0, 1050)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWigv.OWigv" title="Integrative Genomics Viewer" version=""/>
 		<node id="27" name="archive_delete" position="(-150, 1200)" project_name="GDC-dna-seq" qualified_name="GDC_dna_seq.OWarchive_delete.OWarchive_delete" title="Archive and Cleanup" version=""/>
 	</nodes>
@@ -49,82 +49,83 @@
 		<link enabled="true" id="16" sink_channel="bamtrigger" sink_node_id="21" source_channel="output" source_node_id="10"/>
 		<link enabled="true" id="17" sink_channel="ponstrigger" sink_node_id="21" source_channel="downloadDir" source_node_id="22"/>
 		<link enabled="true" id="18" sink_channel="downloadDir" sink_node_id="22" source_channel="genome_dir" source_node_id="5"/>
-		<link enabled="true" id="19" sink_channel="inputFile" sink_node_id="23" source_channel="outputFile" source_node_id="21"/>
-		<link enabled="true" id="20" sink_channel="inputFile" sink_node_id="25" source_channel="outputFile" source_node_id="23"/>
-		<link enabled="true" id="21" sink_channel="inputFile" sink_node_id="26" source_channel="outputFile" source_node_id="25"/>
-		<link enabled="true" id="22" sink_channel="outputDir" sink_node_id="3" source_channel="work_dir" source_node_id="5"/>
-		<link enabled="true" id="23" sink_channel="trigger" sink_node_id="3" source_channel="triggerOut" source_node_id="0"/>
-		<link enabled="true" id="24" sink_channel="trigger" sink_node_id="14" source_channel="outputfile" source_node_id="11"/>
-		<link enabled="true" id="25" sink_channel="output" sink_node_id="10" source_channel="clean_files" source_node_id="5"/>
-		<link enabled="true" id="26" sink_channel="gdctoken" sink_node_id="22" source_channel="gdc_token" source_node_id="5"/>
-		<link enabled="true" id="27" sink_channel="credentials" sink_node_id="22" source_channel="gdc_credentials" source_node_id="5"/>
-		<link enabled="true" id="28" sink_channel="reference" sink_node_id="1" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="29" sink_channel="reference" sink_node_id="8" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="30" sink_channel="reference" sink_node_id="9" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="31" sink_channel="reference" sink_node_id="10" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="32" sink_channel="reference" sink_node_id="13" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="33" sink_channel="reference" sink_node_id="11" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="34" sink_channel="reference" sink_node_id="12" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="35" sink_channel="referencefa" sink_node_id="20" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="36" sink_channel="referenceFile" sink_node_id="21" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="37" sink_channel="fasta" sink_node_id="23" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="38" sink_channel="refFasta" sink_node_id="25" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="39" sink_channel="usecondmates" sink_node_id="0" source_channel="fastqo2_files" source_node_id="5"/>
-		<link enabled="true" id="40" sink_channel="ufirstmates" sink_node_id="0" source_channel="fastqo1_files" source_node_id="5"/>
-		<link enabled="true" id="41" sink_channel="singleend" sink_node_id="0" source_channel="fastqs_files" source_node_id="5"/>
-		<link enabled="true" id="42" sink_channel="firstmates" sink_node_id="0" source_channel="fastq1_files" source_node_id="5"/>
-		<link enabled="true" id="43" sink_channel="secondmates" sink_node_id="0" source_channel="fastq2_files" source_node_id="5"/>
-		<link enabled="true" id="44" sink_channel="inputFiles" sink_node_id="3" source_channel="fastqc_files" source_node_id="5"/>
-		<link enabled="true" id="45" sink_channel="fastq_files" sink_node_id="1" source_channel="fastq_files" source_node_id="5"/>
-		<link enabled="true" id="46" sink_channel="outputfiles" sink_node_id="1" source_channel="realigned_files" source_node_id="5"/>
-		<link enabled="true" id="47" sink_channel="outputfiles" sink_node_id="9" source_channel="realigned_indels_files" source_node_id="5"/>
-		<link enabled="true" id="48" sink_channel="referencedict" sink_node_id="20" source_channel="genome_dict_file" source_node_id="5"/>
-		<link enabled="true" id="49" sink_channel="vepBaseCacheDir" sink_node_id="23" source_channel="vep_dir" source_node_id="5"/>
-		<link enabled="true" id="50" sink_channel="inputfiles" sink_node_id="16" source_channel="output" source_node_id="10"/>
-		<link enabled="true" id="51" sink_channel="reference" sink_node_id="16" source_channel="genome_file" source_node_id="5"/>
-		<link enabled="true" id="52" sink_channel="inputFile" sink_node_id="0" source_channel="biobambam_files" source_node_id="5"/>
-		<link enabled="true" id="53" sink_channel="inputNormalFile" sink_node_id="21" source_channel="mutect2_normal_files" source_node_id="5"/>
-		<link enabled="true" id="54" sink_channel="outputFile" sink_node_id="21" source_channel="mutect2_variants_files" source_node_id="5"/>
-		<link enabled="true" id="55" sink_channel="inputTumorFile" sink_node_id="21" source_channel="mutect2_tumor_files" source_node_id="5"/>
-		<link enabled="true" id="56" sink_channel="outputFile" sink_node_id="23" source_channel="variant_annotation_files" source_node_id="5"/>
-		<link enabled="true" id="57" sink_channel="outputFile" sink_node_id="25" source_channel="maf_files" source_node_id="5"/>
-		<link enabled="true" id="58" sink_channel="metricsFile" sink_node_id="2" source_channel="mark_dupes_metrics" source_node_id="5"/>
-		<link enabled="true" id="59" sink_channel="outputFile" sink_node_id="2" source_channel="mark_dupes_outputs" source_node_id="5"/>
-		<link enabled="true" id="60" sink_channel="intervals" sink_node_id="8" source_channel="coclean_intervals" source_node_id="5"/>
-		<link enabled="true" id="61" sink_channel="output" sink_node_id="13" source_channel="somatic_sniper_files" source_node_id="5"/>
-		<link enabled="true" id="62" sink_channel="bamfiles" sink_node_id="8" source_channel="outputFile" source_node_id="2"/>
-		<link enabled="true" id="63" sink_channel="output" sink_node_id="16" source_channel="varscan_pileup_files" source_node_id="5"/>
-		<link enabled="true" id="64" sink_channel="outputsnp" sink_node_id="17" source_channel="varscan_snp_files" source_node_id="5"/>
-		<link enabled="true" id="65" sink_channel="outputindel" sink_node_id="17" source_channel="varscan_indel_files" source_node_id="5"/>
-		<link enabled="true" id="66" sink_channel="outputfile" sink_node_id="11" source_channel="muse_call_files" source_node_id="5"/>
-		<link enabled="true" id="67" sink_channel="calloutput" sink_node_id="14" source_channel="muse_sump_input_files" source_node_id="5"/>
-		<link enabled="true" id="68" sink_channel="outputfile" sink_node_id="14" source_channel="muse_sump_output_files" source_node_id="5"/>
-		<link enabled="true" id="69" sink_channel="inputfiles" sink_node_id="18" source_channel="output" source_node_id="10"/>
-		<link enabled="true" id="70" sink_channel="outputfiles" sink_node_id="18" source_channel="pindel_filter_files" source_node_id="5"/>
-		<link enabled="true" id="71" sink_channel="configuration" sink_node_id="19" source_channel="pindel_config_files" source_node_id="5"/>
-		<link enabled="true" id="72" sink_channel="Trigger" sink_node_id="19" source_channel="work_dir" source_node_id="5"/>
-		<link enabled="true" id="73" sink_channel="prefix" sink_node_id="12" source_channel="pindel_prefix_files" source_node_id="5"/>
-		<link enabled="true" id="74" sink_channel="inputfile" sink_node_id="20" source_channel="pindel_variants_files" source_node_id="5"/>
-		<link enabled="true" id="75" sink_channel="outputfile" sink_node_id="20" source_channel="pindel_variants_sorted_files" source_node_id="5"/>
-		<link enabled="true" id="76" sink_channel="outputfilterfile" sink_node_id="20" source_channel="pindel_variants_filtered_files" source_node_id="5"/>
-		<link enabled="true" id="77" sink_channel="archive_prefix" sink_node_id="27" source_channel="archive_prefix" source_node_id="5"/>
-		<link enabled="true" id="78" sink_channel="archive_files" sink_node_id="27" source_channel="archive_files" source_node_id="5"/>
-		<link enabled="true" id="79" sink_channel="delete_files" sink_node_id="27" source_channel="delete_files" source_node_id="5"/>
-		<link enabled="true" id="80" sink_channel="reference_trigger" sink_node_id="10" source_channel="downloadDir" source_node_id="4"/>
-		<link enabled="true" id="81" sink_channel="reference_trigger" sink_node_id="9" source_channel="downloadDir" source_node_id="4"/>
-		<link enabled="true" id="82" sink_channel="reference_trigger" sink_node_id="8" source_channel="downloadDir" source_node_id="4"/>
-		<link enabled="true" id="83" sink_channel="reference_trigger" sink_node_id="1" source_channel="downloadDir" source_node_id="4"/>
-		<link enabled="true" id="84" sink_channel="downloadDir" sink_node_id="4" source_channel="genome_dir" source_node_id="5"/>
-		<link enabled="true" id="85" sink_channel="downloadDir" sink_node_id="15" source_channel="genome_dir" source_node_id="5"/>
-		<link enabled="true" id="86" sink_channel="snps_trigger" sink_node_id="10" source_channel="downloadDir" source_node_id="15"/>
-		<link enabled="true" id="87" sink_channel="downloadDir" sink_node_id="24" source_channel="vep_dir" source_node_id="5"/>
-		<link enabled="true" id="88" sink_channel="trigger" sink_node_id="23" source_channel="downloadDir" source_node_id="24"/>
-		<link enabled="true" id="89" sink_channel="datathreads" sink_node_id="8" source_channel="cpu_threads" source_node_id="5"/>
-		<link enabled="true" id="90" sink_channel="nct" sink_node_id="10" source_channel="cpu_threads" source_node_id="5"/>
-		<link enabled="true" id="91" sink_channel="nthreads" sink_node_id="18" source_channel="cpu_threads" source_node_id="5"/>
-		<link enabled="true" id="92" sink_channel="nthreads" sink_node_id="12" source_channel="cpu_threads" source_node_id="5"/>
-		<link enabled="true" id="93" sink_channel="nct" sink_node_id="21" source_channel="cpu_threads" source_node_id="5"/>
-		<link enabled="true" id="94" sink_channel="bypass" sink_node_id="0" source_channel="bypass_biobambam" source_node_id="5"/>
+		<link enabled="true" id="19" sink_channel="inputFile" sink_node_id="26" source_channel="outputFile" source_node_id="25"/>
+		<link enabled="true" id="20" sink_channel="outputDir" sink_node_id="3" source_channel="work_dir" source_node_id="5"/>
+		<link enabled="true" id="21" sink_channel="trigger" sink_node_id="3" source_channel="triggerOut" source_node_id="0"/>
+		<link enabled="true" id="22" sink_channel="trigger" sink_node_id="14" source_channel="outputfile" source_node_id="11"/>
+		<link enabled="true" id="23" sink_channel="output" sink_node_id="10" source_channel="clean_files" source_node_id="5"/>
+		<link enabled="true" id="24" sink_channel="gdctoken" sink_node_id="22" source_channel="gdc_token" source_node_id="5"/>
+		<link enabled="true" id="25" sink_channel="credentials" sink_node_id="22" source_channel="gdc_credentials" source_node_id="5"/>
+		<link enabled="true" id="26" sink_channel="reference" sink_node_id="1" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="27" sink_channel="reference" sink_node_id="8" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="28" sink_channel="reference" sink_node_id="9" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="29" sink_channel="reference" sink_node_id="10" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="30" sink_channel="reference" sink_node_id="13" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="31" sink_channel="reference" sink_node_id="11" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="32" sink_channel="reference" sink_node_id="12" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="33" sink_channel="referencefa" sink_node_id="20" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="34" sink_channel="referenceFile" sink_node_id="21" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="35" sink_channel="fasta" sink_node_id="23" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="36" sink_channel="usecondmates" sink_node_id="0" source_channel="fastqo2_files" source_node_id="5"/>
+		<link enabled="true" id="37" sink_channel="ufirstmates" sink_node_id="0" source_channel="fastqo1_files" source_node_id="5"/>
+		<link enabled="true" id="38" sink_channel="singleend" sink_node_id="0" source_channel="fastqs_files" source_node_id="5"/>
+		<link enabled="true" id="39" sink_channel="firstmates" sink_node_id="0" source_channel="fastq1_files" source_node_id="5"/>
+		<link enabled="true" id="40" sink_channel="secondmates" sink_node_id="0" source_channel="fastq2_files" source_node_id="5"/>
+		<link enabled="true" id="41" sink_channel="inputFiles" sink_node_id="3" source_channel="fastqc_files" source_node_id="5"/>
+		<link enabled="true" id="42" sink_channel="fastq_files" sink_node_id="1" source_channel="fastq_files" source_node_id="5"/>
+		<link enabled="true" id="43" sink_channel="outputfiles" sink_node_id="1" source_channel="realigned_files" source_node_id="5"/>
+		<link enabled="true" id="44" sink_channel="outputfiles" sink_node_id="9" source_channel="realigned_indels_files" source_node_id="5"/>
+		<link enabled="true" id="45" sink_channel="referencedict" sink_node_id="20" source_channel="genome_dict_file" source_node_id="5"/>
+		<link enabled="true" id="46" sink_channel="vepBaseCacheDir" sink_node_id="23" source_channel="vep_dir" source_node_id="5"/>
+		<link enabled="true" id="47" sink_channel="inputfiles" sink_node_id="16" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="48" sink_channel="reference" sink_node_id="16" source_channel="genome_file" source_node_id="5"/>
+		<link enabled="true" id="49" sink_channel="inputFile" sink_node_id="0" source_channel="biobambam_files" source_node_id="5"/>
+		<link enabled="true" id="50" sink_channel="inputNormalFile" sink_node_id="21" source_channel="mutect2_normal_files" source_node_id="5"/>
+		<link enabled="true" id="51" sink_channel="outputFile" sink_node_id="21" source_channel="mutect2_variants_files" source_node_id="5"/>
+		<link enabled="true" id="52" sink_channel="inputTumorFile" sink_node_id="21" source_channel="mutect2_tumor_files" source_node_id="5"/>
+		<link enabled="true" id="53" sink_channel="outputFile" sink_node_id="23" source_channel="variant_annotation_files" source_node_id="5"/>
+		<link enabled="true" id="54" sink_channel="metricsFile" sink_node_id="2" source_channel="mark_dupes_metrics" source_node_id="5"/>
+		<link enabled="true" id="55" sink_channel="outputFile" sink_node_id="2" source_channel="mark_dupes_outputs" source_node_id="5"/>
+		<link enabled="true" id="56" sink_channel="intervals" sink_node_id="8" source_channel="coclean_intervals" source_node_id="5"/>
+		<link enabled="true" id="57" sink_channel="output" sink_node_id="13" source_channel="somatic_sniper_files" source_node_id="5"/>
+		<link enabled="true" id="58" sink_channel="bamfiles" sink_node_id="8" source_channel="outputFile" source_node_id="2"/>
+		<link enabled="true" id="59" sink_channel="output" sink_node_id="16" source_channel="varscan_pileup_files" source_node_id="5"/>
+		<link enabled="true" id="60" sink_channel="outputsnp" sink_node_id="17" source_channel="varscan_snp_files" source_node_id="5"/>
+		<link enabled="true" id="61" sink_channel="outputindel" sink_node_id="17" source_channel="varscan_indel_files" source_node_id="5"/>
+		<link enabled="true" id="62" sink_channel="outputfile" sink_node_id="11" source_channel="muse_call_files" source_node_id="5"/>
+		<link enabled="true" id="63" sink_channel="calloutput" sink_node_id="14" source_channel="muse_sump_input_files" source_node_id="5"/>
+		<link enabled="true" id="64" sink_channel="outputfile" sink_node_id="14" source_channel="muse_sump_output_files" source_node_id="5"/>
+		<link enabled="true" id="65" sink_channel="inputfiles" sink_node_id="18" source_channel="output" source_node_id="10"/>
+		<link enabled="true" id="66" sink_channel="outputfiles" sink_node_id="18" source_channel="pindel_filter_files" source_node_id="5"/>
+		<link enabled="true" id="67" sink_channel="configuration" sink_node_id="19" source_channel="pindel_config_files" source_node_id="5"/>
+		<link enabled="true" id="68" sink_channel="Trigger" sink_node_id="19" source_channel="work_dir" source_node_id="5"/>
+		<link enabled="true" id="69" sink_channel="prefix" sink_node_id="12" source_channel="pindel_prefix_files" source_node_id="5"/>
+		<link enabled="true" id="70" sink_channel="inputfile" sink_node_id="20" source_channel="pindel_variants_files" source_node_id="5"/>
+		<link enabled="true" id="71" sink_channel="outputfile" sink_node_id="20" source_channel="pindel_variants_sorted_files" source_node_id="5"/>
+		<link enabled="true" id="72" sink_channel="outputfilterfile" sink_node_id="20" source_channel="pindel_variants_filtered_files" source_node_id="5"/>
+		<link enabled="true" id="73" sink_channel="archive_prefix" sink_node_id="27" source_channel="archive_prefix" source_node_id="5"/>
+		<link enabled="true" id="74" sink_channel="archive_files" sink_node_id="27" source_channel="archive_files" source_node_id="5"/>
+		<link enabled="true" id="75" sink_channel="delete_files" sink_node_id="27" source_channel="delete_files" source_node_id="5"/>
+		<link enabled="true" id="76" sink_channel="reference_trigger" sink_node_id="10" source_channel="downloadDir" source_node_id="4"/>
+		<link enabled="true" id="77" sink_channel="reference_trigger" sink_node_id="9" source_channel="downloadDir" source_node_id="4"/>
+		<link enabled="true" id="78" sink_channel="reference_trigger" sink_node_id="8" source_channel="downloadDir" source_node_id="4"/>
+		<link enabled="true" id="79" sink_channel="reference_trigger" sink_node_id="1" source_channel="downloadDir" source_node_id="4"/>
+		<link enabled="true" id="80" sink_channel="downloadDir" sink_node_id="4" source_channel="genome_dir" source_node_id="5"/>
+		<link enabled="true" id="81" sink_channel="downloadDir" sink_node_id="15" source_channel="genome_dir" source_node_id="5"/>
+		<link enabled="true" id="82" sink_channel="snps_trigger" sink_node_id="10" source_channel="downloadDir" source_node_id="15"/>
+		<link enabled="true" id="83" sink_channel="downloadDir" sink_node_id="24" source_channel="vep_dir" source_node_id="5"/>
+		<link enabled="true" id="84" sink_channel="datathreads" sink_node_id="8" source_channel="cpu_threads" source_node_id="5"/>
+		<link enabled="true" id="85" sink_channel="nct" sink_node_id="10" source_channel="cpu_threads" source_node_id="5"/>
+		<link enabled="true" id="86" sink_channel="nthreads" sink_node_id="18" source_channel="cpu_threads" source_node_id="5"/>
+		<link enabled="true" id="87" sink_channel="nthreads" sink_node_id="12" source_channel="cpu_threads" source_node_id="5"/>
+		<link enabled="true" id="88" sink_channel="nct" sink_node_id="21" source_channel="cpu_threads" source_node_id="5"/>
+		<link enabled="true" id="89" sink_channel="bypass" sink_node_id="0" source_channel="bypass_biobambam" source_node_id="5"/>
+		<link enabled="true" id="90" sink_channel="inputFile" sink_node_id="23" source_channel="variant_input_files" source_node_id="5"/>
+		<link enabled="true" id="91" sink_channel="varscan_trigger" sink_node_id="23" source_channel="output" source_node_id="17"/>
+		<link enabled="true" id="92" sink_channel="sniper_trigger" sink_node_id="23" source_channel="OutputDir" source_node_id="13"/>
+		<link enabled="true" id="93" sink_channel="muse_call_trigger" sink_node_id="23" source_channel="outputfile" source_node_id="14"/>
+		<link enabled="true" id="94" sink_channel="pindel_trigger" sink_node_id="23" source_channel="outputfile" source_node_id="20"/>
+		<link enabled="true" id="95" sink_channel="mutect_trigger" sink_node_id="23" source_channel="outputFile" source_node_id="21"/>
 	</links>
 	<annotations>
 		<text font-family="Helvetica" font-size="16" id="0" rect="(-422.0, -13.0, 129.28571428571422, 31.0)" type="text/plain">Start workflow</text>
@@ -139,7 +140,7 @@
 	</annotations>
 	<thumbnail/>
 	<node_properties>
-		<properties format="pickle" node_id="0">gAN9cQAoWA4AAABhbGlnbm1lbnRGbGFnc3EBWAAAAABxAlgGAAAAYnlwYXNzcQNOWAcAAABjb2xo
+		<properties format="pickle" node_id="0">gAN9cQAoWA4AAABhbGlnbm1lbnRGbGFnc3EBWAAAAABxAlgGAAAAYnlwYXNzcQOIWAcAAABjb2xo
 bG9ncQRLElgHAAAAY29sbGF0ZXEFiVgGAAAAY29sc2JzcQZKAAAAAlgFAAAAY29tYnNxB4lYEgAA
 AGNvbnRyb2xBcmVhVmlzaWJsZXEIiFgRAAAAZGlzYWJsZXZhbGlkYXRpb25xCYlYBwAAAGV4Y2x1
 ZGVxClgeAAAAUUNGQUlMLFNFQ09OREFSWSxTVVBQTEVNRU5UQVJZcQtYDgAAAGV4cG9ydEdyYXBo
@@ -279,10 +280,10 @@ AAAAAAAAAAKYAAABjAAAAAAAAAAYAAACmAAAAYkAAAAAAAAAAAeAcSxYDAAAAHRyaWdnZXJSZWFk
 eXEtfXEuKFgIAAAAaW5wdXREaXJxL4lYCgAAAGlucHV0RmlsZXNxMIloKol1WAYAAAB1c2VHcHVx
 MYlYDAAAAHVzZVNjaGVkdWxlcnEyiVgLAAAAX192ZXJzaW9uX19xM0sBdS4=
 </properties>
-		<properties format="literal" node_id="4">{'URL': ['https://api.gdc.cancer.gov/data/25217ec9-af07-4a17-8db9-101271ee7225', 'https://api.gdc.cancer.gov/data/2c5730fb-0909-4e2a-8a7a-c9a7f8b2dad5', 'https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': True, 'downloadDir': '', 'exportGraphics': False, 'inputConnectionsStore': {'directory': [1], 'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'decompress': False, 'concatenateFile': False, 'skipIfPresent': False, 'noClobber': False}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x98\x00\x00\x01\x8c\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\x98\x00\x00\x01\x89\x00\x00\x00\x00\x00\x00\x00\x00\x05V', 'triggerReady': {'directory': False, 'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
-		<properties format="literal" node_id="5">{'archive_files': None, 'archive_prefix': None, 'biobambam_files': None, 'bypass_biobambam': False, 'clean_files': None, 'coclean_intervals': None, 'controlAreaVisible': True, 'cpu_threads': 8, 'custom_extension': '', 'delete_files': None, 'exportGraphics': False, 'fastq1_files': None, 'fastq2_files': None, 'fastq_files': None, 'fastqc_files': None, 'fastqo1_files': None, 'fastqo2_files': None, 'fastqs_files': None, 'gdc_credentials': '/data/credentials.json', 'gdc_token': '/data/gdc-token.txt', 'genome_dict_file': None, 'genome_dir': '/data/genome', 'genome_file': '/data/genome/GRCh38.d1.vd1.fa', 'inputConnectionsStore': {}, 'input_normal_files': ['/data/work/normal.bam'], 'input_tumor_files': ['/data/work/tumor.bam'], 'iterate': False, 'iterateSettings': {'nWorkers': 1, 'iterableAttrs': ['clean_files', 'fastq_files', 'fastq1_files', 'fastq2_files', 'fastqo1_files', 'fastqo2_files', 'fastqs_files', 'fastqc_files', 'realigned_files', 'realigned_indels_files', 'pindel_filter_files', 'input_normal_files', 'input_tumor_files', 'biobambam_files', 'mutect2_normal_files', 'mutect2_tumor_files', 'mutect2_variants_files', 'variant_annotation_files', 'maf_files', 'mark_dupes_outputs', 'mark_dupes_metrics', 'varscan_pileup_files', 'varscan_snp_files', 'varscan_indel_files', 'muse_call_files', 'muse_sump_input_files', 'muse_sump_output_files', 'pindel_config_files', 'pindel_variants_files', 'pindel_variants_sorted_files', 'pindel_variants_filtered_files', 'pindel_prefix_files', 'archive_files', 'delete_files']}, 'maf_files': None, 'mark_dupes_metrics': None, 'mark_dupes_outputs': None, 'muse_call_files': None, 'muse_sump_input_files': None, 'muse_sump_output_files': None, 'mutect2_normal_files': None, 'mutect2_tumor_files': None, 'mutect2_variants_files': None, 'nWorkers': 1, 'optionsChecked': {'readgroups': False, 'firstmates': True, 'secondmates': True, 'singleend': False, 'gdccredentials': True, 'gdctoken': True, 'cleanfiles': False, 'clean_files': False, 'gdc_credentials': True, 'gdc_token': True, 'bypass_biobambam': False, 'fastq_files': False, 'fastq1_files': False, 'fastq2_files': False, 'fastqo1_files': False, 'fastqo2_files': False, 'fastqs_files': False, 'fastqc_files': False, 'paired_end': False, 'realigned_files': False, 'recalibrate_files': False, 'realigned_indels_files': False, 'pindel_files': False, 'genome_dict_file': False, 'biobambam_files': False, 'mutect2_normal_files': False, 'mutect2_tumor_files': False, 'mutect2_variants_files': False, 'variant_annotation_files': False, 'maf_files': False, 'mark_dupes_outputs': False, 'mark_dupes_metrics': False, 'coclean_intervals': False, 'somatic_sniper_files': False, 'prepend_date': False, 'varscan_files': False, 'varscan_pileup_files': False, 'varscan_snp_files': False, 'varscan_indel_files': False, 'muse_call_files': False, 'muse_sump_input_files': False, 'muse_sump_output_files': False, 'pindel_filter_files': False, 'pindel_config_files': False, 'pindel_variants_files': False, 'pindel_variants_sorted_files': False, 'pindel_variants_filtered_files': False, 'pindel_prefix_files': False, 'archive_and_delete_files': False, 'archive_prefix': False, 'archive_files': False, 'delete_files': False, 'extension': False, 'custom_extension': False}, 'paired_end': True, 'pindel_config_files': None, 'pindel_filter_files': None, 'pindel_prefix_files': None, 'pindel_variants_files': None, 'pindel_variants_filtered_files': None, 'pindel_variants_sorted_files': None, 'prepend_date': True, 'realigned_files': None, 'realigned_indels_files': None, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b&quot;\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02u\x00\x00\x02'\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02u\x00\x00\x02$\x00\x00\x00\x00\x00\x00\x00\x00\x05V&quot;, 'somatic_sniper_files': None, 'triggerReady': {}, 'useGpu': False, 'useScheduler': False, 'variant_annotation_files': None, 'varscan_indel_files': None, 'varscan_pileup_files': None, 'varscan_snp_files': None, 'vep_dir': '/data/vep', 'work_dir': '/data/work', '__version__': 1}</properties>
-		<properties format="literal" node_id="6">{'bucket': 'gatk-tutorials', 'controlAreaVisible': True, 'dirs': [], 'downloadDir': '', 'exportGraphics': False, 'files': ['workshop_1903/3-somatic/bams/tumor.bam', 'workshop_1903/3-somatic/bams/normal.bam'], 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['dirs', 'files'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'dirs': False, 'files': True, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x01\xba\x00\x00\x00`\x00\x00\x04R\x00\x00\x02l\x00\x00\x01\xba\x00\x00\x00`\x00\x00\x04R\x00\x00\x02l\x00\x00\x00\x00\x00\x00\x00\x00\x08`', 'triggerReady': {'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
-		<properties format="literal" node_id="7">{'bucket': 'gcp-public-data--broad-references', 'controlAreaVisible': True, 'dirs': [], 'downloadDir': '', 'exportGraphics': False, 'files': ['hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi', 'hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz', 'hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf', 'hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf.idx'], 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['dirs', 'files'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'dirs': False, 'files': True, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b&quot;\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x98\x00\x00\x02'\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\x98\x00\x00\x02$\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80&quot;, 'triggerReady': {'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="4">{'URL': ['https://api.gdc.cancer.gov/data/25217ec9-af07-4a17-8db9-101271ee7225', 'https://api.gdc.cancer.gov/data/2c5730fb-0909-4e2a-8a7a-c9a7f8b2dad5', 'https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': True, 'downloadDir': '', 'exportGraphics': False, 'inputConnectionsStore': {'directory': [1], 'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'decompress': False, 'concatenateFile': False, 'skipIfPresent': False, 'noClobber': False}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x04\x93\x00\x00\x02\x8d\x00\x00\x07\x7f\x00\x00\x04\x19\x00\x00\x04\x93\x00\x00\x02\xa5\x00\x00\x07\x7f\x00\x00\x04\x16\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'directory': False, 'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="5">{'archive_files': None, 'archive_prefix': None, 'biobambam_files': None, 'bypass_biobambam': False, 'clean_files': None, 'coclean_intervals': None, 'controlAreaVisible': True, 'cpu_threads': 8, 'custom_extension': '', 'delete_files': None, 'exportGraphics': False, 'fastq1_files': None, 'fastq2_files': None, 'fastq_files': None, 'fastqc_files': None, 'fastqo1_files': None, 'fastqo2_files': None, 'fastqs_files': None, 'gdc_credentials': '/data/credentials.json', 'gdc_token': '/data/gdc-token.txt', 'genome_dict_file': None, 'genome_dir': '/data/genome', 'genome_file': '/data/genome/GRCh38.d1.vd1.fa', 'inputConnectionsStore': {}, 'input_normal_files': ['/data/work/normal.bam'], 'input_tumor_files': ['/data/work/tumor.bam'], 'iterate': False, 'iterateSettings': {'nWorkers': 1, 'iterableAttrs': ['clean_files', 'fastq_files', 'fastq1_files', 'fastq2_files', 'fastqo1_files', 'fastqo2_files', 'fastqs_files', 'fastqc_files', 'realigned_files', 'realigned_indels_files', 'pindel_filter_files', 'input_normal_files', 'input_tumor_files', 'biobambam_files', 'mutect2_normal_files', 'mutect2_tumor_files', 'mutect2_variants_files', 'variant_annotation_files', 'maf_files', 'mark_dupes_outputs', 'mark_dupes_metrics', 'varscan_pileup_files', 'varscan_snp_files', 'varscan_indel_files', 'muse_call_files', 'muse_sump_input_files', 'muse_sump_output_files', 'pindel_config_files', 'pindel_variants_files', 'pindel_variants_sorted_files', 'pindel_variants_filtered_files', 'pindel_prefix_files', 'archive_files', 'delete_files', 'variant_input_files']}, 'maf_files': None, 'mark_dupes_metrics': None, 'mark_dupes_outputs': None, 'muse_call_files': None, 'muse_sump_input_files': None, 'muse_sump_output_files': None, 'mutect2_normal_files': None, 'mutect2_tumor_files': None, 'mutect2_variants_files': None, 'nWorkers': 1, 'optionsChecked': {'readgroups': False, 'firstmates': True, 'secondmates': True, 'singleend': False, 'gdccredentials': True, 'gdctoken': True, 'cleanfiles': False, 'clean_files': False, 'gdc_credentials': True, 'gdc_token': True, 'bypass_biobambam': False, 'fastq_files': False, 'fastq1_files': False, 'fastq2_files': False, 'fastqo1_files': False, 'fastqo2_files': False, 'fastqs_files': False, 'fastqc_files': False, 'paired_end': False, 'realigned_files': False, 'recalibrate_files': False, 'realigned_indels_files': False, 'pindel_files': False, 'genome_dict_file': False, 'biobambam_files': False, 'mutect2_normal_files': False, 'mutect2_tumor_files': False, 'mutect2_variants_files': False, 'variant_annotation_files': False, 'maf_files': False, 'mark_dupes_outputs': False, 'mark_dupes_metrics': False, 'coclean_intervals': False, 'somatic_sniper_files': False, 'prepend_date': False, 'varscan_files': False, 'varscan_pileup_files': False, 'varscan_snp_files': False, 'varscan_indel_files': False, 'muse_call_files': False, 'muse_sump_input_files': False, 'muse_sump_output_files': False, 'pindel_filter_files': False, 'pindel_config_files': False, 'pindel_variants_files': False, 'pindel_variants_sorted_files': False, 'pindel_variants_filtered_files': False, 'pindel_prefix_files': False, 'archive_and_delete_files': False, 'archive_prefix': False, 'archive_files': False, 'delete_files': False, 'extension': False, 'custom_extension': False, 'variant_input_files': False}, 'paired_end': True, 'pindel_config_files': None, 'pindel_filter_files': None, 'pindel_prefix_files': None, 'pindel_variants_files': None, 'pindel_variants_filtered_files': None, 'pindel_variants_sorted_files': None, 'prepend_date': True, 'realigned_files': None, 'realigned_indels_files': None, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\xeb\x00\x00\x03F\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x04\xeb\x00\x00\x03C\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'somatic_sniper_files': None, 'triggerReady': {}, 'useGpu': False, 'useScheduler': False, 'variant_annotation_files': None, 'variant_input_files': None, 'varscan_indel_files': None, 'varscan_pileup_files': None, 'varscan_snp_files': None, 'vep_dir': '/data/vep', 'work_dir': '/data/work', '__version__': 1}</properties>
+		<properties format="literal" node_id="6">{'bucket': 'gatk-tutorials', 'controlAreaVisible': True, 'dirs': [], 'downloadDir': '', 'exportGraphics': False, 'files': ['workshop_1903/3-somatic/bams/tumor.bam', 'workshop_1903/3-somatic/bams/normal.bam'], 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['dirs', 'files'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'dirs': False, 'files': True, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x01\xba\x00\x00\x00`\x00\x00\x04\xa6\x00\x00\x02l\x00\x00\x01\xba\x00\x00\x00`\x00\x00\x04\xa6\x00\x00\x02l\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="7">{'bucket': 'gcp-public-data--broad-references', 'controlAreaVisible': True, 'dirs': [], 'downloadDir': '', 'exportGraphics': False, 'files': ['hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi', 'hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz', 'hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf', 'hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf.idx'], 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['dirs', 'files'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'dirs': False, 'files': True, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x04\x93\x00\x00\x01\xf2\x00\x00\x07\x7f\x00\x00\x04\x19\x00\x00\x04\x93\x00\x00\x02\n\x00\x00\x07\x7f\x00\x00\x04\x16\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="8">gAN9cQAoWAgAAABiYW1maWxlc3EBTlgSAAAAY29udHJvbEFyZWFWaXNpYmxlcQKIWAsAAABkYXRh
 dGhyZWFkc3EDTlgOAAAAZXhwb3J0R3JhcGhpY3NxBIlYFQAAAGlucHV0Q29ubmVjdGlvbnNTdG9y
 ZXEFfXEGKFgEAAAARmlsZXEHXXEISwNhWA4AAABpbmRlbHNfdHJpZ2dlcnEJXXEKSwNhWAkAAABy
@@ -388,28 +389,28 @@ iXNYBgAAAHVzZUdwdXFKiVgMAAAAdXNlU2NoZWR1bGVycUuJWAoAAAB3aW5kb3dzaXplcUxLAFgL
 AAAAX192ZXJzaW9uX19xTUsBdS4=
 </properties>
 		<properties format="pickle" node_id="13">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWAYA
-AABmb3JtYXRxA1gHAAAAY2xhc3NpY3EEWAkAAABnb3JyZXBvcnRxBYhYCgAAAGhhcGxvdHlwZXNx
-BksCWBUAAABpbnB1dENvbm5lY3Rpb25zU3RvcmVxB31xCChYCgAAAGlucHV0ZmlsZXNxCV1xCksF
-YVgJAAAAcmVmZXJlbmNlcQtdcQxLAWFYBgAAAG91dHB1dHENXXEOSwFhdVgKAAAAaW5wdXRmaWxl
-c3EPTlgHAAAAaXRlcmF0ZXEQiFgPAAAAaXRlcmF0ZVNldHRpbmdzcRF9cRIoWA0AAABpdGVyYWJs
-ZUF0dHJzcRNdcRQoWAoAAABpbnB1dGZpbGVzcRVYBgAAAG91dHB1dHEWZVgIAAAAbldvcmtlcnNx
-F0sBWAQAAABkYXRhcRhjY29sbGVjdGlvbnMKT3JkZXJlZERpY3QKcRkpUnEaKFgKAAAAaW5wdXRm
-aWxlc3EbfXEcKFgJAAAAZ3JvdXBTaXplcR1YAQAAADJxHlgHAAAAdGhyZWFkc3EfWAEAAAAxcSBY
-AwAAAHJhbXEhWAEAAAAwcSJ1WAYAAABvdXRwdXRxI31xJChoHWggaB9oIGghaCJ1dVgNAAAAaXRl
-cmF0ZWRBdHRyc3ElXXEmKGgbaCNldVgJAAAAbG9ocmVwb3J0cSeIWAcAAABtaW5tYXBxcShLAVgH
-AAAAbWluc252cXEpSw9YCAAAAG5Xb3JrZXJzcSpLAVgIAAAAbm9wcmlvcnNxK4lYCAAAAG5vcm1h
-bGlkcSxYBgAAAE5PUk1BTHEtWA4AAABvcHRpb25zQ2hlY2tlZHEufXEvKFgHAAAAbWlubWFwcXEw
-iFgJAAAAbG9ocmVwb3J0cTGJWAkAAABnb3JyZXBvcnRxMolYCAAAAG5vcHJpb3JzcTOJWAkAAAB1
-c2VwcmlvcnNxNIlYCQAAAHByaW9ycHJvYnE1iFgFAAAAdGhldGFxNohYCgAAAGhhcGxvdHlwZXNx
-N4hYCQAAAHByaW9yZGlmZnE4iFgIAAAAbm9ybWFsaWRxOYhYBwAAAHR1bW9yaWRxOohYDQAAAHJl
-dmVyc2Vfb3JkZXJxO4lYBgAAAGZvcm1hdHE8iVgHAAAAbWluc252cXE9iHVYBgAAAG91dHB1dHE+
-TlgJAAAAcHJpb3JkaWZmcT9YBQAAADAuMDAxcUBYCQAAAHByaW9ycHJvYnFBWAQAAAAwLjAxcUJY
-CQAAAHJlZmVyZW5jZXFDWAAAAABxRFgNAAAAcmV2ZXJzZV9vcmRlcnFFiFgHAAAAcnVuTW9kZXFG
-SwJYCwAAAHJ1blRyaWdnZXJzcUddcUhYCgAAAGlucHV0ZmlsZXNxSWFYEwAAAHNhdmVkV2lkZ2V0
-R2VvbWV0cnlxSkMyAdnQywACAAAAAAAAAAAAAAAAAuwAAAInAAAAAAAAABgAAALsAAACJAAAAAAA
-AAAACAFxS1gFAAAAdGhldGFxTFgEAAAAMC44NXFNWAwAAAB0cmlnZ2VyUmVhZHlxTn1xT1gKAAAA
-aW5wdXRmaWxlc3FQiXNYBwAAAHR1bW9yaWRxUVgFAAAAVFVNT1JxUlgGAAAAdXNlR3B1cVOJWAwA
-AAB1c2VTY2hlZHVsZXJxVIlYCQAAAHVzZXByaW9yc3FViVgLAAAAX192ZXJzaW9uX19xVksBdS4=
+AABmb3JtYXRxA1gDAAAAdmNmcQRYCQAAAGdvcnJlcG9ydHEFiFgKAAAAaGFwbG90eXBlc3EGSwJY
+FQAAAGlucHV0Q29ubmVjdGlvbnNTdG9yZXEHfXEIKFgKAAAAaW5wdXRmaWxlc3EJXXEKSwVhWAkA
+AAByZWZlcmVuY2VxC11xDEsBYVgGAAAAb3V0cHV0cQ1dcQ5LAWF1WAoAAABpbnB1dGZpbGVzcQ9O
+WAcAAABpdGVyYXRlcRCIWA8AAABpdGVyYXRlU2V0dGluZ3NxEX1xEihYDQAAAGl0ZXJhYmxlQXR0
+cnNxE11xFChYCgAAAGlucHV0ZmlsZXNxFVgGAAAAb3V0cHV0cRZlWAgAAABuV29ya2Vyc3EXSwFY
+BAAAAGRhdGFxGGNjb2xsZWN0aW9ucwpPcmRlcmVkRGljdApxGSlScRooWAoAAABpbnB1dGZpbGVz
+cRt9cRwoWAkAAABncm91cFNpemVxHVgBAAAAMnEeWAcAAAB0aHJlYWRzcR9YAQAAADFxIFgDAAAA
+cmFtcSFYAQAAADBxInVYBgAAAG91dHB1dHEjfXEkKGgdaCBoH2ggaCFoInV1WA0AAABpdGVyYXRl
+ZEF0dHJzcSVdcSYoaBtoI2V1WAkAAABsb2hyZXBvcnRxJ4hYBwAAAG1pbm1hcHFxKEsBWAcAAABt
+aW5zbnZxcSlLD1gIAAAAbldvcmtlcnNxKksBWAgAAABub3ByaW9yc3EriVgIAAAAbm9ybWFsaWRx
+LFgGAAAATk9STUFMcS1YDgAAAG9wdGlvbnNDaGVja2VkcS59cS8oWAcAAABtaW5tYXBxcTCIWAkA
+AABsb2hyZXBvcnRxMYlYCQAAAGdvcnJlcG9ydHEyiVgIAAAAbm9wcmlvcnNxM4lYCQAAAHVzZXBy
+aW9yc3E0iVgJAAAAcHJpb3Jwcm9icTWIWAUAAAB0aGV0YXE2iFgKAAAAaGFwbG90eXBlc3E3iFgJ
+AAAAcHJpb3JkaWZmcTiIWAgAAABub3JtYWxpZHE5iFgHAAAAdHVtb3JpZHE6iFgNAAAAcmV2ZXJz
+ZV9vcmRlcnE7iVgGAAAAZm9ybWF0cTyIWAcAAABtaW5zbnZxcT2IdVgGAAAAb3V0cHV0cT5OWAkA
+AABwcmlvcmRpZmZxP1gFAAAAMC4wMDFxQFgJAAAAcHJpb3Jwcm9icUFYBAAAADAuMDFxQlgJAAAA
+cmVmZXJlbmNlcUNYAAAAAHFEWA0AAAByZXZlcnNlX29yZGVycUWIWAcAAABydW5Nb2RlcUZLAlgL
+AAAAcnVuVHJpZ2dlcnNxR11xSFgKAAAAaW5wdXRmaWxlc3FJYVgTAAAAc2F2ZWRXaWRnZXRHZW9t
+ZXRyeXFKQzIB2dDLAAIAAAAAAAAAAAAAAAAC7AAAAicAAAAAAAAAGAAAAuwAAAIkAAAAAAAAAAAH
+gHFLWAUAAAB0aGV0YXFMWAQAAAAwLjg1cU1YDAAAAHRyaWdnZXJSZWFkeXFOfXFPWAoAAABpbnB1
+dGZpbGVzcVCJc1gHAAAAdHVtb3JpZHFRWAUAAABUVU1PUnFSWAYAAAB1c2VHcHVxU4lYDAAAAHVz
+ZVNjaGVkdWxlcnFUiVgJAAAAdXNlcHJpb3JzcVWJWAsAAABfX3ZlcnNpb25fX3FWSwF1Lg==
 </properties>
 		<properties format="pickle" node_id="14">gAN9cQAoWAoAAABjYWxsb3V0cHV0cQFOWBIAAABjb250cm9sQXJlYVZpc2libGVxAohYBQAAAGRi
 c25wcQNYIAAAAC9kYXRhL2dlbm9tZS9BbGxfMjAxNTA2MDMudmNmLmd6cQRYBQAAAGV4b21lcQWI
@@ -429,7 +430,7 @@ AAAYAAAHfwAAA64AAAAAAgAAAAgBcTRYDAAAAHRyaWdnZXJSZWFkeXE1fXE2KFgKAAAAY2FsbG91
 dHB1dHE3iVgHAAAAdHJpZ2dlcnE4iXVYBgAAAHVzZUdwdXE5iVgMAAAAdXNlU2NoZWR1bGVycTqJ
 WAsAAABfX3ZlcnNpb25fX3E7SwF1Lg==
 </properties>
-		<properties format="literal" node_id="15">{'URL': ['https://ftp.ncbi.nih.gov/snp/pre_build152/organisms/archive/human_9606_b144_GRCh38p2/VCF/All_20150603.vcf.gz', 'https://ftp.ncbi.nih.gov/snp/pre_build152/organisms/archive/human_9606_b144_GRCh38p2/VCF/All_20150603.vcf.gz.tbi'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': False, 'downloadDir': '', 'exportGraphics': False, 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'decompress': False, 'concatenateFile': False, 'skipIfPresent': True, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x98\x00\x00\x01\x8c\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\x98\x00\x00\x01\x89\x00\x00\x00\x00\x00\x00\x00\x00\x05V', 'triggerReady': {'directory': False, 'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="15">{'URL': ['https://ftp.ncbi.nih.gov/snp/pre_build152/organisms/archive/human_9606_b144_GRCh38p2/VCF/All_20150603.vcf.gz', 'https://ftp.ncbi.nih.gov/snp/pre_build152/organisms/archive/human_9606_b144_GRCh38p2/VCF/All_20150603.vcf.gz.tbi'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': False, 'downloadDir': '', 'exportGraphics': False, 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'decompress': False, 'concatenateFile': False, 'skipIfPresent': True, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x02\x8d\x00\x00\x02\xec\x00\x00\x04\x19\x00\x00\x00\x00\x00\x00\x02\xa5\x00\x00\x02\xec\x00\x00\x04\x16\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'directory': False, 'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="16">gAN9cQAoWBIAAABjb250cm9sQXJlYVZpc2libGVxAYhYDgAAAGV4cG9ydEdyYXBoaWNzcQKJWBUA
 AABpbnB1dENvbm5lY3Rpb25zU3RvcmVxA31xBChYCgAAAGlucHV0ZmlsZXNxBV1xBksFYVgJAAAA
 cmVmZXJlbmNlcQddcQhLAWFYBgAAAG91dHB1dHEJXXEKSwFhdVgKAAAAaW5wdXRmaWxlc3ELTlgH
@@ -579,7 +580,7 @@ NYlYCgAAAHVudGFyZmlsZXNxNolYCAAAAGdkY3Rva2VucTeIWAoAAABkZWNvbXByZXNzcTiJdVgH
 AAAAcHJvZmlsZXE5WAQAAAB1c2VycTpYCAAAAHByb3RvY29scTtoA1gGAAAAcmVuYW1lcTyJWAcA
 AABydW5Nb2RlcT1LAlgLAAAAcnVuVHJpZ2dlcnNxPl1xPyhYCwAAAGNyZWRlbnRpYWxzcUBYCwAA
 AGRvd25sb2FkRGlycUFYCAAAAGdkY3Rva2VucUJlWBMAAABzYXZlZFdpZGdldEdlb21ldHJ5cUND
-MgHZ0MsAAgAAAAAAAAAAAAAAAALsAAACJwAAAAAAAAAYAAAC7AAAAiQAAAAAAAAAAAgBcURYDQAA
+MgHZ0MsAAgAAAAADkAAAAcwAAAZ8AAAD2AAAA5AAAAHMAAAGfAAAA9gAAAAAAAAAAAeAcURYDQAA
 AHNraXBjb21wbGV0ZWRxRYhYDAAAAHRyaWdnZXJSZWFkeXFGfXFHKFgLAAAAY3JlZGVudGlhbHNx
 SIloQYloQol1WAYAAAB1c2VHcHVxSYlYDAAAAHVzZVNjaGVkdWxlcnFKiVgLAAAAX192ZXJzaW9u
 X19xS0sBdS4=
@@ -594,104 +595,108 @@ ZXJ5dGhpbmdxFYlYDgAAAGV4cG9ydEdyYXBoaWNzcRaJWAUAAABmYXN0YXEXaAlYBgAAAGZpZWxk
 c3EYaAlYDgAAAGZsYWdQaWNrQWxsZWxlcRmIWA4AAABmb3JjZU92ZXJ3cml0ZXEaiFgEAAAAZm9y
 a3EbSwRYBgAAAGZvcm1hdHEcWAMAAAB2Y2ZxHVgNAAAAZ2VuZVBoZW5vdHlwZXEeiFgDAAAAZ2Zm
 cR9oCVgDAAAAZ3RmcSBoCVgEAAAAaGd2c3EhiFgGAAAAaHVtZGl2cSKJWAoAAABpbmRpdmlkdWFs
-cSNoCVgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcSR9cSUoWAkAAABpbnB1dEZpbGVxJl1xJ0sS
-YVgPAAAAdmVwQmFzZUNhY2hlRGlycShdcSlLAWFYBQAAAGZhc3RhcSpdcStLAWFYCgAAAG91dHB1
-dEZpbGVxLF1xLUsBYVgHAAAAdHJpZ2dlcnEuXXEvSxxhdVgJAAAAaW5wdXREYXRhcTBoCVgJAAAA
-aW5wdXRGaWxlcTFOWAcAAABpdGVyYXRlcTKIWA8AAABpdGVyYXRlU2V0dGluZ3NxM31xNChYDQAA
-AGl0ZXJhYmxlQXR0cnNxNV1xNihYCQAAAGlucHV0RmlsZXE3WAoAAABvdXRwdXRGaWxlcThlWAgA
-AABuV29ya2Vyc3E5SwFYBAAAAGRhdGFxOmNjb2xsZWN0aW9ucwpPcmRlcmVkRGljdApxOylScTwo
-WAkAAABpbnB1dEZpbGVxPX1xPihYCQAAAGdyb3VwU2l6ZXE/WAEAAAAxcUBYBwAAAHRocmVhZHNx
-QWhAWAMAAAByYW1xQlgBAAAAMHFDdVgKAAAAb3V0cHV0RmlsZXFEfXFFKGg/aEBoQWhAaEJoQ3V1
-WA0AAABpdGVyYXRlZEF0dHJzcUZdcUcoaD1oRGV1WAQAAABqc29ucUiJWAcAAABrZWVwQ3NxcUmJ
-WAkAAABtYXhTdlNpemVxSolYBgAAAG1lcmdlZHFLiVgHAAAAbWluaW1hbHFMiVgIAAAAbldvcmtl
-cnNxTUsBWAcAAABuZWFyZXN0cU5oCVgUAAAAbm9DaGVja1ZhcmlhbnRzT3JkZXJxT4lYCAAAAG5v
-RXNjYXBlcVCIWAkAAABub0hlYWRlcnNxUYlYBwAAAG5vU3RhdHNxUohYBwAAAG9mZmxpbmVxU4hY
-DgAAAG9wdGlvbnNDaGVja2VkcVR9cVUoWA4AAABmb3JjZU92ZXJ3cml0ZXFWiVgIAAAAdmVwQ2Fj
-aGVxV4lYDwAAAHZlcEJhc2VDYWNoZURpcnFYiFgKAAAAdmVwT2ZmbGluZXFZiVgLAAAAdmVwQ2Fj
-aGVEaXJxWolYDAAAAHZlcFBsdWdpbkRpcnFbiVgFAAAAZmFzdGFxXIhYBwAAAHZlcEhlbHBxXYlY
-CgAAAHZlcFZlcmJvc2VxXolYCQAAAHZlcENvbmZpZ3FfiVgNAAAAdmVwRXZlcnl0aGluZ3FgiVgH
-AAAAc3BlY2llc3FhiFgLAAAAdmVwQXNzZW1ibHlxYolYCQAAAGlucHV0RGF0YXFjiVgJAAAAdmVw
-Rm9ybWF0cWSJWAwAAAB2ZXBTdGF0c0ZpbGVxZYlYCgAAAHZlcE5vU3RhdHNxZolYDAAAAHZlcFN0
-YXRzVGV4dHFniVgOAAAAdmVwV2FybmluZ0ZpbGVxaIlYCQAAAG1heFN2U2l6ZXFpiVgUAAAAbm9D
-aGVja1ZhcmlhbnRzT3JkZXJxaolYBwAAAHZlcEZvcmtxa4lYCQAAAHZlcFJlZlNlcXFsiVgJAAAA
-dmVwTWVyZ2VkcW2JWA8AAAB2ZXBDYWNoZVZlcnNpb25xbolYEAAAAHZlcFNob3dDYWNoZUluZm9x
-b4lYDQAAAHZlcEJ1ZmZlclNpemVxcIlYCgAAAGV2ZXJ5dGhpbmdxcYlYCAAAAGFzc2VtYmx5cXKI
-WAYAAABmb3JtYXRxc4hYCQAAAHN0YXRzRmlsZXF0iVgHAAAAbm9TdGF0c3F1iVgJAAAAc3RhdHNU
-ZXh0cXaJWAsAAAB3YXJuaW5nRmlsZXF3iVgEAAAAZm9ya3F4iFgJAAAAcGx1Z2luRGlycXmJWAcA
-AABvZmZsaW5lcXqJWAYAAAByZWZTZXFxe4lYBgAAAG1lcmdlZHF8iVgMAAAAY2FjaGVWZXJzaW9u
-cX2JWA0AAABzaG93Q2FjaGVJbmZvcX6JWAoAAABidWZmZXJTaXplcX+IWAYAAABwbHVnaW5xgIlY
-BgAAAGN1c3RvbXGBiVgDAAAAZ2ZmcYKJWAMAAABndGZxg4lYAwAAAGJhbXGEiVgQAAAAdXNlVHJh
-bnNjcmlwdFJlZnGFiVgSAAAAY3VzdG9tTXVsdGlBbGxlbGljcYaJWAMAAAB2Y2Zxh4lYAwAAAHRh
-YnGIiVgEAAAAanNvbnGJiVgOAAAAY29tcHJlc3NPdXRwdXRxiolYBgAAAGZpZWxkc3GLiVgHAAAA
-bWluaW1hbHGMiVgMAAAAdmFyaWFudENsYXNzcY2JWAQAAABzaWZ0cY6IWAgAAABwb2x5cGhlbnGP
-iFgGAAAAaHVtZGl2cZCJWAcAAABuZWFyZXN0cZGJWAgAAABkaXN0YW5jZXGSiVgIAAAAb3Zlcmxh
-cHNxk4lYDQAAAGdlbmVQaGVub3R5cGVxlIlYCgAAAHJlZ3VsYXRvcnlxlYlYCAAAAGNlbGxUeXBl
-cZaJWAoAAABpbmRpdmlkdWFscZeJWAYAAABwaGFzZWRxmIlYDAAAAGFsbGVsZU51bWJlcnGZiVgN
-AAAAc2hvd1JlZkFsbGVsZXGaiVgLAAAAdG90YWxMZW5ndGhxm4lYCgAAAHZlcE51bWJlcnNxnIlY
-CAAAAG5vRXNjYXBlcZ2JWAcAAABrZWVwQ3NxcZ6JWAwAAAB2Y2ZJbmZvRmllbGRxn4lYCAAAAHZl
-cFRlcm1zcaCJWAkAAABub0hlYWRlcnNxoYlYCwAAAHNoaWZ0M3ByaW1lcaKJWAwAAABzaGlmdEdl
-bm9taWNxo4lYCwAAAHNoaWZ0TGVuZ3RocaSJWAQAAABjY2RzcaWJWAQAAABoZ3ZzcaaJWAkAAAB2
-ZXBTeW1ib2xxp4lYCgAAAHZlcERvbWFpbnNxqIlYDAAAAHZlcENhbm9uaWNhbHGpiVgHAAAAcHJv
-dGVpbnGqiVgHAAAAYmlvdHlwZXGriVgHAAAAdW5pcHJvdHGsiVgDAAAAdHNsca2JWAkAAABzaGlm
-dEhndnNxrohYDQAAAGNoZWNrRXhpc3Rpbmdxr4lYCgAAAHhyZWZSZWZzZXFxsIlYCQAAAHZlcEZh
-aWxlZHGxiFgOAAAAZmxhZ1BpY2tBbGxlbGVxsolYCQAAAHBpY2tPcmRlcnGziFgGAAAAcHVibWVk
-cbSJWAIAAABhZnG1iVgFAAAAYWYxa2dxtolYBQAAAGFmRXNwcbeJWAgAAABhZkdub21hZHG4iXVY
-CgAAAG91dHB1dEZpbGVxuU5YCAAAAG92ZXJsYXBzcbqJWAYAAABwaGFzZWRxu4lYCQAAAHBpY2tP
-cmRlcnG8WCYAAABjYW5vbmljYWwsdHNsLGJpb3R5cGUscmFuayxjY2RzLGxlbmd0aHG9WAYAAABw
-bHVnaW5xvmgJWAkAAABwbHVnaW5EaXJxv2gJWAgAAABwb2x5cGhlbnHAWAEAAABiccFYBwAAAHBy
-b3RlaW5xwohYBgAAAHB1Ym1lZHHDiFgGAAAAcmVmU2VxccSJWAoAAAByZWd1bGF0b3J5ccWIWAcA
-AABydW5Nb2RlccZLAlgLAAAAcnVuVHJpZ2dlcnNxx11xyChYCQAAAGlucHV0RmlsZXHJWAcAAAB0
-cmlnZ2VyccplWBMAAABzYXZlZFdpZGdldEdlb21ldHJ5cctDMgHZ0MsAAgAAAAAAAAAAAAAAAAgA
-AAADxQAAAAAAAAAYAAAHfwAAA64AAAAAAgAAAAgBccxYCwAAAHNoaWZ0M3ByaW1lcc1oCVgMAAAA
-c2hpZnRHZW5vbWljcc5oCVgJAAAAc2hpZnRIZ3Zzcc9LAVgLAAAAc2hpZnRMZW5ndGhx0IlYDQAA
-AHNob3dDYWNoZUluZm9x0YlYDQAAAHNob3dSZWZBbGxlbGVx0olYBAAAAHNpZnRx02jBWAcAAABz
-cGVjaWVzcdRYDAAAAGhvbW9fc2FwaWVuc3HVWAkAAABzdGF0c0ZpbGVx1mgJWAkAAABzdGF0c1Rl
-eHRx14lYAwAAAHRhYnHYiVgLAAAAdG90YWxMZW5ndGhx2YhYDAAAAHRyaWdnZXJSZWFkeXHafXHb
-KFgJAAAAaW5wdXRGaWxlcdyJaMqJdVgDAAAAdHNscd2IWAcAAAB1bmlwcm90cd6IWAYAAAB1c2VH
-cHVx34lYDAAAAHVzZVNjaGVkdWxlcnHgiVgQAAAAdXNlVHJhbnNjcmlwdFJlZnHhiVgMAAAAdmFy
-aWFudENsYXNzceKIWAMAAAB2Y2Zx44hYDAAAAHZjZkluZm9GaWVsZHHkaAlYDwAAAHZlcEJhc2VD
-YWNoZURpcnHlaAlYCAAAAHZlcENhY2hlceaJWAsAAAB2ZXBDYWNoZURpcnHnaAlYDAAAAHZlcENh
-bm9uaWNhbHHoiFgJAAAAdmVwQ29uZmlnceloCVgKAAAAdmVwRG9tYWluc3HqiFgJAAAAdmVwRmFp
-bGVkcetLAVgHAAAAdmVwSGVscHHsiVgKAAAAdmVwTnVtYmVyc3HtiFgJAAAAdmVwU3ltYm9sce6I
-WAgAAAB2ZXBUZXJtc3HvaAlYCgAAAHZlcFZlcmJvc2Vx8IlYCwAAAHdhcm5pbmdGaWxlcfFoCVgK
-AAAAeHJlZlJlZnNlcXHyiFgLAAAAX192ZXJzaW9uX19x80sBdS4=
+cSNoCVgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcSR9cSUoWA8AAAB2ZXBCYXNlQ2FjaGVEaXJx
+Jl1xJ0sBYVgFAAAAZmFzdGFxKF1xKUsBYVgKAAAAb3V0cHV0RmlsZXEqXXErSwFhWAcAAAB0cmln
+Z2VycSxdcS1LHGFYCQAAAGlucHV0RmlsZXEuXXEvSwFhWA8AAAB2YXJzY2FuX3RyaWdnZXJxMF1x
+MUsQYVgOAAAAc25pcGVyX3RyaWdnZXJxMl1xM0sKYVgRAAAAbXVzZV9jYWxsX3RyaWdnZXJxNF1x
+NUsXYVgOAAAAcGluZGVsX3RyaWdnZXJxNl1xN0sMYVgOAAAAbXV0ZWN0X3RyaWdnZXJxOF1xOUsS
+YXVYCQAAAGlucHV0RGF0YXE6aAlYCQAAAGlucHV0RmlsZXE7TlgHAAAAaXRlcmF0ZXE8iFgPAAAA
+aXRlcmF0ZVNldHRpbmdzcT19cT4oWA0AAABpdGVyYWJsZUF0dHJzcT9dcUAoWAkAAABpbnB1dEZp
+bGVxQVgKAAAAb3V0cHV0RmlsZXFCZVgIAAAAbldvcmtlcnNxQ0sBWAQAAABkYXRhcURjY29sbGVj
+dGlvbnMKT3JkZXJlZERpY3QKcUUpUnFGKFgJAAAAaW5wdXRGaWxlcUd9cUgoWAkAAABncm91cFNp
+emVxSVgBAAAAMXFKWAcAAAB0aHJlYWRzcUtoSlgDAAAAcmFtcUxYAQAAADBxTXVYCgAAAG91dHB1
+dEZpbGVxTn1xTyhoSWhKaEtoSmhMaE11dVgNAAAAaXRlcmF0ZWRBdHRyc3FQXXFRKGhHaE5ldVgE
+AAAAanNvbnFSiVgHAAAAa2VlcENzcXFTiVgJAAAAbWF4U3ZTaXplcVSJWAYAAABtZXJnZWRxVYlY
+BwAAAG1pbmltYWxxVolYCAAAAG5Xb3JrZXJzcVdLBlgHAAAAbmVhcmVzdHFYaAlYFAAAAG5vQ2hl
+Y2tWYXJpYW50c09yZGVycVmJWAgAAABub0VzY2FwZXFaiFgJAAAAbm9IZWFkZXJzcVuJWAcAAABu
+b1N0YXRzcVyIWAcAAABvZmZsaW5lcV2IWA4AAABvcHRpb25zQ2hlY2tlZHFefXFfKFgOAAAAZm9y
+Y2VPdmVyd3JpdGVxYIlYCAAAAHZlcENhY2hlcWGJWA8AAAB2ZXBCYXNlQ2FjaGVEaXJxYohYCgAA
+AHZlcE9mZmxpbmVxY4lYCwAAAHZlcENhY2hlRGlycWSJWAwAAAB2ZXBQbHVnaW5EaXJxZYlYBQAA
+AGZhc3RhcWaIWAcAAAB2ZXBIZWxwcWeJWAoAAAB2ZXBWZXJib3NlcWiJWAkAAAB2ZXBDb25maWdx
+aYlYDQAAAHZlcEV2ZXJ5dGhpbmdxaolYBwAAAHNwZWNpZXNxa4hYCwAAAHZlcEFzc2VtYmx5cWyJ
+WAkAAABpbnB1dERhdGFxbYlYCQAAAHZlcEZvcm1hdHFuiVgMAAAAdmVwU3RhdHNGaWxlcW+JWAoA
+AAB2ZXBOb1N0YXRzcXCJWAwAAAB2ZXBTdGF0c1RleHRxcYlYDgAAAHZlcFdhcm5pbmdGaWxlcXKJ
+WAkAAABtYXhTdlNpemVxc4lYFAAAAG5vQ2hlY2tWYXJpYW50c09yZGVycXSJWAcAAAB2ZXBGb3Jr
+cXWJWAkAAAB2ZXBSZWZTZXFxdolYCQAAAHZlcE1lcmdlZHF3iVgPAAAAdmVwQ2FjaGVWZXJzaW9u
+cXiJWBAAAAB2ZXBTaG93Q2FjaGVJbmZvcXmJWA0AAAB2ZXBCdWZmZXJTaXplcXqJWAoAAABldmVy
+eXRoaW5ncXuJWAgAAABhc3NlbWJseXF8iFgGAAAAZm9ybWF0cX2IWAkAAABzdGF0c0ZpbGVxfolY
+BwAAAG5vU3RhdHNxf4lYCQAAAHN0YXRzVGV4dHGAiVgLAAAAd2FybmluZ0ZpbGVxgYlYBAAAAGZv
+cmtxgohYCQAAAHBsdWdpbkRpcnGDiVgHAAAAb2ZmbGluZXGEiVgGAAAAcmVmU2VxcYWJWAYAAABt
+ZXJnZWRxholYDAAAAGNhY2hlVmVyc2lvbnGHiVgNAAAAc2hvd0NhY2hlSW5mb3GIiVgKAAAAYnVm
+ZmVyU2l6ZXGJiFgGAAAAcGx1Z2lucYqJWAYAAABjdXN0b21xi4lYAwAAAGdmZnGMiVgDAAAAZ3Rm
+cY2JWAMAAABiYW1xjolYEAAAAHVzZVRyYW5zY3JpcHRSZWZxj4lYEgAAAGN1c3RvbU11bHRpQWxs
+ZWxpY3GQiVgDAAAAdmNmcZGJWAMAAAB0YWJxkolYBAAAAGpzb25xk4lYDgAAAGNvbXByZXNzT3V0
+cHV0cZSJWAYAAABmaWVsZHNxlYlYBwAAAG1pbmltYWxxlolYDAAAAHZhcmlhbnRDbGFzc3GXiVgE
+AAAAc2lmdHGYiFgIAAAAcG9seXBoZW5xmYhYBgAAAGh1bWRpdnGaiVgHAAAAbmVhcmVzdHGbiVgI
+AAAAZGlzdGFuY2VxnIlYCAAAAG92ZXJsYXBzcZ2JWA0AAABnZW5lUGhlbm90eXBlcZ6JWAoAAABy
+ZWd1bGF0b3J5cZ+JWAgAAABjZWxsVHlwZXGgiVgKAAAAaW5kaXZpZHVhbHGhiVgGAAAAcGhhc2Vk
+caKJWAwAAABhbGxlbGVOdW1iZXJxo4lYDQAAAHNob3dSZWZBbGxlbGVxpIlYCwAAAHRvdGFsTGVu
+Z3RocaWJWAoAAAB2ZXBOdW1iZXJzcaaJWAgAAABub0VzY2FwZXGniVgHAAAAa2VlcENzcXGoiVgM
+AAAAdmNmSW5mb0ZpZWxkcamJWAgAAAB2ZXBUZXJtc3GqiVgJAAAAbm9IZWFkZXJzcauJWAsAAABz
+aGlmdDNwcmltZXGsiVgMAAAAc2hpZnRHZW5vbWljca2JWAsAAABzaGlmdExlbmd0aHGuiVgEAAAA
+Y2Nkc3GviVgEAAAAaGd2c3GwiVgJAAAAdmVwU3ltYm9scbGJWAoAAAB2ZXBEb21haW5zcbKJWAwA
+AAB2ZXBDYW5vbmljYWxxs4lYBwAAAHByb3RlaW5xtIlYBwAAAGJpb3R5cGVxtYlYBwAAAHVuaXBy
+b3RxtolYAwAAAHRzbHG3iVgJAAAAc2hpZnRIZ3ZzcbiIWA0AAABjaGVja0V4aXN0aW5ncbmJWAoA
+AAB4cmVmUmVmc2VxcbqJWAkAAAB2ZXBGYWlsZWRxu4hYDgAAAGZsYWdQaWNrQWxsZWxlcbyJWAkA
+AABwaWNrT3JkZXJxvYhYBgAAAHB1Ym1lZHG+iVgCAAAAYWZxv4lYBQAAAGFmMWtnccCJWAUAAABh
+ZkVzcHHBiVgIAAAAYWZHbm9tYWRxwol1WAoAAABvdXRwdXRGaWxlccNOWAgAAABvdmVybGFwc3HE
+iVgGAAAAcGhhc2VkccWJWAkAAABwaWNrT3JkZXJxxlgmAAAAY2Fub25pY2FsLHRzbCxiaW90eXBl
+LHJhbmssY2NkcyxsZW5ndGhxx1gGAAAAcGx1Z2lucchoCVgJAAAAcGx1Z2luRGlyccloCVgIAAAA
+cG9seXBoZW5xylgBAAAAYnHLWAcAAABwcm90ZWluccyIWAYAAABwdWJtZWRxzYhYBgAAAHJlZlNl
+cXHOiVgKAAAAcmVndWxhdG9yeXHPiFgHAAAAcnVuTW9kZXHQSwJYCwAAAHJ1blRyaWdnZXJzcdFd
+cdIoWA8AAAB2YXJzY2FuX3RyaWdnZXJx01gOAAAAc25pcGVyX3RyaWdnZXJx1FgRAAAAbXVzZV9j
+YWxsX3RyaWdnZXJx1VgOAAAAcGluZGVsX3RyaWdnZXJx1lgOAAAAbXV0ZWN0X3RyaWdnZXJx12VY
+EwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlx2EMyAdnQywACAAAAAAAAAAAAGAAAB38AAAQWAAAAAAAA
+ABgAAAd/AAAEFgAAAAAAAAAAB4Bx2VgLAAAAc2hpZnQzcHJpbWVx2mgJWAwAAABzaGlmdEdlbm9t
+aWNx22gJWAkAAABzaGlmdEhndnNx3EsBWAsAAABzaGlmdExlbmd0aHHdiVgNAAAAc2hvd0NhY2hl
+SW5mb3HeiVgNAAAAc2hvd1JlZkFsbGVsZXHfiVgEAAAAc2lmdHHgaMtYBwAAAHNwZWNpZXNx4VgM
+AAAAaG9tb19zYXBpZW5zceJYCQAAAHN0YXRzRmlsZXHjaAlYCQAAAHN0YXRzVGV4dHHkiVgDAAAA
+dGFiceWJWAsAAAB0b3RhbExlbmd0aHHmiFgMAAAAdHJpZ2dlclJlYWR5ced9cegoWAkAAABpbnB1
+dEZpbGVx6YlYBwAAAHRyaWdnZXJx6olYDgAAAG11dGVjdF90cmlnZ2VyceuJaNOJaNSJaNWJaNaJ
+dVgDAAAAdHNsceyIWAcAAAB1bmlwcm90ce2IWAYAAAB1c2VHcHVx7olYDAAAAHVzZVNjaGVkdWxl
+cnHviVgQAAAAdXNlVHJhbnNjcmlwdFJlZnHwiVgMAAAAdmFyaWFudENsYXNzcfGIWAMAAAB2Y2Zx
+8ohYDAAAAHZjZkluZm9GaWVsZHHzaAlYDwAAAHZlcEJhc2VDYWNoZURpcnH0aAlYCAAAAHZlcENh
+Y2hlcfWJWAsAAAB2ZXBDYWNoZURpcnH2aAlYDAAAAHZlcENhbm9uaWNhbHH3iFgJAAAAdmVwQ29u
+ZmlncfhoCVgKAAAAdmVwRG9tYWluc3H5iFgJAAAAdmVwRmFpbGVkcfpLAVgHAAAAdmVwSGVscHH7
+iVgKAAAAdmVwTnVtYmVyc3H8iFgJAAAAdmVwU3ltYm9scf2IWAgAAAB2ZXBUZXJtc3H+aAlYCgAA
+AHZlcFZlcmJvc2Vx/4lYCwAAAHdhcm5pbmdGaWxlcgABAABoCVgKAAAAeHJlZlJlZnNlcXIBAQAA
+iFgLAAAAX192ZXJzaW9uX19yAgEAAEsBdS4=
 </properties>
-		<properties format="literal" node_id="24">{'URL': ['ftp://ftp.ensembl.org/pub/release-102/variation/indexed_vep_cache/homo_sapiens_vep_102_GRCh38.tar.gz'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': True, 'downloadDir': '', 'exportGraphics': False, 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'decompress': False, 'concatenateFile': False, 'skipIfPresent': False, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x98\x00\x00\x01\x8c\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\x98\x00\x00\x01\x89\x00\x00\x00\x00\x00\x00\x00\x00\x05V', 'triggerReady': {'directory': False, 'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="24">{'URL': ['ftp://ftp.ensembl.org/pub/release-102/variation/indexed_vep_cache/homo_sapiens_vep_102_GRCh38.tar.gz'], 'concatenateFile': '', 'controlAreaVisible': True, 'decompress': True, 'downloadDir': '', 'exportGraphics': False, 'inputConnectionsStore': {'downloadDir': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['URL'], 'nWorkers': 1}, 'nWorkers': 1, 'noClobber': True, 'optionsChecked': {'decompress': False, 'concatenateFile': False, 'skipIfPresent': False, 'noClobber': True}, 'runMode': 2, 'runTriggers': ['downloadDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x02\xed\x00\x00\x02\x8d\x00\x00\x05\xd9\x00\x00\x04\x19\x00\x00\x02\xed\x00\x00\x02\xa5\x00\x00\x05\xd9\x00\x00\x04\x16\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'directory': False, 'downloadDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="25">gAN9cQAoWAkAAABhbnlBbGxlbGVxAYlYCgAAAGJ1ZmZlclNpemVxAksAWAwAAABjYWNoZVZlcnNp
 b25xA0sAWBIAAABjb250cm9sQXJlYVZpc2libGVxBIhYCgAAAGN1c3RvbUVuc3RxBV1xBlgOAAAA
 ZXhwb3J0R3JhcGhpY3NxB4lYCQAAAGZpbHRlclZjZnEIWAAAAABxCVgKAAAAaW5oaWJpdFZlcHEK
-iFgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcQt9cQwoWAkAAABpbnB1dEZpbGVxDV1xDksUYVgI
-AAAAcmVmRmFzdGFxD11xEEsBYVgKAAAAb3V0cHV0RmlsZXERXXESSwFhdVgJAAAAaW5wdXRGaWxl
-cRNOWAcAAABpdGVyYXRlcRSIWA8AAABpdGVyYXRlU2V0dGluZ3NxFX1xFihYDQAAAGl0ZXJhYmxl
-QXR0cnNxF11xGChYCQAAAGlucHV0RmlsZXEZWAoAAABvdXRwdXRGaWxlcRpYCgAAAGN1c3RvbUVu
-c3RxG2VYCAAAAG5Xb3JrZXJzcRxLAVgEAAAAZGF0YXEdY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0
-CnEeKVJxHyhYCQAAAGlucHV0RmlsZXEgfXEhKFgJAAAAZ3JvdXBTaXplcSJYAQAAADFxI1gHAAAA
-dGhyZWFkc3EkaCNYAwAAAHJhbXElWAEAAAAwcSZ1WAoAAABvdXRwdXRGaWxlcSd9cSgoaCJoI2gk
-aCNoJWgmdVgKAAAAY3VzdG9tRW5zdHEpfXEqKGgiaCNoJGgjaCVoJnV1WA0AAABpdGVyYXRlZEF0
-dHJzcStdcSwoaCBoJ2V1WAkAAABtYWZDZW50ZXJxLWgJWAsAAABtYXhGaWx0ZXJBY3EuSwBYCQAA
-AG1pbkhvbVZhZnEvaAlYCAAAAG5Xb3JrZXJzcTBLAVgJAAAAbmNiaUJ1aWxkcTFoCVgIAAAAbm9y
-bWFsSWRxMmgJWAYAAABvbmxpbmVxM4lYDgAAAG9wdGlvbnNDaGVja2VkcTR9cTUoWAoAAABpbmhp
-Yml0VmVwcTaJWAYAAAB0bXBEaXJxN4lYBwAAAHR1bW9ySWRxOIlYCAAAAG5vcm1hbElkcTmJWAoA
-AAB2Y2ZUdW1vcklkcTqJWAsAAAB2Y2ZOb3JtYWxJZHE7iVgKAAAAY3VzdG9tRW5zdHE8iVgHAAAA
-dmVwUGF0aHE9iVgHAAAAdmVwRGF0YXE+iVgIAAAAdmVwRm9ya3NxP4lYCgAAAGJ1ZmZlclNpemVx
-QIlYCQAAAGFueUFsbGVsZXFBiVgGAAAAb25saW5lcUKJWAkAAABmaWx0ZXJWY2ZxQ4lYCwAAAG1h
-eEZpbHRlckFjcUSJWAcAAABzcGVjaWVzcUWJWAkAAABuY2JpQnVpbGRxRolYDAAAAGNhY2hlVmVy
-c2lvbnFHiVgJAAAAbWFmQ2VudGVycUiJWAoAAAByZXRhaW5JbmZvcUmJWAkAAAByZXRhaW5GbXRx
-SolYCQAAAG1pbkhvbVZhZnFLiVgKAAAAcmVtYXBDaGFpbnFMiXVYCgAAAG91dHB1dEZpbGVxTU5Y
-CAAAAHJlZkZhc3RhcU5oCVgKAAAAcmVtYXBDaGFpbnFPiVgJAAAAcmV0YWluRm10cVBoCVgKAAAA
-cmV0YWluSW5mb3FRaAlYBwAAAHJ1bk1vZGVxUksCWAsAAABydW5UcmlnZ2Vyc3FTXXFUWAkAAABp
-bnB1dEZpbGVxVWFYEwAAAHNhdmVkV2lkZ2V0R2VvbWV0cnlxVkMyAdnQywACAAAAAAAAAAAAAAAA
-AuwAAAInAAAAAAAAABgAAALsAAACJAAAAAAAAAAACAFxV1gHAAAAc3BlY2llc3FYaAlYBgAAAHRt
-cERpcnFZaAlYDAAAAHRyaWdnZXJSZWFkeXFafXFbWAkAAABpbnB1dEZpbGVxXIlzWAcAAAB0dW1v
-cklkcV1oCVgGAAAAdXNlR3B1cV6JWAwAAAB1c2VTY2hlZHVsZXJxX4lYCwAAAHZjZk5vcm1hbElk
-cWBoCVgKAAAAdmNmVHVtb3JJZHFhaAlYBwAAAHZlcERhdGFxYlgJAAAAL2RhdGEvdmVwcWNYCAAA
-AHZlcEZvcmtzcWRLAFgHAAAAdmVwUGF0aHFlWA4AAAAvdXNyL2xvY2FsL2JpbnFmWAsAAABfX3Zl
-cnNpb25fX3FnSwF1Lg==
+iFgVAAAAaW5wdXRDb25uZWN0aW9uc1N0b3JlcQt9cQxYCQAAAGlucHV0RmlsZXENXXEOWAcAAABp
+dGVyYXRlcQ+IWA8AAABpdGVyYXRlU2V0dGluZ3NxEH1xEShYDQAAAGl0ZXJhYmxlQXR0cnNxEl1x
+EyhYCQAAAGlucHV0RmlsZXEUWAoAAABvdXRwdXRGaWxlcRVYCgAAAGN1c3RvbUVuc3RxFmVYCAAA
+AG5Xb3JrZXJzcRdLAVgEAAAAZGF0YXEYY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0CnEZKVJxGihY
+CQAAAGlucHV0RmlsZXEbfXEcKFgJAAAAZ3JvdXBTaXplcR1YAQAAADFxHlgHAAAAdGhyZWFkc3Ef
+aB5YAwAAAHJhbXEgWAEAAAAwcSF1WAoAAABvdXRwdXRGaWxlcSJ9cSMoaB1oHmgfaB5oIGghdVgK
+AAAAY3VzdG9tRW5zdHEkfXElKGgdaB5oH2geaCBoIXV1WA0AAABpdGVyYXRlZEF0dHJzcSZdcSco
+aBtoImV1WAkAAABtYWZDZW50ZXJxKGgJWAsAAABtYXhGaWx0ZXJBY3EpSwBYCQAAAG1pbkhvbVZh
+ZnEqaAlYCAAAAG5Xb3JrZXJzcStLAVgJAAAAbmNiaUJ1aWxkcSxoCVgIAAAAbm9ybWFsSWRxLWgJ
+WAYAAABvbmxpbmVxLolYDgAAAG9wdGlvbnNDaGVja2VkcS99cTAoWAoAAABpbmhpYml0VmVwcTGJ
+WAYAAAB0bXBEaXJxMolYBwAAAHR1bW9ySWRxM4lYCAAAAG5vcm1hbElkcTSJWAoAAAB2Y2ZUdW1v
+cklkcTWJWAsAAAB2Y2ZOb3JtYWxJZHE2iVgKAAAAY3VzdG9tRW5zdHE3iVgHAAAAdmVwUGF0aHE4
+iVgHAAAAdmVwRGF0YXE5iVgIAAAAdmVwRm9ya3NxOolYCgAAAGJ1ZmZlclNpemVxO4lYCQAAAGFu
+eUFsbGVsZXE8iVgGAAAAb25saW5lcT2JWAkAAABmaWx0ZXJWY2ZxPolYCwAAAG1heEZpbHRlckFj
+cT+JWAcAAABzcGVjaWVzcUCJWAkAAABuY2JpQnVpbGRxQYlYDAAAAGNhY2hlVmVyc2lvbnFCiVgJ
+AAAAbWFmQ2VudGVycUOJWAoAAAByZXRhaW5JbmZvcUSJWAkAAAByZXRhaW5GbXRxRYlYCQAAAG1p
+bkhvbVZhZnFGiVgKAAAAcmVtYXBDaGFpbnFHiXVYCgAAAG91dHB1dEZpbGVxSF1xSVgIAAAAcmVm
+RmFzdGFxSmgJWAoAAAByZW1hcENoYWlucUuJWAkAAAByZXRhaW5GbXRxTGgJWAoAAAByZXRhaW5J
+bmZvcU1oCVgHAAAAcnVuTW9kZXFOSwJYCwAAAHJ1blRyaWdnZXJzcU9dcVBYCQAAAGlucHV0Rmls
+ZXFRYVgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXFSQzIB2dDLAAIAAAAAAAAAAAAAAAAC7AAAAicA
+AAAAAAAAGAAAAuwAAAIkAAAAAAAAAAAIAXFTWAcAAABzcGVjaWVzcVRoCVgGAAAAdG1wRGlycVVo
+CVgMAAAAdHJpZ2dlclJlYWR5cVZ9cVdYCQAAAGlucHV0RmlsZXFYiXNYBwAAAHR1bW9ySWRxWWgJ
+WAYAAAB1c2VHcHVxWolYDAAAAHVzZVNjaGVkdWxlcnFbiVgLAAAAdmNmTm9ybWFsSWRxXGgJWAoA
+AAB2Y2ZUdW1vcklkcV1oCVgHAAAAdmVwRGF0YXFeWAkAAAAvZGF0YS92ZXBxX1gIAAAAdmVwRm9y
+a3NxYEsAWAcAAAB2ZXBQYXRocWFYDgAAAC91c3IvbG9jYWwvYmlucWJYCwAAAF9fdmVyc2lvbl9f
+cWNLAXUu
 </properties>
 		<properties format="pickle" node_id="26">gAN9cQAoWBQAAABhdXRvRGV0ZXJtaW5lUmVnaW9uc3EBiFgFAAAAYmF0Y2hxAlgAAAAAcQNYEgAA
 AGNvbnRyb2xBcmVhVmlzaWJsZXEEiFgOAAAAZXhwb3J0R3JhcGhpY3NxBYhYBgAAAGdlbm9tZXEG
 WAQAAABoZzM4cQdYFQAAAGlucHV0Q29ubmVjdGlvbnNTdG9yZXEIfXEJWAkAAABpbnB1dEZpbGVx
-Cl1xC0sVYXNYCQAAAGlucHV0RmlsZXEMTlgHAAAAaXRlcmF0ZXENiFgPAAAAaXRlcmF0ZVNldHRp
+Cl1xC0sUYXNYCQAAAGlucHV0RmlsZXEMTlgHAAAAaXRlcmF0ZXENiFgPAAAAaXRlcmF0ZVNldHRp
 bmdzcQ59cQ8oWA0AAABpdGVyYWJsZUF0dHJzcRBdcRFYCQAAAGlucHV0RmlsZXESYVgEAAAAZGF0
 YXETY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0CnEUKVJxFVgJAAAAaW5wdXRGaWxlcRZ9cRcoWAkA
 AABncm91cFNpemVxGFgBAAAAMXEZWAcAAAB0aHJlYWRzcRpoGVgDAAAAcmFtcRtYAQAAADBxHHVz

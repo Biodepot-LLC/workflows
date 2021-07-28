@@ -19,7 +19,7 @@ class OWvariant_effect_predictor(OWBwBWidget):
     want_main_area = False
     docker_image_name = "biodepot/vep"
     docker_image_tag = "102.0__ubuntu_18.04__12512944"
-    inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("fasta",str,"handleInputsfasta"),("vepBaseCacheDir",str,"handleInputsvepBaseCacheDir"),("outputFile",str,"handleInputsoutputFile")]
+    inputs = [("inputFile",str,"handleInputsinputFile"),("fasta",str,"handleInputsfasta"),("vepBaseCacheDir",str,"handleInputsvepBaseCacheDir"),("outputFile",str,"handleInputsoutputFile"),("sniper_trigger",str,"handleInputssniper_trigger"),("varscan_trigger",str,"handleInputsvarscan_trigger"),("muse_call_trigger",str,"handleInputsmuse_call_trigger"),("pindel_trigger",str,"handleInputspindel_trigger"),("mutect_trigger",str,"handleInputsmutect_trigger")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -127,11 +127,6 @@ class OWvariant_effect_predictor(OWBwBWidget):
             self.handleInputs("inputFile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputstrigger(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("trigger", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
     def handleInputsfasta(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("fasta", value, args[0][0], test=args[0][3])
@@ -145,6 +140,31 @@ class OWvariant_effect_predictor(OWBwBWidget):
     def handleInputsoutputFile(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("outputFile", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputssniper_trigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("sniper_trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsvarscan_trigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("varscan_trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsmuse_call_trigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("muse_call_trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputspindel_trigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("pindel_trigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsmutect_trigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("mutect_trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
