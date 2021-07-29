@@ -19,7 +19,7 @@ class OWMuTect2(OWBwBWidget):
     want_main_area = False
     docker_image_name = "broadinstitute/gatk3"
     docker_image_tag = "3.6-0"
-    inputs = [("bamtrigger",str,"handleInputsbamtrigger"),("ponstrigger",str,"handleInputsponstrigger"),("referenceFile",str,"handleInputsreferenceFile"),("inputNormalFile",str,"handleInputsinputNormalFile"),("inputTumorFile",str,"handleInputsinputTumorFile"),("outputFile",str,"handleInputsoutputFile"),("nct",str,"handleInputsnct")]
+    inputs = [("bamtrigger",str,"handleInputsbamtrigger"),("ponstrigger",str,"handleInputsponstrigger"),("referenceFile",str,"handleInputsreferenceFile"),("inputNormalFile",str,"handleInputsinputNormalFile"),("inputTumorFile",str,"handleInputsinputTumorFile"),("outputFile",str,"handleInputsoutputFile"),("nct",str,"handleInputsnct"),("veptrigger",str,"handleInputsveptrigger"),("snpstrigger",str,"handleInputssnpstrigger")]
     outputs = [("outputFile",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -81,6 +81,16 @@ class OWMuTect2(OWBwBWidget):
     def handleInputsnct(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("nct", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsveptrigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("veptrigger", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputssnpstrigger(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("snpstrigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

@@ -173,6 +173,7 @@ outputArrayVar realigned_files
 outputArrayVar realigned_indels_files
 outputArrayVar somatic_sniper_files
 outputArrayVar variant_annotation_files
+outputArrayVar variant_input_files
 outputArrayVar varscan_pileup_files
 outputArrayVar varscan_snp_files
 outputArrayVar varscan_indel_files
@@ -185,5 +186,5 @@ if $bamSeen; then
 	outputArrayVar fastqs_files
 else
 	# skip biobambam if no bam files
-	printf 'True' > /tmp/output/bypass_biobambam
+	printf '1' > /tmp/output/bypass_biobambam
 fi

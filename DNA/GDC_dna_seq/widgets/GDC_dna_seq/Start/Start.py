@@ -18,7 +18,7 @@ class OWStart(OWBwBWidget):
     icon = getIconName(__file__,"start.png")
     want_main_area = False
     docker_image_name = "biodepot/gdc-mrna-start"
-    docker_image_tag = "alpine_3.12.1__e92877fa"
+    docker_image_tag = "alpine_3.12.1__8b7576c9"
     outputs = [("work_dir",str),("genome_dir",str),("vep_dir",str),("genome_file",str),("gdc_credentials",str),("gdc_token",str),("clean_files",str),("fastq_files",str),("fastq1_files",str),("fastq2_files",str),("fastqo1_files",str),("fastqo2_files",str),("fastqs_files",str),("fastqc_files",str),("realigned_files",str),("realigned_indels_files",str),("pindel_filter_files",str),("genome_dict_file",str),("biobambam_files",str),("mutect2_normal_files",str),("mutect2_tumor_files",str),("mutect2_variants_files",str),("variant_input_files",str),("variant_annotation_files",str),("maf_files",str),("mark_dupes_outputs",str),("mark_dupes_metrics",str),("coclean_intervals",str),("somatic_sniper_files",str),("varscan_pileup_files",str),("varscan_snp_files",str),("varscan_indel_files",str),("muse_call_files",str),("muse_sump_input_files",str),("muse_sump_output_files",str),("pindel_config_files",str),("pindel_variants_files",str),("pindel_variants_sorted_files",str),("pindel_variants_filtered_files",str),("pindel_prefix_files",str),("archive_prefix",str),("archive_files",str),("delete_files",str),("cpu_threads",str),("bypass_biobambam",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
