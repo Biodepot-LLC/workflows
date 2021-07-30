@@ -18,7 +18,7 @@ class OWCleanup(OWBwBWidget):
     icon = getIconName(__file__,"Recycling_symbol2.svg.png")
     want_main_area = False
     docker_image_name = "biodepot/aws_cleanup"
-    docker_image_tag = "1.16.272__python_3.8.0__alpine-3.10__4836b3cd"
+    docker_image_tag = "1.18.105__python_3.8.0__alpine-3.10__b4f1788c"
     inputs = [("bucket_name",str,"handleInputsbucket_name"),("credentials_dir",str,"handleInputscredentials_dir"),("topic_name",str,"handleInputstopic_name"),("recv_topic",str,"handleInputsrecv_topic"),("recv_subscription",str,"handleInputsrecv_subscription"),("function_name",str,"handleInputsfunction_name"),("policy_name",str,"handleInputspolicy_name"),("role_name",str,"handleInputsrole_name"),("work_dir",str,"handleInputswork_dir"),("function_region",str,"handleInputsfunction_region"),("Trigger",str,"handleInputsTrigger"),("local_work_dir",str,"handleInputslocal_work_dir"),("cloud_split_dir",str,"handleInputscloud_split_dir")]
     outputs = [("credentials_dir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
