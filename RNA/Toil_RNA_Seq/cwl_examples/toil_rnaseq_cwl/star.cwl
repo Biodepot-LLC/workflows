@@ -34,14 +34,19 @@ inputs:
     inputBinding:
       position: 6
       prefix: --outFileNamePrefix
-  read_files:
+  quant_mode:
     type: string
     inputBinding:
       position: 7
-  trimmed_fastq_file_1:
+      prefix: --quantMode
+  read_files:
     type: string
     inputBinding:
       position: 8
+  trimmed_fastq_file_1:
+    type: string
+    inputBinding:
+      position: 9
   trimmed_fastq_file_2:
     type: string
     inputBinding:
