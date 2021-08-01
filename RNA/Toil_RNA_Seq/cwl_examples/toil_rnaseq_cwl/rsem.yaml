@@ -1,4 +1,4 @@
-volume_home: /home/ubuntu:/data
+volume_home: /mnt/data:/data
 volume_docker: /var/run/docker.sock:/var/run/docker.sock
 docker_image_rsem: quay.io/ucsc_cgl/rsem
 is_paired: --paired-end
@@ -7,6 +7,6 @@ threads: 1
 probability: 0.5
 seed_len: 25
 frag_len_mean: -1.0
-rsem_bam: /data/Aligned.toTranscriptome.out.bam
+rsem_bam: /data/star_Aligned.toTranscriptome.out.bam
 rsem_header_path: /data/rsem_ref_hg38/hg38
 rsem_method: rsem

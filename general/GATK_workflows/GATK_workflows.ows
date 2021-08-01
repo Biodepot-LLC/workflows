@@ -1,0 +1,21 @@
+<?xml version="1.0" ?><scheme description="" title="GATK-workflows" version="2.0">
+	<nodes>
+		<node id="0" name="daloc" position="(230.0, 52.0)" project_name="GATK-workflows" qualified_name="GATK_workflows.OWdaloc.OWdaloc" title="Data Localization" version=""/>
+		<node id="1" name="Cromwell" position="(386.0, 51.0)" project_name="GATK-workflows" qualified_name="GATK_workflows.OWCromwell.OWCromwell" title="Cromwell" version=""/>
+		<node id="2" name="github" position="(65.0, 53.0)" project_name="GATK-workflows" qualified_name="GATK_workflows.OWgithub.OWgithub" title="Github" version=""/>
+		<node id="3" name="geany" position="(534.0, 51.0)" project_name="GATK-workflows" qualified_name="GATK_workflows.OWgeany.OWgeany" title="Geany" version=""/>
+	</nodes>
+	<links>
+		<link enabled="true" id="0" sink_channel="inputFile" sink_node_id="1" source_channel="OutputDir" source_node_id="0"/>
+		<link enabled="true" id="1" sink_channel="RepositoryDir" sink_node_id="0" source_channel="RepositoryDir" source_node_id="2"/>
+		<link enabled="true" id="2" sink_channel="inputFile" sink_node_id="3" source_channel="OutputDir" source_node_id="1"/>
+	</links>
+	<annotations/>
+	<thumbnail/>
+	<node_properties>
+		<properties format="literal" node_id="0">{'DownloadDir': '/data', 'RepositoryDir': '', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'RepositoryDir': [3]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 2, 'runTriggers': ['RepositoryDir'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x01 \x00\x00\x00\xc3\x00\x00\x04\x0c\x00\x00\x01\xe0\x00\x00\x01 \x00\x00\x00\xdb\x00\x00\x04\x0c\x00\x00\x01\xdd\x00\x00\x00\x00\x00\x00\x00\x00\x07J', 'triggerReady': {'inputFile': False, 'RepositoryDir': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="1">{'OBJECT_FILE': '/data/test/validate-bam.inputs.json.tmp', 'WDL_FILE': '/data/test/validate-bam.wdl', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'inputFile': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'OBJECT_FILE': True}, 'runMode': 2, 'runTriggers': ['inputFile'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x01)\x00\x00\x00\xa7\x00\x00\x04\x15\x00\x00\x01\xa9\x00\x00\x01)\x00\x00\x00\xa7\x00\x00\x04\x15\x00\x00\x01\xa9\x00\x00\x00\x00\x00\x00\x00\x00\x07J', 'triggerReady': {'inputFile': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="2">{'RepositoryDir': '/data/test', 'RepositoryURL': 'https://github.com/gatk-workflows/seq-format-validation.git', 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x01 \x00\x00\x00\xc3\x00\x00\x04\x0c\x00\x00\x01\xe0\x00\x00\x01 \x00\x00\x00\xdb\x00\x00\x04\x0c\x00\x00\x01\xdd\x00\x00\x00\x00\x00\x00\x00\x00\x07J', 'triggerReady': {}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="3">{'Files': ['/cromwell-executions/ValidateBamsWf/6bc8c5b6-1cd0-4296-a251-f6065f213e0c/call-ValidateBAM/shard-0/execution/NA12878_24RG_small.hg38.validation_.txt', '/cromwell-executions/ValidateBamsWf/6bc8c5b6-1cd0-4296-a251-f6065f213e0c/call-ValidateBAM/shard-1/execution/NA12878_24RG_med.hg38.validation_.txt'], 'controlAreaVisible': True, 'exportGraphics': True, 'inputConnectionsStore': {'inputFile': [2]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': ['Files'], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {}, 'runMode': 0, 'runTriggers': [], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x010\x00\x00\x00\xbd\x00\x00\x04\x1c\x00\x00\x01\xbf\x00\x00\x010\x00\x00\x00\xbd\x00\x00\x04\x1c\x00\x00\x01\xbf\x00\x00\x00\x00\x00\x00\x00\x00\x07J', 'triggerReady': {}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+	</node_properties>
+</scheme>

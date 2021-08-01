@@ -17,7 +17,7 @@ class OWEdit_Files(OWBwBWidget):
     priority = 10
     icon = getIconName(__file__,"default.png")
     want_main_area = False
-    docker_image_name = "kvietcong/geany"
+    docker_image_name = "varikmp/geany"
     docker_image_tag = "latest"
     inputs = [("Start",str,"handleInputsStart")]
     outputs = [("Edited",str)]
