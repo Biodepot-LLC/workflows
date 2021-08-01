@@ -1,4 +1,4 @@
-volume_home: /home/ubuntu:/data
+volume_home: /mnt/data:/data
 volume_docker: /var/run/docker.sock:/var/run/docker.sock
 docker_image_cutadapt: varikmp/cutadapt
 docker_image_fastqc: quay.io/ucsc_cgl/fastqc
