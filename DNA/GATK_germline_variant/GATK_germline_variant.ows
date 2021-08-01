@@ -78,7 +78,7 @@
 	</annotations>
 	<thumbnail/>
 	<node_properties>
-		<properties format="pickle" node_id="0">gAN9cQAoWA4AAABhbGlnbm1lbnRGbGFnc3EBWAAAAABxAlgGAAAAYnlwYXNzcQNOWAcAAABjb2xo
+		<properties format="pickle" node_id="0">gAN9cQAoWA4AAABhbGlnbm1lbnRGbGFnc3EBWAAAAABxAlgGAAAAYnlwYXNzcQOIWAcAAABjb2xo
 bG9ncQRLElgHAAAAY29sbGF0ZXEFiVgGAAAAY29sc2JzcQZKAAAAAlgFAAAAY29tYnNxB4lYEgAA
 AGNvbnRyb2xBcmVhVmlzaWJsZXEIiFgRAAAAZGlzYWJsZXZhbGlkYXRpb25xCYlYBwAAAGV4Y2x1
 ZGVxClgeAAAAUUNGQUlMLFNFQ09OREFSWSxTVVBQTEVNRU5UQVJZcQtYDgAAAGV4cG9ydEdyYXBo
@@ -112,22 +112,22 @@ cWmIWAwAAABzZWNvbmRtYXRlcyBxaolYCQAAAHNpbmdsZWVuZHFriFgMAAAAdWZpcnN0bWF0ZXMg
 cWyJWA0AAAB1c2Vjb25kbWF0ZXMgcW2JWBkAAABvdXRwdXRwZXJyZWFkZ3JvdXBzdWZmaXhTcW6J
 WBkAAABvdXRwdXRwZXJyZWFkZ3JvdXBzdWZmaXhGcW+JWAoAAABmaXJzdG1hdGVzcXCIWAsAAABz
 ZWNvbmRtYXRlc3FxiFgLAAAAdWZpcnN0bWF0ZXNxcohYDAAAAHVzZWNvbmRtYXRlc3FziFgJAAAA
-b3V0cHV0RGlycXSJWAYAAABieXBhc3NxdYl1WAkAAABvdXRwdXREaXJxdl1xd1gSAAAAb3V0cHV0
-cGVycmVhZGdyb3VwcXiJWBgAAABvdXRwdXRwZXJyZWFkZ3JvdXBwcmVmaXhxeWgCWBYAAABvdXRw
-dXRwZXJyZWFkZ3JvdXByZ3NtcXqJWBkAAABvdXRwdXRwZXJyZWFkZ3JvdXBzdWZmaXhGcXtYCAAA
-AF8xLmZxLmd6cXxYGgAAAG91dHB1dHBlcnJlYWRncm91cHN1ZmZpeEYycX1YCAAAAF8yLmZxLmd6
-cX5YGQAAAG91dHB1dHBlcnJlYWRncm91cHN1ZmZpeE9xf1gJAAAAX28xLmZxLmd6cYBYGgAAAG91
-dHB1dHBlcnJlYWRncm91cHN1ZmZpeE8ycYFYCQAAAF9vMi5mcS5nenGCWBkAAABvdXRwdXRwZXJy
-ZWFkZ3JvdXBzdWZmaXhTcYNYCAAAAF9zLmZxLmd6cYRYBgAAAHJhbmdlc3GFaAJYCQAAAHJlZmVy
-ZW5jZXGGaAJYBwAAAHJ1bk1vZGVxh0sCWAsAAABydW5UcmlnZ2Vyc3GIXXGJKFgHAAAAdHJpZ2dl
-cnGKWAkAAABpbnB1dEZpbGVxi1gGAAAAYnlwYXNzcYxlWBMAAABzYXZlZFdpZGdldEdlb21ldHJ5
-cY1DMgHZ0MsAAgAAAAAAAAAAAAAAAALsAAACJwAAAAAAAAAYAAAC7AAAAiQAAAAAAAAAAAVWcY5Y
-CwAAAHNlY29uZG1hdGVzcY9OWAkAAABzaW5nbGVlbmRxkE5YBQAAAHNwbGl0cZGJWAsAAABzcGxp
-dHByZWZpeHGSiVgEAAAAdGFnc3GTaAJYDAAAAHRlbXBmaWxlbmFtZXGUaAJYDAAAAHRyaWdnZXJS
-ZWFkeXGVfXGWKFgJAAAASW5wdXRGaWxlcZeJWAcAAABUcmlnZ2VycZiJWAcAAAB0cmlnZ2VycZmJ
-aIuJaIyJdVgFAAAAdHJ5b3FxmolYCwAAAHVmaXJzdG1hdGVzcZtOWAYAAAB1c2VHcHVxnIlYDAAA
-AHVzZVNjaGVkdWxlcnGdiVgMAAAAdXNlY29uZG1hdGVzcZ5OWAgAAAB6aXBsZXZlbHGfSwBYCwAA
-AF9fdmVyc2lvbl9fcaBLAXUu
+b3V0cHV0RGlycXSJdVgJAAAAb3V0cHV0RGlycXVdcXZYEgAAAG91dHB1dHBlcnJlYWRncm91cHF3
+iVgYAAAAb3V0cHV0cGVycmVhZGdyb3VwcHJlZml4cXhoAlgWAAAAb3V0cHV0cGVycmVhZGdyb3Vw
+cmdzbXF5iVgZAAAAb3V0cHV0cGVycmVhZGdyb3Vwc3VmZml4RnF6WAgAAABfMS5mcS5nenF7WBoA
+AABvdXRwdXRwZXJyZWFkZ3JvdXBzdWZmaXhGMnF8WAgAAABfMi5mcS5nenF9WBkAAABvdXRwdXRw
+ZXJyZWFkZ3JvdXBzdWZmaXhPcX5YCQAAAF9vMS5mcS5nenF/WBoAAABvdXRwdXRwZXJyZWFkZ3Jv
+dXBzdWZmaXhPMnGAWAkAAABfbzIuZnEuZ3pxgVgZAAAAb3V0cHV0cGVycmVhZGdyb3Vwc3VmZml4
+U3GCWAgAAABfcy5mcS5nenGDWAYAAAByYW5nZXNxhGgCWAkAAAByZWZlcmVuY2VxhWgCWAcAAABy
+dW5Nb2RlcYZLAlgLAAAAcnVuVHJpZ2dlcnNxh11xiChYBwAAAHRyaWdnZXJxiVgJAAAAaW5wdXRG
+aWxlcYpYBgAAAGJ5cGFzc3GLZVgTAAAAc2F2ZWRXaWRnZXRHZW9tZXRyeXGMQzIB2dDLAAIAAAAA
+AAAAAAAAAAAC7AAAAicAAAAAAAAAGAAAAuwAAAIkAAAAAAAAAAAHgHGNWAsAAABzZWNvbmRtYXRl
+c3GOTlgJAAAAc2luZ2xlZW5kcY9OWAUAAABzcGxpdHGQiVgLAAAAc3BsaXRwcmVmaXhxkYlYBAAA
+AHRhZ3NxkmgCWAwAAAB0ZW1wZmlsZW5hbWVxk2gCWAwAAAB0cmlnZ2VyUmVhZHlxlH1xlShYCQAA
+AElucHV0RmlsZXGWiVgHAAAAVHJpZ2dlcnGXiVgHAAAAdHJpZ2dlcnGYiWiKiWiLiXVYBQAAAHRy
+eW9xcZmJWAsAAAB1Zmlyc3RtYXRlc3GaTlgGAAAAdXNlR3B1cZuJWAwAAAB1c2VTY2hlZHVsZXJx
+nIlYDAAAAHVzZWNvbmRtYXRlc3GdTlgIAAAAemlwbGV2ZWxxnksAWAsAAABfX3ZlcnNpb25fX3Gf
+SwF1Lg==
 </properties>
 		<properties format="pickle" node_id="1">gAN9cQAoWAUAAABhZGRyZ3EBiFgSAAAAY29udHJvbEFyZWFWaXNpYmxlcQKIWA4AAABleHBvcnRH
 cmFwaGljc3EDiVgLAAAAZmFzdHFfZmlsZXNxBE5YFQAAAGlucHV0Q29ubmVjdGlvbnNTdG9yZXEF
@@ -236,7 +236,7 @@ YWR5cTZ9cTcoWAoAAABpbnB1dGZpbGVzcTiJWBEAAAByZWZlcmVuY2VfdHJpZ2dlcnE5iVgMAAAA
 c25wc190cmlnZ2VycTqJaDOJWAkAAAByZWZlcmVuY2VxO4lYBgAAAG91dHB1dHE8iXVYBgAAAHVz
 ZUdwdXE9iVgMAAAAdXNlU2NoZWR1bGVycT6JWAsAAABfX3ZlcnNpb25fX3E/SwF1Lg==
 </properties>
-		<properties format="literal" node_id="8">{'algorithm': 'rb2', 'blocksize': 10000000, 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'reference_trigger': [3], 'reference': [1], 'overwrite': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'threads': False, 'prefix': False, 'blocksize': True, 'algorithm': False, 'overwrite': False}, 'overwrite': None, 'prefix': '', 'reference': '', 'runMode': 2, 'runTriggers': ['reference_trigger'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\xec\x00\x00\x01n\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\xec\x00\x00\x01k\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'reference': False, 'reference_trigger': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="8">{'algorithm': 'rb2', 'blocksize': 10000000, 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'reference_trigger': [3], 'reference': [1], 'overwrite': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'threads': False, 'prefix': False, 'blocksize': True, 'algorithm': False, 'overwrite': False}, 'overwrite': True, 'prefix': '', 'reference': '', 'runMode': 2, 'runTriggers': ['reference_trigger'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\xec\x00\x00\x01n\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\xec\x00\x00\x01k\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'reference': False, 'reference_trigger': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="9">gAN9cQAoWAcAAABhbGxlbGVzcQFdcQJYCwAAAGFubm90YXRlTnVtcQOJWAoAAABhbm5vdGF0aW9u
 cQRdcQVYDwAAAGFubm90YXRpb25ncm91cHEGXXEHKFgUAAAAU3RhbmRhcmRIQ0Fubm90YXRpb25x
 CFgSAAAAU3RhbmRhcmRBbm5vdGF0aW9ucQlYFQAAAEFTX1N0YW5kYXJkQW5ub3RhdGlvbnEKZVgG

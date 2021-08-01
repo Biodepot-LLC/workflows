@@ -127,5 +127,5 @@ if $bamSeen; then
 	outputArrayVar fastqs fastqsfiles
 else
 	#skip biobambam if no bam files
-	printf 'True' > /tmp/output/bypassBiobambam
+	printf '1' > /tmp/output/bypassBiobambam
 fi
