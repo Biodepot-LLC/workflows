@@ -1,5 +1,5 @@
 {
-	"toil_rnaseq.volume_home": "/home/toil:/data",
+	"toil_rnaseq.volume_home": "/mnt/data:/data",
 	"toil_rnaseq.volume_docker": "/var/run/docker.sock:/var/run/docker.sock",
 	
 	"toil_rnaseq.docker_image_cutadapt": "varikmp/cutadapt",
