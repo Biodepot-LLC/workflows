@@ -18,7 +18,7 @@ class OWbiobambam2(OWBwBWidget):
     icon = getIconName(__file__,"biobambam.png")
     want_main_area = False
     docker_image_name = "biodepot/biobambam2"
-    docker_image_tag = "2.0.179__debian_bullseye-slim__4a043589"
+    docker_image_tag = "latest"
     inputs = [("inputFile",str,"handleInputsinputFile"),("trigger",str,"handleInputstrigger"),("outputDir",str,"handleInputsoutputDir"),("firstmates",str,"handleInputsfirstmates"),("secondmates",str,"handleInputssecondmates"),("ufirstmates",str,"handleInputsufirstmates"),("usecondmates",str,"handleInputsusecondmates"),("singleend",str,"handleInputssingleend"),("bypass",str,"handleInputsbypass")]
     outputs = [("outputDir",str),("inputFile",str),("outputfiles",str),("triggerOut",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
