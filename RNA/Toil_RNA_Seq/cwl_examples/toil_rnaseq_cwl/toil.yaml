@@ -1,4 +1,4 @@
-volume_home: /mnt/data:/data
+volume_home: /home/ubuntu:/data
 volume_docker: /var/run/docker.sock:/var/run/docker.sock
 docker_image_cutadapt: varikmp/cutadapt
 docker_image_fastqc: quay.io/ucsc_cgl/fastqc
@@ -22,6 +22,8 @@ kallisto_output: /data
 bootstrap_samples: 100
 fusion: --fusion
 star_index_dir: /data/starIndex
+star_quant_mode: --quantMode
+quant_mode: GeneCounts
 output_prefix: star_
 read_files: --readFilesIn
 is_paired: --paired-end
