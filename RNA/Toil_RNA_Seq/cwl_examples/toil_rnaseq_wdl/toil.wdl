@@ -25,6 +25,7 @@ workflow toil_rnaseq
   String fusion
   
   String star_index_dir
+  String quant_mode
   String output_prefix
   String read_files
   
@@ -87,6 +88,7 @@ workflow toil_rnaseq
     volume_docker=volume_docker,
     docker_image=docker_image_star,
     index_dir=star_index_dir,
+    quant_mode=quant_mode,
     threads=threads,
     output_prefix=output_prefix,
     read_files=read_files,
@@ -186,6 +188,7 @@ task star
   String volume_docker
   String docker_image
   String index_dir
+  String quant_mode
   Int threads
   String output_prefix
   String read_files
@@ -194,7 +197,7 @@ task star
   
 	command
   {
-    docker run -v ${volume_home} -v ${volume_docker} ${docker_image} --genomeDir ${index_dir} --runThreadN ${threads} --outFileNamePrefix ${output_prefix} ${read_files} ${trimmed_fastq_file_1} ${trimmed_fastq_file_2}
+    docker run -v ${volume_home} -v ${volume_docker} ${docker_image} --genomeDir ${index_dir} --quantMode ${quant_mode} --runThreadN ${threads} --outFileNamePrefix ${output_prefix} ${read_files} ${trimmed_fastq_file_1} ${trimmed_fastq_file_2}
   }
 }
 

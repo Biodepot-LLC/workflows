@@ -1,4 +1,4 @@
-volume_home: /mnt/data:/data
+volume_home: /home/ubuntu:/data
 volume_docker: /var/run/docker.sock:/var/run/docker.sock
 docker_image_rsem: quay.io/ucsc_cgl/rsem
 is_paired: --paired-end
