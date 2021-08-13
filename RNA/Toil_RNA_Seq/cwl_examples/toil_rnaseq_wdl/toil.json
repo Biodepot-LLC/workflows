@@ -26,6 +26,7 @@
 	"toil_rnaseq.fusion": "--fusion",
 	
 	"toil_rnaseq.star_index_dir": "/data/starIndex",
+	"toil_rnaseq.quant_mode": "GeneCounts",
 	"toil_rnaseq.output_prefix": "star_",
 	"toil_rnaseq.read_files": "--readFilesIn",
 	

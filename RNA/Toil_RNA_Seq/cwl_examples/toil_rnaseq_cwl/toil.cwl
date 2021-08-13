@@ -31,6 +31,8 @@ inputs:
   bootstrap_samples: int
   fusion: string
   star_index_dir: string
+  star_quant_mode: string
+  quant_mode: string
   output_prefix: string
   read_files: string
   is_paired: string
@@ -126,6 +128,8 @@ steps:
       volume_docker: volume_docker
       docker_image_star: docker_image_star
       star_index_dir: star_index_dir
+      star_quant_mode: star_quant_mode
+      quant_mode: quant_mode
       threads: threads
       output_prefix: output_prefix
       read_files: read_files
