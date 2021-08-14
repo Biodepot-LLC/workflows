@@ -1,5 +1,5 @@
 # GDC DNA-Seq Pipeline
-![alt_text](images/image7.png)
+![](images/image7.png)
 
 ## Implemented with the BioDepot-workflow-builder (Bwb)
 
@@ -35,49 +35,49 @@ The Start widget optional entries tab has a field for the gdc-token.txt as well 
 
 Begin the workflow by clicking the Start button from the Start widget.
 
-![alt_text](images/image18.png)
+![](images/image18.png)
 
 ## Modifying workflow for alternate samples
 A normal and tumor sample are expected to be named 'normal.bam' and 'tumor.bam' by default. The samples should be downloaded to the Bwb mapped /data/work directory. To change the default location or name of the normal and tumor bam files, the Start widgets required entries should be updated to reflect this change.
 
-![alt_text](images/image8.png)
+![](images/image8.png)
 
 The normal and tumor sample files are downloaded via the gcloud_download widget in the demo state. Swap out the widget named 'Download sample' with the preferred download widget (see _download widgets_ appendix section).
 
 Connect the Start widgets work directory output to the input download directory of the widget, also connect any output of the download widget to the input trigger of the biobambam2 widget. Configure Run mode of the supplied download widget for 'Triggered', and select 'downloadDir' from the dropdown as pictured below.
 
-![alt_text](images/image15.png)
+![](images/image15.png)
 
 ## Example: Using samples from GEN3 and GDC
 Samples from the GEN3 data commons and GDC data portal can be accessed and used in this workflow. Whole exome sequencing (WXS) .bam file samples for solid tissue normal and primary tumor samples have been tested for this workflow.
 
 First, remove the "Download Sample" _gcloud _download_ widget, then replace it with the _gen3_download_ widget.
 
-![alt_text](images/image12.png)
+![](images/image12.png)
 
 Connect the start widget to the GEN3 widget. connect work_dir output from the start widget to downloadDir from GEN3's widget, and also connect gdc_token output from the start widget to gdctoken from GEN3's widget.
 
-![alt_text](images/image5.png)
+![](images/image5.png)
 
 If the selection for work_dir and gdc_token do not appear on the screen, right-click on the 'Edit Links' section on the bottom of the page and select 'Maximize'.
 
-![alt_text](images/image22.png)
+![](images/image22.png)
 
 Connect the GEN3 widget to the _biobambam2 _widget, connecting downloadDir to trigger.
 
-![alt_text](images/image2.png)
+![](images/image2.png)
 
 In the GEN3 widget, enter the GUIDs/UUIDs of the normal and tumor samples.
 
-![alt_text](images/image20.png)
+![](images/image20.png)
 
 Set the RunMode on the GEN3 widget to Triggered, and set the Triggers for downloadDir and gdctoken (or credentials if using gen3 data commons).
 
-![alt_text](images/image14.png)
+![](images/image14.png)
 
 Enter the '.bam' input file names into the start widget for the normal and tumor samples preceded by the Work directory.
 
-![alt_text](images/image6.png)
+![](images/image6.png)
 
 ## Modifying workflow for alternate reference genome
 The default GRCh38 reference genome is downloaded via the widget named 'Download GDC files'. If the reference file(s) are updated, populate the changes via the Start widget Reference genome file field.
@@ -85,9 +85,9 @@ The default GRCh38 reference genome is downloaded via the widget named 'Download
 ## Archive and cleanup output files
 All outputs of the DNA-seq workflow can be archived into a tar file and then deleted from the workspace. This is an optional step in the workflow that requires the Archive and Cleanup widget be opened and then selected using the Start button.  By default the widget will archive using bzip2 compression and include the normal and tumor samples.
 
-![alt_text](images/image17.png)
+![](images/image17.png)
 
-![alt_text](images/image1.png)
+![](images/image1.png)
 
 # Appendix
 
@@ -97,29 +97,29 @@ There are a number of widgets for downloading files within Bwb:
 ### gcloud_download
 Google Cloud is accessible via the _gcloud_download_ widget.
 
-![alt_text](images/image4.png)
+![](images/image4.png)
 
-![alt_text](images/image13.png)
+![](images/image13.png)
 
-![alt_text](images/image21.png)
+![](images/image21.png)
 
 ### downloadURL
 Google Drive and any URL not requiring credentials is accessible via the _downloadURL_ widget.
 
-![alt_text](images/image11.png)
+![](images/image11.png)
 
-![alt_text](images/image3.png)
+![](images/image3.png)
 
-![alt_text](images/image16.png)
+![](images/image16.png)
 
 ### gen3_download
 GEN3 data commons and the GDC data portal are accessible via the _gen3_download_ widget.
 
-![alt_text](images/image19.png)
+![](images/image19.png)
 
-![alt_text](images/image9.png)
+![](images/image9.png)
 
-![alt_text](images/image10.png)
+![](images/image10.png)
 
 ## Common issues with workflows
 One of the biggest issues with the GDC workflow is that several tools have changed throughout the course of their life cycles. Often major revisions of tools will come with option changes. Certain options may be deprecated or deleted entirely. Sometimes option flags will be renamed or inputs will need to be passed in a different way. All of these things sound very minor but turn what could be a straightforward workflow into a several hour debugging session. The point is to use care when updating tool versions or widgets.
