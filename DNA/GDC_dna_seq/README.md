@@ -49,7 +49,7 @@ Connect the Start widgets work directory output to the input download directory 
 ![](images/image15.png)
 
 ## Example: Using samples from GEN3 and GDC
-Samples from the GEN3 data commons and GDC data portal can be accessed and used in this workflow. Whole exome sequencing (WXS) .bam file samples for solid tissue normal and primary tumor samples have been tested for this workflow.
+Samples from the GEN3 data commons and GDC data portal can be accessed and used in this workflow. Whole exome sequencing (WXS) .bam file samples for solid tissue normal and primary tumor samples have been tested for this workflow. For more information about the GEN3 widget, visit the [GEN3 readme](../GEN3readme.md).
 
 First, remove the "Download Sample" _gcloud _download_ widget, then replace it with the _gen3_download_ widget.
 

@@ -15,19 +15,19 @@ A video recording covering most of this material (UW Zoom required):
 # Table of Contents
 * [1. **Creating an AWS account**](#1-creating-an-aws-account)
 * [2. **Setting up and launching an EC2 instance**](#2-setting-up-and-launching-an-ec2-instance)
-  * [**<span style="text-decoration:underline;">2.1: Create a Key Pair</span>**](#span-styletext-decorationunderline21-create-a-key-pairspan)
-  * [**<span style="text-decoration:underline;">2.2: Change permissions on the Key Pair</span>**](#span-styletext-decorationunderline22-change-permissions-on-the-key-pairspan)
-  * [**<span style="text-decoration:underline;">2.3: Create the EC2 Instance</span>**](#span-styletext-decorationunderline23-create-the-ec2-instancespan)
+  * [**2.1: Create a Key Pair**](#21-create-a-key-pair)
+  * [**2.2: Change permissions on the Key Pair**](#22-change-permissions-on-the-key-pair)
+  * [**2.3: Create the EC2 Instance**](#23-create-the-ec2-instance)
 * [3. **Connecting to the EC2 instance**](#3-connecting-to-the-ec2-instance)
   * [**Option 1: Connecting through Terminal (ie: Ubuntu)**](#option-1-connecting-through-terminal-ie-ubuntu)
   * [**Option 2: Connecting through PuTTY**](#option-2-connecting-through-putty)
   * [**Option 3: Connecting through MobaXterm**](#option-3-connecting-through-mobaxterm)
 * [4. **EC2 instance maintenance**](#4-ec2-instance-maintenance)
-  * [**<span style="text-decoration:underline;">4.1: Setting up Ephemeral Storage</span>**](#span-styletext-decorationunderline41-setting-up-ephemeral-storagespan)
-  * [**<span style="text-decoration:underline;">4.2: Another awscli configuration for this instance</span>**](#span-styletext-decorationunderline42-another-awscli-configuration-for-this-instancespan)
-  * [**<span style="text-decoration:underline;">4.3: Saving the work from <code>/mnt/data/</code> to S3 buckets</span></strong>**](#span-styletext-decorationunderline43-saving-the-work-from-codemntdatacode-to-s3-bucketsspanstrong)
-  * [**<span style="text-decoration:underline;">4.4: Running BWB</span>**](#span-styletext-decorationunderline44-running-bwbspan)
-  * [**<span style="text-decoration:underline;">4.5: Exiting the instance</span>**](#span-styletext-decorationunderline45-exiting-the-instancespan)
+  * [**4.1: Setting up Ephemeral Storage**](#41-setting-up-ephemeral-storage)
+  * [**4.2: Another awscli configuration for this instance**](#42-another-awscli-configuration-for-this-instance)
+  * [**4.3: Saving the work from <code>/mnt/data/</code> to S3 buckets**](#43-saving-the-work-from-codemntdatacode-to-s3-buckets)
+  * [**4.4: Running BWB**](#44-running-bwb)
+  * [**4.5: Exiting the instance**](#45-exiting-the-instance)
 * [5. **Stopping an EC2 instance**](#5-stopping-an-ec2-instance)
 
 # 1. **Creating an AWS account**
@@ -40,7 +40,7 @@ Once you are given an account, set a new password for the account. If you want t
 
 # 2. **Setting up and launching an EC2 instance**
 
-## **<span style="text-decoration:underline;">2.1: Create a Key Pair</span>**
+## **2.1: Create a Key Pair**
 
 A key pair is a way for AWS to identify you when you want to connect to an EC2 instance. You will have to create a key pair for yourself to use when you want to connect to an instance. These key pairs will be in the form of a `.pem` file in most cases. The alternative is a `.ppk` file, which is mostly used with the terminal emulator application PuTTY (see [Section 3](#3-connecting-to-the-ec2-instance) for more details). **We recommend creating this key pair as a <code>.pem </code>file for now</strong>**, as you can always convert it to <code>.ppk</code> using PuTTY later.
 
@@ -62,7 +62,7 @@ Click on the top-right corner “Create key pair”. You will see the options to
 
 Once you create the key pair, you should see the key pair `.pem` file has been downloaded to your computer. **DO NOT CHANGE OR DELETE THIS FILE.**
 
-## **<span style="text-decoration:underline;">2.2: Change permissions on the Key Pair</span>**
+## **2.2: Change permissions on the Key Pair**
 
 The downloaded key pair is not yet usable at its current state. Permissions on the key pair file needs to be less permissive.
 
@@ -84,7 +84,7 @@ Check the `.pem` file again, and you should see it listed to this:
 
 That means your key pair is correctly modified.
 
-## **<span style="text-decoration:underline;">2.3: Create the EC2 Instance</span>**
+## **2.3: Create the EC2 Instance**
 
 You are now ready to launch an EC2 Instance. Scroll to the Instances tab on the left and click on “Launch instance” button on the top-right corner.
 
@@ -349,7 +349,7 @@ Correct setup should look like this:
 
 You have now connected to the instance. You have access to the contents of the virtual machine, but you will have to do the work using the terminal.
 
-## **<span style="text-decoration:underline;">4.1: Setting up Ephemeral Storage</span>**
+## **4.1: Setting up Ephemeral Storage**
 
 If you do an `ls `command for this BWB AMI, you should see 4 different .sh script files:
 
@@ -381,7 +381,7 @@ To see the volumes and their details:
 df -h
 ```
 
-## **<span style="text-decoration:underline;">4.2: Another awscli configuration for this instance</span>**
+## **4.2: Another awscli configuration for this instance**
 
 (Most of this portion follows the Ubuntu setup seen in [Section 3](#3-connecting-to-the-ec2-instance). Follow those steps to understand this portion)
 
@@ -397,7 +397,7 @@ This is the part where you will need to put in your Access key ID and Secret Acc
 
 ![](images/image30.png)
 
-## **<span style="text-decoration:underline;">4.3: Saving the work from <code>/mnt/data/</code> to S3 buckets</span></strong>**
+## **4.3: Saving the work from <code>/mnt/data/</code> to S3 buckets**
 
 ![](images/image15.png)
 
@@ -446,7 +446,7 @@ If you want to download/upload “sync” your files without using the script, f
 
 (CloudYeti: AWS tutorial: Download an Entire S3 bucket with one command using the AWS CLI)
 
-## **<span style="text-decoration:underline;">4.4: Running BWB</span>**
+## **4.4: Running BWB**
 
 Docker and BWB should run like it should on your computer. The BWB AMI has these already pre-installed, so running the commands should work like it should.
 
@@ -487,7 +487,7 @@ To open it in browser enter **<span style="text-decoration:underline;">public IP
 
 e.g. 18.217.214.46:6080
 
-## **<span style="text-decoration:underline;">4.5: Exiting the instance</span>**
+## **4.5: Exiting the instance**
 
 Once you are finished with the instance, you can exit it to disconnect from your terminal.
 

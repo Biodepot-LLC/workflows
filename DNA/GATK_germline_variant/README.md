@@ -71,7 +71,7 @@ Google Drive and any URL not requiring credentials is accessible via the _downlo
 ![](images/image3.png)
 
 ### gen3_download
-GEN3 data commons and the GDC data portal are accessible via the _gen3_download_ widget.
+GEN3 data commons and the GDC data portal are accessible via the _gen3_download_ widget. For more information about the GEN3 widget, visit the [GEN3 readme](../GEN3readme.md).
 
 ![](images/image8.png)
 
