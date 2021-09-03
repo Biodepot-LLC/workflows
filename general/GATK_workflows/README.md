@@ -5,14 +5,14 @@ In the docker command to run the Bwb, we must add additional volume mapping '/cr
 ```bash
 sudo docker run --rm -p 6080:6080 \
 	-v $PWD/:/data \
-	***-v /cromwell-executions:/cromwell-executions*** \
+	-v /cromwell-executions:/cromwell-executions \ # --> add this line to original docker command
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	--privileged --group-add root \
 	biodepot/bwb
 ```
 
-The command above was written in https://www.biodepot.io/install
+The original docker command to install Bwb from https://www.biodepot.io/install
 
 # Widgets
 
@@ -29,6 +29,7 @@ Geany: to view the results of sequence format validation
 # How To Use
 
 1\. We double click on the **Github** widget to specify the repository to download to local machine. There are two fields that we need to fill up:
+
 - **Repository URL**: the given Github repository URL
 - **Repository Directory**: the specified directory to save on local machine
 
