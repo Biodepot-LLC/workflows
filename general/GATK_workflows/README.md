@@ -1,3 +1,19 @@
+# Volume Mapping Required
+
+In the docker command to run the Bwb, we must add additional volume mapping '/cromwell-executions' from the host machine
+
+```bash
+sudo docker run --rm -p 6080:6080 \
+	-v $PWD/:/data \
+	-v /cromwell-executions:/cromwell-executions \ # --> add this line to original docker command
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	--privileged --group-add root \
+	biodepot/bwb
+```
+
+The original docker command to install Bwb from https://www.biodepot.io/install
+
 # Widgets
 
 ![](./docs/gatk_widgets.png)
@@ -10,9 +26,10 @@ Cromwell: to execute the WDL script (in the repository that downloaded from the 
 
 Geany: to view the results of sequence format validation
 
-# How to use
+# How To Use
 
 1\. We double click on the **Github** widget to specify the repository to download to local machine. There are two fields that we need to fill up:
+
 - **Repository URL**: the given Github repository URL
 - **Repository Directory**: the specified directory to save on local machine
 

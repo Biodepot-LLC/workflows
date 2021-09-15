@@ -11,14 +11,14 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWCromwell(OWBwBWidget):
-    name = "Cromwell"
-    description = "cromwell 64"
+class OWstart(OWBwBWidget):
+    name = "start"
+    description = "alpine bash with wget curl gzip bzip2"
     priority = 1
-    icon = getIconName(__file__,"cromwell.png")
+    icon = getIconName(__file__,"351-3512491_start-icon-copy.png")
     want_main_area = False
-    docker_image_name = "varikmp/cromwell"
-    docker_image_tag = "latest"
+    docker_image_name = "biodepot/bash-utils"
+    docker_image_tag = "alpine-3.7__081418"
     inputs = [("inputFile",str,"handleInputsinputFile"),("Trigger",str,"handleInputsTrigger")]
     outputs = [("OutputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
@@ -28,11 +28,9 @@ class OWCromwell(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    WDL_FILE=pset(None)
-    OBJECT_FILE=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"Cromwell")) as f:
+        with open(getJsonName(__file__,"start")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
