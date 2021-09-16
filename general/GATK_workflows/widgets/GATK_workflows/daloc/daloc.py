@@ -28,7 +28,7 @@ class OWdaloc(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    RepositoryDir=pset(None)
+    ObjectFilesDir=pset(None)
     DownloadDir=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
