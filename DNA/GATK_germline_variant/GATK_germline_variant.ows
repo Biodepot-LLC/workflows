@@ -78,7 +78,7 @@
 	</annotations>
 	<thumbnail/>
 	<node_properties>
-		<properties format="pickle" node_id="0">gAN9cQAoWA4AAABhbGlnbm1lbnRGbGFnc3EBWAAAAABxAlgGAAAAYnlwYXNzcQOIWAcAAABjb2xo
+		<properties format="pickle" node_id="0">gAN9cQAoWA4AAABhbGlnbm1lbnRGbGFnc3EBWAAAAABxAlgGAAAAYnlwYXNzcQNOWAcAAABjb2xo
 bG9ncQRLElgHAAAAY29sbGF0ZXEFiVgGAAAAY29sc2JzcQZKAAAAAlgFAAAAY29tYnNxB4lYEgAA
 AGNvbnRyb2xBcmVhVmlzaWJsZXEIiFgRAAAAZGlzYWJsZXZhbGlkYXRpb25xCYlYBwAAAGV4Y2x1
 ZGVxClgeAAAAUUNGQUlMLFNFQ09OREFSWSxTVVBQTEVNRU5UQVJZcQtYDgAAAGV4cG9ydEdyYXBo
@@ -236,7 +236,7 @@ YWR5cTZ9cTcoWAoAAABpbnB1dGZpbGVzcTiJWBEAAAByZWZlcmVuY2VfdHJpZ2dlcnE5iVgMAAAA
 c25wc190cmlnZ2VycTqJaDOJWAkAAAByZWZlcmVuY2VxO4lYBgAAAG91dHB1dHE8iXVYBgAAAHVz
 ZUdwdXE9iVgMAAAAdXNlU2NoZWR1bGVycT6JWAsAAABfX3ZlcnNpb25fX3E/SwF1Lg==
 </properties>
-		<properties format="literal" node_id="8">{'algorithm': 'rb2', 'blocksize': 10000000, 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'reference_trigger': [3], 'reference': [1], 'overwrite': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'threads': False, 'prefix': False, 'blocksize': True, 'algorithm': False, 'overwrite': False}, 'overwrite': True, 'prefix': '', 'reference': '', 'runMode': 2, 'runTriggers': ['reference_trigger'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\xec\x00\x00\x01n\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\xec\x00\x00\x01k\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'reference': False, 'reference_trigger': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
+		<properties format="literal" node_id="8">{'algorithm': 'rb2', 'blocksize': 10000000, 'controlAreaVisible': True, 'exportGraphics': False, 'inputConnectionsStore': {'reference_trigger': [3], 'reference': [1], 'overwrite': [1]}, 'iterate': False, 'iterateSettings': {'iterableAttrs': [], 'nWorkers': 1}, 'nWorkers': 1, 'optionsChecked': {'threads': False, 'prefix': False, 'blocksize': True, 'algorithm': False, 'overwrite': False}, 'overwrite': None, 'prefix': '', 'reference': '', 'runMode': 2, 'runTriggers': ['reference_trigger'], 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\xec\x00\x00\x01n\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x02\xec\x00\x00\x01k\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80', 'triggerReady': {'reference': False, 'reference_trigger': False}, 'useGpu': False, 'useScheduler': False, '__version__': 1}</properties>
 		<properties format="pickle" node_id="9">gAN9cQAoWAcAAABhbGxlbGVzcQFdcQJYCwAAAGFubm90YXRlTnVtcQOJWAoAAABhbm5vdGF0aW9u
 cQRdcQVYDwAAAGFubm90YXRpb25ncm91cHEGXXEHKFgUAAAAU3RhbmRhcmRIQ0Fubm90YXRpb25x
 CFgSAAAAU3RhbmRhcmRBbm5vdGF0aW9ucQlYFQAAAEFTX1N0YW5kYXJkQW5ub3RhdGlvbnEKZVgG
