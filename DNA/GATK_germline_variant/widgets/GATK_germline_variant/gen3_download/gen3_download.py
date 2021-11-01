@@ -18,8 +18,8 @@ class OWgen3_download(OWBwBWidget):
     icon = getIconName(__file__,"gen3-download.png")
     want_main_area = False
     docker_image_name = "biodepot/gen3-download"
-    docker_image_tag = "2021.03__alpine_3.12__2a822715"
-    inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials"),("gdctoken",str,"handleInputsgdctoken")]
+    docker_image_tag = "2021.03__alpine_3.12__833f38e5"
+    inputs = [("manifest",str,"handleInputsmanifest"),("guids",str,"handleInputsguids"),("downloadDir",str,"handleInputsdownloadDir"),("Trigger",str,"handleInputsTrigger"),("credentials",str,"handleInputscredentials"),("gdctoken",str,"handleInputsgdctoken"),("datacommons_url",str,"handleInputsdatacommons_url")]
     outputs = [("manifest",str),("guids",str),("downloadDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -40,6 +40,7 @@ class OWgen3_download(OWBwBWidget):
     protocol=pset(None)
     decompress=pset(True)
     gdctoken=pset(None)
+    datacommons_url=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"gen3_download")) as f:
@@ -76,6 +77,11 @@ class OWgen3_download(OWBwBWidget):
     def handleInputsgdctoken(self, value, *args):
         if args and len(args) > 0: 
             self.handleInputs("gdctoken", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsdatacommons_url(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("datacommons_url", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
