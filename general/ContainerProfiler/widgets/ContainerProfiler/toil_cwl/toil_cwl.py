@@ -11,15 +11,15 @@ from DockerClient import DockerClient
 from BwBase import OWBwBWidget, ConnectionDict, BwbGuiElements, getIconName, getJsonName
 from PyQt5 import QtWidgets, QtGui
 
-class OWdaloc(OWBwBWidget):
-    name = "daloc"
-    description = "localize the GS urls"
+class OWtoil_cwl(OWBwBWidget):
+    name = "toil_cwl"
+    description = "Toil CWL"
     priority = 1
-    icon = getIconName(__file__,"cloud-download.png")
+    icon = getIconName(__file__,"cwl.png")
     want_main_area = False
-    docker_image_name = "varikmp/daloc"
+    docker_image_name = "varikmp/toil_slurm"
     docker_image_tag = "latest"
-    inputs = [("Trigger0",str,"handleInputsTrigger0"),("Trigger1",str,"handleInputsTrigger1"),("Trigger2",str,"handleInputsTrigger2")]
+    inputs = [("inputFile",str,"handleInputsinputFile"),("Trigger",str,"handleInputsTrigger")]
     outputs = [("OutputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -28,29 +28,25 @@ class OWdaloc(OWBwBWidget):
     triggerReady=pset({})
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
-    ObjectFilesDir=pset(None)
-    DownloadDir=pset(None)
+    CWL_FILE=pset(None)
+    YAML_FILE=pset(None)
+    TOIL_SLURM_ARGS=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
-        with open(getJsonName(__file__,"daloc")) as f:
+        with open(getJsonName(__file__,"toil_cwl")) as f:
             self.data=jsonpickle.decode(f.read())
             f.close()
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsTrigger0(self, value, *args):
+    def handleInputsinputFile(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("Trigger0", value, args[0][0], test=args[0][3])
+            self.handleInputs("inputFile", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputsTrigger1(self, value, *args):
+    def handleInputsTrigger(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("Trigger1", value, args[0][0], test=args[0][3])
-        else:
-            self.handleInputs("inputFile", value, None, False)
-    def handleInputsTrigger2(self, value, *args):
-        if args and len(args) > 0: 
-            self.handleInputs("Trigger2", value, args[0][0], test=args[0][3])
+            self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):

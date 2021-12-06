@@ -19,7 +19,7 @@ class OWgeany(OWBwBWidget):
     want_main_area = False
     docker_image_name = "varikmp/geany"
     docker_image_tag = "latest"
-    inputs = [("inputFile",str,"handleInputsinputFile"),("Trigger",str,"handleInputsTrigger")]
+    inputs = [("Trigger0",str,"handleInputsTrigger0"),("Trigger1",str,"handleInputsTrigger1"),("Trigger2",str,"handleInputsTrigger2")]
     outputs = [("OutputDir",str)]
     pset=functools.partial(settings.Setting,schema_only=True)
     runMode=pset(0)
@@ -37,14 +37,19 @@ class OWgeany(OWBwBWidget):
         self.initVolumes()
         self.inputConnections = ConnectionDict(self.inputConnectionsStore)
         self.drawGUI()
-    def handleInputsinputFile(self, value, *args):
+    def handleInputsTrigger0(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("inputFile", value, args[0][0], test=args[0][3])
+            self.handleInputs("Trigger0", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
-    def handleInputsTrigger(self, value, *args):
+    def handleInputsTrigger1(self, value, *args):
         if args and len(args) > 0: 
-            self.handleInputs("Trigger", value, args[0][0], test=args[0][3])
+            self.handleInputs("Trigger1", value, args[0][0], test=args[0][3])
+        else:
+            self.handleInputs("inputFile", value, None, False)
+    def handleInputsTrigger2(self, value, *args):
+        if args and len(args) > 0: 
+            self.handleInputs("Trigger2", value, args[0][0], test=args[0][3])
         else:
             self.handleInputs("inputFile", value, None, False)
     def handleOutputs(self):
