@@ -15,7 +15,7 @@ class OWdicom_de(OWBwBWidget):
     name = "dicom_de"
     description = "dicom deidentification google healthcare api"
     priority = 1
-    icon = getIconName(__file__,"dicom-logo.jpg")
+    icon = getIconName(__file__,"cloud_healthcare_api.png")
     want_main_area = False
     docker_image_name = "varikmp/dicomde"
     docker_image_tag = "latest"
@@ -33,6 +33,7 @@ class OWdicom_de(OWBwBWidget):
     LOCATION=pset(None)
     DATASET=pset(None)
     DEIDENTIFIED_DATASET=pset(None)
+    DICOM_FIELDS=pset([])
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"dicom_de")) as f:
