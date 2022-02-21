@@ -29,7 +29,7 @@ class OWdicom_local_de(OWBwBWidget):
     inputConnectionsStore=pset({})
     optionsChecked=pset({})
     DICOM_INPUT_FILE=pset(None)
-    DICOM_FIELDS=pset([])
+    DICOM_FIELDS_FILE=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"dicom_local_de")) as f:
