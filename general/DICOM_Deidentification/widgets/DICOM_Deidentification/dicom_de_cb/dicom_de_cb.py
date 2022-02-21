@@ -33,17 +33,7 @@ class OWdicom_de_cb(OWBwBWidget):
     LOCATION=pset(None)
     DATASET=pset(None)
     DEIDENTIFIED_DATASET=pset(None)
-    PatientID=pset(False)
-    PatientName=pset(False)
-    PatientSex=pset(False)
-    PatientBirthDate=pset(False)
-    PatientOrientation=pset(False)
-    PatientAge=pset(False)
-    PatientSize=pset(False)
-    PatientWeight=pset(False)
-    PatientAddress=pset(False)
-    PatientMotherBirthName=pset(False)
-    PatientBirthName=pset(False)
+    DICOM_FIELDS_FILE=pset(None)
     def __init__(self):
         super().__init__(self.docker_image_name, self.docker_image_tag)
         with open(getJsonName(__file__,"dicom_de_cb")) as f:
