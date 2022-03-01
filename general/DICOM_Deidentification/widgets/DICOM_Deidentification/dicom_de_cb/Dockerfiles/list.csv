@@ -1,0 +1,305 @@
+AccessionNumber,Accession Number,0008,0050
+AcquisitionComments,Acquisition Comments,0018,4000
+AcquisitionContextSequence,Acquisition Context Sequence,0040,0555
+AcquisitionDate,Acquisition Date,0008,0022
+AcquisitionDateTime,Acquisition DateTime,0008,002A
+AcquisitionDeviceProcessingDescription,Acquisition Device Processing Description,0018,1400
+AcquisitionProtocolDescription,Acquisition Protocol Description,0018,9424
+AcquisitionTime,Acquisition Time,0008,0032
+ActualHumanPerformersSequence,Actual Human Performers Sequence,0040,4035
+AdditionalPatientHistory,Additional Patient's History,0010,21B0
+AddressTrial,Address (Trial),0040,A353
+AdmissionID,Admission ID,0038,0010
+AdmittingDate,Admitting Date,0038,0020
+AdmittingDiagnosesCodeSequence,Admitting Diagnoses Code Sequence,0008,1084
+AdmittingDiagnosesDescription,Admitting Diagnoses Description,0008,1080
+AdmittingTime,Admitting Time,0038,0021
+AffectedSOPInstanceUID,Affected SOP Instance UID,0000,1000
+Allergies,Allergies,0010,2110
+Arbitrary,Arbitrary,4000,0010
+AuthorObserverSequence,Author Observer Sequence,0040,A078
+BeamDescription,Beam Description,300A,00C3
+BolusDescription,Bolus Description,300A,00DD
+BranchService,Branch of Service,0010,1081
+CassetteID,Cassette ID,0018,1007
+CommentsonPerformedProcedureStep,Comments on the Performed Procedure Step,0040,0280
+CompensatorDescription,Compensator Description,300A,02EB
+ConcatenationUID,Concatenation UID,0020,9161
+ConfidentialityConstraintonPatientDataDescription,Confidentiality Constraint on Patient Data Description,0040,3001
+ConsultingPhysicianName,Consulting Physician's Name,0008,009C
+ConsultingPhysicianIdentificationSequence,Consulting Physician Identification Sequence,0008,009D
+ContentCreatorIdentificationCodeSequence,Content Creator's Identification Code Sequence,0070,0086
+ContentCreatorName,Content Creator's Name,0070,0084
+ContentDate,Content Date,0008,0023
+ContentSequence,Content Sequence,0040,A730
+ContentTime,Content Time,0008,0033
+ContrastBolusAgent,Contrast Bolus Agent,0018,0010
+ContributionDescription,Contribution Description,0018,A003
+CountryResidence,Country of Residence,0010,2150
+CurrentObserverTrial,Current Observer (Trial),0040,A307
+CurrentPatientLocation,Current Patient Location,0038,0300
+CurveData,Curve Data,50xx,xxxx
+CurveDate,Curve Date,0008,0025
+CurveTime,Curve Time,0008,0035
+CustodialOrganizationSequence,Custodial Organization Sequence,0040,A07C
+DataSetTrailingPadding,Data Set Trailing Padding,FFFC,FFFC
+DerivationDescription,Derivation Description,0008,2111
+DetectorID,Detector ID,0018,700A
+DeviceSerialNumber,Device Serial Number,0018,1000
+DeviceUID,Device UID,0018,1002
+DigitalSignaturesSequence,Digital Signatures Sequence,FFFA,FFFA
+DigitalSignatureUID,Digital Signature UID,0400,0100
+DimensionOrganizationUID,Dimension Organization UID,0020,9164
+DischargeDiagnosisDescription,Discharge Diagnosis Description,0038,0040
+DistributionAddress,Distribution Address,4008,011A
+DistributionName,Distribution Name,4008,0119
+DoseReferenceDescription,Dose Reference Description,300A,0016
+DoseReferenceUID,Dose Reference UID,300A,0013
+EndAcquisitionDateTime,End Acquisition DateTime,0018,9517
+EthnicGroup,Ethnic Group,0010,2160
+ExpectedCompletionDateTime,Expected Completion DateTime,0040,4011
+FailedSOPInstanceUIDList,Failed SOP Instance UID List,0008,0058
+FiducialUID,Fiducial UID,0070,031A
+FillerOrderNumber/ImagingServiceRequest,Filler Order Number / Imaging Service Request,0040,2017
+FirstTreatmentDate,First Treatment Date,3008,0054
+FixationDeviceDescription,Fixation Device Description,300A,0196
+FractionGroupDescription,Fraction Group Description,300A,0072
+FrameComments,Frame Comments,0020,9158
+FrameReferenceUID,Frame of Reference UID,0020,0052
+GantryID,Gantry ID,0018,1008
+GeneratorID,Generator ID,0018,1005
+GraphicAnnotationSequence,Graphic Annotation Sequence,0070,0001
+HumanPerformersName,Human Performers Name,0040,4037
+HumanPerformersOrganization,Human Performers Organization,0040,4036
+IconImageSequenceseeNote12,Icon Image Sequence(see Note 12),0088,0200
+IdentifyingComments,Identifying Comments,0008,4000
+ImageComments,Image Comments,0020,4000
+ImagePresentationComments,Image Presentation Comments,0028,4000
+ImagingServiceRequestComments,Imaging Service Request Comments,0040,2400
+Impressions,Impressions,4008,0300
+InstanceCoercionDateTime,Instance Coercion DateTime,0008,0015
+InstanceCreatorUID,Instance Creator UID,0008,0014
+InstanceOrigStatus,Instance Origin Status,0400,0600
+InstitutionAddress,Institution Address,0008,0081
+InstitutionalDepartmentName,Institutional Department Name,0008,1040
+InstitutionalDepartmentTypeCodeSequence,Institutional Department Type Code Sequence,0008,1041
+InstitutionCodeSequence,Institution Code Sequence,0008,0082
+InstitutionName,Institution Name,0008,0080
+InsurancePlanIdentification,Insurance Plan Identification,0010,1050
+IntendedRecipientsResultsIdentificationSequence,Intended Recipients of Results Identification Sequence,0040,1011
+InterpretationApproverSequence,Interpretation Approver Sequence,4008,0111
+InterpretationAuthor,Interpretation Author,4008,010C
+InterpretationDiagnosisDescription,Interpretation Diagnosis Description,4008,0115
+InterpretationIDIssuer,Interpretation ID Issuer,4008,0202
+InterpretationRecorder,Interpretation Recorder,4008,0102
+InterpretationText,Interpretation Text,4008,010B
+InterpretationTranscriber,Interpretation Transcriber,4008,010A
+IrradiationEventUID,Irradiation Event UID,0008,3010
+IssuerAdmissionID,Issuer of Admission ID,0038,0011
+IssuerAdmissionIDSequence,Issuer of Admission ID Sequence,0038,0014
+IssuerPatientID,Issuer of Patient ID,0010,0021
+IssuerServiceEpisodeID,Issuer of Service Episode ID,0038,0061
+IssuerServiceEpisodeIDSequence,Issuer of Service Episode ID Sequence,0038,0064
+LargePaletteColorLookupTableUID,Large Palette Color Lookup Table UID,0028,1214
+LastMenstrualDate,Last Menstrual Date,0010,21D0
+MAC,MAC,0400,0404
+MediaStorageSOPInstanceUID,Media Storage SOP Instance UID,0002,0003
+MedicalAlerts,Medical Alerts,0010,2000
+MedicalRecordLocator,Medical Record Locator,0010,1090
+MilitaryRank,Military Rank,0010,1080
+ModifiedAttributesSequence,Modified Attributes Sequence,0400,0550
+ModifiedImageDescription,Modified Image Description,0020,3406
+ModifyingDeviceID,Modifying Device ID,0020,3401
+MostRecentTreatmentDate,Most Recent Treatment Date,3008,0056
+NamePhysiciansReadingStudy,Name of Physician(s) Reading Study,0008,1060
+NamesIntendedRecipientResults,Names of Intended Recipient of Results,0040,1010
+ObservationDateTrial,Observation Date (Trial),0040,A192
+ObservationSubjectUIDTrial,Observation Subject UID (Trial),0040,A402
+ObservationTimeTrial,Observation Time (Trial),0040,A193
+ObservationUID,Observation UID,0040,A171
+Occupation,Occupation,0010,2180
+OperatorsIdentificationSequence,Operators' Identification Sequence,0008,1072
+OperatorsName,Operators' Name,0008,1070
+OrderCallbackPhoneNumber,Order Callback Phone Number,0040,2010
+OrderCallbackTelecomInformation,Order Callback Telecom Information,0040,2011
+OrderEnteredBy,Order Entered By,0040,2008
+OrderEntererLocation,Order Enterer Location,0040,2009
+OriginalAttributesSequence,Original Attributes Sequence,0400,0561
+OtherPatientIDs,Other Patient IDs,0010,1000
+OtherPatientIDsSequence,Other Patient IDs Sequence,0010,1002
+OtherPatientNames,Other Patient Names,0010,1001
+OverlayComments,Overlay Comments,60xx,4000
+OverlayData,Overlay Data,60xx,3000
+OverlayDate,Overlay Date,0008,0024
+OverlayTime,Overlay Time,0008,0034
+PaletteColorLookupTableUID,Palette Color Lookup Table UID,0028,1199
+ParticipantSequence,Participant Sequence,0040,A07A
+PatientAge,Patient's Age,0010,1010
+PatientBirthDate,Patient's Birth Date,0010,0030
+PatientBirthName,Patient's Birth Name,0010,1005
+PatientBirthTime,Patient's Birth Time,0010,0032
+PatientInstitutionResidence,Patient's Institution Residence,0038,0400
+PatientInsurancePlanCodeSequence,Patient's Insurance Plan Code Sequence,0010,0050
+PatientMotherBirthName,Patient's Mother's Birth Name,0010,1060
+PatientName,Patient's Name,0010,0010
+PatientPrimaryLanguageCodeSequence,Patient's Primary Language Code Sequence,0010,0101
+PatientPrimaryLanguageModifierCodeSequence,Patient's Primary Language Modifier Code Sequence,0010,0102
+PatientReligiousPreference,Patient's Religious Preference,0010,21F0
+PatientSex,Patient's Sex,0010,0040
+PatientSize,Patient's Size,0010,1020
+PatientTelecomInformation,Patient's Telecom Information,0010,2155
+PatientTelephoneNumbers,Patient's Telephone Numbers,0010,2154
+PatientWeight,Patient's Weight,0010,1030
+PatientAddress,Patient Address,0010,1040
+PatientComments,Patient Comments,0010,4000
+PatientID,Patient ID,0010,0020
+PatientSexNeutered,Patient Sex Neutered,0010,2203
+PatientState,Patient State,0038,0500
+PatientTransportArrangements,Patient Transport Arrangements,0040,1004
+PerformedLocation,Performed Location,0040,0243
+PerformedProcedureStepDescription,Performed Procedure Step Description,0040,0254
+PerformedProcedureStepEndDate,Performed Procedure Step End Date,0040,0250
+PerformedProcedureStepEndDateTime,Performed Procedure Step End DateTime,0040,4051
+PerformedProcedureStepEndTime,Performed Procedure Step End Time,0040,0251
+PerformedProcedureStepID,Performed Procedure Step ID,0040,0253
+PerformedProcedureStepStartDate,Performed Procedure Step Start Date,0040,0244
+PerformedProcedureStepStartDateTime,Performed Procedure Step Start DateTime,0040,4050
+PerformedProcedureStepStartTime,Performed Procedure Step Start Time,0040,0245
+PerformedStationAETitle,Performed Station AE Title,0040,0241
+PerformedStationGeographicLocationCodeSequence,Performed Station Geographic Location Code Sequence,0040,4030
+PerformedStationName,Performed Station Name,0040,0242
+PerformedStationNameCodeSequence,Performed Station Name Code Sequence,0040,4028
+PerformingPhysicianIdentificationSequence,Performing Physician Identification Sequence,0008,1052
+PerformingPhysiciansName,Performing Physicians' Name,0008,1050
+PersonTelecomInformation,Person's Telecom Information,0040,1104
+PersonTelephoneNumbers,Person's Telephone Numbers,0040,1103
+PersonAddress,Person Address,0040,1102
+PersonIdentificationCodeSequence,Person Identification Code Sequence,0040,1101
+PersonName,Person Name,0040,A123
+PhysiciansRecord,Physician(s) of Record,0008,1048
+PhysiciansRecordIdentificationSequence,Physician(s) of Record Identification Sequence,0008,1049
+PhysiciansReadingStudyIdentificationSequence,Physician(s) Reading Study Identification Sequence,0008,1062
+PhysicianApprovingInterpretation,Physician Approving Interpretation,4008,0114
+PlacerOrderNumber/ImagingServiceRequest,Placer Order Number / Imaging Service Request,0040,2016
+PlateID,Plate ID,0018,1004
+PregnancyStatus,Pregnancy Status,0010,21C0
+Pre-Medication,Pre-Medication,0040,0012
+PrescriptionDescription,Prescription Description,300A,000E
+PresentationDisplayCollectionUID,Presentation Display Collection UID,0070,1101
+PresentationSequenceCollectionUID,Presentation Sequence Collection UID,0070,1102
+Privateattributes,Private attributes,gggg,eeee) where gggg is odd
+ProcedureStepCancellationDateTime,Procedure Step Cancellation DateTime,0040,4052
+ProtocolName,Protocol Name,0018,1030
+ReasonOmissionDescription,Reason for Omission Description,300C,0113
+ReasonStudy,Reason for Study,0032,1030
+ReasonImagingServiceRequest,Reason for the Imaging Service Request,0040,2001
+ReferencedDigitalSignatureSequence,Referenced Digital Signature Sequence,0400,0402
+ReferencedDoseReferenceUID,Referenced Dose Reference UID,300A,0083
+ReferencedFrameReferenceUID,Referenced Frame of Reference UID,3006,0024
+ReferencedGeneralPurposeScheduledProcedureStepTransactionUID,Referenced General Purpose Scheduled Procedure Step Transaction UID,0040,4023
+ReferencedImageSequence,Referenced Image Sequence,0008,1140
+ReferencedObservationUIDTrial,Referenced Observation UID (Trial),0040,A172
+ReferencedPatientAliasSequence,Referenced Patient Alias Sequence,0038,0004
+ReferencedPatientPhotoSequence,Referenced Patient Photo Sequence,0010,1100
+ReferencedPatientSequence,Referenced Patient Sequence,0008,1120
+ReferencedPerformedProcedureStepSequence,Referenced Performed Procedure Step Sequence,0008,1111
+ReferencedSOPInstanceMACSequence,Referenced SOP Instance MAC Sequence,0400,0403
+ReferencedSOPInstanceUID,Referenced SOP Instance UID,0008,1155
+ReferencedSOPInstanceUIDFile,Referenced SOP Instance UID in File,0004,1511
+ReferencedStudySequence,Referenced Study Sequence,0008,1110
+ReferringPhysicianAddress,Referring Physician's Address,0008,0092
+ReferringPhysicianName,Referring Physician's Name,0008,0090
+ReferringPhysicianTelephoneNumbers,Referring Physician's Telephone Numbers,0008,0094
+ReferringPhysicianIdentificationSequence,Referring Physician Identification Sequence,0008,0096
+RegionResidence,Region of Residence,0010,2152
+RelatedFrameReferenceUID,Related Frame of Reference UID,3006,00C2
+RequestAttributesSequence,Request Attributes Sequence,0040,0275
+RequestedContrastAgent,Requested Contrast Agent,0032,1070
+RequestedProcedureComments,Requested Procedure Comments,0040,1400
+RequestedProcedureDescription,Requested Procedure Description,0032,1060
+RequestedProcedureID,Requested Procedure ID,0040,1001
+RequestedProcedureLocation,Requested Procedure Location,0040,1005
+RequestedSOPInstanceUID,Requested SOP Instance UID,0000,1001
+RequestingPhysician,Requesting Physician,0032,1032
+RequestingService,Requesting Service,0032,1033
+RespiratoryMotionCompensationTechniqueDescription,Respiratory Motion Compensation Technique Description,0018,9185
+ResponsibleOrganization,Responsible Organization,0010,2299
+ResponsiblePerson,Responsible Person,0010,2297
+ResultsComments,Results Comments,4008,4000
+ResultsDistributionListSequence,Results Distribution List Sequence,4008,0118
+ResultsIDIssuer,Results ID Issuer,4008,0042
+ReviewerName,Reviewer Name,300E,0008
+RTPlanDate,RT Plan Date,300A,0006
+RTPlanDescription,RT Plan Description,300A,0004
+RTPlanLabel,RT Plan Label,300A,0002
+RTPlanName,RT Plan Name,300A,0003
+RTPlanTime,RT Plan Time,300A,0007
+ScheduledHumanPerformersSequence,Scheduled Human Performers Sequence,0040,4034
+ScheduledPatientInstitutionResidence,Scheduled Patient Institution Residence,0038,001E
+ScheduledPerformingPhysicianIdentificationSequence,Scheduled Performing Physician Identification Sequence,0040,000B
+ScheduledPerformingPhysicianName,Scheduled Performing Physician Name,0040,0006
+ScheduledProcedureStepDescription,Scheduled Procedure Step Description,0040,0007
+ScheduledProcedureStepEndDate,Scheduled Procedure Step End Date,0040,0004
+ScheduledProcedureStepEndTime,Scheduled Procedure Step End Time,0040,0005
+ScheduledProcedureStepExpirationDateTime,Scheduled Procedure Step Expiration DateTime,0040,4008
+ScheduledProcedureStepLocation,Scheduled Procedure Step Location,0040,0011
+ScheduledProcedureStepModificationDateTime,Scheduled Procedure Step Modification DateTime,0040,4010
+ScheduledProcedureStepStartDate,Scheduled Procedure Step Start Date,0040,0002
+ScheduledProcedureStepStartDateTime,Scheduled Procedure Step Start DateTime,0040,4005
+ScheduledProcedureStepStartTime,Scheduled Procedure Step Start Time,0040,0003
+ScheduledStationAETitle,Scheduled Station AE Title,0040,0001
+ScheduledStationGeographicLocationCodeSequence,Scheduled Station Geographic Location Code Sequence,0040,4027
+ScheduledStationName,Scheduled Station Name,0040,0010
+ScheduledStationNameCodeSequence,Scheduled Station Name Code Sequence,0040,4025
+ScheduledStudyLocation,Scheduled Study Location,0032,1020
+ScheduledStudyLocationAETitle,Scheduled Study Location AE Title,0032,1021
+SeriesDate,Series Date,0008,0021
+SeriesDescription,Series Description,0008,103E
+SeriesInstanceUID,Series Instance UID,0020,000E
+SeriesTime,Series Time,0008,0031
+ServiceEpisodeDescription,Service Episode Description,0038,0062
+ServiceEpisodeID,Service Episode ID,0038,0060
+SetupTechniqueDescription,Setup- Technique Description,300A,01B2
+ShieldingDeviceDescription,Shielding Device Description,300A,01A6
+SmokingStatus,Smoking Status,0010,21A0
+SOPInstanceUID,SOP Instance UID,0008,0018
+SourceImageSequence,Source Image Sequence,0008,2112
+SourceManufacturer,Source Manufacturer,300A,0216
+SourceSerialNumber,Source Serial Number,3008,0105
+SourceSerialNumber,Source Serial Number,3008,0105
+SpecialNeeds,Special Needs,0038,0050
+StartAcquisitionDateTime,Start Acquisition DateTime,0018,9516
+StationName,Station Name,0008,1010
+StorageMediaFile-setUID,Storage Media File-set UID,0088,0140
+StudyComments,Study Comments,0032,4000
+StudyDate,Study Date,0008,0020
+StudyDescription,Study Description,0008,1030
+StudyID,Study ID,0020,0010
+StudyIDIssuer,Study ID Issuer,0032,0012
+StudyInstanceUID,Study Instance UID,0020,000D
+StudyTime,Study Time,0008,0030
+SynchronizationFrameReferenceUID,Synchronization Frame of Reference UID,0020,0200
+TargetUID,Target UID,0018,2042
+TelephoneNumberTrial,Telephone Number (Trial),0040,A354
+TemplateExtensionCreatorUID,Template Extension Creator UID,0040,DB0D
+TemplateExtensionOrganizationUID,Template Extension Organization UID,0040,DB0C
+TextComments,Text Comments,4000,4000
+TextString,Text String,2030,0020
+TimezoneOffsetFromUTC,Timezone Offset From UTC,0008,0201
+TopicAuthor,Topic Author,0088,0910
+TopicKeywords,Topic Keywords,0088,0912
+TopicSubject,Topic Subject,0088,0906
+TopicTitle,Topic Title,0088,0904
+TrackingUID,Tracking UID,0062,0021
+TransactionUID,Transaction UID,0008,1195
+TreatmentDate,Treatment Date,3008,0250
+TreatmentMachineName,Treatment Machine Name,300A,00B2
+TreatmentTime,Treatment Time,3008,0251
+UID,UID,0040,A124
+VerbalSourceTrial,Verbal Source (Trial),0040,A352
+VerbalSourceIdentifierCodeSequenceTrial,Verbal Source Identifier Code Sequence (Trial),0040,A358
+VerifyingObserverIdentificationCodeSequence,Verifying Observer Identification Code Sequence,0040,A088
+VerifyingObserverName,Verifying Observer Name,0040,A075
+VerifyingObserverSequence,Verifying Observer Sequence,0040,A073
+VerifyingOrganization,Verifying Organization,0040,A027
+VisitComments,Visit Comments,0038,4000

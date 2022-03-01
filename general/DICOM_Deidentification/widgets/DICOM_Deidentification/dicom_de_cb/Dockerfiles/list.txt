@@ -1,0 +1,1 @@
+AddressTrial,ConsultingPhysicianName,MAC,PatientAge,PatientBirthDate,PatientBirthName,PatientBirthTime,PatientMotherBirthName,PatientName,PatientSex,PatientSize,PatientWeight,PatientAddress,PatientComments,PatientID
