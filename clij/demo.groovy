@@ -26,7 +26,7 @@ clij2.clear();
 
 // disable automatic window positioning 
 was_auto_position = net.haesleinhuepf.clij2.assistant.AbstractAssistantGUIPlugin.isAutoPosition();
-//net.haesleinhuepf.clij2.assistant.AbstractAssistantGUIPlugin.setAutoPosition(false);
+net.haesleinhuepf.clij2.assistant.AbstractAssistantGUIPlugin.setAutoPosition(false);
 
 // Load image from disc 
 image_1 = net.haesleinhuepf.clij2.assistant.utilities.AssistantUtilities.openImage(image_file.toString());
