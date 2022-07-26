@@ -10,12 +10,12 @@
 
 // Generator version: 2.5.1.4
 
-#@ File(style="file", label="Please select an image for the demo...", value="/data/images/000028.raw.tif", persist=false) image_file
-
+import ij.ImagePlus;
 import ij.IJ;
 import net.haesleinhuepf.clij2.CLIJ2;
-
-println image_file;
+import ij.gui.GenericDialog;
+import java.awt.Dialog.ModalityType;
+import java.util.Optional;
 
 // clean up first
 IJ.run("Close All");
@@ -28,12 +28,53 @@ clij2.clear();
 was_auto_position = net.haesleinhuepf.clij2.assistant.AbstractAssistantGUIPlugin.isAutoPosition();
 net.haesleinhuepf.clij2.assistant.AbstractAssistantGUIPlugin.setAutoPosition(false);
 
+image = askForImage();
+if(image.isPresent()){
+	workflow(image.get());
+	IJ.showMessage("Finished!\nYou may use the menus attached to each image to adjust parameters, save processed images using \"File > Save\", or make any other edits you would like.\n\nWhen you are finished, close the main Fiji toolbar to exit."); 
+}
+
+def Optional<ImagePlus> askForImage(){
+	gui = new GenericDialog("CLIJ demo");
+
+	gui.setModalityType(ModalityType.MODELESS);
+
+	gui.addMessage("Welcome to the CLIJ demo! Please select an image to open.");
+	gui.addMessage("You can either open an image first, using \"File > Open\" or \"File > Open Samples\", and then\nselect \"Currently active image\", or specify an image file to be opened in the box below.");
+	def choices = ["Currently active image", "Open a file"] as String[];
+	gui.addRadioButtonGroup("Please choose:", choices, 1, 2, "Open a file");
+	
+	gui.addFileField("File to open (if opening a file):", "/data");
+	
+	println "Showing dialog";
+	gui.showDialog();
+		
+	while(!gui.wasCanceled() && !gui.wasOKed()){}
+	println "Dialog closed";
+	
+	if(gui.wasOKed()){
+		choice = gui.getNextRadioButton();
+		if (choice == choices[0]) {
+			return Optional<ImagePlus>.of(IJ.getImage());
+		} else {
+			file = gui.getNextString();
+			return Optional<ImagePlus>.of(IJ.openImage(file));
+		}
+	} else {
+		return Optional<ImagePlus>.empty();
+	}
+}
+
+def workflow(starting_image) {
+	
+	
 // Load image from disc 
-image_1 = net.haesleinhuepf.clij2.assistant.utilities.AssistantUtilities.openImage(image_file.toString());
+//image_1 = net.haesleinhuepf.clij2.assistant.utilities.AssistantUtilities.openImage(image_file.toString());
+image_1 = starting_image;
 image_1.setC(1);
 image_1.setZ(37);
 image_1.setT(1);
-image_1.setTitle("000028.raw.tif");
+//image_1.setTitle("000028.raw.tif");
 image_1.show();
 // copy
 node = new net.haesleinhuepf.clij2.assistant.AssistantGUIStartingPoint();
@@ -146,4 +187,5 @@ IJ.run("Out [-]");
 // reset auto-positioning
 IJ.wait(500);
 net.haesleinhuepf.clij2.assistant.AbstractAssistantGUIPlugin.setAutoPosition(was_auto_position);
+}
 
