@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #Ling-Hong Hung 2020
 my ($gencodeFile,$sampleFile)=@ARGV;
-
+my $STARFLAG = $ENV{'STARFLAG'};
 print STDERR "Opening gene code summary $gencodeFile\n";
 open (FIL, $gencodeFile) || die;
 my $line=<FIL>;
@@ -20,18 +20,32 @@ while (defined(my $line=<FIL>)){
 	    $pcLength{$name}=$len;	
 	} 
 }
-
-open (FIL, $sampleFile) || die;
+#For STAR counts - the first four lines are information lines and there is no header
+#The columns are geneID unstrandedCounts 1stReadCounts 2ndReadCounts
+open (FIL, $sampleFile) || die "can't open $sampleFile";
 my $header=<FIL>;
+if($STARFLAG){
+	$header+=<FIL>;
+	$header+=<FIL>;
+	$header+=<FIL>;
+}
 my @names;
 my @pcSums;
 my @uq75s;
 my @counts;
-my @parts=split(/\t/,"$header");
-my $nfields=$#parts;
+# 3 fields if STAR
+my $nfields=3;
+unless ($STARFLAG){
+	my @parts=split(/\t/,"$header");
+	$nfields=$#parts;
+}
+
 while (defined(my $line=<FIL>)){
 	chomp($line);
 	my @parts=split(/\t/,$line);
+	if ($#parts != $nfields){
+		next;
+	}
 	my $name=$parts[0];
 	my $length=$geneLength{$name};
 	if($length){
@@ -68,8 +82,11 @@ foreach my $i (0..$#names){
 	print fpkmUQfp "$names[$i]";
 	foreach my $j (0..$nfields-1){
 		my $counts=$counts[$j][$i];
+		my $fpkmUQ="NA";
 		my $fpkm=$counts*1000000000/($length*$pcSums[$j]);
-		my $fpkmUQ=$counts*1000000000/($length*$uq75s[$j]);
+		if ($uq75s[$j]){
+			$fpkmUQ=$counts*1000000000/($length*$uq75s[$j]);
+		}
 		print countsfp "\t$counts";
 		print fpkmfp "\t$fpkm";
 		print fpkmUQfp "\t$fpkmUQ";
