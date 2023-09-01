@@ -1,0 +1,22 @@
+on:
+  push:
+    paths-ignore:
+      - 'files.json'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.WORKFLOWS_ACTIONS_PRIVATE_KEY }}
+      - name: Run github-to-json
+        run: |
+          npm install --global github-to-json
+          github-to-json Biodepot-LLC workflows -t ${{ secrets.WORKFLOWS_ACTIONS_PRIVATE_KEY }} -o files.json
+      - name: Commit changes
+        run: |
+          git config --global user.name "Thomas Dahlstrom"
+          git config --global user.email "tdahlstrom@users.noreply.github.com"
+          git add files.json
+          git commit -m "Update files.json"
+          git push
