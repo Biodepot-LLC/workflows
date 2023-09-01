@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.WORKFLOWS_ACTIONS_PRIVATE_KEY }}
       - name: Run github-to-json
         run: |
           npm install --global github-to-json
