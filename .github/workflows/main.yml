@@ -12,7 +12,7 @@ jobs:
           python-version: '3.x'
       - name: Convert to JSON
         run: |
-          git ls-tree -r --name-only HEAD | python .github/files_to_json.py > tree_structure.json
+          git ls-tree -r --name-only HEAD | python files_to_json.py > tree_structure.json
       - name: Commit and Push JSON
         run: |
           git config --global user.email "action@github.com"
