@@ -6,17 +6,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
       - name: Convert to JSON
         run: |
-          git ls-tree -r --name-only HEAD | python files_to_json.py > tree_structure.json
+          git ls-tree -r --name-only HEAD > files.txt
       - name: Commit and Push JSON
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add tree_structure.json
-          git commit -m "Add tree_structure.json" || echo "No changes to commit"
+          git add files.txt
+          git commit -m "updated files.txt" || echo "No changes to commit"
           git push
