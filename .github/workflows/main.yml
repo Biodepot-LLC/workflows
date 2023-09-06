@@ -1,33 +1,22 @@
 on:
   push:
-    paths-ignore:
-      - 'tree_structure.json'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup SSH Key
-        env:
-          SSH_PRIVATE_KEY: "${{ secrets.WORKFLOWS_ACTIONS_PRIVATE_KEY }}"
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Convert to JSON
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - name: Fetch Tree and Convert to JSON
-        run: |
-          git fetch origin
-          TREE_JSON=$(git ls-tree -r --name-only HEAD | jq -R . | jq -s .)
-          echo $TREE_JSON > tree_structure.json
+          git ls-tree -r --name-only HEAD | .github/python files_to_json.py > tree_structure.json
       - name: Commit and Push JSON
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add tree_structure.json
-          git commit -m "Add tree_structure.json"
+          git commit -m "Add tree_structure.json" || echo "No changes to commit"
           git push
-
-    
