@@ -1,26 +1,33 @@
 on:
   push:
     paths-ignore:
-      - 'files.json'
+      - 'tree_structure.json'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up SSH
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SSH Key
+        env:
+          SSH_PRIVATE_KEY: "${{ secrets.WORKFLOWS_ACTIONS_PRIVATE_KEY }}"
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.WORKFLOWS_ACTIONS_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - uses: actions/checkout@v3
-      - name: Run github-to-json
+      - name: Fetch Tree and Convert to JSON
         run: |
-          npm install --global github-to-json
-          github-to-json Biodepot-LLC workflows -t ${{ secrets.WORKFLOWS_ACTIONS_PRIVATE_KEY }} -o files.json
-      - name: Commit changes
+          git fetch origin
+          TREE_JSON=$(git ls-tree -r --name-only HEAD | jq -R . | jq -s .)
+          echo $TREE_JSON > tree_structure.json
+      - name: Commit and Push JSON
         run: |
-          git config --global user.name "Thomas Dahlstrom"
-          git config --global user.email "tdahlstrom@users.noreply.github.com"
-          git add files.json
-          git commit -m "Update files.json"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add tree_structure.json
+          git commit -m "Add tree_structure.json"
           git push
+
+    
