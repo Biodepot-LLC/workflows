@@ -6,13 +6,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Convert to JSON
+      - name: Convert to sha1 and location
         run: |
-          git ls-tree -r --name-only HEAD > files.txt
-      - name: Commit and Push JSON
+          git ls-tree -r -t HEAD | awk '{ print $3 " " $4 }' > files.txt
+      - name: Commit and push text file
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add files.txt
-          git commit -m "updated files.txt" || echo "No changes to commit"
+          git commit -m "Updated files.txt" || echo "No changes to commit"
           git push
