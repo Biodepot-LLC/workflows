@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Convert to JSON
         run: |
-          git ls-tree -r -t HEAD > files.txt
+          git ls-tree -r -t HEAD | awk '{ print $2 " " $3 " " $4 }' > files.txt
       - name: Commit and push file list
         run: |
           git config --global user.email "action@github.com"
