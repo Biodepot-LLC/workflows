@@ -6,13 +6,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Convert to JSON
+      - name: Convert files structure to text
         run: |
-          git ls-tree -r -t HEAD | awk '{ print $2 " " $3 " " $4 }' > files.txt
-      - name: Commit and push file list
+          git ls-tree -r -t HEAD | awk '{ print $2 " " $4 }' > files.txt
+      - name: Calculate sha256sum of folders containing .ows files
+        run: |
+          find . -type f -name '*.ows' -printf '%h\n' | sort -u | while read -r dir; do hash=$( find "$dir" -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | cut -d ' ' -f1 ); echo "$hash $dir"; done > hash.txt
+      - name: Commit and push generate files
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add files.txt
-          git commit -m "updated files.txt" || echo "No changes to commit"
+          git add files.txt hash.txt
+          git commit -m "Updated files.txt and hash.txt." || echo "No changes to commit"
           git push
