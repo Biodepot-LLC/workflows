@@ -11,7 +11,8 @@ jobs:
           git ls-tree -r -t HEAD | awk '{ print $2 " " $4 }' > files.txt
       - name: Calculate sha256sum of folders containing .ows files
         run: |
-          hashDir.sh RNA > hash.txt
+          ./hashDir.sh ./RNA > hash.txt
+          cat hash.txt
       - name: Commit and push generate files
         run: |
           git config --global user.email "action@github.com"
