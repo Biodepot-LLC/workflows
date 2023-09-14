@@ -10,5 +10,5 @@ if [ -z "$dir" ]; then
 fi
 cmd="$tarcmd -C $dir -cf - --sort=name --mtime='UTC 2019-01-01' --group=0 --owner=0 --numeric-owner . | sha256sum"
 
-echo $cmd
-eval $cmd
+#echo $cmd
+eval $cmd | awk '{print $1}'
